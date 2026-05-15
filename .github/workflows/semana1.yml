@@ -69,4 +69,5 @@ jobs:
         env:
           INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
           INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+          IMGBB_KEY: ${{ secrets.IMGBB_KEY }}
         run: node postar.js ${{ steps.post.outputs.id }}

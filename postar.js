@@ -46,19 +46,50 @@ async function exportarSlide(browser, htmlFile, slideId, outFile, w, h) {
   return outFile;
 }
 
-// ── Hospedar imagem em catbox.moe ─────────────────────
+// ── Hospedar imagem (ImgBB → tmpfiles → catbox fallback) ─
 async function hospedar(filePath) {
-  const form = new FormData();
-  form.append('reqtype', 'fileupload');
-  form.append('fileToUpload', fs.createReadStream(filePath));
-  const res = await axios.post('https://catbox.moe/user/api.php', form, {
-    headers: form.getHeaders(),
-    maxContentLength: Infinity,
-    maxBodyLength: Infinity
-  });
-  const url = res.data.trim();
-  if (!url.startsWith('http')) throw new Error(`Falha ao hospedar: ${url}`);
-  return url;
+  // 1. ImgBB (recomendado, funciona em servidores CI)
+  if (process.env.IMGBB_KEY) {
+    try {
+      const form = new FormData();
+      form.append('image', fs.readFileSync(filePath).toString('base64'));
+      const res = await axios.post(
+        `https://api.imgbb.com/1/upload?key=${process.env.IMGBB_KEY}`,
+        form, { headers: form.getHeaders(), maxContentLength: Infinity, maxBodyLength: Infinity }
+      );
+      const url = res.data.data.url;
+      if (url && url.startsWith('http')) return url;
+    } catch (e) { console.log(`  ⚠️ ImgBB falhou: ${e.message}`); }
+  }
+
+  // 2. tmpfiles.org (fallback)
+  try {
+    const form = new FormData();
+    form.append('file', fs.createReadStream(filePath));
+    const res = await axios.post('https://tmpfiles.org/api/v1/upload', form, {
+      headers: form.getHeaders(),
+      maxContentLength: Infinity,
+      maxBodyLength: Infinity
+    });
+    const url = res.data.data.url.replace('tmpfiles.org/', 'tmpfiles.org/dl/');
+    if (url && url.startsWith('http')) return url;
+  } catch (e) { console.log(`  ⚠️ tmpfiles falhou: ${e.message}`); }
+
+  // 3. catbox.moe (último recurso — pode falhar em CI)
+  try {
+    const form = new FormData();
+    form.append('reqtype', 'fileupload');
+    form.append('fileToUpload', fs.createReadStream(filePath));
+    const res = await axios.post('https://catbox.moe/user/api.php', form, {
+      headers: form.getHeaders(),
+      maxContentLength: Infinity,
+      maxBodyLength: Infinity
+    });
+    const url = res.data.trim();
+    if (url && url.startsWith('http')) return url;
+  } catch (e) { console.log(`  ⚠️ Catbox falhou: ${e.message}`); }
+
+  throw new Error('Todos os serviços de hospedagem falharam');
 }
 
 // ── Criar container Instagram ─────────────────────────

@@ -1,32 +1,7 @@
 [
-  {
-    "id": "seg09-carousel-planilha",
-    "data": "2026-06-09T13:00:00",
-    "tipo": "CAROUSEL",
-    "html": "SEG 09jun - Carousel De Planilha ao Sistema/carousel-de-planilha.html",
-    "largura": 1080,
-    "altura": 1080,
-    "slides": ["s1","s2","s3","s4","s5","s6"],
-    "legenda": "O medo de sair da planilha é real. Mas o custo de continuar nela é maior. 📋\n\nNeste carousel mostro como é a transição na prática — semana a semana — e o que muda na sua operação depois que você sai.\n\nSpoiler: a equipe aprende em 1 dia. E o overbooking some no primeiro mês.\n\nQuanto tempo você ainda aguenta na planilha? Me conta nos comentários 👇\n\n—\n📲 smartguest.app — Migração em 7 dias, sem contrato\n\n#hotelaria #pousada #gestaohoteleira #sistemadegestao #pmshoteleiro #hotelariabrasil #channelmanager #tecnologiahoteleira #hoteleiros #reservashotel"
-  },
-  {
-    "id": "qua11-story-desafio",
-    "data": "2026-06-11T14:00:00",
-    "tipo": "STORIES",
-    "html": "QUA 11jun - Story Desafio Gestao/story-desafio.html",
-    "largura": 1080,
-    "altura": 1920,
-    "slide": "body",
-    "legenda": ""
-  },
-  {
-    "id": "qui12-carousel-porquesg",
-    "data": "2026-06-12T14:00:00",
-    "tipo": "CAROUSEL",
-    "html": "QUI 12jun - Carousel Por que SmartGuest/carousel-por-que-smartguest.html",
-    "largura": 1080,
-    "altura": 1080,
-    "slides": ["s1","s2","s3","s4","s5","s6"],
-    "legenda": "Existem vários sistemas no mercado. Por que escolher o SmartGuest? 🤔\n\nSistemas grandes foram feitos para grandes redes — cobram por funcionalidades que você nunca vai usar e o suporte é um ticket que demora dias.\n\nO SmartGuest foi feito do zero para pousadas independentes. Veja os diferenciais reais — sem enrolação.\n\nArraste e me conta: o que você mais precisa num sistema de gestão? 👇\n\n—\n📲 smartguest.app — Demo gratuita, sem compromisso\n\n#hotelaria #pousada #smartguest #gestaohoteleira #pmshoteleiro #channelmanager #hotelariabrasil #tecnologiahoteleira #inovacaohoteleira #hospitalidade"
-  }
+  {"id":"seg06-carousel-ia2026","data":"2026-06-08T13:00:00","tipo":"CAROUSEL","html":"SEG 06jun - Carousel IA 2026/carousel-ia-2026.html","largura":1080,"altura":1080,"slides":["s1","s2","s3","s4","s5","s6"],"legenda":"A IA na hotelaria não é tendência — já é realidade. 🔮\n\nPousadas que ainda gerenciam no modo manual vão sentir cada vez mais dificuldade de competir com quem usa tecnologia.\n\nNeste carousel mostro as 5 mudanças que já estão acontecendo em 2026. Arraste →\n\nVocê já usa alguma dessas? Me conta nos comentários! 👇\n\n—\n📲 smartguest.app\n\n#hotelaria #pousada #inteligenciaartificial #ianahotelaria #gestaohoteleira #hotelariabrasil #inovacaohoteleira #tecnologiahoteleira #futuro #hospitalidade"},
+  {"id":"ter07-carousel-channel","data":"2026-06-09T14:00:00","tipo":"CAROUSEL","html":"TER 07jun - Carousel Channel Motor/carousel-channel-motor.html","largura":1080,"altura":1080,"slides":["s1","s2","s3","s4","s5","s6"],"legenda":"Você sabia que cada reserva pelo Booking te custa entre 15-20% de comissão? 💸\n\nChannel Manager + Motor de Reservas próprio = você vende em todos os canais E ainda captura reservas diretas sem pagar comissão.\n\nNeste carousel explico como o duo funciona na prática. Arraste →\n\n—\n📲 smartguest.app\n\n#hotelaria #pousada #channelmanager #motordereservas #gestaohoteleira #reservasdiretas #hotelariabrasil #tecnologiahoteleira #comissao #hospitalidade"},
+  {"id":"qua08-story-quiz","data":"2026-06-10T14:00:00","tipo":"STORIES","html":"QUA 08jun - Story Quiz Motor/story-quiz.html","largura":1080,"altura":1920,"slide":"body","legenda":""},
+  {"id":"qui09-post-comparativo","data":"2026-06-11T14:00:00","tipo":"IMAGE","html":"QUI 09jun - Post Comparativo/post-comparativo.html","largura":1080,"altura":1080,"slide":"body","legenda":"Gestão manual vs SmartGuest. Qual lado você está? 👀\n\nNão é sobre tecnologia — é sobre quantas horas por dia você quer gastar corrigindo erro que o sistema resolveria sozinho.\n\n—\n📲 smartguest.app\n\n#hotelaria #pousada #gestaohoteleira #pmshoteleiro #hotelariabrasil #tecnologiahoteleira #comparativo #automacao #hoteleiros #hospitalidade"},
+  {"id":"sex10-post-cta","data":"2026-06-12T14:00:00","tipo":"IMAGE","html":"SEX 10jun - Post CTA Final/post-cta.html","largura":1080,"altura":1080,"slide":"body","legenda":"30 dias. É tudo que você precisa. 🚀\n\nSetup completo, equipe treinada, canais sincronizados, IA ativa — sem você precisar fazer quase nada.\n\nAgenda sua demo gratuita hoje e veja funcionando na sua pousada.\n\n—\n📲 smartguest.app\n\n#hotelaria #pousada #gestaohoteleira #pmshoteleiro #hotelariabrasil #channelmanager #tecnologiahoteleira #demo #smartguest #hospitalidade"}
 ]

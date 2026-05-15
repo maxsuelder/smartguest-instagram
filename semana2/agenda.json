@@ -1,32 +1,7 @@
 [
-  {
-    "id": "seg26-carousel-channel",
-    "data": "2026-05-26T13:00:00",
-    "tipo": "CAROUSEL",
-    "html": "SEG 26mai - Carousel Channel Manager/carousel-channel-manager.html",
-    "largura": 1080,
-    "altura": 1080,
-    "slides": ["s1","s2","s3","s4","s5","s6"],
-    "legenda": "Você vende no Booking, Airbnb, WhatsApp e site ao mesmo tempo — mas atualiza cada um na mão? 😬\n\nEsse gap entre uma reserva chegar e você atualizar os outros canais é onde o overbooking acontece.\n\nNeste carousel explico o que é um Channel Manager e por que é a peça que faltava na sua operação. Arraste →\n\n—\n📲 smartguest.app — Channel Manager + PMS integrado\n\n#hotelaria #pousada #channelmanager #gestaohoteleira #reservashotel #pmshoteleiro #hotelariabrasil #tecnologiahoteleira #hoteleiros #hospitalidade"
-  },
-  {
-    "id": "qua28-story-overbooking",
-    "data": "2026-05-28T14:00:00",
-    "tipo": "STORIES",
-    "html": "QUA 28mai - Story Overbooking/story-overbooking.html",
-    "largura": 1080,
-    "altura": 1920,
-    "slide": "body",
-    "legenda": ""
-  },
-  {
-    "id": "qui29-carousel-revenue",
-    "data": "2026-05-29T14:00:00",
-    "tipo": "CAROUSEL",
-    "html": "QUI 29mai - Carousel Revenue Management/carousel-revenue.html",
-    "largura": 1080,
-    "altura": 1080,
-    "slides": ["s1","s2","s3","s4","s5","s6"],
-    "legenda": "Você cobra o mesmo preço o ano todo? 🤔\n\nA tarifa fixa é um dos maiores erros de receita na hotelaria independente — e poucos falam sobre isso.\n\nNeste carousel mostro como o Revenue Management funciona na prática para pousadas, sem precisar de time especializado.\n\nArraste e me conta: você já ajusta seus preços por época? 👇\n\n—\n📲 smartguest.app\n\n#hotelaria #pousada #revenuemanagement #gestaohoteleira #tarifahotel #hotelariabrasil #pmshoteleiro #tecnologiahoteleira #hoteleiros #hospitalidade"
-  }
+  {"id":"seg23-carousel-mapa","data":"2026-05-23T13:00:00","tipo":"CAROUSEL","html":"SEG 23mai - Carousel Mapa de UH/carousel-mapa-uh.html","largura":1080,"altura":1080,"slides":["s1","s2","s3","s4","s5","s6"],"legenda":"Você sabe o que está acontecendo em cada quarto da sua pousada agora? 🏨\n\nSem um sistema, a recepção só descobre o status de cada UH quando o problema já chegou.\n\nO Mapa de UH do SmartGuest mostra todos os quartos em tempo real — ocupado, livre, limpeza pendente, manutenção. Arraste →\n\n—\n📲 smartguest.app\n\n#hotelaria #pousada #gestaohoteleira #mapadeuh #pmshoteleiro #hotelariabrasil #tecnologiahoteleira #checkin #checkout #hospitalidade"},
+  {"id":"ter24-carousel-setup","data":"2026-05-27T14:00:00","tipo":"CAROUSEL","html":"TER 24mai - Carousel Setup 7 Dias/carousel-setup.html","largura":1080,"altura":1080,"slides":["s1","s2","s3","s4","s5","s6"],"legenda":"O maior medo de trocar de sistema é a implantação dar errado. Entendo. 😅\n\nPor isso no SmartGuest a gente faz tudo por você — em 7 dias, sem interromper sua operação.\n\nNeste carousel mostro exatamente o que acontece em cada dia do setup. Arraste →\n\n—\n📲 smartguest.app\n\n#hotelaria #pousada #gestaohoteleira #pmshoteleiro #implantacao #hotelariabrasil #tecnologiahoteleira #hoteleiros #sistemadegestao #hospitalidade"},
+  {"id":"qua25-story-trabalho","data":"2026-05-28T14:00:00","tipo":"STORIES","html":"QUA 25mai - Story Trabalho/story-trabalho.html","largura":1080,"altura":1920,"slide":"body","legenda":""},
+  {"id":"qui26-carousel-ia","data":"2026-05-29T14:00:00","tipo":"CAROUSEL","html":"QUI 26mai - Carousel IA Hotel/carousel-ia-hotel.html","largura":1080,"altura":1080,"slides":["s1","s2","s3","s4","s5","s6"],"legenda":"Você começa o dia sabendo exatamente o que precisa de atenção em cada quarto? 🤖\n\nA IA do SmartGuest lê o status de toda a sua operação e entrega um briefing completo antes de você começar o turno — no WhatsApp.\n\nChega de descobrir problema quando o hóspede já está reclamando. Arraste →\n\n—\n📲 smartguest.app\n\n#hotelaria #pousada #inteligenciaartificial #gestaohoteleira #ianahotelaria #pmshoteleiro #hotelariabrasil #automacaohoteleira #tecnologiahoteleira #hospitalidade"},
+  {"id":"sex27-post-dado","data":"2026-05-30T14:00:00","tipo":"IMAGE","html":"SEX 27mai - Post Dado Impacto/post-dado.html","largura":1080,"altura":1080,"slide":"body","legenda":"87% das pousadas brasileiras ainda gerenciam reservas manualmente. 📊\n\nIsso significa: planilha, WhatsApp, caderninho e muita torção para não ter overbooking.\n\nE a sua pousada? Ainda faz parte dessa maioria?\n\n—\n📲 smartguest.app\n\n#hotelaria #pousada #gestaohoteleira #hotelariabrasil #pmshoteleiro #tecnologiahoteleira #reservashotel #channelmanager #hoteleiros #hospitalidade"}
 ]

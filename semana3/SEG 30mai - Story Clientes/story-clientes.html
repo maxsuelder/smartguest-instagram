@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"/>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#060E12;font-family:'Inter',sans-serif;}
+.root{position:relative;width:1080px;height:1920px;}
+.glow-top{position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:900px;height:900px;background:radial-gradient(ellipse,rgba(22,195,204,0.12),transparent 65%);pointer-events:none;}
+.glow-bottom{position:absolute;bottom:-150px;left:50%;transform:translateX(-50%);width:700px;height:700px;background:radial-gradient(ellipse,rgba(22,195,204,0.07),transparent 65%);pointer-events:none;}
+.bar-left{position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg,#16C3CC,transparent);}
+.bar-top{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#16C3CC,transparent);}
+.header{position:absolute;top:56px;left:60px;right:60px;display:flex;justify-content:space-between;align-items:center;}
+.brand{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;letter-spacing:3px;color:#16C3CC;text-transform:uppercase;}
+.tag{background:rgba(22,195,204,0.1);border:1px solid rgba(22,195,204,0.3);border-radius:20px;padding:7px 16px;font-size:11px;font-weight:800;letter-spacing:2px;color:#16C3CC;text-transform:uppercase;}
+.content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:160px 60px;text-align:center;}
+.eyebrow{font-size:13px;font-weight:800;letter-spacing:5px;color:rgba(22,195,204,0.7);text-transform:uppercase;margin-bottom:16px;}
+.h1{font-family:'Barlow Condensed',sans-serif;font-size:84px;font-weight:900;text-transform:uppercase;line-height:0.9;color:#FFF;margin-bottom:48px;}
+.h1 span{color:#16C3CC;}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;width:100%;margin-bottom:48px;}
+.stat-card{background:rgba(22,195,204,0.06);border:1.5px solid rgba(22,195,204,0.2);border-radius:22px;padding:32px 24px;display:flex;flex-direction:column;align-items:center;gap:12px;}
+.stat-num{font-family:'Barlow Condensed',sans-serif;font-size:72px;font-weight:900;line-height:1;color:#16C3CC;}
+.stat-num.green{color:#4ADE80;}
+.stat-num.zero{color:#4ADE80;text-shadow:0 0 30px rgba(74,222,128,0.4);}
+.stat-desc{font-size:18px;font-weight:600;color:rgba(184,205,211,0.8);line-height:1.35;text-align:center;}
+.week-label{font-size:18px;font-weight:600;color:rgba(184,205,211,0.4);letter-spacing:2px;}
+.footer{position:absolute;bottom:52px;left:60px;right:60px;display:flex;justify-content:space-between;align-items:center;}
+.handle{font-size:13px;font-weight:700;letter-spacing:3px;color:rgba(184,205,211,0.25);text-transform:uppercase;}
+</style>
+</head>
+<body>
+<div class="root">
+  <div class="glow-top"></div><div class="glow-bottom"></div>
+  <div class="bar-left"></div><div class="bar-top"></div>
+  <div class="header"><span class="brand">smartguest</span><span class="tag">Bastidores</span></div>
+  <div class="content">
+    <div class="eyebrow">Bastidores @smartguest.app</div>
+    <div class="h1">ESTA SEMANA<br/>NO <span>SMARTGUEST</span></div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-num">47</div>
+        <div class="stat-desc">novas reservas sincronizadas automaticamente</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num zero">0</div>
+        <div class="stat-desc">overbookings registrados</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num green">12</div>
+        <div class="stat-desc">pousadas operando com IA ativa</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">138</div>
+        <div class="stat-desc">briefings operacionais entregues</div>
+      </div>
+    </div>
+    <div class="week-label">Semana de 19 a 23 de maio · 2026</div>
+  </div>
+  <div class="footer"><span class="handle">@smartguest.app</span><span class="handle">smartguest.app</span></div>
+</div>
+</body>
+</html>

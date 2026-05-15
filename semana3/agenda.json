@@ -1,32 +1,7 @@
 [
-  {
-    "id": "seg02-carousel-ia",
-    "data": "2026-06-02T13:00:00",
-    "tipo": "CAROUSEL",
-    "html": "SEG 02jun - Carousel IA Hotelaria/carousel-ia-hotelaria.html",
-    "largura": 1080,
-    "altura": 1080,
-    "slides": ["s1","s2","s3","s4","s5","s6"],
-    "legenda": "IA na hotelaria não é futuro — é o que pousadas que usam tecnologia certa já fazem todo dia. 🤖\n\nBriefing operacional automático, alertas de checkout, análise de ocupação — tudo sem você precisar checar manualmente.\n\nNeste carousel mostro as 4 coisas que a IA já faz (ou deveria fazer) na sua pousada. Arraste →\n\nVocê já usa alguma automação hoje? Me conta nos comentários! 👇\n\n—\n📲 smartguest.app — IA + PMS + Channel Manager\n\n#hotelaria #pousada #inteligenciaartificial #ianahotelaria #gestaohoteleira #automacaohoteleira #hotelariabrasil #tecnologiahoteleira #inovacaohoteleira #hospitalidade"
-  },
-  {
-    "id": "qua04-story-ocupacao",
-    "data": "2026-06-04T14:00:00",
-    "tipo": "STORIES",
-    "html": "QUA 04jun - Story Taxa Ocupacao/story-taxa-ocupacao.html",
-    "largura": 1080,
-    "altura": 1920,
-    "slide": "body",
-    "legenda": ""
-  },
-  {
-    "id": "qui05-carousel-checkin",
-    "data": "2026-06-05T14:00:00",
-    "tipo": "CAROUSEL",
-    "html": "QUI 05jun - Carousel Checkin sem Estresse/carousel-checkin.html",
-    "largura": 1080,
-    "altura": 1080,
-    "slides": ["s1","s2","s3","s4","s5","s6"],
-    "legenda": "Hóspede chega para o check-in e a recepção precisa procurar a reserva no WhatsApp, planilha e caderninho? 😬\n\nEssa é a primeira impressão da sua pousada.\n\nNeste carousel mostro como deve ser um check-in e checkout sem stress — e o que acontece quando você tem o processo organizado. Arraste →\n\n—\n📲 smartguest.app\n\n#hotelaria #pousada #checkin #checkout #gestaohoteleira #recepcionista #pmshoteleiro #hotelariabrasil #tecnologiahoteleira #hospitalidade"
-  }
+  {"id":"seg30-story-clientes","data":"2026-06-01T13:00:00","tipo":"STORIES","html":"SEG 30mai - Story Clientes/story-clientes.html","largura":1080,"altura":1920,"slide":"body","legenda":""},
+  {"id":"ter31-carousel-case","data":"2026-06-02T14:00:00","tipo":"CAROUSEL","html":"TER 31mai - Carousel Case Real/carousel-case.html","largura":1080,"altura":1080,"slides":["s1","s2","s3","s4","s5","s6"],"legenda":"Números reais de uma pousada que saiu das planilhas. 📈\n\nAntes: 1 overbooking por mês, 3h por dia atualizando canais, equipe sobrecarregada.\n\nDepois de 30 dias com SmartGuest: zero overbooking, 20 minutos por dia, ocupação +12%.\n\nArraste e veja o case completo →\n\n—\n📲 smartguest.app\n\n#hotelaria #pousada #gestaohoteleira #casederesultado #pmshoteleiro #hotelariabrasil #channelmanager #tecnologiahoteleira #hoteleiros #hospitalidade"},
+  {"id":"qua01-post-depoimento","data":"2026-06-03T14:00:00","tipo":"IMAGE","html":"QUA 01jun - Post Depoimento/post-depoimento.html","largura":1080,"altura":1080,"slide":"body","legenda":"\"Em 7 dias minha equipe não me liga mais com dúvidas. O sistema responde tudo. Nunca mais tive overbooking.\" 💬\n\nEsse é o tipo de mensagem que a gente recebe toda semana.\n\nQuer sentir isso também?\n\n—\n📲 smartguest.app — Demo gratuita\n\n#hotelaria #pousada #depoimento #gestaohoteleira #pmshoteleiro #hotelariabrasil #tecnologiahoteleira #hoteleiros #resultados #hospitalidade"},
+  {"id":"qui02-story-teste","data":"2026-06-04T14:00:00","tipo":"STORIES","html":"QUI 02jun - Story Teste Gratis/story-teste.html","largura":1080,"altura":1920,"slide":"body","legenda":""},
+  {"id":"sex03-carousel-faq","data":"2026-06-05T14:00:00","tipo":"CAROUSEL","html":"SEX 03jun - Carousel FAQ PMS/carousel-faq.html","largura":1080,"altura":1080,"slides":["s1","s2","s3","s4","s5","s6"],"legenda":"Antes de contratar um PMS, todo hoteleiro tem as mesmas dúvidas. ❓\n\nSerá difícil de aprender? Quanto tempo leva? E se eu quiser cancelar?\n\nRespondi as 5 perguntas mais comuns neste carousel. Arraste →\n\nTem alguma dúvida que não está aqui? Me manda nos comentários! 👇\n\n—\n📲 smartguest.app\n\n#hotelaria #pousada #gestaohoteleira #pmshoteleiro #hotelariabrasil #tecnologiahoteleira #hoteleiros #duvidas #sistemadegestao #hospitalidade"}
 ]

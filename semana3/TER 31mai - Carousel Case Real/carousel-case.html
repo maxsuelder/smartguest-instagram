@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"/>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:1080px;background:#060E12;font-family:'Inter',sans-serif;}
+.slide{position:relative;width:1080px;height:1080px;overflow:hidden;background:#060E12;}
+.slide+.slide{margin-top:32px;}
+.bar-left{position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg,#16C3CC,#0E9DA5 60%,transparent);}
+.bar-top{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#16C3CC,transparent);}
+.glow{position:absolute;top:-150px;right:-150px;width:600px;height:600px;background:radial-gradient(ellipse,rgba(22,195,204,0.10),transparent 65%);pointer-events:none;}
+.hdr{position:absolute;top:0;left:0;right:0;padding:38px 56px 0;display:flex;justify-content:space-between;align-items:center;z-index:5;}
+.brand{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;letter-spacing:3px;color:#16C3CC;text-transform:uppercase;}
+.num{font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(184,205,211,0.3);text-transform:uppercase;}
+.ftr{position:absolute;bottom:0;left:0;right:0;padding:0 56px 28px;display:flex;justify-content:space-between;align-items:center;z-index:5;}
+.handle{font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(184,205,211,0.2);text-transform:uppercase;}
+.swipe{font-size:11px;font-weight:700;letter-spacing:2px;color:rgba(22,195,204,0.45);text-transform:uppercase;}
+
+/* SLIDE 1 — CAPA */
+#s1 .content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:100px 56px 80px;z-index:5;}
+#s1 .eyebrow{font-size:13px;font-weight:800;letter-spacing:5px;color:#16C3CC;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+#s1 .eyebrow::before{content:'';width:28px;height:2px;background:#16C3CC;}
+#s1 .h1{font-family:'Barlow Condensed',sans-serif;font-size:88px;font-weight:900;text-transform:uppercase;line-height:0.88;color:#FFF;margin-bottom:24px;}
+#s1 .h1 span{color:#16C3CC;}
+#s1 .sub{font-size:22px;font-weight:500;color:rgba(184,205,211,0.6);line-height:1.5;max-width:700px;}
+#s1 .sub strong{color:#FFF;}
+#s1 .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(22,195,204,0.1);border:1.5px solid rgba(22,195,204,0.3);border-radius:30px;padding:10px 20px;font-size:13px;font-weight:800;letter-spacing:1px;color:#16C3CC;text-transform:uppercase;margin-top:28px;}
+
+/* SLIDE 2 — SITUAÇÃO ANTES */
+#s2 .content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:100px 56px 80px;z-index:5;}
+.cs-label{font-size:13px;font-weight:800;letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;}
+.cs-label.red{color:#FF4545;}
+.cs-label.teal{color:#16C3CC;}
+.cs-h{font-family:'Barlow Condensed',sans-serif;font-size:72px;font-weight:900;text-transform:uppercase;line-height:0.9;color:#FFF;margin-bottom:24px;}
+.cs-h .red{color:#FF4545;}
+.cs-h .teal{color:#16C3CC;}
+.cs-divider-r{width:60px;height:3px;background:#FF4545;border-radius:2px;margin-bottom:24px;}
+.cs-divider-t{width:60px;height:3px;background:#16C3CC;border-radius:2px;margin-bottom:24px;}
+.hotel-tag{display:inline-flex;align-items:center;gap:10px;background:rgba(22,195,204,0.08);border:1px solid rgba(22,195,204,0.2);border-radius:10px;padding:10px 18px;font-size:16px;font-weight:700;color:#16C3CC;margin-bottom:22px;}
+.fact-list{display:flex;flex-direction:column;gap:12px;}
+.fact-item{font-size:21px;font-weight:600;color:rgba(184,205,211,0.85);display:flex;align-items:center;gap:14px;}
+.fact-item .dot-r{width:10px;height:10px;border-radius:50%;background:#FF4545;flex-shrink:0;}
+.fact-item .dot-t{width:10px;height:10px;border-radius:50%;background:#16C3CC;flex-shrink:0;}
+.fact-item strong{color:#FFF;}
+
+/* SLIDE 3 — PROBLEMAS */
+#s3 .content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:100px 56px 80px;z-index:5;}
+.prob-list{display:flex;flex-direction:column;gap:16px;}
+.prob-item{display:flex;align-items:flex-start;gap:18px;background:rgba(255,69,69,0.05);border:1px solid rgba(255,69,69,0.18);border-radius:14px;padding:18px 22px;}
+.prob-icon{font-size:26px;flex-shrink:0;}
+.prob-body{}
+.prob-title{font-size:20px;font-weight:800;color:#FFF;}
+.prob-desc{font-size:16px;font-weight:500;color:rgba(184,205,211,0.6);margin-top:3px;}
+
+/* SLIDE 4 — IMPLANTAÇÃO */
+#s4 .content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:90px 56px 80px;z-index:5;}
+.tl2{display:flex;flex-direction:column;gap:0;}
+.tl2-item{display:flex;align-items:stretch;gap:20px;padding-bottom:14px;}
+.tl2-marker{display:flex;flex-direction:column;align-items:center;}
+.tl2-dot{width:18px;height:18px;border-radius:50%;background:#16C3CC;flex-shrink:0;margin-top:3px;}
+.tl2-line{width:2px;background:rgba(22,195,204,0.2);flex:1;margin:4px auto 0;}
+.tl2-body{flex:1;}
+.tl2-day{font-size:11px;font-weight:800;letter-spacing:3px;color:#16C3CC;text-transform:uppercase;margin-bottom:3px;}
+.tl2-title{font-size:21px;font-weight:800;color:#FFF;}
+.tl2-desc{font-size:16px;font-weight:500;color:rgba(184,205,211,0.6);margin-top:2px;}
+
+/* SLIDE 5 — RESULTADOS */
+#s5 .content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:90px 56px 80px;z-index:5;}
+.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px;}
+.res-card{border-radius:16px;padding:22px 20px;text-align:center;}
+.res-card.pos{background:rgba(22,195,204,0.07);border:1.5px solid rgba(22,195,204,0.25);}
+.res-before{font-size:14px;font-weight:700;color:rgba(255,69,69,0.7);letter-spacing:1px;margin-bottom:6px;}
+.res-after{font-family:'Barlow Condensed',sans-serif;font-size:52px;font-weight:900;color:#16C3CC;line-height:1;}
+.res-after.green{color:#4ADE80;}
+.res-label{font-size:15px;font-weight:600;color:rgba(184,205,211,0.7);margin-top:4px;line-height:1.3;}
+
+/* SLIDE 6 — CTA */
+#s6 .content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 56px 80px;z-index:5;text-align:center;}
+#s6 .glow-c{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(ellipse,rgba(22,195,204,0.12),transparent 65%);top:50%;left:50%;transform:translate(-50%,-50%);z-index:0;}
+#s6 .h6{font-family:'Barlow Condensed',sans-serif;font-size:96px;font-weight:900;text-transform:uppercase;line-height:0.88;color:#FFF;margin-bottom:20px;position:relative;z-index:2;}
+#s6 .h6 span{color:#16C3CC;}
+#s6 .sub{font-size:24px;font-weight:500;color:rgba(184,205,211,0.6);line-height:1.5;margin-bottom:44px;position:relative;z-index:2;}
+#s6 .sub strong{color:#FFF;}
+#s6 .cta{background:#16C3CC;color:#060E12;font-size:14px;font-weight:900;letter-spacing:3px;text-transform:uppercase;padding:20px 50px;border-radius:50px;position:relative;z-index:2;margin-bottom:16px;}
+#s6 .url{font-size:14px;font-weight:700;letter-spacing:2px;color:rgba(22,195,204,0.45);position:relative;z-index:2;}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — CAPA -->
+<div class="slide" id="s1">
+  <div class="glow"></div><div class="bar-left"></div><div class="bar-top"></div>
+  <div class="hdr"><span class="brand">smartguest</span><span class="num">01 / 06</span></div>
+  <div class="content">
+    <div class="eyebrow">📖 Case real</div>
+    <div class="h1">ANTES E<br/>DEPOIS:<br/>COMO UMA<br/>POUSADA SAIU<br/><span>DAS PLANILHAS</span></div>
+    <p class="sub">Números reais. <strong>30 dias de diferença.</strong></p>
+  </div>
+  <div class="ftr"><span class="handle">@smartguest.app</span><span class="swipe">ARRASTE →</span></div>
+</div>
+
+<!-- SLIDE 2 — SITUAÇÃO ANTES -->
+<div class="slide" id="s2">
+  <div class="glow"></div><div class="bar-left"></div><div class="bar-top"></div>
+  <div class="hdr"><span class="brand">smartguest</span><span class="num">02 / 06</span></div>
+  <div class="content">
+    <div class="cs-label red">A Situação Antes</div>
+    <div class="cs-h">POUSADA<br/>SOL E <span class="red">MAR</span></div>
+    <div class="cs-divider-r"></div>
+    <div class="hotel-tag">🏨 18 quartos · 3 canais de venda</div>
+    <div class="fact-list">
+      <div class="fact-item"><div class="dot-r"></div>Planilha Excel + WhatsApp como "sistema"</div>
+      <div class="fact-item"><div class="dot-r"></div><strong>1 overbooking por mês</strong> em média</div>
+      <div class="fact-item"><div class="dot-r"></div><strong>3 horas por dia</strong> atualizando disponibilidade</div>
+      <div class="fact-item"><div class="dot-r"></div>Sem dados de ocupação em tempo real</div>
+      <div class="fact-item"><div class="dot-r"></div>Operação dependia de 1 funcionária só</div>
+    </div>
+  </div>
+  <div class="ftr"><span class="handle">@smartguest.app</span><span class="swipe">ARRASTE →</span></div>
+</div>
+
+<!-- SLIDE 3 — PROBLEMAS -->
+<div class="slide" id="s3">
+  <div class="glow"></div><div class="bar-left"></div><div class="bar-top"></div>
+  <div class="hdr"><span class="brand">smartguest</span><span class="num">03 / 06</span></div>
+  <div class="content">
+    <div class="cs-label red">Os problemas que travavam o crescimento</div>
+    <div class="cs-h">O QUE<br/><span class="red">IMPEDIA</span><br/>A EVOLUÇÃO</div>
+    <div class="prob-list">
+      <div class="prob-item">
+        <div class="prob-icon">😰</div>
+        <div class="prob-body">
+          <div class="prob-title">Overbooking recorrente</div>
+          <div class="prob-desc">Booking confirmava e a planilha não estava atualizada — hóspede chegava e não tinha quarto</div>
+        </div>
+      </div>
+      <div class="prob-item">
+        <div class="prob-icon">⏰</div>
+        <div class="prob-body">
+          <div class="prob-title">3h/dia perdidas em atualizações manuais</div>
+          <div class="prob-desc">A proprietária e a recepcionista atualizavam cada canal separadamente</div>
+        </div>
+      </div>
+      <div class="prob-item">
+        <div class="prob-icon">🚫</div>
+        <div class="prob-body">
+          <div class="prob-title">Operação travada em 1 pessoa</div>
+          <div class="prob-desc">No dia de folga da recepcionista principal, ninguém sabia operar sozinho</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ftr"><span class="handle">@smartguest.app</span><span class="swipe">ARRASTE →</span></div>
+</div>
+
+<!-- SLIDE 4 — IMPLANTAÇÃO -->
+<div class="slide" id="s4">
+  <div class="glow"></div><div class="bar-left"></div><div class="bar-top"></div>
+  <div class="hdr"><span class="brand">smartguest</span><span class="num">04 / 06</span></div>
+  <div class="content">
+    <div class="cs-label teal">A Implantação</div>
+    <div class="cs-h">7 DIAS,<br/><span class="teal">ZERO</span><br/>INTERRUPÇÃO</div>
+    <div class="tl2">
+      <div class="tl2-item">
+        <div class="tl2-marker"><div class="tl2-dot"></div><div class="tl2-line"></div></div>
+        <div class="tl2-body">
+          <div class="tl2-day">Dia 1-2</div>
+          <div class="tl2-title">Canais conectados e quartos configurados</div>
+          <div class="tl2-desc">Booking, Airbnb e Decolar integrados simultaneamente</div>
+        </div>
+      </div>
+      <div class="tl2-item">
+        <div class="tl2-marker"><div class="tl2-dot"></div><div class="tl2-line"></div></div>
+        <div class="tl2-body">
+          <div class="tl2-day">Dia 3-4</div>
+          <div class="tl2-title">Treinamento da equipe via vídeo chamada</div>
+          <div class="tl2-desc">3 funcionárias treinadas em uma tarde — sem complexidade</div>
+        </div>
+      </div>
+      <div class="tl2-item">
+        <div class="tl2-marker"><div class="tl2-dot"></div><div class="tl2-line"></div></div>
+        <div class="tl2-body">
+          <div class="tl2-day">Dia 5-6</div>
+          <div class="tl2-title">Operação assistida em tempo real</div>
+          <div class="tl2-desc">Suporte via WhatsApp em cada dúvida do turno</div>
+        </div>
+      </div>
+      <div class="tl2-item">
+        <div class="tl2-marker"><div class="tl2-dot"></div></div>
+        <div class="tl2-body">
+          <div class="tl2-day">Dia 7</div>
+          <div class="tl2-title">Operação independente — sem ajuda</div>
+          <div class="tl2-desc">Equipe operando o SmartGuest com total autonomia</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ftr"><span class="handle">@smartguest.app</span><span class="swipe">ARRASTE →</span></div>
+</div>
+
+<!-- SLIDE 5 — RESULTADOS -->
+<div class="slide" id="s5">
+  <div class="glow"></div><div class="bar-left"></div><div class="bar-top"></div>
+  <div class="hdr"><span class="brand">smartguest</span><span class="num">05 / 06</span></div>
+  <div class="content">
+    <div class="cs-label teal">Os resultados após 30 dias</div>
+    <div class="cs-h">NÚMEROS<br/>QUE <span class="teal">FALAM</span><br/>SOZINHOS</div>
+    <div class="results-grid">
+      <div class="res-card pos">
+        <div class="res-before">Antes: 1x/mês</div>
+        <div class="res-after green">0</div>
+        <div class="res-label">overbookings em 30 dias</div>
+      </div>
+      <div class="res-card pos">
+        <div class="res-before">Antes: 3h/dia</div>
+        <div class="res-after">20min</div>
+        <div class="res-label">por dia de gestão operacional</div>
+      </div>
+      <div class="res-card pos">
+        <div class="res-before">Antes: 74%</div>
+        <div class="res-after">+12%</div>
+        <div class="res-label">taxa de ocupação no mês</div>
+      </div>
+      <div class="res-card pos">
+        <div class="res-before">Antes: 3,8 ⭐</div>
+        <div class="res-after green">4,8⭐</div>
+        <div class="res-label">avaliação média no Booking</div>
+      </div>
+    </div>
+  </div>
+  <div class="ftr"><span class="handle">@smartguest.app</span><span class="swipe">ARRASTE →</span></div>
+</div>
+
+<!-- SLIDE 6 — CTA -->
+<div class="slide" id="s6">
+  <div class="glow"></div><div class="bar-left"></div><div class="bar-top"></div>
+  <div class="hdr"><span class="brand">smartguest</span><span class="num">06 / 06</span></div>
+  <div class="content">
+    <div class="glow-c"></div>
+    <div class="h6">QUER ESSE<br/><span>RESULTADO?</span></div>
+    <p class="sub">Sua pousada pode ter os mesmos números em <strong>30 dias.</strong></p>
+    <div class="cta">QUERO UMA DEMO GRÁTIS</div>
+    <div class="url">smartguest.app</div>
+  </div>
+  <div class="ftr"><span class="handle">@smartguest.app</span></div>
+</div>
+
+</body>
+</html>

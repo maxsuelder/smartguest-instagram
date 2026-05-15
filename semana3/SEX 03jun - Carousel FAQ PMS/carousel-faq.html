@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"/>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:1080px;background:#060E12;font-family:'Inter',sans-serif;}
+.slide{position:relative;width:1080px;height:1080px;overflow:hidden;background:#060E12;}
+.slide+.slide{margin-top:32px;}
+.bar-left{position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg,#16C3CC,#0E9DA5 60%,transparent);}
+.bar-top{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#16C3CC,transparent);}
+.glow{position:absolute;top:-150px;right:-150px;width:600px;height:600px;background:radial-gradient(ellipse,rgba(22,195,204,0.10),transparent 65%);pointer-events:none;}
+.hdr{position:absolute;top:0;left:0;right:0;padding:38px 56px 0;display:flex;justify-content:space-between;align-items:center;z-index:5;}
+.brand{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;letter-spacing:3px;color:#16C3CC;text-transform:uppercase;}
+.num{font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(184,205,211,0.3);text-transform:uppercase;}
+.ftr{position:absolute;bottom:0;left:0;right:0;padding:0 56px 28px;display:flex;justify-content:space-between;align-items:center;z-index:5;}
+.handle{font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(184,205,211,0.2);text-transform:uppercase;}
+.swipe{font-size:11px;font-weight:700;letter-spacing:2px;color:rgba(22,195,204,0.45);text-transform:uppercase;}
+
+/* CAPA */
+#s1 .content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:100px 56px 80px;z-index:5;}
+#s1 .eyebrow{font-size:13px;font-weight:800;letter-spacing:5px;color:#16C3CC;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+#s1 .eyebrow::before{content:'';width:28px;height:2px;background:#16C3CC;}
+#s1 .h1{font-family:'Barlow Condensed',sans-serif;font-size:80px;font-weight:900;text-transform:uppercase;line-height:0.88;color:#FFF;margin-bottom:24px;}
+#s1 .h1 span{color:#16C3CC;}
+#s1 .sub{font-size:22px;font-weight:500;color:rgba(184,205,211,0.6);line-height:1.5;max-width:700px;}
+#s1 .sub strong{color:#FFF;}
+
+/* FAQ SLIDES */
+.faq-slide .content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:100px 56px 80px;z-index:5;}
+.faq-num{font-family:'Barlow Condensed',sans-serif;font-size:220px;font-weight:900;line-height:1;color:rgba(22,195,204,0.04);position:absolute;right:20px;top:50%;transform:translateY(-50%);z-index:0;}
+.faq-label{font-size:13px;font-weight:800;letter-spacing:4px;color:#16C3CC;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+.faq-label::before{content:'';width:24px;height:2px;background:#16C3CC;}
+.q-box{background:rgba(22,195,204,0.07);border:1.5px solid rgba(22,195,204,0.2);border-radius:16px;padding:22px 26px;margin-bottom:24px;position:relative;z-index:2;}
+.q-indicator{font-size:11px;font-weight:800;letter-spacing:3px;color:rgba(22,195,204,0.5);text-transform:uppercase;margin-bottom:8px;}
+.q-text{font-family:'Barlow Condensed',sans-serif;font-size:42px;font-weight:900;text-transform:uppercase;color:#FFF;line-height:1.05;}
+.a-box{position:relative;z-index:2;}
+.a-indicator{font-size:11px;font-weight:800;letter-spacing:3px;color:rgba(22,195,204,0.5);text-transform:uppercase;margin-bottom:10px;}
+.a-text{font-size:24px;font-weight:500;color:rgba(184,205,211,0.8);line-height:1.55;}
+.a-text strong{color:#FFF;}
+.a-highlight{display:inline-flex;align-items:center;gap:8px;background:rgba(22,195,204,0.08);border:1px solid rgba(22,195,204,0.2);border-radius:10px;padding:10px 18px;font-size:18px;font-weight:700;color:#16C3CC;margin-top:18px;}
+
+/* CTA */
+#s6 .content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 56px 80px;z-index:5;text-align:center;}
+#s6 .glow-c{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(ellipse,rgba(22,195,204,0.12),transparent 65%);top:50%;left:50%;transform:translate(-50%,-50%);z-index:0;}
+#s6 .h6{font-family:'Barlow Condensed',sans-serif;font-size:80px;font-weight:900;text-transform:uppercase;line-height:0.88;color:#FFF;margin-bottom:20px;position:relative;z-index:2;}
+#s6 .h6 span{color:#16C3CC;}
+#s6 .sub{font-size:24px;font-weight:500;color:rgba(184,205,211,0.6);line-height:1.5;margin-bottom:44px;position:relative;z-index:2;}
+#s6 .sub strong{color:#FFF;}
+#s6 .cta{background:#16C3CC;color:#060E12;font-size:14px;font-weight:900;letter-spacing:3px;text-transform:uppercase;padding:20px 50px;border-radius:50px;position:relative;z-index:2;margin-bottom:16px;}
+#s6 .url{font-size:14px;font-weight:700;letter-spacing:2px;color:rgba(22,195,204,0.45);position:relative;z-index:2;}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — CAPA -->
+<div class="slide" id="s1">
+  <div class="glow"></div><div class="bar-left"></div><div class="bar-top"></div>
+  <div class="hdr"><span class="brand">smartguest</span><span class="num">01 / 06</span></div>
+  <div class="content">
+    <div class="eyebrow">❓ FAQ</div>
+    <div class="h1">PERGUNTAS QUE<br/>TODO<br/>HOTELEIRO FAZ<br/>ANTES DE<br/>CONTRATAR<br/>UM <span>PMS</span></div>
+    <p class="sub">Respondemos as <strong>5 mais comuns.</strong> Arraste →</p>
+  </div>
+  <div class="ftr"><span class="handle">@smartguest.app</span><span class="swipe">ARRASTE →</span></div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide faq-slide" id="s2">
+  <div class="glow"></div><div class="bar-left"></div><div class="bar-top"></div>
+  <div class="hdr"><span class="brand">smartguest</span><span class="num">02 / 06</span></div>
+  <div class="content">
+    <div class="faq-num">1</div>
+    <div class="faq-label">Pergunta #1</div>
+    <div class="q-box">
+      <div class="q-indicator">Pergunta</div>
+      <div class="q-text">"Vai ser difícil para minha equipe aprender?"</div>
+    </div>
+    <div class="a-box">
+      <div class="a-indicator">Resposta</div>
+      <p class="a-text">O SmartGuest foi desenvolvido para <strong>equipes sem experiência com tecnologia.</strong> Interface visual, fluxo simples e treinamento incluído no setup.</p>
+      <div class="a-highlight">⚡ Tempo médio de aprendizado: 1 dia</div>
+    </div>
+  </div>
+  <div class="ftr"><span class="handle">@smartguest.app</span><span class="swipe">ARRASTE →</span></div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide faq-slide" id="s3">
+  <div class="glow"></div><div class="bar-left"></div><div class="bar-top"></div>
+  <div class="hdr"><span class="brand">smartguest</span><span class="num">03 / 06</span></div>
+  <div class="content">
+    <div class="faq-num">2</div>
+    <div class="faq-label">Pergunta #2</div>
+    <div class="q-box">
+      <div class="q-indicator">Pergunta</div>
+      <div class="q-text">"Quanto tempo leva para implantar?"</div>
+    </div>
+    <div class="a-box">
+      <div class="a-indicator">Resposta</div>
+      <p class="a-text"><strong>7 dias.</strong> A nossa equipe configura tudo — canais, quartos, tarifas — e treina sua equipe. Você só precisa acompanhar e aprovar.</p>
+      <div class="a-highlight">📅 Dias 1-2: config · Dias 3-4: treino · Dias 5-7: operação</div>
+    </div>
+  </div>
+  <div class="ftr"><span class="handle">@smartguest.app</span><span class="swipe">ARRASTE →</span></div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide faq-slide" id="s4">
+  <div class="glow"></div><div class="bar-left"></div><div class="bar-top"></div>
+  <div class="hdr"><span class="brand">smartguest</span><span class="num">04 / 06</span></div>
+  <div class="content">
+    <div class="faq-num">3</div>
+    <div class="faq-label">Pergunta #3</div>
+    <div class="q-box">
+      <div class="q-indicator">Pergunta</div>
+      <div class="q-text">"E se eu quiser cancelar?"</div>
+    </div>
+    <div class="a-box">
+      <div class="a-indicator">Resposta</div>
+      <p class="a-text">Sem contrato de fidelidade. Você pode cancelar a qualquer momento, <strong>sem multa e sem burocracia.</strong> A gente fica porque você quer ficar — não porque você é obrigado.</p>
+      <div class="a-highlight">✅ Cancela quando quiser · Sem multa · Sem fidelidade</div>
+    </div>
+  </div>
+  <div class="ftr"><span class="handle">@smartguest.app</span><span class="swipe">ARRASTE →</span></div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide faq-slide" id="s5">
+  <div class="glow"></div><div class="bar-left"></div><div class="bar-top"></div>
+  <div class="hdr"><span class="brand">smartguest</span><span class="num">05 / 06</span></div>
+  <div class="content">
+    <div class="faq-num">4</div>
+    <div class="faq-label">Pergunta #4</div>
+    <div class="q-box">
+      <div class="q-indicator">Pergunta</div>
+      <div class="q-text">"Funciona com Booking, Airbnb e todos os canais?"</div>
+    </div>
+    <div class="a-box">
+      <div class="a-indicator">Resposta</div>
+      <p class="a-text">Sim. O SmartGuest se conecta com <strong>todas as principais OTAs</strong> e ainda inclui motor de reservas próprio para venda direta sem comissão.</p>
+      <div class="a-highlight">🌐 Booking · Airbnb · Expedia · Decolar · Site próprio</div>
+    </div>
+  </div>
+  <div class="ftr"><span class="handle">@smartguest.app</span><span class="swipe">ARRASTE →</span></div>
+</div>
+
+<!-- SLIDE 6 — CTA -->
+<div class="slide" id="s6">
+  <div class="glow"></div><div class="bar-left"></div><div class="bar-top"></div>
+  <div class="hdr"><span class="brand">smartguest</span><span class="num">06 / 06</span></div>
+  <div class="content">
+    <div class="glow-c"></div>
+    <div class="h6">AINDA TEM<br/><span>DÚVIDAS?</span><br/>A GENTE<br/>RESPONDE.</div>
+    <p class="sub">Fale com um especialista agora — <strong>sem compromisso.</strong></p>
+    <div class="cta">FALAR COM ESPECIALISTA</div>
+    <div class="url">smartguest.app</div>
+  </div>
+  <div class="ftr"><span class="handle">@smartguest.app</span></div>
+</div>
+
+</body>
+</html>

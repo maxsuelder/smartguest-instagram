@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"/>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:1080px;height:1080px;overflow:hidden;background:#060E12;font-family:'Inter',sans-serif;}
+.root{position:relative;width:1080px;height:1080px;}
+.bar-left{position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg,#16C3CC,#0E9DA5 60%,transparent);}
+.bar-top{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#16C3CC,transparent);}
+.glow-left{position:absolute;top:50%;left:-100px;transform:translateY(-50%);width:500px;height:600px;background:radial-gradient(ellipse,rgba(255,69,69,0.08),transparent 65%);pointer-events:none;}
+.glow-right{position:absolute;top:50%;right:-100px;transform:translateY(-50%);width:500px;height:600px;background:radial-gradient(ellipse,rgba(22,195,204,0.1),transparent 65%);pointer-events:none;}
+.hdr{position:absolute;top:0;left:0;right:0;padding:38px 56px 0;display:flex;justify-content:center;align-items:center;z-index:5;}
+.brand{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;letter-spacing:3px;color:#16C3CC;text-transform:uppercase;}
+.split{position:absolute;top:110px;left:0;right:0;bottom:100px;display:grid;grid-template-columns:1fr 1fr;gap:0;z-index:5;}
+.col{padding:44px 48px;display:flex;flex-direction:column;}
+.col.left{border-right:1px solid rgba(255,255,255,0.06);}
+.col-title{font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:900;text-transform:uppercase;margin-bottom:28px;letter-spacing:1px;}
+.col.left .col-title{color:#FF4545;}
+.col.right .col-title{color:#16C3CC;}
+.col-subtitle{font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:28px;opacity:0.5;}
+.col.left .col-subtitle{color:#FF4545;}
+.col.right .col-subtitle{color:#16C3CC;}
+.comp-items{display:flex;flex-direction:column;gap:16px;}
+.comp-item{display:flex;align-items:flex-start;gap:14px;}
+.comp-icon{font-size:22px;flex-shrink:0;line-height:1.2;}
+.comp-text{font-size:20px;font-weight:600;line-height:1.35;}
+.col.left .comp-text{color:rgba(184,205,211,0.75);}
+.col.right .comp-text{color:rgba(255,255,255,0.9);}
+.divider-v{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:2px;height:calc(100% - 160px);background:linear-gradient(180deg,transparent,rgba(255,255,255,0.06) 30%,rgba(255,255,255,0.06) 70%,transparent);top:110px;transform:none;z-index:6;}
+.vs-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:50px;height:50px;border-radius:50%;background:#060E12;border:2px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;color:rgba(184,205,211,0.4);z-index:7;}
+.ftr{position:absolute;bottom:0;left:0;right:0;padding:0 56px 28px;display:flex;justify-content:center;align-items:center;gap:24px;z-index:5;}
+.cta-text{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;text-transform:uppercase;color:#FFF;}
+.cta-text span{color:#16C3CC;}
+.url{font-size:13px;font-weight:700;letter-spacing:2px;color:rgba(22,195,204,0.4);text-transform:uppercase;}
+.dot{width:4px;height:4px;border-radius:50%;background:rgba(184,205,211,0.2);}
+</style>
+</head>
+<body>
+<div class="root">
+  <div class="glow-left"></div><div class="glow-right"></div>
+  <div class="bar-left"></div><div class="bar-top"></div>
+  <div class="hdr"><span class="brand">smartguest</span></div>
+  <div class="split">
+    <div class="col left">
+      <div class="col-subtitle">Antes do SmartGuest</div>
+      <div class="col-title">Gestão Manual</div>
+      <div class="comp-items">
+        <div class="comp-item"><div class="comp-icon">❌</div><div class="comp-text">Overbooking frequente</div></div>
+        <div class="comp-item"><div class="comp-icon">❌</div><div class="comp-text">3h/dia atualizando canais</div></div>
+        <div class="comp-item"><div class="comp-icon">❌</div><div class="comp-text">Sem dados reais do hotel</div></div>
+        <div class="comp-item"><div class="comp-icon">❌</div><div class="comp-text">Dependente de 1 pessoa</div></div>
+        <div class="comp-item"><div class="comp-icon">❌</div><div class="comp-text">Erro humano todo dia</div></div>
+      </div>
+    </div>
+    <div class="col right">
+      <div class="col-subtitle">Com SmartGuest</div>
+      <div class="col-title">SmartGuest</div>
+      <div class="comp-items">
+        <div class="comp-item"><div class="comp-icon">✅</div><div class="comp-text">Zero overbooking garantido</div></div>
+        <div class="comp-item"><div class="comp-icon">✅</div><div class="comp-text">20min/dia — automático</div></div>
+        <div class="comp-item"><div class="comp-icon">✅</div><div class="comp-text">Dashboard em tempo real</div></div>
+        <div class="comp-item"><div class="comp-icon">✅</div><div class="comp-text">Qualquer turno opera</div></div>
+        <div class="comp-item"><div class="comp-icon">✅</div><div class="comp-text">Automação total</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="divider-v"></div>
+  <div class="vs-badge">VS</div>
+  <div class="ftr">
+    <span class="cta-text">Qual lado você <span>escolhe?</span></span>
+    <div class="dot"></div>
+    <span class="url">smartguest.app</span>
+  </div>
+</div>
+</body>
+</html>

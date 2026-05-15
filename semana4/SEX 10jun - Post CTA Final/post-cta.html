@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"/>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:1080px;height:1080px;overflow:hidden;background:#060E12;font-family:'Inter',sans-serif;}
+.root{position:relative;width:1080px;height:1080px;}
+.bar-left{position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg,#16C3CC,#0E9DA5 60%,transparent);}
+.bar-top{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#16C3CC,transparent);}
+.bar-bottom{position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#16C3CC,transparent);}
+.glow-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:900px;height:900px;background:radial-gradient(ellipse,rgba(22,195,204,0.15) 0%,rgba(22,195,204,0.06) 35%,transparent 65%);pointer-events:none;}
+.glow-top{position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:800px;height:500px;background:radial-gradient(ellipse,rgba(22,195,204,0.08),transparent 65%);pointer-events:none;}
+.hdr{position:absolute;top:0;left:0;right:0;padding:38px 56px 0;display:flex;justify-content:space-between;align-items:center;z-index:5;}
+.brand{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;letter-spacing:3px;color:#16C3CC;text-transform:uppercase;}
+.content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:110px 80px 90px;text-align:center;z-index:5;}
+.eyebrow{font-size:13px;font-weight:800;letter-spacing:5px;color:rgba(22,195,204,0.6);text-transform:uppercase;margin-bottom:12px;}
+.big-days{font-family:'Barlow Condensed',sans-serif;font-size:240px;font-weight:900;line-height:0.85;color:#16C3CC;letter-spacing:-4px;text-shadow:0 0 100px rgba(22,195,204,0.5),0 0 40px rgba(22,195,204,0.3);}
+.days-label{font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:900;text-transform:uppercase;color:rgba(22,195,204,0.6);letter-spacing:6px;margin-bottom:12px;}
+.subtitle{font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:800;text-transform:uppercase;color:#FFF;line-height:1.1;margin-bottom:32px;max-width:760px;}
+.bullets{display:flex;flex-direction:column;gap:12px;margin-bottom:40px;align-items:flex-start;width:100%;max-width:600px;}
+.bullet{font-size:20px;font-weight:600;color:rgba(184,205,211,0.85);display:flex;align-items:center;gap:12px;text-align:left;}
+.bullet-check{color:#16C3CC;font-size:18px;flex-shrink:0;}
+.cta-btn{background:#16C3CC;color:#060E12;font-size:16px;font-weight:900;letter-spacing:3px;text-transform:uppercase;padding:22px 60px;border-radius:50px;margin-bottom:16px;box-shadow:0 0 40px rgba(22,195,204,0.3);}
+.url{font-size:14px;font-weight:700;letter-spacing:2px;color:rgba(22,195,204,0.4);}
+.ftr{position:absolute;bottom:0;left:0;right:0;padding:0 56px 28px;display:flex;justify-content:space-between;align-items:center;z-index:5;}
+.handle{font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(184,205,211,0.2);text-transform:uppercase;}
+</style>
+</head>
+<body>
+<div class="root">
+  <div class="glow-center"></div><div class="glow-top"></div>
+  <div class="bar-left"></div><div class="bar-top"></div><div class="bar-bottom"></div>
+  <div class="hdr"><span class="brand">smartguest</span></div>
+  <div class="content">
+    <div class="eyebrow">Transformação completa em</div>
+    <div class="big-days">30</div>
+    <div class="days-label">DIAS</div>
+    <div class="subtitle">É tudo que você precisa para transformar a gestão da sua pousada</div>
+    <div class="bullets">
+      <div class="bullet"><span class="bullet-check">✅</span>Setup completo em 7 dias</div>
+      <div class="bullet"><span class="bullet-check">✅</span>Suporte humano incluído</div>
+      <div class="bullet"><span class="bullet-check">✅</span>Sem contrato de fidelidade</div>
+    </div>
+    <div class="cta-btn">AGENDE SUA DEMO GRÁTIS</div>
+    <div class="url">smartguest.app</div>
+  </div>
+  <div class="ftr"><span class="handle">@smartguest.app</span><span class="handle">smartguest.app</span></div>
+</div>
+</body>
+</html>

@@ -3,28 +3,40 @@ name: SmartGuest — Semanas 2, 3 e 4
 on:
   schedule:
     # ── SEMANA 2 ────────────────────────────────────────
-    # seg 26/05 às 10h BRT = 13h UTC
-    - cron: '0 13 26 5 *'
-    # qua 28/05 às 11h BRT = 14h UTC
-    - cron: '0 14 28 5 *'
-    # qui 29/05 às 11h BRT = 14h UTC
-    - cron: '0 14 29 5 *'
+    # seg 23/05 às 10h BRT = 13h UTC
+    - cron: '0 13 23 5 *'
+    # ter 24/05 às 11h BRT = 14h UTC
+    - cron: '0 14 24 5 *'
+    # qua 25/05 às 11h BRT = 14h UTC
+    - cron: '0 14 25 5 *'
+    # qui 26/05 às 11h BRT = 14h UTC
+    - cron: '0 14 26 5 *'
+    # sex 27/05 às 11h BRT = 14h UTC
+    - cron: '0 14 27 5 *'
 
     # ── SEMANA 3 ────────────────────────────────────────
-    # seg 02/06 às 10h BRT = 13h UTC
-    - cron: '0 13 2 6 *'
-    # qua 04/06 às 11h BRT = 14h UTC
-    - cron: '0 14 4 6 *'
-    # qui 05/06 às 11h BRT = 14h UTC
-    - cron: '0 14 5 6 *'
+    # seg 30/05 às 10h BRT = 13h UTC
+    - cron: '0 13 30 5 *'
+    # ter 31/05 às 11h BRT = 14h UTC
+    - cron: '0 14 31 5 *'
+    # qua 01/06 às 11h BRT = 14h UTC
+    - cron: '0 14 1 6 *'
+    # qui 02/06 às 11h BRT = 14h UTC
+    - cron: '0 14 2 6 *'
+    # sex 03/06 às 11h BRT = 14h UTC
+    - cron: '0 14 3 6 *'
 
     # ── SEMANA 4 ────────────────────────────────────────
-    # seg 09/06 às 10h BRT = 13h UTC
-    - cron: '0 13 9 6 *'
-    # qua 11/06 às 11h BRT = 14h UTC
-    - cron: '0 14 11 6 *'
-    # qui 12/06 às 11h BRT = 14h UTC
-    - cron: '0 14 12 6 *'
+    # seg 06/06 às 10h BRT = 13h UTC
+    - cron: '0 13 6 6 *'
+    # ter 07/06 às 11h BRT = 14h UTC
+    - cron: '0 14 7 6 *'
+    # qua 08/06 às 11h BRT = 14h UTC
+    - cron: '0 14 8 6 *'
+    # qui 09/06 às 11h BRT = 14h UTC
+    - cron: '0 14 9 6 *'
+    # sex 10/06 às 11h BRT = 14h UTC
+    - cron: '0 14 10 6 *'
 
   workflow_dispatch:
     inputs:
@@ -64,17 +76,23 @@ jobs:
           DIA=$(date -u +"%m-%d")
           case "$DIA" in
             # Semana 2
-            "05-26") echo "id=seg26-carousel-channel" >> $GITHUB_OUTPUT ;;
-            "05-28") echo "id=qua28-story-overbooking" >> $GITHUB_OUTPUT ;;
-            "05-29") echo "id=qui29-carousel-revenue" >> $GITHUB_OUTPUT ;;
+            "05-23") echo "id=seg23-carousel-mapa"    >> $GITHUB_OUTPUT ;;
+            "05-24") echo "id=ter24-carousel-setup"   >> $GITHUB_OUTPUT ;;
+            "05-25") echo "id=qua25-story-trabalho"   >> $GITHUB_OUTPUT ;;
+            "05-26") echo "id=qui26-carousel-ia"      >> $GITHUB_OUTPUT ;;
+            "05-27") echo "id=sex27-post-dado"        >> $GITHUB_OUTPUT ;;
             # Semana 3
-            "06-02") echo "id=seg02-carousel-ia" >> $GITHUB_OUTPUT ;;
-            "06-04") echo "id=qua04-story-ocupacao" >> $GITHUB_OUTPUT ;;
-            "06-05") echo "id=qui05-carousel-checkin" >> $GITHUB_OUTPUT ;;
+            "05-30") echo "id=seg30-story-clientes"   >> $GITHUB_OUTPUT ;;
+            "05-31") echo "id=ter31-carousel-case"    >> $GITHUB_OUTPUT ;;
+            "06-01") echo "id=qua01-post-depoimento"  >> $GITHUB_OUTPUT ;;
+            "06-02") echo "id=qui02-story-teste"      >> $GITHUB_OUTPUT ;;
+            "06-03") echo "id=sex03-carousel-faq"     >> $GITHUB_OUTPUT ;;
             # Semana 4
-            "06-09") echo "id=seg09-carousel-planilha" >> $GITHUB_OUTPUT ;;
-            "06-11") echo "id=qua11-story-desafio" >> $GITHUB_OUTPUT ;;
-            "06-12") echo "id=qui12-carousel-porquesg" >> $GITHUB_OUTPUT ;;
+            "06-06") echo "id=seg06-carousel-ia2026"  >> $GITHUB_OUTPUT ;;
+            "06-07") echo "id=ter07-carousel-channel" >> $GITHUB_OUTPUT ;;
+            "06-08") echo "id=qua08-story-quiz"       >> $GITHUB_OUTPUT ;;
+            "06-09") echo "id=qui09-post-comparativo" >> $GITHUB_OUTPUT ;;
+            "06-10") echo "id=sex10-post-cta"         >> $GITHUB_OUTPUT ;;
             *)
               echo "Nenhum post agendado para $DIA"
               exit 1

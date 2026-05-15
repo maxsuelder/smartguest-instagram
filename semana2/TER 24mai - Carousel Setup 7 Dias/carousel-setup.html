@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"/>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:1080px;background:#060E12;font-family:'Inter',sans-serif;}
+.slide{position:relative;width:1080px;height:1080px;overflow:hidden;background:#060E12;}
+.slide+.slide{margin-top:32px;}
+.bar-left{position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg,#16C3CC,#0E9DA5 60%,transparent);}
+.bar-top{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#16C3CC,transparent);}
+.glow{position:absolute;top:-150px;right:-150px;width:600px;height:600px;background:radial-gradient(ellipse,rgba(22,195,204,0.10),transparent 65%);pointer-events:none;}
+.hdr{position:absolute;top:0;left:0;right:0;padding:38px 56px 0;display:flex;justify-content:space-between;align-items:center;z-index:5;}
+.brand{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;letter-spacing:3px;color:#16C3CC;text-transform:uppercase;}
+.num{font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(184,205,211,0.3);text-transform:uppercase;}
+.ftr{position:absolute;bottom:0;left:0;right:0;padding:0 56px 28px;display:flex;justify-content:space-between;align-items:center;z-index:5;}
+.handle{font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(184,205,211,0.2);text-transform:uppercase;}
+.swipe{font-size:11px;font-weight:700;letter-spacing:2px;color:rgba(22,195,204,0.45);text-transform:uppercase;}
+
+/* SLIDE 1 — CAPA */
+#s1 .content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:100px 56px 80px;z-index:5;}
+#s1 .eyebrow{font-size:13px;font-weight:800;letter-spacing:5px;color:#16C3CC;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+#s1 .eyebrow::before{content:'';width:28px;height:2px;background:#16C3CC;}
+#s1 .h1{font-family:'Barlow Condensed',sans-serif;font-size:92px;font-weight:900;text-transform:uppercase;line-height:0.88;color:#FFF;margin-bottom:24px;}
+#s1 .h1 span{color:#16C3CC;}
+#s1 .sub{font-size:22px;font-weight:500;color:rgba(184,205,211,0.6);line-height:1.5;max-width:700px;}
+#s1 .sub strong{color:#FFF;}
+#s1 .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(22,195,204,0.1);border:1.5px solid rgba(22,195,204,0.3);border-radius:30px;padding:10px 20px;font-size:13px;font-weight:800;letter-spacing:1px;color:#16C3CC;text-transform:uppercase;margin-top:28px;}
+
+/* SLIDE 2 — MEDO */
+#s2 .content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:100px 56px 80px;z-index:5;}
+#s2 .label{font-size:13px;font-weight:800;letter-spacing:4px;color:#FF4545;text-transform:uppercase;margin-bottom:16px;}
+#s2 .h2{font-family:'Barlow Condensed',sans-serif;font-size:80px;font-weight:900;text-transform:uppercase;line-height:0.88;color:#FFF;margin-bottom:24px;}
+#s2 .h2 .red{color:#FF4545;}
+#s2 .divider{width:60px;height:3px;background:#FF4545;border-radius:2px;margin-bottom:24px;}
+#s2 .desc{font-size:24px;font-weight:500;color:rgba(184,205,211,0.7);line-height:1.55;max-width:820px;}
+#s2 .desc strong{color:#FFF;}
+.fear-box{background:rgba(255,69,69,0.06);border:1.5px solid rgba(255,69,69,0.2);border-radius:16px;padding:24px 28px;margin-top:24px;}
+.fear-item{font-size:20px;font-weight:600;color:rgba(255,69,69,0.85);padding:6px 0;display:flex;align-items:center;gap:12px;}
+.fear-item::before{content:'→';color:#FF4545;opacity:0.6;}
+
+/* SLIDE 3 — SEMANA 1 */
+#s3 .content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:90px 56px 80px;z-index:5;}
+#s3 .label{font-size:13px;font-weight:800;letter-spacing:4px;color:#16C3CC;text-transform:uppercase;margin-bottom:12px;}
+#s3 .h3{font-family:'Barlow Condensed',sans-serif;font-size:68px;font-weight:900;text-transform:uppercase;line-height:0.9;color:#FFF;margin-bottom:28px;}
+#s3 .h3 span{color:#16C3CC;}
+.timeline{display:flex;flex-direction:column;gap:14px;}
+.tl-item{display:flex;align-items:stretch;gap:20px;}
+.tl-marker{display:flex;flex-direction:column;align-items:center;gap:0;}
+.tl-dot{width:16px;height:16px;border-radius:50%;background:#16C3CC;flex-shrink:0;margin-top:4px;}
+.tl-line{width:2px;background:rgba(22,195,204,0.2);flex:1;margin:4px auto;}
+.tl-body{flex:1;background:rgba(22,195,204,0.05);border:1px solid rgba(22,195,204,0.15);border-radius:14px;padding:16px 20px;margin-bottom:0;}
+.tl-day{font-size:11px;font-weight:800;letter-spacing:3px;color:#16C3CC;text-transform:uppercase;margin-bottom:4px;}
+.tl-title{font-size:20px;font-weight:800;color:#FFF;}
+.tl-desc{font-size:16px;font-weight:500;color:rgba(184,205,211,0.6);margin-top:2px;}
+
+/* SLIDE 4 — DIA 7 */
+#s4 .content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:100px 56px 80px;z-index:5;}
+#s4 .label{font-size:13px;font-weight:800;letter-spacing:4px;color:#16C3CC;text-transform:uppercase;margin-bottom:16px;}
+#s4 .h4{font-family:'Barlow Condensed',sans-serif;font-size:80px;font-weight:900;text-transform:uppercase;line-height:0.88;color:#FFF;margin-bottom:28px;}
+#s4 .h4 span{color:#16C3CC;}
+#s4 .day7-num{font-family:'Barlow Condensed',sans-serif;font-size:220px;font-weight:900;line-height:1;color:rgba(22,195,204,0.05);position:absolute;right:30px;top:50%;transform:translateY(-50%);z-index:0;}
+.cap-list{display:flex;flex-direction:column;gap:16px;position:relative;z-index:2;}
+.cap-item{display:flex;align-items:center;gap:16px;background:rgba(22,195,204,0.06);border:1px solid rgba(22,195,204,0.18);border-radius:14px;padding:18px 22px;}
+.cap-check{font-size:24px;flex-shrink:0;}
+.cap-text{font-size:20px;font-weight:700;color:#FFF;}
+
+/* SLIDE 5 — INCLUSO */
+#s5 .content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:100px 56px 80px;z-index:5;}
+#s5 .label{font-size:13px;font-weight:800;letter-spacing:4px;color:#16C3CC;text-transform:uppercase;margin-bottom:16px;}
+#s5 .h5{font-family:'Barlow Condensed',sans-serif;font-size:68px;font-weight:900;text-transform:uppercase;line-height:0.9;color:#FFF;margin-bottom:28px;}
+#s5 .h5 span{color:#16C3CC;}
+.incl-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.incl-card{background:rgba(22,195,204,0.06);border:1.5px solid rgba(22,195,204,0.2);border-radius:18px;padding:26px 24px;}
+.incl-icon{font-size:36px;margin-bottom:12px;}
+.incl-title{font-size:20px;font-weight:800;color:#FFF;margin-bottom:6px;}
+.incl-desc{font-size:16px;font-weight:500;color:rgba(184,205,211,0.6);line-height:1.4;}
+
+/* SLIDE 6 — CTA */
+#s6 .content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 56px 80px;z-index:5;text-align:center;}
+#s6 .glow-c{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(ellipse,rgba(22,195,204,0.12),transparent 65%);top:50%;left:50%;transform:translate(-50%,-50%);z-index:0;}
+#s6 .h6{font-family:'Barlow Condensed',sans-serif;font-size:96px;font-weight:900;text-transform:uppercase;line-height:0.88;color:#FFF;margin-bottom:20px;position:relative;z-index:2;}
+#s6 .h6 span{color:#16C3CC;}
+#s6 .sub{font-size:24px;font-weight:500;color:rgba(184,205,211,0.6);line-height:1.5;margin-bottom:44px;position:relative;z-index:2;}
+#s6 .sub strong{color:#FFF;}
+#s6 .cta{background:#16C3CC;color:#060E12;font-size:14px;font-weight:900;letter-spacing:3px;text-transform:uppercase;padding:20px 50px;border-radius:50px;position:relative;z-index:2;margin-bottom:16px;}
+#s6 .url{font-size:14px;font-weight:700;letter-spacing:2px;color:rgba(22,195,204,0.45);position:relative;z-index:2;}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — CAPA -->
+<div class="slide" id="s1">
+  <div class="glow"></div><div class="bar-left"></div><div class="bar-top"></div>
+  <div class="hdr"><span class="brand">smartguest</span><span class="num">01 / 06</span></div>
+  <div class="content">
+    <div class="eyebrow">⚙️ Implantação</div>
+    <div class="h1">SETUP EM<br/><span>7 DIAS:</span><br/>COMO É A<br/>IMPLANTAÇÃO<br/>NA PRÁTICA</div>
+    <p class="sub">Sem interromper sua operação. <strong>A gente faz quase tudo por você.</strong></p>
+  </div>
+  <div class="ftr"><span class="handle">@smartguest.app</span><span class="swipe">ARRASTE →</span></div>
+</div>
+
+<!-- SLIDE 2 — MEDO -->
+<div class="slide" id="s2">
+  <div class="glow"></div><div class="bar-left"></div><div class="bar-top"></div>
+  <div class="hdr"><span class="brand">smartguest</span><span class="num">02 / 06</span></div>
+  <div class="content">
+    <div class="label">Entendemos o medo</div>
+    <div class="h2">O MEDO DA<br/><span class="red">MUDANÇA</span></div>
+    <div class="divider"></div>
+    <p class="desc">Trocar de sistema é assustador. <strong>"E se der errado? E se minha equipe não aprender? E se eu perder dados?"</strong> Esses medos são reais — e legítimos.</p>
+    <div class="fear-box">
+      <div class="fear-item">Perder reservas durante a transição</div>
+      <div class="fear-item">Equipe não conseguir aprender o novo sistema</div>
+      <div class="fear-item">Migração de dados dar errado</div>
+    </div>
+  </div>
+  <div class="ftr"><span class="handle">@smartguest.app</span><span class="swipe">ARRASTE →</span></div>
+</div>
+
+<!-- SLIDE 3 — TIMELINE -->
+<div class="slide" id="s3">
+  <div class="glow"></div><div class="bar-left"></div><div class="bar-top"></div>
+  <div class="hdr"><span class="brand">smartguest</span><span class="num">03 / 06</span></div>
+  <div class="content">
+    <div class="label">Como funciona</div>
+    <div class="h3">SEMANA 1:<br/>A GENTE FAZ <span>TUDO</span></div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-marker"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <div class="tl-day">Dias 1 — 2</div>
+          <div class="tl-title">Configuração completa</div>
+          <div class="tl-desc">Canais, quartos, tarifas e integrações configuradas pela nossa equipe</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-marker"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <div class="tl-day">Dias 3 — 4</div>
+          <div class="tl-title">Treinamento da equipe</div>
+          <div class="tl-desc">Sessão ao vivo via WhatsApp/vídeo — recepção e gestão treinados juntos</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-marker"><div class="tl-dot"></div></div>
+        <div class="tl-body">
+          <div class="tl-day">Dias 5 — 6</div>
+          <div class="tl-title">Operação assistida</div>
+          <div class="tl-desc">Você opera, a gente acompanha e corrige em tempo real pelo WhatsApp</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ftr"><span class="handle">@smartguest.app</span><span class="swipe">ARRASTE →</span></div>
+</div>
+
+<!-- SLIDE 4 — DIA 7 -->
+<div class="slide" id="s4">
+  <div class="glow"></div><div class="bar-left"></div><div class="bar-top"></div>
+  <div class="hdr"><span class="brand">smartguest</span><span class="num">04 / 06</span></div>
+  <div class="content">
+    <div class="day7-num">7</div>
+    <div class="label">O resultado</div>
+    <div class="h4">DIA <span>7:</span><br/>VOCÊ OPERA<br/>SOZINHO</div>
+    <div class="cap-list">
+      <div class="cap-item"><div class="cap-check">✅</div><div class="cap-text">Faz check-in e checkout sem ajuda</div></div>
+      <div class="cap-item"><div class="cap-check">✅</div><div class="cap-text">Sincroniza reservas em todos os canais automaticamente</div></div>
+      <div class="cap-item"><div class="cap-check">✅</div><div class="cap-text">Visualiza o Mapa de UH e entende tudo em segundos</div></div>
+      <div class="cap-item"><div class="cap-check">✅</div><div class="cap-text">Acessa relatórios e indicadores do hotel</div></div>
+    </div>
+  </div>
+  <div class="ftr"><span class="handle">@smartguest.app</span><span class="swipe">ARRASTE →</span></div>
+</div>
+
+<!-- SLIDE 5 — INCLUSO -->
+<div class="slide" id="s5">
+  <div class="glow"></div><div class="bar-left"></div><div class="bar-top"></div>
+  <div class="hdr"><span class="brand">smartguest</span><span class="num">05 / 06</span></div>
+  <div class="content">
+    <div class="label">Tudo incluso no setup</div>
+    <div class="h5">O QUE ESTÁ<br/><span>INCLUSO</span></div>
+    <div class="incl-grid">
+      <div class="incl-card">
+        <div class="incl-icon">🔌</div>
+        <div class="incl-title">Configuração de canais</div>
+        <div class="incl-desc">Booking, Airbnb, Expedia e todos os OTAs conectados</div>
+      </div>
+      <div class="incl-card">
+        <div class="incl-icon">📁</div>
+        <div class="incl-title">Migração de dados</div>
+        <div class="incl-desc">Reservas e histórico importados sem perda</div>
+      </div>
+      <div class="incl-card">
+        <div class="incl-icon">👥</div>
+        <div class="incl-title">Treinamento da equipe</div>
+        <div class="incl-desc">Recepção e gestão treinados ao vivo</div>
+      </div>
+      <div class="incl-card">
+        <div class="incl-icon">💬</div>
+        <div class="incl-title">Suporte WhatsApp</div>
+        <div class="incl-desc">Resposta humana em até 2 horas no horário comercial</div>
+      </div>
+    </div>
+  </div>
+  <div class="ftr"><span class="handle">@smartguest.app</span><span class="swipe">ARRASTE →</span></div>
+</div>
+
+<!-- SLIDE 6 — CTA -->
+<div class="slide" id="s6">
+  <div class="glow"></div><div class="bar-left"></div><div class="bar-top"></div>
+  <div class="hdr"><span class="brand">smartguest</span><span class="num">06 / 06</span></div>
+  <div class="content">
+    <div class="glow-c"></div>
+    <div class="h6">COMECE SEU<br/><span>SETUP</span> HOJE.</div>
+    <p class="sub">Em <strong>7 dias</strong> sua pousada opera com tecnologia — sem você precisar fazer quase nada.</p>
+    <div class="cta">AGENDAR SETUP GRÁTIS</div>
+    <div class="url">smartguest.app</div>
+  </div>
+  <div class="ftr"><span class="handle">@smartguest.app</span></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"/>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:1080px;height:1080px;overflow:hidden;background:#060E12;font-family:'Inter',sans-serif;}
+.root{position:relative;width:1080px;height:1080px;}
+.bar-left{position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg,#16C3CC,#0E9DA5 60%,transparent);}
+.bar-top{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#16C3CC,transparent);}
+.glow-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:900px;height:900px;background:radial-gradient(ellipse,rgba(22,195,204,0.09),transparent 60%);pointer-events:none;}
+.glow-top-r{position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(ellipse,rgba(22,195,204,0.07),transparent 65%);pointer-events:none;}
+.hdr{position:absolute;top:0;left:0;right:0;padding:38px 56px 0;display:flex;justify-content:space-between;align-items:center;z-index:5;}
+.brand{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;letter-spacing:3px;color:#16C3CC;text-transform:uppercase;}
+.content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:120px 100px 100px;text-align:center;z-index:5;}
+.quote-icon{font-family:'Georgia',serif;font-size:140px;line-height:0.7;color:rgba(22,195,204,0.2);margin-bottom:8px;font-weight:700;}
+.quote-text{font-size:30px;font-weight:600;color:#FFF;line-height:1.5;margin-bottom:36px;font-style:italic;max-width:820px;}
+.quote-text span{color:#16C3CC;}
+.divider{width:80px;height:2px;background:rgba(22,195,204,0.3);border-radius:2px;margin:0 auto 28px;}
+.attribution{font-size:18px;font-weight:700;color:rgba(184,205,211,0.7);margin-bottom:28px;letter-spacing:0.5px;}
+.stars{font-size:34px;letter-spacing:6px;margin-bottom:44px;filter:drop-shadow(0 0 8px rgba(251,191,36,0.5));}
+.brand-bottom{display:flex;align-items:center;gap:12px;}
+.brand-name{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;letter-spacing:3px;color:#16C3CC;text-transform:uppercase;}
+.brand-tag{background:rgba(22,195,204,0.1);border:1px solid rgba(22,195,204,0.3);border-radius:16px;padding:6px 16px;font-size:12px;font-weight:700;letter-spacing:2px;color:#16C3CC;text-transform:uppercase;}
+.ftr{position:absolute;bottom:0;left:0;right:0;padding:0 56px 28px;display:flex;justify-content:space-between;align-items:center;z-index:5;}
+.handle{font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(184,205,211,0.2);text-transform:uppercase;}
+</style>
+</head>
+<body>
+<div class="root">
+  <div class="glow-center"></div><div class="glow-top-r"></div>
+  <div class="bar-left"></div><div class="bar-top"></div>
+  <div class="hdr"><span class="brand">smartguest</span></div>
+  <div class="content">
+    <div class="quote-icon">"</div>
+    <div class="quote-text">Em 7 dias minha equipe não me liga mais com dúvidas. O sistema responde tudo. <span>Nunca mais tive overbooking.</span>"</div>
+    <div class="divider"></div>
+    <div class="attribution">— Proprietária, Pousada do Vale, Minas Gerais</div>
+    <div class="stars">⭐⭐⭐⭐⭐</div>
+    <div class="brand-bottom">
+      <div class="brand-name">smartguest</div>
+      <div class="brand-tag">Depoimento Real</div>
+    </div>
+  </div>
+  <div class="ftr"><span class="handle">@smartguest.app</span><span class="handle">smartguest.app</span></div>
+</div>
+</body>
+</html>

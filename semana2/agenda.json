@@ -1,0 +1,32 @@
+[
+  {
+    "id": "seg26-carousel-channel",
+    "data": "2026-05-26T13:00:00",
+    "tipo": "CAROUSEL",
+    "html": "SEG 26mai - Carousel Channel Manager/carousel-channel-manager.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slides": ["s1","s2","s3","s4","s5","s6"],
+    "legenda": "Você vende no Booking, Airbnb, WhatsApp e site ao mesmo tempo — mas atualiza cada um na mão? 😬\n\nEsse gap entre uma reserva chegar e você atualizar os outros canais é onde o overbooking acontece.\n\nNeste carousel explico o que é um Channel Manager e por que é a peça que faltava na sua operação. Arraste →\n\n—\n📲 smartguest.app — Channel Manager + PMS integrado\n\n#hotelaria #pousada #channelmanager #gestaohoteleira #reservashotel #pmshoteleiro #hotelariabrasil #tecnologiahoteleira #hoteleiros #hospitalidade"
+  },
+  {
+    "id": "qua28-story-overbooking",
+    "data": "2026-05-28T14:00:00",
+    "tipo": "STORIES",
+    "html": "QUA 28mai - Story Overbooking/story-overbooking.html",
+    "largura": 1080,
+    "altura": 1920,
+    "slide": "body",
+    "legenda": ""
+  },
+  {
+    "id": "qui29-carousel-revenue",
+    "data": "2026-05-29T14:00:00",
+    "tipo": "CAROUSEL",
+    "html": "QUI 29mai - Carousel Revenue Management/carousel-revenue.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slides": ["s1","s2","s3","s4","s5","s6"],
+    "legenda": "Você cobra o mesmo preço o ano todo? 🤔\n\nA tarifa fixa é um dos maiores erros de receita na hotelaria independente — e poucos falam sobre isso.\n\nNeste carousel mostro como o Revenue Management funciona na prática para pousadas, sem precisar de time especializado.\n\nArraste e me conta: você já ajusta seus preços por época? 👇\n\n—\n📲 smartguest.app\n\n#hotelaria #pousada #revenuemanagement #gestaohoteleira #tarifahotel #hotelariabrasil #pmshoteleiro #tecnologiahoteleira #hoteleiros #hospitalidade"
+  }
+]

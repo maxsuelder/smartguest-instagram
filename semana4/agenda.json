@@ -1,0 +1,32 @@
+[
+  {
+    "id": "seg09-carousel-planilha",
+    "data": "2026-06-09T13:00:00",
+    "tipo": "CAROUSEL",
+    "html": "SEG 09jun - Carousel De Planilha ao Sistema/carousel-de-planilha.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slides": ["s1","s2","s3","s4","s5","s6"],
+    "legenda": "O medo de sair da planilha é real. Mas o custo de continuar nela é maior. 📋\n\nNeste carousel mostro como é a transição na prática — semana a semana — e o que muda na sua operação depois que você sai.\n\nSpoiler: a equipe aprende em 1 dia. E o overbooking some no primeiro mês.\n\nQuanto tempo você ainda aguenta na planilha? Me conta nos comentários 👇\n\n—\n📲 smartguest.app — Migração em 7 dias, sem contrato\n\n#hotelaria #pousada #gestaohoteleira #sistemadegestao #pmshoteleiro #hotelariabrasil #channelmanager #tecnologiahoteleira #hoteleiros #reservashotel"
+  },
+  {
+    "id": "qua11-story-desafio",
+    "data": "2026-06-11T14:00:00",
+    "tipo": "STORIES",
+    "html": "QUA 11jun - Story Desafio Gestao/story-desafio.html",
+    "largura": 1080,
+    "altura": 1920,
+    "slide": "body",
+    "legenda": ""
+  },
+  {
+    "id": "qui12-carousel-porquesg",
+    "data": "2026-06-12T14:00:00",
+    "tipo": "CAROUSEL",
+    "html": "QUI 12jun - Carousel Por que SmartGuest/carousel-por-que-smartguest.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slides": ["s1","s2","s3","s4","s5","s6"],
+    "legenda": "Existem vários sistemas no mercado. Por que escolher o SmartGuest? 🤔\n\nSistemas grandes foram feitos para grandes redes — cobram por funcionalidades que você nunca vai usar e o suporte é um ticket que demora dias.\n\nO SmartGuest foi feito do zero para pousadas independentes. Veja os diferenciais reais — sem enrolação.\n\nArraste e me conta: o que você mais precisa num sistema de gestão? 👇\n\n—\n📲 smartguest.app — Demo gratuita, sem compromisso\n\n#hotelaria #pousada #smartguest #gestaohoteleira #pmshoteleiro #channelmanager #hotelariabrasil #tecnologiahoteleira #inovacaohoteleira #hospitalidade"
+  }
+]

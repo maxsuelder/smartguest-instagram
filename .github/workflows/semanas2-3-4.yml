@@ -1,0 +1,89 @@
+name: SmartGuest — Semanas 2, 3 e 4
+
+on:
+  schedule:
+    # ── SEMANA 2 ────────────────────────────────────────
+    # seg 26/05 às 10h BRT = 13h UTC
+    - cron: '0 13 26 5 *'
+    # qua 28/05 às 11h BRT = 14h UTC
+    - cron: '0 14 28 5 *'
+    # qui 29/05 às 11h BRT = 14h UTC
+    - cron: '0 14 29 5 *'
+
+    # ── SEMANA 3 ────────────────────────────────────────
+    # seg 02/06 às 10h BRT = 13h UTC
+    - cron: '0 13 2 6 *'
+    # qua 04/06 às 11h BRT = 14h UTC
+    - cron: '0 14 4 6 *'
+    # qui 05/06 às 11h BRT = 14h UTC
+    - cron: '0 14 5 6 *'
+
+    # ── SEMANA 4 ────────────────────────────────────────
+    # seg 09/06 às 10h BRT = 13h UTC
+    - cron: '0 13 9 6 *'
+    # qua 11/06 às 11h BRT = 14h UTC
+    - cron: '0 14 11 6 *'
+    # qui 12/06 às 11h BRT = 14h UTC
+    - cron: '0 14 12 6 *'
+
+  workflow_dispatch:
+    inputs:
+      post_id:
+        description: 'ID do post para publicar manualmente'
+        required: true
+        type: string
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Instalar Playwright (Chromium)
+        run: npx playwright install chromium --with-deps
+
+      - name: Determinar post do dia
+        id: post
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "id=${{ inputs.post_id }}" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          DIA=$(date -u +"%m-%d")
+          case "$DIA" in
+            # Semana 2
+            "05-26") echo "id=seg26-carousel-channel" >> $GITHUB_OUTPUT ;;
+            "05-28") echo "id=qua28-story-overbooking" >> $GITHUB_OUTPUT ;;
+            "05-29") echo "id=qui29-carousel-revenue" >> $GITHUB_OUTPUT ;;
+            # Semana 3
+            "06-02") echo "id=seg02-carousel-ia" >> $GITHUB_OUTPUT ;;
+            "06-04") echo "id=qua04-story-ocupacao" >> $GITHUB_OUTPUT ;;
+            "06-05") echo "id=qui05-carousel-checkin" >> $GITHUB_OUTPUT ;;
+            # Semana 4
+            "06-09") echo "id=seg09-carousel-planilha" >> $GITHUB_OUTPUT ;;
+            "06-11") echo "id=qua11-story-desafio" >> $GITHUB_OUTPUT ;;
+            "06-12") echo "id=qui12-carousel-porquesg" >> $GITHUB_OUTPUT ;;
+            *)
+              echo "Nenhum post agendado para $DIA"
+              exit 1
+              ;;
+          esac
+
+      - name: Publicar no Instagram
+        env:
+          INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
+          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+          IMGBB_KEY: ${{ secrets.IMGBB_KEY }}
+        run: node postar.js ${{ steps.post.outputs.id }}

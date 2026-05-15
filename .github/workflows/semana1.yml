@@ -1,0 +1,73 @@
+name: SmartGuest — Semana 1
+
+on:
+  schedule:
+    # Todos os horários em UTC (Brasil = UTC-3)
+    # sex 16/05 às 11h BRT = 14h UTC
+    - cron: '0 14 16 5 *'
+    # sab 17/05 às 10h BRT = 13h UTC
+    - cron: '0 13 17 5 *'
+    # seg 19/05 às 10h BRT = 13h UTC
+    - cron: '0 13 19 5 *'
+    # qua 21/05 às 11h BRT = 14h UTC
+    - cron: '0 14 21 5 *'
+    # qui 22/05 às 11h BRT = 14h UTC
+    - cron: '0 14 22 5 *'
+
+  workflow_dispatch:
+    inputs:
+      post_id:
+        description: 'ID do post para publicar manualmente'
+        required: true
+        type: string
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Instalar Playwright (Chromium)
+        run: npx playwright install chromium --with-deps
+
+      - name: Determinar post do dia
+        id: post
+        run: |
+          # Se disparado manualmente, usa o post_id informado
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "id=${{ inputs.post_id }}" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # Mapeamento de data → post_id
+          DIA=$(date -u +"%m-%d")
+          HORA=$(date -u +"%H")
+          case "$DIA" in
+            "05-16") echo "id=sex16-story-tempo" >> $GITHUB_OUTPUT ;;
+            "05-17") echo "id=sab17-story-bastidores" >> $GITHUB_OUTPUT ;;
+            "05-19") echo "id=seg19-carousel-sinais" >> $GITHUB_OUTPUT ;;
+            "05-21") echo "id=qua21-story-planilha" >> $GITHUB_OUTPUT ;;
+            "05-22") echo "id=qui22-carousel-duplicada" >> $GITHUB_OUTPUT ;;
+            *)
+              echo "Nenhum post agendado para $DIA"
+              exit 1
+              ;;
+          esac
+
+      - name: Publicar no Instagram
+        env:
+          INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
+          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+        run: node postar.js ${{ steps.post.outputs.id }}

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "sex16-story-tempo",
+    "data": "2026-05-16T11:00:00",
+    "tipo": "STORIES",
+    "html": "sex16/story-tempo-perdido.html",
+    "largura": 1080,
+    "altura": 1920,
+    "slide": "body",
+    "legenda": ""
+  },
+  {
+    "id": "sab17-story-bastidores",
+    "data": "2026-05-17T10:00:00",
+    "tipo": "STORIES",
+    "html": "sab17/story-bastidores.html",
+    "largura": 1080,
+    "altura": 1920,
+    "slide": "body",
+    "legenda": ""
+  },
+  {
+    "id": "seg19-carousel-sinais",
+    "data": "2026-05-19T10:00:00",
+    "tipo": "CAROUSEL",
+    "html": "seg19/carousel-5-sinais.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slides": ["s1","s2","s3","s4","s5","s6","s7"],
+    "legenda": "Se você gerencia sua pousada com planilha, WhatsApp e feeling — este carousel é pra você. 👇\n\nSeparei os 5 sinais mais claros de que está na hora de adotar um sistema de gestão. Se se identificar com mais de 2, a gente precisa conversar.\n\nArraste os slides e me conta nos comentários: quantos sinais você marcou? 👇\n\n—\n📲 Acesse smartguest.app e veja como resolvemos cada um desses problemas em até 7 dias de setup.\n\n#gestaohoteleira #hotelaria #pousada #hoteleiros #tecnologiahoteleira #pmshoteleiro #hotelariabrasil #reservas #hospitalidade #hoteleirobrasil"
+  },
+  {
+    "id": "qua21-story-planilha",
+    "data": "2026-05-21T11:00:00",
+    "tipo": "STORIES",
+    "html": "qua21/story-planilha.html",
+    "largura": 1080,
+    "altura": 1920,
+    "slide": "body",
+    "legenda": ""
+  },
+  {
+    "id": "qui22-carousel-duplicada",
+    "data": "2026-05-22T11:00:00",
+    "tipo": "CAROUSEL",
+    "html": "qui22/carousel-reserva-duplicada.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slides": ["s1","s2","s3","s4","s5","s6"],
+    "legenda": "Dois hóspedes chegam no mesmo dia para o mesmo quarto. 😰\n\nJá aconteceu com você? Com quem você conhece?\n\nA reserva duplicada é o erro mais temido na hotelaria — e ainda acontece todos os dias em pousadas que gerenciam os canais manualmente.\n\nNeste carousel explico por que acontece e como resolver de vez. Arraste →\n\n—\n📲 smartguest.app — Channel Manager + PMS integrado\n\n#hotelaria #pousada #gestaohoteleira #reservashotel #channelmanager #pmshoteleiro #hotelariabrasil #tecnologiahoteleira #hoteleiros #hospitalidade"
+  }
+]

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"/>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:1080px;background:#060E12;font-family:'Inter',sans-serif;}
+.slide{position:relative;width:1080px;height:1080px;overflow:hidden;background:#060E12;}
+.slide+.slide{margin-top:32px;}
+.bar-left{position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg,#16C3CC,#0E9DA5 60%,transparent);}
+.bar-top{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#16C3CC,transparent);}
+.glow{position:absolute;top:-150px;right:-150px;width:600px;height:600px;background:radial-gradient(ellipse,rgba(22,195,204,0.10),transparent 65%);pointer-events:none;}
+.hdr{position:absolute;top:0;left:0;right:0;padding:38px 56px 0;display:flex;justify-content:space-between;align-items:center;z-index:5;}
+.brand{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;letter-spacing:3px;color:#16C3CC;text-transform:uppercase;}
+.num{font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(184,205,211,0.3);text-transform:uppercase;}
+.ftr{position:absolute;bottom:0;left:0;right:0;padding:0 56px 28px;display:flex;justify-content:space-between;align-items:center;z-index:5;}
+.handle{font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(184,205,211,0.2);text-transform:uppercase;}
+.swipe{font-size:11px;font-weight:700;letter-spacing:2px;color:rgba(22,195,204,0.45);text-transform:uppercase;}
+
+/* SLIDE 1 — CAPA */
+#s1 .content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:100px 56px 80px;z-index:5;}
+#s1 .eyebrow{font-size:13px;font-weight:800;letter-spacing:5px;color:#16C3CC;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+#s1 .eyebrow::before{content:'';width:28px;height:2px;background:#16C3CC;}
+#s1 .h1{font-family:'Barlow Condensed',sans-serif;font-size:110px;font-weight:900;text-transform:uppercase;line-height:0.85;color:#FFF;margin-bottom:24px;}
+#s1 .h1 span{color:#16C3CC;}
+#s1 .h1 .dim{color:rgba(255,255,255,0.2);}
+#s1 .sub{font-size:24px;font-weight:500;color:rgba(184,205,211,0.6);line-height:1.5;max-width:700px;}
+#s1 .sub strong{color:#FFF;}
+#s1 .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,69,69,0.1);border:1.5px solid rgba(255,69,69,0.3);border-radius:30px;padding:10px 20px;font-size:13px;font-weight:800;letter-spacing:1px;color:#FF4545;text-transform:uppercase;margin-top:28px;}
+
+/* SLIDES 2-6 — SINAIS */
+.sinal-slide .content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:100px 56px 80px;z-index:5;}
+.sinal-num{font-family:'Barlow Condensed',sans-serif;font-size:200px;font-weight:900;line-height:1;color:rgba(22,195,204,0.06);position:absolute;right:40px;top:50%;transform:translateY(-50%);z-index:0;}
+.sinal-label{font-size:13px;font-weight:800;letter-spacing:4px;color:#16C3CC;text-transform:uppercase;margin-bottom:16px;}
+.sinal-title{font-family:'Barlow Condensed',sans-serif;font-size:72px;font-weight:900;text-transform:uppercase;line-height:0.9;color:#FFF;margin-bottom:20px;position:relative;z-index:2;}
+.sinal-title .teal{color:#16C3CC;}
+.sinal-title .red{color:#FF4545;}
+.sinal-divider{width:60px;height:3px;background:#16C3CC;border-radius:2px;margin-bottom:24px;}
+.sinal-desc{font-size:24px;font-weight:500;color:rgba(184,205,211,0.7);line-height:1.55;max-width:780px;position:relative;z-index:2;}
+.sinal-desc strong{color:#FFF;}
+.sinal-alert{display:inline-flex;align-items:center;gap:8px;background:rgba(255,69,69,0.08);border:1.5px solid rgba(255,69,69,0.25);border-radius:12px;padding:12px 20px;font-size:16px;font-weight:700;color:#FF4545;margin-top:20px;position:relative;z-index:2;}
+.sinal-tip{display:inline-flex;align-items:center;gap:8px;background:rgba(22,195,204,0.08);border:1.5px solid rgba(22,195,204,0.2);border-radius:12px;padding:12px 20px;font-size:16px;font-weight:700;color:#16C3CC;margin-top:20px;position:relative;z-index:2;}
+
+/* SLIDE 7 — CTA */
+#s7 .content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 56px 80px;z-index:5;text-align:center;}
+#s7 .glow-c{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(ellipse,rgba(22,195,204,0.10),transparent 65%);top:50%;left:50%;transform:translate(-50%,-50%);z-index:0;}
+#s7 .h1{font-family:'Barlow Condensed',sans-serif;font-size:96px;font-weight:900;text-transform:uppercase;line-height:0.88;color:#FFF;margin-bottom:20px;position:relative;z-index:2;}
+#s7 .h1 span{color:#16C3CC;}
+#s7 .sub{font-size:24px;font-weight:500;color:rgba(184,205,211,0.6);line-height:1.5;margin-bottom:40px;position:relative;z-index:2;}
+#s7 .sub strong{color:#FFF;}
+#s7 .cta{background:#16C3CC;color:#060E12;font-size:14px;font-weight:900;letter-spacing:3px;text-transform:uppercase;padding:18px 44px;border-radius:50px;position:relative;z-index:2;margin-bottom:16px;}
+#s7 .url{font-size:14px;font-weight:700;letter-spacing:2px;color:rgba(22,195,204,0.45);position:relative;z-index:2;}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — CAPA -->
+<div class="slide" id="s1">
+  <div class="glow"></div><div class="bar-left"></div><div class="bar-top"></div>
+  <div class="hdr"><span class="brand">smartguest</span><span class="num">01 / 07</span></div>
+  <div class="content">
+    <div class="eyebrow">Gestão Hoteleira</div>
+    <div class="h1"><span>5 SINAIS</span><br/>QUE SUA<br/>POUSADA<br/><span class="dim">PRECISA DE</span><br/>UM SISTEMA</div>
+    <p class="sub">Se você se identificar com <strong>mais de 2</strong>, está na hora de mudar.</p>
+    <span class="badge">🚨 Você se identifica?</span>
+  </div>
+  <div class="ftr"><span class="handle">@smartguest.app</span><span class="swipe">ARRASTE →</span></div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide sinal-slide" id="s2">
+  <div class="glow"></div><div class="bar-left"></div><div class="bar-top"></div>
+  <div class="hdr"><span class="brand">smartguest</span><span class="num">02 / 07</span></div>
+  <div class="content">
+    <div class="sinal-num">1</div>
+    <div class="sinal-label">Sinal #1</div>
+    <div class="sinal-title">VOCÊ AINDA <span class="red">ESQUECE</span><br/>DE REGISTRAR<br/>UMA <span class="teal">RESERVA</span></div>
+    <div class="sinal-divider"></div>
+    <p class="sinal-desc">Anotação no papel, mensagem no WhatsApp, ligação que você não registrou... <strong>O hóspede chega e o quarto está ocupado.</strong></p>
+    <span class="sinal-alert">⚠️ Reserva duplicada = hóspede insatisfeito</span>
+  </div>
+  <div class="ftr"><span class="handle">@smartguest.app</span><span class="swipe">ARRASTE →</span></div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide sinal-slide" id="s3">
+  <div class="glow"></div><div class="bar-left"></div><div class="bar-top"></div>
+  <div class="hdr"><span class="brand">smartguest</span><span class="num">03 / 07</span></div>
+  <div class="content">
+    <div class="sinal-num">2</div>
+    <div class="sinal-label">Sinal #2</div>
+    <div class="sinal-title">VOCÊ NÃO SABE<br/>A <span class="teal">OCUPAÇÃO</span><br/>DE <span class="red">HOJE</span></div>
+    <div class="sinal-divider"></div>
+    <p class="sinal-desc">Sem olhar pasta, WhatsApp ou perguntando para alguém — <strong>você consegue dizer agora quantos quartos estão livres?</strong></p>
+    <span class="sinal-alert">⚠️ Sem visão em tempo real = decisões erradas</span>
+  </div>
+  <div class="ftr"><span class="handle">@smartguest.app</span><span class="swipe">ARRASTE →</span></div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide sinal-slide" id="s4">
+  <div class="glow"></div><div class="bar-left"></div><div class="bar-top"></div>
+  <div class="hdr"><span class="brand">smartguest</span><span class="num">04 / 07</span></div>
+  <div class="content">
+    <div class="sinal-num">3</div>
+    <div class="sinal-label">Sinal #3</div>
+    <div class="sinal-title">SUA TARIFA NO<br/><span class="teal">BOOKING</span> É<br/>SEMPRE <span class="red">IGUAL</span></div>
+    <div class="sinal-divider"></div>
+    <p class="sinal-desc">Alta temporada, feriado, final de semana — <strong>você cobra o mesmo valor o ano todo</strong> porque atualizar manualmente é trabalhoso demais.</p>
+    <span class="sinal-alert">⚠️ Tarifa fixa = receita perdida todo mês</span>
+  </div>
+  <div class="ftr"><span class="handle">@smartguest.app</span><span class="swipe">ARRASTE →</span></div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide sinal-slide" id="s5">
+  <div class="glow"></div><div class="bar-left"></div><div class="bar-top"></div>
+  <div class="hdr"><span class="brand">smartguest</span><span class="num">05 / 07</span></div>
+  <div class="content">
+    <div class="sinal-num">4</div>
+    <div class="sinal-label">Sinal #4</div>
+    <div class="sinal-title">VOCÊ <span class="red">PERDE TEMPO</span><br/>COM <span class="teal">BUROCRACIA</span><br/>TODOS OS DIAS</div>
+    <div class="sinal-divider"></div>
+    <p class="sinal-desc">Check-in manual, ficha de hóspede no papel, relatório feito à mão — <strong>você passa mais tempo com papelada do que com o hóspede.</strong></p>
+    <span class="sinal-alert">⚠️ Tempo burocrático = menos hospitalidade</span>
+  </div>
+  <div class="ftr"><span class="handle">@smartguest.app</span><span class="swipe">ARRASTE →</span></div>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="slide sinal-slide" id="s6">
+  <div class="glow"></div><div class="bar-left"></div><div class="bar-top"></div>
+  <div class="hdr"><span class="brand">smartguest</span><span class="num">06 / 07</span></div>
+  <div class="content">
+    <div class="sinal-num">5</div>
+    <div class="sinal-label">Sinal #5</div>
+    <div class="sinal-title">VOCÊ <span class="red">NÃO CONFIA</span><br/>NOS <span class="teal">NÚMEROS</span><br/>DO SEU HOTEL</div>
+    <div class="sinal-divider"></div>
+    <p class="sinal-desc">Taxa de ocupação, receita do mês, canais que mais vendem — <strong>você não tem esses dados na palma da mão e toma decisões no feeling.</strong></p>
+    <span class="sinal-alert">⚠️ Sem dados = sem controle do negócio</span>
+  </div>
+  <div class="ftr"><span class="handle">@smartguest.app</span><span class="swipe">ARRASTE →</span></div>
+</div>
+
+<!-- SLIDE 7 — CTA -->
+<div class="slide" id="s7">
+  <div class="glow"></div><div class="bar-left"></div><div class="bar-top"></div>
+  <div class="hdr"><span class="brand">smartguest</span><span class="num">07 / 07</span></div>
+  <div class="content">
+    <div class="glow-c"></div>
+    <div class="h1">SE IDENTIFICOU<br/>COM <span>ALGUM?</span></div>
+    <p class="sub">O SmartGuest resolve <strong>todos esses problemas</strong> em até 7 dias de setup. Sem complicação.</p>
+    <div class="cta">QUERO UMA DEMO GRÁTIS</div>
+    <div class="url">smartguest.app</div>
+  </div>
+  <div class="ftr"><span class="handle">@smartguest.app</span></div>
+</div>
+
+</body>
+</html>

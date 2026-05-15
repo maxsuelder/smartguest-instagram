@@ -1,0 +1,12 @@
+node_modules/
+tmp_output/
+*.xlsx
+*.csv
+semana1/output/
+semana-ia/output/
+png/
+png-v3/
+posts/
+posts-v3/
+posts-thread/
+reels/

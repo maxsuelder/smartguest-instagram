@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartGuest — Story: Enquete Motor de Reservas</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#111;display:flex;justify-content:center;padding:24px;font-family:'Inter',sans-serif}
+  .story{
+    width:1080px;height:1920px;background:#060E12;position:relative;overflow:hidden;
+    flex-shrink:0;display:flex;flex-direction:column;
+  }
+  .glow{
+    position:absolute;border-radius:50%;
+    background:radial-gradient(circle,rgba(22,195,204,0.15) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .bar-top{
+    position:absolute;top:0;left:0;right:0;height:4px;
+    background:linear-gradient(90deg,#16C3CC,#0a8a91,transparent);
+  }
+  .bar-left{
+    position:absolute;top:0;left:0;width:6px;height:100%;
+    background:linear-gradient(180deg,#16C3CC 0%,#0a8a91 50%,transparent 100%);
+  }
+  .brand{
+    position:absolute;top:56px;left:48px;
+    font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:700;
+    color:#16C3CC;letter-spacing:3px;text-transform:lowercase;opacity:.9;
+  }
+  .footer{
+    position:absolute;bottom:60px;left:0;right:0;
+    text-align:center;
+    font-size:22px;color:rgba(255,255,255,0.35);font-family:'Inter',sans-serif;
+  }
+  .accent{color:#16C3CC;}
+  .divider{width:80px;height:3px;background:#16C3CC;border-radius:2px;}
+  .tag{
+    display:inline-block;background:rgba(22,195,204,0.15);border:1px solid rgba(22,195,204,0.4);
+    color:#16C3CC;font-size:20px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+    padding:10px 28px;border-radius:4px;
+    font-family:'Barlow Condensed',sans-serif;
+  }
+  h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;color:#fff;line-height:.95;text-transform:uppercase;}
+  .option-btn{
+    border-radius:16px;padding:36px 44px;margin-bottom:20px;
+    display:flex;align-items:center;gap:28px;cursor:pointer;
+    transition:all .2s;
+  }
+  .opt-letter{
+    width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:900;flex-shrink:0;
+  }
+  .opt-text{font-size:30px;color:#fff;font-weight:500;line-height:1.2;}
+</style>
+</head>
+<body>
+<div class="story" id="body">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="width:900px;height:900px;top:-300px;right:-200px;"></div>
+  <div class="glow" style="width:600px;height:600px;bottom:-100px;left:-100px;opacity:.6;"></div>
+  <div class="brand">smartguest</div>
+
+  <!-- HEADER -->
+  <div style="padding:160px 64px 0;position:relative;z-index:2;text-align:center;">
+    <div style="display:flex;justify-content:center;margin-bottom:28px;">
+      <div class="tag">Enquete</div>
+    </div>
+    <div style="font-size:80px;line-height:1;margin-bottom:24px;">🏨</div>
+    <h1 style="font-size:96px;margin-bottom:24px;">
+      Você já usa<br>
+      <span class="accent">motor de<br>reservas</span><br>
+      próprio?
+    </h1>
+    <div style="display:flex;justify-content:center;margin-bottom:12px;">
+      <div class="divider"></div>
+    </div>
+    <p style="color:rgba(255,255,255,0.5);font-size:28px;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;text-transform:uppercase;">Escolha sua resposta</p>
+  </div>
+
+  <!-- OPÇÕES -->
+  <div style="padding:64px 64px 0;position:relative;z-index:2;">
+
+    <div class="option-btn" style="background:rgba(22,195,204,0.1);border:2px solid rgba(22,195,204,0.4);">
+      <div class="opt-letter" style="background:rgba(22,195,204,0.2);color:#16C3CC;">A</div>
+      <div class="opt-text">Sim, já uso motor<br><span style="color:#16C3CC;font-weight:600;">de reservas</span></div>
+    </div>
+
+    <div class="option-btn" style="background:rgba(255,255,255,0.04);border:2px solid rgba(255,255,255,0.15);">
+      <div class="opt-letter" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);">B</div>
+      <div class="opt-text" style="color:rgba(255,255,255,0.7);">Não, ainda<br>não tenho</div>
+    </div>
+
+    <div class="option-btn" style="background:rgba(255,255,255,0.04);border:2px solid rgba(255,255,255,0.15);">
+      <div class="opt-letter" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);">C</div>
+      <div class="opt-text" style="color:rgba(255,255,255,0.7);">Não sabia que<br>isso existia</div>
+    </div>
+  </div>
+
+  <!-- INFO BOX -->
+  <div style="padding:48px 64px 0;position:relative;z-index:2;">
+    <div style="background:rgba(22,195,204,0.07);border:1px solid rgba(22,195,204,0.2);border-radius:16px;padding:32px 40px;">
+      <p style="color:rgba(255,255,255,0.5);font-size:22px;line-height:1.5;margin-bottom:16px;">
+        Motor de reservas = seu hóspede reserva <span style="color:#fff;font-weight:600;">direto com você</span>, sem intermediário, sem comissão.
+      </p>
+      <p style="color:#16C3CC;font-size:22px;font-weight:600;">Se respondeu B ou C, fale comigo 👇</p>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="padding:36px 64px 0;position:relative;z-index:2;">
+    <div style="background:#16C3CC;border-radius:16px;padding:28px 40px;text-align:center;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:42px;font-weight:900;color:#060E12;letter-spacing:1px;">smartguest.app</div>
+      <p style="color:rgba(6,14,18,0.7);font-size:22px;margin-top:6px;">Configure seu motor hoje</p>
+    </div>
+  </div>
+
+  <div class="footer">@smartguest.app | smartguest.app</div>
+</div>
+</body>
+</html>

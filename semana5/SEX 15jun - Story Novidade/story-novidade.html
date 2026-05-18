@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartGuest — Story Novidade</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#111;display:flex;align-items:flex-start;justify-content:center;padding:24px;font-family:'Inter',sans-serif;}
+  .story{
+    width:1080px;height:1920px;background:#060E12;position:relative;overflow:hidden;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+  }
+  .bar-top{position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#16C3CC,#0a8a91,transparent);}
+  .bar-left{position:absolute;top:0;left:0;width:8px;height:100%;background:linear-gradient(180deg,#16C3CC 0%,#0a8a91 40%,transparent 100%);}
+  .glow{position:absolute;border-radius:50%;pointer-events:none;}
+  .brand{position:absolute;top:64px;left:50%;transform:translateX(-50%);font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:700;color:#16C3CC;letter-spacing:3px;text-transform:lowercase;opacity:.9;white-space:nowrap;}
+  .footer{position:absolute;bottom:60px;left:0;right:0;text-align:center;font-size:24px;color:rgba(255,255,255,0.3);}
+  .accent{color:#16C3CC;}
+  .tag{display:inline-block;background:rgba(22,195,204,0.15);border:1px solid rgba(22,195,204,0.4);color:#16C3CC;font-size:22px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:10px 28px;border-radius:6px;font-family:'Barlow Condensed',sans-serif;margin-bottom:36px;}
+  h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;color:#fff;font-size:120px;line-height:0.95;text-transform:uppercase;}
+  .divider{width:80px;height:4px;background:#16C3CC;margin:40px auto;border-radius:2px;}
+  .mystery-box{
+    width:860px;
+    background:rgba(22,195,204,0.05);
+    border:2px solid rgba(22,195,204,0.2);
+    border-radius:24px;padding:48px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .mystery-box::before{
+    content:'';position:absolute;inset:0;
+    background:repeating-linear-gradient(
+      45deg,
+      transparent,transparent 20px,
+      rgba(22,195,204,0.03) 20px,rgba(22,195,204,0.03) 40px
+    );
+  }
+  .countdown-row{display:flex;justify-content:center;gap:20px;margin-top:40px;}
+  .countdown-item{
+    background:rgba(255,255,255,0.05);border:1px solid rgba(22,195,204,0.3);
+    border-radius:16px;padding:24px 28px;min-width:140px;text-align:center;
+  }
+  .countdown-num{font-family:'Barlow Condensed',sans-serif;font-size:72px;font-weight:900;color:#16C3CC;line-height:1;}
+  .countdown-label{color:rgba(255,255,255,0.4);font-size:18px;margin-top:4px;text-transform:uppercase;letter-spacing:1px;font-family:'Barlow Condensed',sans-serif;}
+  .hint-item{
+    display:flex;align-items:center;gap:16px;
+    padding:20px 28px;
+    background:rgba(255,255,255,0.03);
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,0.07);
+  }
+  .hint-icon{font-size:28px;flex-shrink:0;}
+  .hint-text{color:rgba(255,255,255,0.5);font-size:22px;font-style:italic;}
+</style>
+</head>
+<body>
+
+<div class="story">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+
+  <!-- Glows múltiplos para efeito misterioso -->
+  <div class="glow" style="width:1000px;height:1000px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(22,195,204,0.14) 0%,transparent 65%);"></div>
+  <div class="glow" style="width:600px;height:600px;top:-100px;left:-100px;background:radial-gradient(circle,rgba(22,195,204,0.08) 0%,transparent 70%);"></div>
+  <div class="glow" style="width:600px;height:600px;bottom:-100px;right:-100px;background:radial-gradient(circle,rgba(22,195,204,0.08) 0%,transparent 70%);"></div>
+
+  <!-- Linhas decorativas de fundo -->
+  <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:2px;height:100%;background:linear-gradient(180deg,transparent 0%,rgba(22,195,204,0.08) 30%,rgba(22,195,204,0.08) 70%,transparent 100%);"></div>
+
+  <div class="brand">smartguest</div>
+
+  <div style="position:relative;z-index:2;text-align:center;width:860px;">
+
+    <!-- Teaser visual -->
+    <div style="font-size:120px;line-height:1;margin-bottom:12px;">👀</div>
+    <div class="tag">Semana que vem</div>
+
+    <h1><span class="accent">Nova</span><br>funcio<br>nali<br>dade</h1>
+
+    <div class="divider"></div>
+
+    <p style="color:rgba(255,255,255,0.55);font-size:30px;line-height:1.5;margin-bottom:40px;">Algo que <strong style="color:#fff;">vai mudar</strong><br>como você gerencia<br>sua pousada.</p>
+
+    <!-- Countdown visual -->
+    <div class="countdown-row">
+      <div class="countdown-item">
+        <div class="countdown-num">7</div>
+        <div class="countdown-label">dias</div>
+      </div>
+      <div class="countdown-item">
+        <div class="countdown-num">0</div>
+        <div class="countdown-label">horas</div>
+      </div>
+      <div class="countdown-item">
+        <div class="countdown-num">0</div>
+        <div class="countdown-label">min</div>
+      </div>
+    </div>
+
+    <!-- Pistas misteriosas -->
+    <div style="display:flex;flex-direction:column;gap:14px;margin-top:48px;">
+      <div class="hint-item">
+        <span class="hint-icon">🔒</span>
+        <span class="hint-text">"vai economizar horas por semana…"</span>
+      </div>
+      <div class="hint-item">
+        <span class="hint-icon">🔒</span>
+        <span class="hint-text">"nenhum sistema de pousada tem isso…"</span>
+      </div>
+      <div class="hint-item">
+        <span class="hint-icon">🔒</span>
+        <span class="hint-text">"você pediu, a gente construiu…"</span>
+      </div>
+    </div>
+
+    <p style="color:rgba(22,195,204,0.6);font-size:24px;margin-top:40px;letter-spacing:1px;">Ative as notificações para ser o primeiro a saber</p>
+  </div>
+
+  <div class="footer">@smartguest.app | smartguest.app</div>
+</div>
+
+</body>
+</html>

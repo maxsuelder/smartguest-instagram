@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartGuest — Story Dica Check-in</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#111;display:flex;align-items:flex-start;justify-content:center;padding:24px;font-family:'Inter',sans-serif;}
+  .story{
+    width:1080px;height:1920px;background:#060E12;position:relative;overflow:hidden;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+  }
+  .bar-top{position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#16C3CC,#0a8a91,transparent);}
+  .bar-left{position:absolute;top:0;left:0;width:8px;height:100%;background:linear-gradient(180deg,#16C3CC 0%,#0a8a91 40%,transparent 100%);}
+  .glow{position:absolute;border-radius:50%;pointer-events:none;}
+  .brand{position:absolute;top:64px;left:50%;transform:translateX(-50%);font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:700;color:#16C3CC;letter-spacing:3px;text-transform:lowercase;opacity:.9;white-space:nowrap;}
+  .footer{position:absolute;bottom:60px;left:0;right:0;text-align:center;font-size:24px;color:rgba(255,255,255,0.3);}
+  .accent{color:#16C3CC;}
+  .tag{display:inline-block;background:rgba(22,195,204,0.15);border:1px solid rgba(22,195,204,0.4);color:#16C3CC;font-size:22px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:10px 28px;border-radius:6px;font-family:'Barlow Condensed',sans-serif;}
+  h2{font-family:'Barlow Condensed',sans-serif;font-weight:900;color:#fff;font-size:84px;line-height:1.0;text-transform:uppercase;}
+  .divider{width:80px;height:4px;background:#16C3CC;margin:36px auto;border-radius:2px;}
+  .step{display:flex;gap:24px;align-items:flex-start;padding:24px 28px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:16px;}
+  .step-num{width:48px;height:48px;border-radius:50%;background:#16C3CC;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;color:#060E12;flex-shrink:0;margin-top:2px;}
+  .step-text{color:rgba(255,255,255,0.85);font-size:26px;line-height:1.4;}
+  .highlight-stat{background:rgba(22,195,204,0.1);border:1px solid rgba(22,195,204,0.3);border-radius:16px;padding:36px 40px;text-align:center;margin-top:16px;}
+</style>
+</head>
+<body>
+
+<div class="story">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="width:900px;height:900px;top:-150px;right:-150px;background:radial-gradient(circle,rgba(22,195,204,0.14) 0%,transparent 70%);"></div>
+  <div class="glow" style="width:600px;height:600px;bottom:-80px;left:-80px;background:radial-gradient(circle,rgba(22,195,204,0.08) 0%,transparent 70%);"></div>
+  <div class="brand">smartguest</div>
+
+  <div style="width:860px;position:relative;z-index:2;text-align:center;">
+    <div class="tag">Dica SmartGuest</div>
+    <div style="font-size:96px;line-height:1;margin:28px 0 20px;">⚡</div>
+    <h2>Check-in<br><span class="accent">automático:</span><br>seu hóspede<br>não precisa<br>esperar</h2>
+    <div class="divider"></div>
+    <p style="color:rgba(255,255,255,0.55);font-size:28px;line-height:1.5;margin-bottom:48px;">Como funciona o check-in digital na prática:</p>
+
+    <div style="display:flex;flex-direction:column;gap:16px;text-align:left;">
+      <div class="step">
+        <div class="step-num">1</div>
+        <span class="step-text">Hóspede recebe link de pré check-in 24h antes</span>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <span class="step-text">Preenche dados e assina termos no celular</span>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <span class="step-text">Chega na pousada e entra direto no quarto</span>
+      </div>
+    </div>
+
+    <div class="highlight-stat">
+      <p style="font-family:'Barlow Condensed',sans-serif;font-size:96px;font-weight:900;color:#16C3CC;line-height:1;">3x</p>
+      <p style="color:rgba(255,255,255,0.7);font-size:26px;margin-top:8px;">mais satisfação no<br>primeiro contato com a pousada</p>
+    </div>
+  </div>
+
+  <div class="footer">@smartguest.app | smartguest.app</div>
+</div>
+
+</body>
+</html>

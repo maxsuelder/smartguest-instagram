@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartGuest — WhatsApp Dinheiro</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#111;display:flex;flex-wrap:wrap;gap:16px;padding:24px;font-family:'Inter',sans-serif}
+  .slide{
+    width:1080px;height:1080px;background:#060E12;position:relative;overflow:hidden;
+    flex-shrink:0;display:flex;flex-direction:column;justify-content:center;
+  }
+  /* Glow radial */
+  .glow{
+    position:absolute;width:700px;height:700px;border-radius:50%;
+    background:radial-gradient(circle,rgba(22,195,204,0.13) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  /* Barra top */
+  .bar-top{
+    position:absolute;top:0;left:0;right:0;height:4px;
+    background:linear-gradient(90deg,#16C3CC,#0a8a91,transparent);
+  }
+  /* Barra esquerda */
+  .bar-left{
+    position:absolute;top:0;left:0;width:6px;height:100%;
+    background:linear-gradient(180deg,#16C3CC 0%,#0a8a91 50%,transparent 100%);
+  }
+  /* Brand */
+  .brand{
+    position:absolute;top:40px;right:48px;
+    font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;
+    color:#16C3CC;letter-spacing:2px;text-transform:lowercase;opacity:.9;
+  }
+  /* Rodapé */
+  .footer{
+    position:absolute;bottom:36px;left:60px;right:60px;
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:18px;color:rgba(255,255,255,0.35);font-family:'Inter',sans-serif;
+  }
+  /* Número do slide */
+  .slide-num{
+    position:absolute;bottom:36px;right:60px;
+    font-family:'Barlow Condensed',sans-serif;font-size:20px;
+    color:rgba(22,195,204,0.5);letter-spacing:1px;
+  }
+  /* Conteúdo central */
+  .content{padding:80px 60px 80px 80px;position:relative;z-index:2;}
+  .tag{
+    display:inline-block;background:rgba(22,195,204,0.15);border:1px solid rgba(22,195,204,0.4);
+    color:#16C3CC;font-size:16px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+    padding:8px 20px;border-radius:4px;margin-bottom:32px;
+    font-family:'Barlow Condensed',sans-serif;
+  }
+  h1{
+    font-family:'Barlow Condensed',sans-serif;font-weight:900;
+    color:#fff;line-height:1.0;text-transform:uppercase;
+  }
+  h2{
+    font-family:'Barlow Condensed',sans-serif;font-weight:800;
+    color:#fff;line-height:1.05;text-transform:uppercase;
+  }
+  p.body{color:rgba(255,255,255,0.7);font-size:22px;line-height:1.6;margin-top:24px;}
+  .accent{color:#16C3CC;}
+  .highlight-box{
+    background:rgba(22,195,204,0.08);border:1px solid rgba(22,195,204,0.25);
+    border-radius:12px;padding:28px 32px;margin-top:32px;
+  }
+  .big-number{
+    font-family:'Barlow Condensed',sans-serif;font-weight:900;
+    color:#16C3CC;font-size:140px;line-height:1;letter-spacing:-2px;
+  }
+  .icon-row{display:flex;gap:24px;margin-top:32px;flex-wrap:wrap;}
+  .icon-item{
+    display:flex;align-items:center;gap:12px;
+    background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);
+    border-radius:10px;padding:16px 24px;
+  }
+  .icon-dot{
+    width:10px;height:10px;border-radius:50%;background:#16C3CC;flex-shrink:0;
+  }
+  .icon-text{color:rgba(255,255,255,0.8);font-size:19px;}
+  .divider{width:60px;height:3px;background:#16C3CC;margin:24px 0;border-radius:2px;}
+  .cta-btn{
+    display:inline-block;background:#16C3CC;color:#060E12;
+    font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;
+    letter-spacing:1px;text-transform:uppercase;padding:18px 48px;
+    border-radius:6px;margin-top:40px;text-decoration:none;
+  }
+  .arrow-hint{
+    position:absolute;bottom:80px;right:60px;
+    font-family:'Barlow Condensed',sans-serif;font-size:22px;
+    color:rgba(22,195,204,0.6);letter-spacing:2px;
+    display:flex;align-items:center;gap:8px;
+  }
+  /* S1 capa específico */
+  .s1-emoji{font-size:100px;line-height:1;margin-bottom:24px;}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — CAPA -->
+<div class="slide" id="s1">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:-100px;left:200px;"></div>
+  <div class="glow" style="bottom:-200px;right:-100px;width:500px;height:500px;opacity:.6;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content" style="padding-top:100px;">
+    <div class="tag">Atenção, hoteleiro</div>
+    <h1 style="font-size:112px;margin-top:8px;">
+      O <span class="accent">WhatsApp</span><br>
+      está te fazendo<br>
+      <span style="color:rgba(255,255,255,0.4);font-size:80px;">perder</span><br>
+      <span class="accent">dinheiro</span>
+    </h1>
+    <div class="divider"></div>
+    <p class="body">4 erros invisíveis que custam reservas todo dia</p>
+  </div>
+  <div class="arrow-hint">Arraste →</div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">01 / 06</div>
+</div>
+
+<!-- SLIDE 2 — Lentidão nas respostas -->
+<div class="slide" id="s2">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:100px;right:0;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag">Erro #1</div>
+    <h2 style="font-size:80px;">Você responde<br><span class="accent">4 horas</span><br>depois</h2>
+    <div class="divider"></div>
+    <p class="body">Em média, pousadas demoram <strong style="color:#fff;">4 horas</strong> para responder uma consulta de reserva pelo WhatsApp.</p>
+    <div class="highlight-box" style="margin-top:36px;">
+      <p style="color:rgba(255,255,255,0.6);font-size:18px;margin-bottom:8px;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;text-transform:uppercase;">Resultado</p>
+      <p style="color:#fff;font-size:22px;line-height:1.5;">O hóspede já reservou em outro lugar. <span class="accent">Em menos de 15 minutos.</span></p>
+    </div>
+    <div class="big-number" style="margin-top:32px;font-size:100px;">4h</div>
+    <p style="color:rgba(255,255,255,0.3);font-size:16px;margin-top:4px;">= reserva perdida</p>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">02 / 06</div>
+</div>
+
+<!-- SLIDE 3 — Sem histórico -->
+<div class="slide" id="s3">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="bottom:0;left:100px;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag">Erro #2</div>
+    <h2 style="font-size:80px;">Sem histórico<br><span class="accent">organizado</span></h2>
+    <div class="divider"></div>
+    <p class="body">Conversas no WhatsApp se misturam, se perdem, se confundem. Nenhuma visibilidade de:</p>
+    <div class="icon-row" style="flex-direction:column;gap:16px;margin-top:28px;">
+      <div class="icon-item">
+        <div class="icon-dot"></div>
+        <span class="icon-text">Quem confirmou vs quem só perguntou</span>
+      </div>
+      <div class="icon-item">
+        <div class="icon-dot"></div>
+        <span class="icon-text">Datas em conflito com outras reservas</span>
+      </div>
+      <div class="icon-item">
+        <div class="icon-dot"></div>
+        <span class="icon-text">Valor cobrado e forma de pagamento</span>
+      </div>
+      <div class="icon-item">
+        <div class="icon-dot"></div>
+        <span class="icon-text">Preferências do hóspede para próxima visita</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">03 / 06</div>
+</div>
+
+<!-- SLIDE 4 — Sem confirmação automática -->
+<div class="slide" id="s4">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:0;right:50px;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag">Erro #3</div>
+    <h2 style="font-size:75px;">Sem confirmação<br><span class="accent">automática</span></h2>
+    <div class="divider"></div>
+    <p class="body">Sem um sistema, você depende de <strong style="color:#fff;">lembrar manualmente</strong> de enviar cada confirmação, lembrete de check-in e pré-chegada.</p>
+    <div class="highlight-box" style="margin-top:36px;display:flex;gap:40px;align-items:center;">
+      <div style="text-align:center;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:64px;font-weight:900;color:rgba(255,255,255,0.15);">Manual</div>
+        <div style="color:rgba(255,255,255,0.4);font-size:16px;">lento, esquece, estressante</div>
+      </div>
+      <div style="font-size:36px;color:#16C3CC;font-weight:900;">→</div>
+      <div style="text-align:center;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:64px;font-weight:900;color:#16C3CC;">Auto</div>
+        <div style="color:rgba(22,195,204,0.7);font-size:16px;">instantâneo, sempre certo</div>
+      </div>
+    </div>
+    <p style="color:rgba(255,255,255,0.5);font-size:19px;margin-top:32px;">Hóspede sem confirmação = ansiedade = cancelamento.</p>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">04 / 06</div>
+</div>
+
+<!-- SLIDE 5 — Overbooking -->
+<div class="slide" id="s5">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="bottom:0;right:0;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag">Erro #4</div>
+    <h2 style="font-size:80px;"><span class="accent">Overbooking</span><br>por falta de<br>controle</h2>
+    <div class="divider"></div>
+    <p class="body">WhatsApp não bloqueia datas. Dois hóspedes no mesmo quarto é a pior situação possível — e acontece mais do que parece.</p>
+    <div class="highlight-box" style="margin-top:36px;border-color:rgba(255,80,80,0.3);background:rgba(255,80,80,0.06);">
+      <p style="color:rgba(255,255,255,0.9);font-size:22px;line-height:1.5;">Overbooking = <span style="color:#ff6b6b;">avaliação 1 estrela</span> + reembolso + reputação destruída</p>
+    </div>
+    <p style="color:rgba(255,255,255,0.5);font-size:19px;margin-top:32px;">Um PMS centraliza tudo. Cada reserva bloqueia automaticamente.</p>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">05 / 06</div>
+</div>
+
+<!-- SLIDE 6 — CTA -->
+<div class="slide" id="s6">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content" style="text-align:center;padding:80px 80px;">
+    <div class="tag" style="display:block;text-align:center;margin:0 auto 32px;">Chega de perder reservas</div>
+    <h2 style="font-size:88px;">Automatize sua<br>gestão com o<br><span class="accent">SmartGuest</span></h2>
+    <div class="divider" style="margin:28px auto;"></div>
+    <p class="body" style="font-size:20px;max-width:700px;margin:0 auto;">Confirmações automáticas, histórico centralizado, sem overbooking. Tudo numa plataforma feita para pousadas.</p>
+    <div style="margin-top:48px;">
+      <div style="display:inline-block;background:#16C3CC;color:#060E12;font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:900;letter-spacing:1px;text-transform:uppercase;padding:20px 64px;border-radius:6px;">
+        smartguest.app
+      </div>
+    </div>
+    <p style="color:rgba(255,255,255,0.3);font-size:17px;margin-top:20px;">Acesse e comece grátis hoje</p>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">06 / 06</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartGuest — Comissão OTA</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#111;display:flex;flex-wrap:wrap;gap:16px;padding:24px;font-family:'Inter',sans-serif}
+  .slide{width:1080px;height:1080px;background:#060E12;position:relative;overflow:hidden;flex-shrink:0;display:flex;flex-direction:column;justify-content:center;}
+  .glow{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(22,195,204,0.13) 0%,transparent 70%);pointer-events:none;}
+  .bar-top{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#16C3CC,#0a8a91,transparent);}
+  .bar-left{position:absolute;top:0;left:0;width:6px;height:100%;background:linear-gradient(180deg,#16C3CC 0%,#0a8a91 50%,transparent 100%);}
+  .brand{position:absolute;top:40px;right:48px;font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;color:#16C3CC;letter-spacing:2px;text-transform:lowercase;opacity:.9;}
+  .footer{position:absolute;bottom:36px;left:60px;right:60px;display:flex;justify-content:space-between;align-items:center;font-size:18px;color:rgba(255,255,255,0.35);}
+  .slide-num{position:absolute;bottom:36px;right:60px;font-family:'Barlow Condensed',sans-serif;font-size:20px;color:rgba(22,195,204,0.5);letter-spacing:1px;}
+  .content{padding:80px 60px 80px 80px;position:relative;z-index:2;}
+  .tag{display:inline-block;background:rgba(22,195,204,0.15);border:1px solid rgba(22,195,204,0.4);color:#16C3CC;font-size:16px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:8px 20px;border-radius:4px;margin-bottom:32px;font-family:'Barlow Condensed',sans-serif;}
+  h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;color:#fff;line-height:1.0;text-transform:uppercase;}
+  h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;color:#fff;line-height:1.05;text-transform:uppercase;}
+  p.body{color:rgba(255,255,255,0.7);font-size:22px;line-height:1.6;margin-top:24px;}
+  .accent{color:#16C3CC;}
+  .highlight-box{background:rgba(22,195,204,0.08);border:1px solid rgba(22,195,204,0.25);border-radius:12px;padding:28px 32px;margin-top:32px;}
+  .danger{color:#ff6b6b;}
+  .divider{width:60px;height:3px;background:#16C3CC;margin:24px 0;border-radius:2px;}
+  .money-label{font-family:'Barlow Condensed',sans-serif;font-weight:900;line-height:1;}
+  .arrow-hint{position:absolute;bottom:80px;right:60px;font-family:'Barlow Condensed',sans-serif;font-size:22px;color:rgba(22,195,204,0.6);letter-spacing:2px;}
+  .vs-row{display:flex;gap:24px;align-items:stretch;margin-top:32px;}
+  .vs-col{flex:1;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px;}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — CAPA impactante -->
+<div class="slide" id="s1">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:-50px;right:-50px;"></div>
+  <div class="glow" style="bottom:-100px;left:100px;width:400px;height:400px;background:radial-gradient(circle,rgba(255,107,107,0.1) 0%,transparent 70%);"></div>
+  <div class="brand">smartguest</div>
+  <div class="content" style="padding-top:72px;">
+    <div class="tag">Alerta financeiro</div>
+    <p style="color:rgba(255,255,255,0.4);font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-top:8px;">Você sabe quanto paga de</p>
+    <h1 style="font-size:100px;margin-top:0;">
+      comissão<br>
+      <span class="danger">por mês?</span>
+    </h1>
+    <div style="margin-top:24px;display:flex;align-items:baseline;gap:8px;">
+      <span class="money-label" style="font-size:120px;color:#ff6b6b;">R$</span>
+      <span class="money-label" style="font-size:160px;color:#ff6b6b;">1.500</span>
+    </div>
+    <p style="color:rgba(255,255,255,0.4);font-size:20px;margin-top:4px;">indo pro Booking. Todo mês. Sem parar.</p>
+  </div>
+  <div class="arrow-hint">Arraste →</div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">01 / 06</div>
+</div>
+
+<!-- SLIDE 2 — Simulação: 15% sobre R$10k -->
+<div class="slide" id="s2">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:0;right:0;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag">A conta do mês</div>
+    <h2 style="font-size:72px;">Simulação<br><span class="accent">real</span></h2>
+    <div class="divider"></div>
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:32px;margin-top:8px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.08);">
+        <span style="color:rgba(255,255,255,0.6);font-size:20px;">Faturamento mensal</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:700;color:#fff;">R$ 10.000</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+        <span style="color:rgba(255,255,255,0.6);font-size:20px;">Comissão Booking (15%)</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:700;color:#ff6b6b;">- R$ 1.500</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding-top:20px;">
+        <span style="color:rgba(255,255,255,0.9);font-size:20px;font-weight:600;">O que fica com você</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:42px;font-weight:900;color:#16C3CC;">R$ 8.500</span>
+      </div>
+    </div>
+    <p class="body" style="font-size:19px;margin-top:24px;">R$ 1.500 indo para o Booking. <strong style="color:#fff;">Por mês. Todo mês.</strong></p>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">02 / 06</div>
+</div>
+
+<!-- SLIDE 3 — 12 meses = R$18.000 -->
+<div class="slide" id="s3">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="bottom:0;left:0;background:radial-gradient(circle,rgba(255,107,107,0.1) 0%,transparent 70%);"></div>
+  <div class="brand">smartguest</div>
+  <div class="content" style="padding-top:72px;">
+    <div class="tag">A conta do ano</div>
+    <h2 style="font-size:72px;">Em <span class="accent">12 meses</span><br>você perde</h2>
+    <div style="margin-top:16px;display:flex;align-items:baseline;gap:4px;">
+      <span class="money-label" style="font-size:72px;color:#ff6b6b;">R$</span>
+      <span class="money-label" style="font-size:160px;color:#ff6b6b;">18.000</span>
+    </div>
+    <p style="color:rgba(255,107,107,0.6);font-size:20px;margin-top:4px;">só de comissão para o Booking</p>
+    <div class="divider" style="background:#ff6b6b;"></div>
+    <p class="body">Com esse dinheiro você poderia:</p>
+    <div style="display:flex;gap:16px;margin-top:20px;flex-wrap:wrap;">
+      <span style="background:rgba(22,195,204,0.12);border:1px solid rgba(22,195,204,0.3);color:#16C3CC;padding:10px 20px;border-radius:8px;font-size:18px;">Reformar quartos</span>
+      <span style="background:rgba(22,195,204,0.12);border:1px solid rgba(22,195,204,0.3);color:#16C3CC;padding:10px 20px;border-radius:8px;font-size:18px;">Contratar equipe</span>
+      <span style="background:rgba(22,195,204,0.12);border:1px solid rgba(22,195,204,0.3);color:#16C3CC;padding:10px 20px;border-radius:8px;font-size:18px;">Investir em marketing</span>
+      <span style="background:rgba(22,195,204,0.12);border:1px solid rgba(22,195,204,0.3);color:#16C3CC;padding:10px 20px;border-radius:8px;font-size:18px;">Guardar como lucro</span>
+    </div>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">03 / 06</div>
+</div>
+
+<!-- SLIDE 4 — Motor de reservas próprio -->
+<div class="slide" id="s4">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:50px;right:0;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag">A alternativa</div>
+    <h2 style="font-size:72px;">Motor de<br>reservas<br><span class="accent">próprio</span></h2>
+    <div class="divider"></div>
+    <p class="body">Com um motor de reservas no seu próprio site, hóspedes reservam diretamente com você — sem intermediários, sem comissão.</p>
+    <div class="vs-row">
+      <div class="vs-col" style="background:rgba(255,107,107,0.06);border:1px solid rgba(255,107,107,0.2);">
+        <p style="font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;color:rgba(255,107,107,0.8);letter-spacing:1px;text-transform:uppercase;">Booking</p>
+        <p style="color:#ff6b6b;font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:900;">-15%</p>
+        <p style="color:rgba(255,255,255,0.4);font-size:17px;">a cada reserva</p>
+      </div>
+      <div class="vs-col" style="background:rgba(22,195,204,0.06);border:1px solid rgba(22,195,204,0.3);">
+        <p style="font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;color:#16C3CC;letter-spacing:1px;text-transform:uppercase;">SmartGuest</p>
+        <p style="color:#16C3CC;font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:900;">0%</p>
+        <p style="color:rgba(22,195,204,0.6);font-size:17px;">comissão paga</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">04 / 06</div>
+</div>
+
+<!-- SLIDE 5 — Quanto você economizaria -->
+<div class="slide" id="s5">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="bottom:0;right:0;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content" style="padding-top:72px;">
+    <div class="tag">Sua economia</div>
+    <h2 style="font-size:72px;">Quanto você<br><span class="accent">economizaria</span></h2>
+    <div class="divider"></div>
+    <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:20px 28px;display:flex;justify-content:space-between;align-items:center;">
+        <span style="color:rgba(255,255,255,0.6);font-size:19px;">Se migrar 30% das reservas</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;color:#16C3CC;">R$ 450/mês</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:20px 28px;display:flex;justify-content:space-between;align-items:center;">
+        <span style="color:rgba(255,255,255,0.6);font-size:19px;">Se migrar 50% das reservas</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;color:#16C3CC;">R$ 750/mês</span>
+      </div>
+      <div style="background:rgba(22,195,204,0.08);border:1px solid rgba(22,195,204,0.3);border-radius:10px;padding:20px 28px;display:flex;justify-content:space-between;align-items:center;">
+        <span style="color:rgba(255,255,255,0.9);font-size:19px;font-weight:600;">Se migrar 100% das reservas</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:900;color:#16C3CC;">R$ 1.500/mês</span>
+      </div>
+    </div>
+    <p style="color:rgba(255,255,255,0.4);font-size:18px;margin-top:24px;">Baseado em faturamento de R$10k/mês a 15% de comissão.</p>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">05 / 06</div>
+</div>
+
+<!-- SLIDE 6 — CTA -->
+<div class="slide" id="s6">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content" style="text-align:center;padding:80px 80px;">
+    <div class="tag" style="display:block;text-align:center;margin:0 auto 32px;">Pare de pagar comissão</div>
+    <h2 style="font-size:80px;">Reservas diretas<br>com <span class="accent">SmartGuest</span></h2>
+    <div class="divider" style="margin:28px auto;"></div>
+    <p class="body" style="font-size:20px;max-width:720px;margin:0 auto;">Motor de reservas no seu site, sem comissão, com pagamento integrado. Comece a reter 100% de cada reserva.</p>
+    <div style="margin-top:48px;">
+      <div style="display:inline-block;background:#16C3CC;color:#060E12;font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:900;letter-spacing:1px;text-transform:uppercase;padding:20px 64px;border-radius:6px;">
+        smartguest.app
+      </div>
+    </div>
+    <p style="color:rgba(255,255,255,0.3);font-size:17px;margin-top:20px;">Motor de Reservas Diretas — Sem Comissão</p>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">06 / 06</div>
+</div>
+
+</body>
+</html>

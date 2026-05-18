@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartGuest — Avaliação Negativa</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#111;display:flex;flex-wrap:wrap;gap:16px;padding:24px;font-family:'Inter',sans-serif}
+  .slide{width:1080px;height:1080px;background:#060E12;position:relative;overflow:hidden;flex-shrink:0;display:flex;flex-direction:column;justify-content:center;}
+  .glow{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(22,195,204,0.13) 0%,transparent 70%);pointer-events:none;}
+  .bar-top{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#16C3CC,#0a8a91,transparent);}
+  .bar-left{position:absolute;top:0;left:0;width:6px;height:100%;background:linear-gradient(180deg,#16C3CC 0%,#0a8a91 50%,transparent 100%);}
+  .brand{position:absolute;top:40px;right:48px;font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;color:#16C3CC;letter-spacing:2px;text-transform:lowercase;opacity:.9;}
+  .footer{position:absolute;bottom:36px;left:60px;right:60px;display:flex;justify-content:space-between;align-items:center;font-size:18px;color:rgba(255,255,255,0.35);}
+  .slide-num{position:absolute;bottom:36px;right:60px;font-family:'Barlow Condensed',sans-serif;font-size:20px;color:rgba(22,195,204,0.5);letter-spacing:1px;}
+  .content{padding:80px 60px 80px 80px;position:relative;z-index:2;}
+  .tag{display:inline-block;background:rgba(22,195,204,0.15);border:1px solid rgba(22,195,204,0.4);color:#16C3CC;font-size:16px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:8px 20px;border-radius:4px;margin-bottom:32px;font-family:'Barlow Condensed',sans-serif;}
+  h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;color:#fff;line-height:1.0;text-transform:uppercase;}
+  h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;color:#fff;line-height:1.05;text-transform:uppercase;}
+  p.body{color:rgba(255,255,255,0.7);font-size:22px;line-height:1.6;margin-top:24px;}
+  .accent{color:#16C3CC;}
+  .highlight-box{background:rgba(22,195,204,0.08);border:1px solid rgba(22,195,204,0.25);border-radius:12px;padding:28px 32px;margin-top:32px;}
+  .icon-item{display:flex;align-items:flex-start;gap:12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:16px 24px;}
+  .icon-dot{width:10px;height:10px;border-radius:50%;background:#16C3CC;flex-shrink:0;margin-top:6px;}
+  .icon-text{color:rgba(255,255,255,0.8);font-size:19px;line-height:1.4;}
+  .divider{width:60px;height:3px;background:#16C3CC;margin:24px 0;border-radius:2px;}
+  .star{color:#f5a623;font-size:32px;line-height:1;}
+  .arrow-hint{position:absolute;bottom:80px;right:60px;font-family:'Barlow Condensed',sans-serif;font-size:22px;color:rgba(22,195,204,0.6);letter-spacing:2px;}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — CAPA -->
+<div class="slide" id="s1">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:-80px;right:0;"></div>
+  <div class="glow" style="bottom:-100px;left:100px;width:400px;height:400px;opacity:.7;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content" style="padding-top:80px;">
+    <div class="tag">Reputação online</div>
+    <div style="margin-top:16px;margin-bottom:20px;">
+      <span class="star">★</span>
+      <span style="color:rgba(245,166,35,0.3);font-size:32px;">★★★★</span>
+    </div>
+    <h1 style="font-size:86px;margin-top:0;">
+      Avaliação<br>
+      <span class="accent">negativa:</span><br>
+      como evitar<br>
+      <span style="color:rgba(255,255,255,0.35);font-size:64px;">e como responder</span>
+    </h1>
+    <div class="divider"></div>
+    <p class="body" style="font-size:19px;">80% das reclamações são evitáveis com processo</p>
+  </div>
+  <div class="arrow-hint">Arraste →</div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">01 / 06</div>
+</div>
+
+<!-- SLIDE 2 — 1 avaliação negativa afasta 10 -->
+<div class="slide" id="s2">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:0;right:0;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag">O impacto real</div>
+    <h2 style="font-size:76px;">1 estrela<br>afasta<br><span class="accent">10 hóspedes</span></h2>
+    <div class="divider"></div>
+    <div style="display:flex;align-items:flex-end;gap:8px;margin-top:16px;">
+      <span class="star" style="font-size:48px;">★</span>
+      <span style="color:rgba(245,166,35,0.2);font-size:48px;line-height:1;">★★★★</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:80px;font-weight:900;color:rgba(255,255,255,0.15);margin-left:16px;line-height:1.1;">= -10</span>
+    </div>
+    <p class="body">Pesquisas mostram que uma avaliação de 1 estrela no Booking afasta em média <strong style="color:#fff;">10 potenciais hóspedes</strong> que leram a reclamação.</p>
+    <div class="highlight-box" style="margin-top:28px;">
+      <p style="color:rgba(255,255,255,0.9);font-size:20px;line-height:1.5;">Uma pousada com 8,5 de nota converte <span class="accent">3x mais</span> do que uma com 7,8 — mesmo com preço idêntico.</p>
+    </div>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">02 / 06</div>
+</div>
+
+<!-- SLIDE 3 — Causas mais comuns -->
+<div class="slide" id="s3">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="bottom:50px;left:0;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag">Causas comuns</div>
+    <h2 style="font-size:76px;">O que gera<br>avaliação<br><span class="accent">negativa</span></h2>
+    <div class="divider"></div>
+    <div style="display:flex;flex-direction:column;gap:14px;margin-top:8px;">
+      <div class="icon-item">
+        <div class="icon-dot" style="background:#ff6b6b;"></div>
+        <span class="icon-text">Expectativa não atendida (fotos vs realidade)</span>
+      </div>
+      <div class="icon-item">
+        <div class="icon-dot" style="background:#ff6b6b;"></div>
+        <span class="icon-text">Lentidão ou falta de resposta da equipe</span>
+      </div>
+      <div class="icon-item">
+        <div class="icon-dot" style="background:#ff6b6b;"></div>
+        <span class="icon-text">Problemas não resolvidos durante a estadia</span>
+      </div>
+      <div class="icon-item">
+        <div class="icon-dot" style="background:#ff6b6b;"></div>
+        <span class="icon-text">Check-in/check-out desorganizado</span>
+      </div>
+    </div>
+    <p style="color:rgba(255,255,255,0.5);font-size:18px;margin-top:28px;">Todos evitáveis com processos claros e sistema adequado.</p>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">03 / 06</div>
+</div>
+
+<!-- SLIDE 4 — Como responder corretamente -->
+<div class="slide" id="s4">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:0;right:50px;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag">Como responder</div>
+    <h2 style="font-size:76px;">A resposta<br><span class="accent">certa</span> vale<br>mais que a nota</h2>
+    <div class="divider"></div>
+    <p class="body" style="font-size:20px;">Uma resposta bem feita mostra para futuros hóspedes que você se importa. Siga este padrão:</p>
+    <div style="display:flex;flex-direction:column;gap:12px;margin-top:24px;">
+      <div style="display:flex;gap:16px;align-items:flex-start;">
+        <div style="background:#16C3CC;color:#060E12;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div>
+        <p style="color:rgba(255,255,255,0.8);font-size:19px;padding-top:6px;">Agradeça pelo feedback, mesmo que difícil</p>
+      </div>
+      <div style="display:flex;gap:16px;align-items:flex-start;">
+        <div style="background:#16C3CC;color:#060E12;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div>
+        <p style="color:rgba(255,255,255,0.8);font-size:19px;padding-top:6px;">Reconheça o problema sem justificativas excessivas</p>
+      </div>
+      <div style="display:flex;gap:16px;align-items:flex-start;">
+        <div style="background:#16C3CC;color:#060E12;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div>
+        <p style="color:rgba(255,255,255,0.8);font-size:19px;padding-top:6px;">Explique o que foi melhorado ou será corrigido</p>
+      </div>
+      <div style="display:flex;gap:16px;align-items:flex-start;">
+        <div style="background:#16C3CC;color:#060E12;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div>
+        <p style="color:rgba(255,255,255,0.8);font-size:19px;padding-top:6px;">Convide para uma nova oportunidade</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">04 / 06</div>
+</div>
+
+<!-- SLIDE 5 — Como prevenir -->
+<div class="slide" id="s5">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="bottom:-80px;right:0;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag">Prevenção</div>
+    <h2 style="font-size:76px;">Como <span class="accent">prevenir</span><br>com um sistema</h2>
+    <div class="divider"></div>
+    <p class="body">Um PMS elimina as causas raiz das avaliações negativas:</p>
+    <div style="display:flex;flex-direction:column;gap:14px;margin-top:28px;">
+      <div class="icon-item" style="border-color:rgba(22,195,204,0.25);background:rgba(22,195,204,0.06);">
+        <div class="icon-dot"></div>
+        <span class="icon-text">Check-in digital elimina filas e confusão</span>
+      </div>
+      <div class="icon-item" style="border-color:rgba(22,195,204,0.25);background:rgba(22,195,204,0.06);">
+        <div class="icon-dot"></div>
+        <span class="icon-text">Pesquisa de satisfação pré-avaliação capta insatisfação antes</span>
+      </div>
+      <div class="icon-item" style="border-color:rgba(22,195,204,0.25);background:rgba(22,195,204,0.06);">
+        <div class="icon-dot"></div>
+        <span class="icon-text">Alertas de problemas para a equipe resolver na hora</span>
+      </div>
+      <div class="icon-item" style="border-color:rgba(22,195,204,0.25);background:rgba(22,195,204,0.06);">
+        <div class="icon-dot"></div>
+        <span class="icon-text">Histórico do hóspede para personalizar e surpreender</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">05 / 06</div>
+</div>
+
+<!-- SLIDE 6 — CTA -->
+<div class="slide" id="s6">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content" style="text-align:center;padding:80px 80px;">
+    <div style="margin-bottom:24px;">
+      <span class="star" style="font-size:48px;">★★★★★</span>
+    </div>
+    <div class="tag" style="display:block;text-align:center;margin:0 auto 32px;">Proteja sua reputação</div>
+    <h2 style="font-size:84px;">Menos reclamações<br>com <span class="accent">SmartGuest</span></h2>
+    <div class="divider" style="margin:28px auto;"></div>
+    <p class="body" style="font-size:20px;max-width:720px;margin:0 auto;">Pesquisa de satisfação automática, comunicação personalizada e gestão de experiência do hóspede em um só lugar.</p>
+    <div style="margin-top:48px;">
+      <div style="display:inline-block;background:#16C3CC;color:#060E12;font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:900;letter-spacing:1px;text-transform:uppercase;padding:20px 64px;border-radius:6px;">
+        smartguest.app
+      </div>
+    </div>
+    <p style="color:rgba(255,255,255,0.3);font-size:17px;margin-top:20px;">Sua nota no Booking importa. Cuide dela.</p>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">06 / 06</div>
+</div>
+
+</body>
+</html>

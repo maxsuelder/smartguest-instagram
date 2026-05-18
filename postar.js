@@ -10,7 +10,7 @@ const path  = require('path');
 const axios = require('axios');
 const FormData = require('form-data');
 
-const TOKEN   = process.env.INSTAGRAM_TOKEN;
+let   TOKEN   = process.env.INSTAGRAM_TOKEN;
 const USER_ID = process.env.INSTAGRAM_USER_ID;
 const BASE    = 'https://graph.instagram.com/v21.0';
 
@@ -28,6 +28,38 @@ if (!POST_ID) {
 // ── Pasta de saída temporária ─────────────────────────
 const OUTPUT = path.join(__dirname, 'tmp_output');
 if (!fs.existsSync(OUTPUT)) fs.mkdirSync(OUTPUT, { recursive: true });
+
+// ── Retry com backoff exponencial ────────────────────
+async function comRetry(fn, tentativas = 3, label = '') {
+  for (let i = 1; i <= tentativas; i++) {
+    try {
+      return await fn();
+    } catch (err) {
+      const msg = err.response?.data?.error?.message || err.message;
+      const code = err.response?.data?.error?.code;
+      console.warn(`  ⚠️  ${label} — tentativa ${i}/${tentativas}: ${msg}`);
+      if (i === tentativas) throw err;
+      // Não retentar erros de autenticação
+      if (code === 190 || code === 200) throw err;
+      await new Promise(r => setTimeout(r, 2000 * i));
+    }
+  }
+}
+
+// ── Auto-renovação do token ───────────────────────────
+async function renovarToken() {
+  try {
+    const res = await axios.get(`${BASE}/refresh_access_token`, {
+      params: { grant_type: 'ig_refresh_token', access_token: TOKEN }
+    });
+    if (res.data.access_token && res.data.access_token !== TOKEN) {
+      TOKEN = res.data.access_token;
+      console.log(`  🔄 Token renovado (válido por ${Math.round(res.data.expires_in/86400)} dias)`);
+    }
+  } catch (e) {
+    console.warn(`  ⚠️  Não foi possível renovar token: ${e.message}`);
+  }
+}
 
 // ── Exportar PNG de um slide ──────────────────────────
 async function exportarSlide(browser, htmlFile, slideId, outFile, w, h) {
@@ -94,41 +126,53 @@ async function hospedar(filePath) {
 
 // ── Criar container Instagram ─────────────────────────
 async function criarContainer(imageUrl, tipo, legenda) {
-  const params = { image_url: imageUrl, media_type: tipo, access_token: TOKEN };
-  if (legenda) params.caption = legenda;
-  const res = await axios.post(`${BASE}/${USER_ID}/media`, null, { params });
-  return res.data.id;
+  return comRetry(async () => {
+    const params = { image_url: imageUrl, media_type: tipo, access_token: TOKEN };
+    if (legenda) params.caption = legenda;
+    const res = await axios.post(`${BASE}/${USER_ID}/media`, null, { params });
+    return res.data.id;
+  }, 3, 'criarContainer');
 }
 
 // ── Criar container carousel ──────────────────────────
 async function criarCarousel(imageUrls, legenda) {
   const children = [];
   for (const url of imageUrls) {
-    const res = await axios.post(`${BASE}/${USER_ID}/media`, null, {
-      params: { image_url: url, media_type: 'IMAGE', is_carousel_item: true, access_token: TOKEN }
-    });
-    children.push(res.data.id);
+    const id = await comRetry(async () => {
+      const res = await axios.post(`${BASE}/${USER_ID}/media`, null, {
+        params: { image_url: url, media_type: 'IMAGE', is_carousel_item: true, access_token: TOKEN }
+      });
+      return res.data.id;
+    }, 3, 'criarItemCarousel');
+    children.push(id);
     await new Promise(r => setTimeout(r, 1500));
   }
-  const params = { media_type: 'CAROUSEL', children: children.join(','), access_token: TOKEN };
-  if (legenda) params.caption = legenda;
-  const res = await axios.post(`${BASE}/${USER_ID}/media`, null, { params });
-  return res.data.id;
+  return comRetry(async () => {
+    const params = { media_type: 'CAROUSEL', children: children.join(','), access_token: TOKEN };
+    if (legenda) params.caption = legenda;
+    const res = await axios.post(`${BASE}/${USER_ID}/media`, null, { params });
+    return res.data.id;
+  }, 3, 'criarContainerCarousel');
 }
 
 // ── Publicar ──────────────────────────────────────────
 async function publicar(containerId) {
   await new Promise(r => setTimeout(r, 5000));
-  const res = await axios.post(`${BASE}/${USER_ID}/media_publish`, null, {
-    params: { creation_id: containerId, access_token: TOKEN }
-  });
-  return res.data.id;
+  return comRetry(async () => {
+    const res = await axios.post(`${BASE}/${USER_ID}/media_publish`, null, {
+      params: { creation_id: containerId, access_token: TOKEN }
+    });
+    return res.data.id;
+  }, 3, 'publicar');
 }
 
 // ── Principal ─────────────────────────────────────────
 (async () => {
   // Busca semana com agenda.json
-  const semanas = ['semana1', 'semana2', 'semana3', 'semana4', 'semana-ia'];
+  // Renovar token antes de publicar
+  await renovarToken();
+
+  const semanas = ['semana1', 'semana2', 'semana3', 'semana4', 'semana5', 'semana6', 'semana-ia'];
   let post = null;
   let semanaDir = null;
 

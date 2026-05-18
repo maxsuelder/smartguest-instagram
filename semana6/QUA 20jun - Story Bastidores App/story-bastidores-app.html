@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartGuest — Story: Bastidores do App</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#111;display:flex;justify-content:center;padding:24px;font-family:'Inter',sans-serif}
+  .story{
+    width:1080px;height:1920px;background:#060E12;position:relative;overflow:hidden;
+    flex-shrink:0;display:flex;flex-direction:column;
+  }
+  .glow{
+    position:absolute;border-radius:50%;
+    background:radial-gradient(circle,rgba(22,195,204,0.15) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .bar-top{
+    position:absolute;top:0;left:0;right:0;height:4px;
+    background:linear-gradient(90deg,#16C3CC,#0a8a91,transparent);
+  }
+  .bar-left{
+    position:absolute;top:0;left:0;width:6px;height:100%;
+    background:linear-gradient(180deg,#16C3CC 0%,#0a8a91 50%,transparent 100%);
+  }
+  .brand{
+    position:absolute;top:56px;left:48px;
+    font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:700;
+    color:#16C3CC;letter-spacing:3px;text-transform:lowercase;opacity:.9;
+  }
+  .footer{
+    position:absolute;bottom:60px;left:0;right:0;
+    text-align:center;
+    font-size:22px;color:rgba(255,255,255,0.35);font-family:'Inter',sans-serif;
+  }
+  .accent{color:#16C3CC;}
+  .tag{
+    display:inline-block;background:rgba(22,195,204,0.15);border:1px solid rgba(22,195,204,0.4);
+    color:#16C3CC;font-size:20px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+    padding:10px 28px;border-radius:4px;
+    font-family:'Barlow Condensed',sans-serif;
+  }
+  h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;color:#fff;line-height:.95;text-transform:uppercase;}
+  .feature-card{
+    background:rgba(22,195,204,0.06);border:1px solid rgba(22,195,204,0.2);
+    border-radius:16px;padding:28px 32px;
+    display:flex;align-items:flex-start;gap:24px;
+  }
+  .fc-icon{font-size:40px;flex-shrink:0;margin-top:2px;}
+  .fc-title{color:#fff;font-size:28px;font-weight:600;margin-bottom:6px;line-height:1.2;}
+  .fc-sub{color:rgba(255,255,255,0.5);font-size:22px;line-height:1.4;}
+  .fc-badge{
+    display:inline-block;background:rgba(22,195,204,0.15);
+    color:#16C3CC;font-size:17px;font-weight:600;
+    padding:4px 14px;border-radius:20px;margin-top:10px;
+    font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;text-transform:uppercase;
+  }
+  /* Mock screen */
+  .mock-screen{
+    background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);
+    border-radius:20px;padding:28px 32px;position:relative;overflow:hidden;
+  }
+  .mock-header{
+    display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;
+  }
+  .mock-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:2px;}
+  .mock-dot{width:8px;height:8px;border-radius:50%;background:#16C3CC;}
+  .mock-bar{height:12px;border-radius:6px;background:rgba(22,195,204,0.15);margin-bottom:10px;}
+  .mock-bar-fill{height:12px;border-radius:6px;background:linear-gradient(90deg,#16C3CC,#0a8a91);}
+  .mock-label{color:rgba(255,255,255,0.3);font-size:16px;margin-bottom:4px;}
+</style>
+</head>
+<body>
+<div class="story" id="body">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="width:800px;height:800px;top:-200px;left:50%;transform:translateX(-50%);"></div>
+  <div class="glow" style="width:600px;height:600px;bottom:-100px;right:-150px;opacity:.5;"></div>
+  <div class="brand">smartguest</div>
+
+  <!-- HEADER -->
+  <div style="padding:160px 64px 0;position:relative;z-index:2;">
+    <div class="tag">Bastidores</div>
+    <h1 style="font-size:100px;margin-top:24px;">
+      Por dentro do<br>
+      <span class="accent">Smart<br>Guest</span> 👀
+    </h1>
+    <p style="color:rgba(255,255,255,0.5);font-size:28px;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;text-transform:uppercase;margin-top:12px;">O que acontece no app</p>
+  </div>
+
+  <!-- MOCK DASHBOARD -->
+  <div style="padding:48px 64px 0;position:relative;z-index:2;">
+    <div class="mock-screen">
+      <div class="mock-header">
+        <div class="mock-title">Dashboard — hoje</div>
+        <div style="display:flex;gap:8px;"><div class="mock-dot"></div><div class="mock-dot" style="opacity:.4;"></div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:24px;">
+        <div style="text-align:center;background:rgba(22,195,204,0.08);border-radius:10px;padding:16px;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:44px;font-weight:900;color:#16C3CC;line-height:1;">87%</div>
+          <div style="color:rgba(255,255,255,0.4);font-size:15px;margin-top:4px;">Ocupação</div>
+        </div>
+        <div style="text-align:center;background:rgba(22,195,204,0.08);border-radius:10px;padding:16px;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:44px;font-weight:900;color:#16C3CC;line-height:1;">12</div>
+          <div style="color:rgba(255,255,255,0.4);font-size:15px;margin-top:4px;">Reservas</div>
+        </div>
+        <div style="text-align:center;background:rgba(22,195,204,0.08);border-radius:10px;padding:16px;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:44px;font-weight:900;color:#16C3CC;line-height:1;">4.8</div>
+          <div style="color:rgba(255,255,255,0.4);font-size:15px;margin-top:4px;">Avaliação</div>
+        </div>
+      </div>
+      <div class="mock-label">Receita esta semana</div>
+      <div class="mock-bar"><div class="mock-bar-fill" style="width:73%;"></div></div>
+      <div style="display:flex;justify-content:space-between;margin-top:4px;">
+        <span style="color:rgba(255,255,255,0.3);font-size:15px;">Meta: R$ 8.500</span>
+        <span style="color:#16C3CC;font-size:15px;font-weight:600;">R$ 6.200 (73%)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <div style="padding:32px 64px 0;position:relative;z-index:2;display:flex;flex-direction:column;gap:20px;">
+
+    <div class="feature-card">
+      <span class="fc-icon">📅</span>
+      <div>
+        <div class="fc-title">Calendário de reservas</div>
+        <div class="fc-sub">Visualize todos os quartos e datas num relance</div>
+        <div class="fc-badge">Tempo real</div>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <span class="fc-icon">⚡</span>
+      <div>
+        <div class="fc-title">Automações inteligentes</div>
+        <div class="fc-sub">Confirmações, lembretes e pós-estadia no piloto automático</div>
+        <div class="fc-badge">Zero esforço</div>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <span class="fc-icon">🔗</span>
+      <div>
+        <div class="fc-title">Motor de reservas</div>
+        <div class="fc-sub">Seu link direto — sem comissão para ninguém</div>
+        <div class="fc-badge">Sem OTA</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <div style="padding:36px 64px 0;position:relative;z-index:2;">
+    <div style="background:#16C3CC;border-radius:16px;padding:28px 40px;text-align:center;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:42px;font-weight:900;color:#060E12;letter-spacing:1px;">Experimente grátis</div>
+      <p style="color:rgba(6,14,18,0.7);font-size:22px;margin-top:6px;">smartguest.app</p>
+    </div>
+  </div>
+
+  <div class="footer">@smartguest.app | smartguest.app</div>
+</div>
+</body>
+</html>

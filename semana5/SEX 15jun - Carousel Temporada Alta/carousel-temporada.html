@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartGuest — Temporada Alta</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#111;display:flex;flex-wrap:wrap;gap:16px;padding:24px;font-family:'Inter',sans-serif}
+  .slide{width:1080px;height:1080px;background:#060E12;position:relative;overflow:hidden;flex-shrink:0;display:flex;flex-direction:column;justify-content:center;}
+  .glow{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(22,195,204,0.13) 0%,transparent 70%);pointer-events:none;}
+  .bar-top{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#16C3CC,#0a8a91,transparent);}
+  .bar-left{position:absolute;top:0;left:0;width:6px;height:100%;background:linear-gradient(180deg,#16C3CC 0%,#0a8a91 50%,transparent 100%);}
+  .brand{position:absolute;top:40px;right:48px;font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;color:#16C3CC;letter-spacing:2px;text-transform:lowercase;opacity:.9;}
+  .footer{position:absolute;bottom:36px;left:60px;right:60px;display:flex;justify-content:space-between;align-items:center;font-size:18px;color:rgba(255,255,255,0.35);}
+  .slide-num{position:absolute;bottom:36px;right:60px;font-family:'Barlow Condensed',sans-serif;font-size:20px;color:rgba(22,195,204,0.5);letter-spacing:1px;}
+  .content{padding:80px 60px 80px 80px;position:relative;z-index:2;}
+  .tag{display:inline-block;background:rgba(22,195,204,0.15);border:1px solid rgba(22,195,204,0.4);color:#16C3CC;font-size:16px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:8px 20px;border-radius:4px;margin-bottom:32px;font-family:'Barlow Condensed',sans-serif;}
+  h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;color:#fff;line-height:1.0;text-transform:uppercase;}
+  h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;color:#fff;line-height:1.05;text-transform:uppercase;}
+  p.body{color:rgba(255,255,255,0.7);font-size:22px;line-height:1.6;margin-top:24px;}
+  .accent{color:#16C3CC;}
+  .highlight-box{background:rgba(22,195,204,0.08);border:1px solid rgba(22,195,204,0.25);border-radius:12px;padding:28px 32px;margin-top:32px;}
+  .divider{width:60px;height:3px;background:#16C3CC;margin:24px 0;border-radius:2px;}
+  .check-item{display:flex;align-items:flex-start;gap:16px;padding:16px 20px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);}
+  .check-icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+  .arrow-hint{position:absolute;bottom:80px;right:60px;font-family:'Barlow Condensed',sans-serif;font-size:22px;color:rgba(22,195,204,0.6);letter-spacing:2px;}
+  .urgency-bar{
+    background:linear-gradient(90deg,rgba(255,107,107,0.15),rgba(22,195,204,0.15));
+    border:1px solid rgba(255,107,107,0.3);border-radius:8px;
+    padding:14px 24px;margin-bottom:28px;
+    font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;
+    color:rgba(255,255,255,0.7);letter-spacing:1px;text-transform:uppercase;
+    display:flex;align-items:center;gap:10px;
+  }
+  .urgency-dot{width:10px;height:10px;border-radius:50%;background:#ff6b6b;flex-shrink:0;}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — CAPA urgência -->
+<div class="slide" id="s1">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:-50px;right:0;background:radial-gradient(circle,rgba(22,195,204,0.18) 0%,transparent 70%);"></div>
+  <div class="glow" style="bottom:-100px;left:0;width:500px;height:500px;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content" style="padding-top:72px;">
+    <div class="urgency-bar">
+      <div class="urgency-dot"></div>
+      Temporada alta chegando
+    </div>
+    <h1 style="font-size:92px;margin-top:0;">
+      Sua pousada<br>
+      está<br>
+      <span class="accent">preparada?</span>
+    </h1>
+    <div class="divider"></div>
+    <p class="body" style="font-size:20px;">Checklist com 4 pontos críticos para não perder nenhuma oportunidade</p>
+  </div>
+  <div class="arrow-hint">Arraste →</div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">01 / 06</div>
+</div>
+
+<!-- SLIDE 2 — Checklist operacional -->
+<div class="slide" id="s2">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:0;right:-50px;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag">Ponto #1</div>
+    <h2 style="font-size:76px;">Operação<br><span class="accent">preparada</span></h2>
+    <div class="divider"></div>
+    <p class="body" style="font-size:20px;margin-top:12px;">Antes da alta temporada, revise:</p>
+    <div style="display:flex;flex-direction:column;gap:14px;margin-top:24px;">
+      <div class="check-item" style="border-color:rgba(22,195,204,0.25);background:rgba(22,195,204,0.05);">
+        <div class="check-icon" style="background:#16C3CC;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#060E12" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span style="color:rgba(255,255,255,0.85);font-size:19px;">Checklist de limpeza por quarto atualizado</span>
+      </div>
+      <div class="check-item" style="border-color:rgba(22,195,204,0.25);background:rgba(22,195,204,0.05);">
+        <div class="check-icon" style="background:#16C3CC;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#060E12" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span style="color:rgba(255,255,255,0.85);font-size:19px;">Equipamentos revisados (ar, chuveiro, TV)</span>
+      </div>
+      <div class="check-item" style="border-color:rgba(22,195,204,0.25);background:rgba(22,195,204,0.05);">
+        <div class="check-icon" style="background:#16C3CC;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#060E12" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span style="color:rgba(255,255,255,0.85);font-size:19px;">Estoque de amenities calculado para o volume</span>
+      </div>
+      <div class="check-item" style="border-color:rgba(22,195,204,0.25);background:rgba(22,195,204,0.05);">
+        <div class="check-icon" style="background:#16C3CC;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#060E12" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span style="color:rgba(255,255,255,0.85);font-size:19px;">Processos documentados para novos colaboradores</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">02 / 06</div>
+</div>
+
+<!-- SLIDE 3 — Canais sincronizados -->
+<div class="slide" id="s3">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="bottom:0;left:100px;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag">Ponto #2</div>
+    <h2 style="font-size:72px;">Canais<br><span class="accent">sincronizados?</span></h2>
+    <div class="divider"></div>
+    <p class="body">Na alta temporada, disponibilidade desatualizada em qualquer canal = overbooking. Um channel manager garante sincronização em tempo real.</p>
+    <div style="display:flex;gap:16px;margin-top:32px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:180px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:20px;text-align:center;">
+        <p style="font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;">Sem sync</p>
+        <p style="font-family:'Barlow Condensed',sans-serif;font-size:52px;font-weight:900;color:#ff6b6b;margin-top:8px;">Risco</p>
+        <p style="color:rgba(255,255,255,0.35);font-size:16px;">overbooking</p>
+      </div>
+      <div style="flex:1;min-width:180px;background:rgba(22,195,204,0.08);border:1px solid rgba(22,195,204,0.3);border-radius:10px;padding:20px;text-align:center;">
+        <p style="font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;color:#16C3CC;text-transform:uppercase;letter-spacing:1px;">Com sync</p>
+        <p style="font-family:'Barlow Condensed',sans-serif;font-size:52px;font-weight:900;color:#16C3CC;margin-top:8px;">Zero</p>
+        <p style="color:rgba(22,195,204,0.6);font-size:16px;">conflito</p>
+      </div>
+    </div>
+    <p style="color:rgba(255,255,255,0.4);font-size:17px;margin-top:24px;">Booking, Airbnb e site próprio atualizados ao mesmo tempo.</p>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">03 / 06</div>
+</div>
+
+<!-- SLIDE 4 — Equipe treinada -->
+<div class="slide" id="s4">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:50px;right:0;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag">Ponto #3</div>
+    <h2 style="font-size:72px;">Equipe<br><span class="accent">treinada?</span></h2>
+    <div class="divider"></div>
+    <p class="body">Alta temporada traz mais hóspedes, mais pressão e mais erros — se a equipe não estiver preparada. Invista agora, antes do pico.</p>
+    <div style="display:flex;flex-direction:column;gap:14px;margin-top:32px;">
+      <div class="check-item">
+        <div class="check-icon" style="background:rgba(22,195,204,0.15);border:1px solid rgba(22,195,204,0.4);">
+          <span style="color:#16C3CC;font-size:16px;font-weight:700;">1</span>
+        </div>
+        <span style="color:rgba(255,255,255,0.8);font-size:19px;">Treine o sistema de gestão com todos</span>
+      </div>
+      <div class="check-item">
+        <div class="check-icon" style="background:rgba(22,195,204,0.15);border:1px solid rgba(22,195,204,0.4);">
+          <span style="color:#16C3CC;font-size:16px;font-weight:700;">2</span>
+        </div>
+        <span style="color:rgba(255,255,255,0.8);font-size:19px;">Simule situações de pico antes do período</span>
+      </div>
+      <div class="check-item">
+        <div class="check-icon" style="background:rgba(22,195,204,0.15);border:1px solid rgba(22,195,204,0.4);">
+          <span style="color:#16C3CC;font-size:16px;font-weight:700;">3</span>
+        </div>
+        <span style="color:rgba(255,255,255,0.8);font-size:19px;">Defina responsáveis para cada processo crítico</span>
+      </div>
+    </div>
+    <div class="highlight-box" style="margin-top:28px;">
+      <p style="color:rgba(255,255,255,0.8);font-size:19px;">Equipe alinhada = hóspede satisfeito = avaliação positiva.</p>
+    </div>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">04 / 06</div>
+</div>
+
+<!-- SLIDE 5 — Comunicação automática -->
+<div class="slide" id="s5">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="bottom:-50px;right:50px;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag">Ponto #4</div>
+    <h2 style="font-size:68px;">Comunicação<br>com hóspedes<br><span class="accent">automática?</span></h2>
+    <div class="divider"></div>
+    <p class="body" style="font-size:20px;">Na alta temporada, você não terá tempo de responder manualmente. Configure agora:</p>
+    <div style="display:flex;flex-direction:column;gap:14px;margin-top:24px;">
+      <div class="check-item" style="border-color:rgba(22,195,204,0.25);background:rgba(22,195,204,0.05);">
+        <div class="check-icon" style="background:#16C3CC;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#060E12" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <span style="color:rgba(255,255,255,0.85);font-size:18px;">Confirmação automática imediata da reserva</span>
+      </div>
+      <div class="check-item" style="border-color:rgba(22,195,204,0.25);background:rgba(22,195,204,0.05);">
+        <div class="check-icon" style="background:#16C3CC;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#060E12" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <span style="color:rgba(255,255,255,0.85);font-size:18px;">Mensagem de boas-vindas 24h antes do check-in</span>
+      </div>
+      <div class="check-item" style="border-color:rgba(22,195,204,0.25);background:rgba(22,195,204,0.05);">
+        <div class="check-icon" style="background:#16C3CC;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#060E12" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <span style="color:rgba(255,255,255,0.85);font-size:18px;">Pesquisa de satisfação automática pós check-out</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">05 / 06</div>
+</div>
+
+<!-- SLIDE 6 — CTA -->
+<div class="slide" id="s6">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content" style="text-align:center;padding:80px 80px;">
+    <div class="urgency-bar" style="justify-content:center;">
+      <div class="urgency-dot"></div>
+      Alta temporada chegando
+    </div>
+    <h2 style="font-size:82px;">Prepare sua<br>pousada com<br><span class="accent">SmartGuest</span></h2>
+    <div class="divider" style="margin:28px auto;"></div>
+    <p class="body" style="font-size:20px;max-width:720px;margin:0 auto;">Channel manager, comunicação automática, check-in digital e gestão completa. Tudo para aproveitar cada reserva da temporada.</p>
+    <div style="margin-top:48px;">
+      <div style="display:inline-block;background:#16C3CC;color:#060E12;font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:900;letter-spacing:1px;text-transform:uppercase;padding:20px 64px;border-radius:6px;">
+        smartguest.app
+      </div>
+    </div>
+    <p style="color:rgba(255,255,255,0.3);font-size:17px;margin-top:20px;">Não deixe a temporada alta te pegar despreparado</p>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">06 / 06</div>
+</div>
+
+</body>
+</html>

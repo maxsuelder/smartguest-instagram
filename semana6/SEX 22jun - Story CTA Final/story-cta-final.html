@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartGuest — Story: CTA Final Campanha</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#111;display:flex;justify-content:center;padding:24px;font-family:'Inter',sans-serif}
+  .story{
+    width:1080px;height:1920px;background:#060E12;position:relative;overflow:hidden;
+    flex-shrink:0;display:flex;flex-direction:column;
+  }
+  .glow{
+    position:absolute;border-radius:50%;
+    background:radial-gradient(circle,rgba(22,195,204,0.18) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .bar-top{
+    position:absolute;top:0;left:0;right:0;height:4px;
+    background:linear-gradient(90deg,#16C3CC,#0a8a91,transparent);
+  }
+  .bar-left{
+    position:absolute;top:0;left:0;width:6px;height:100%;
+    background:linear-gradient(180deg,#16C3CC 0%,#0a8a91 50%,transparent 100%);
+  }
+  .brand{
+    position:absolute;top:56px;left:48px;
+    font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:700;
+    color:#16C3CC;letter-spacing:3px;text-transform:lowercase;opacity:.9;
+  }
+  .footer{
+    position:absolute;bottom:60px;left:0;right:0;
+    text-align:center;
+    font-size:22px;color:rgba(255,255,255,0.35);font-family:'Inter',sans-serif;
+  }
+  .accent{color:#16C3CC;}
+  .tag{
+    display:inline-block;background:rgba(22,195,204,0.15);border:1px solid rgba(22,195,204,0.4);
+    color:#16C3CC;font-size:20px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+    padding:10px 28px;border-radius:4px;
+    font-family:'Barlow Condensed',sans-serif;
+  }
+  .tag-urgency{background:rgba(255,165,0,0.15);border-color:rgba(255,165,0,0.5);color:#ffaa00;}
+  h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;color:#fff;line-height:.92;text-transform:uppercase;}
+  .check-item{
+    display:flex;align-items:center;gap:20px;
+    padding:20px 28px;
+    border-radius:12px;
+    background:rgba(22,195,204,0.05);border:1px solid rgba(22,195,204,0.15);
+    margin-bottom:14px;
+  }
+  .check-icon{
+    width:44px;height:44px;border-radius:50%;background:rgba(22,195,204,0.15);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .check-icon span{color:#16C3CC;font-size:20px;font-weight:900;}
+  .check-text{color:rgba(255,255,255,0.8);font-size:24px;line-height:1.3;}
+  /* Urgency clock */
+  .urgency-box{
+    background:linear-gradient(135deg,rgba(255,165,0,0.12),rgba(255,100,0,0.08));
+    border:2px solid rgba(255,165,0,0.4);
+    border-radius:20px;padding:32px 40px;text-align:center;
+  }
+</style>
+</head>
+<body>
+<div class="story" id="body">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="width:1100px;height:1100px;top:50%;left:50%;transform:translate(-50%,-50%);opacity:.7;"></div>
+  <div class="glow" style="width:600px;height:600px;top:-150px;right:-150px;opacity:.5;background:radial-gradient(circle,rgba(255,165,0,0.10) 0%,transparent 70%);"></div>
+  <div class="brand">smartguest</div>
+
+  <!-- URGÊNCIA -->
+  <div style="padding:160px 64px 0;position:relative;z-index:2;">
+    <div style="display:flex;justify-content:center;margin-bottom:28px;">
+      <div class="tag tag-urgency">⏰ Última Semana</div>
+    </div>
+    <h1 style="font-size:100px;text-align:center;line-height:.88;margin-bottom:20px;">
+      Última<br>
+      <span class="accent">chance</span><br>
+      para sua<br>
+      demo <span style="color:rgba(255,165,0,0.9);">grátis</span>
+    </h1>
+    <p style="color:rgba(255,255,255,0.5);font-size:26px;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;text-transform:uppercase;text-align:center;">Da campanha desta semana</p>
+  </div>
+
+  <!-- URGENCY BOX -->
+  <div style="padding:44px 64px 0;position:relative;z-index:2;">
+    <div class="urgency-box">
+      <div style="font-size:52px;margin-bottom:12px;">🔥</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:48px;font-weight:900;color:#ffaa00;line-height:1;margin-bottom:8px;">Demo gratuita</div>
+      <p style="color:rgba(255,255,255,0.6);font-size:24px;line-height:1.4;">Configure sua pousada<br>com suporte especializado</p>
+    </div>
+  </div>
+
+  <!-- O QUE VOCÊ GANHA -->
+  <div style="padding:40px 64px 0;position:relative;z-index:2;">
+    <p style="color:rgba(255,255,255,0.4);font-size:22px;font-family:'Barlow Condensed',sans-serif;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;">O que você recebe</p>
+
+    <div class="check-item">
+      <div class="check-icon"><span>✓</span></div>
+      <div class="check-text">Motor de reservas configurado</div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon"><span>✓</span></div>
+      <div class="check-text">Automações ativadas</div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon"><span>✓</span></div>
+      <div class="check-text">Dashboard com suas métricas</div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon"><span>✓</span></div>
+      <div class="check-text">Suporte para primeiros 30 dias</div>
+    </div>
+  </div>
+
+  <!-- CTA PRINCIPAL -->
+  <div style="padding:36px 64px 0;position:relative;z-index:2;">
+    <div style="background:linear-gradient(135deg,#16C3CC,#0a8a91);border-radius:20px;padding:36px 48px;text-align:center;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,0.06);"></div>
+      <div style="position:absolute;bottom:-20px;left:-20px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.04);"></div>
+      <p style="color:rgba(6,14,18,0.7);font-size:22px;margin-bottom:6px;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;text-transform:uppercase;">Acesse agora</p>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:52px;font-weight:900;color:#060E12;letter-spacing:1px;line-height:1;">smartguest.app</div>
+      <p style="color:rgba(6,14,18,0.6);font-size:20px;margin-top:8px;">Sem cartão de crédito</p>
+    </div>
+  </div>
+
+  <!-- SWIPE UP HINT -->
+  <div style="padding:28px 64px 0;position:relative;z-index:2;text-align:center;">
+    <p style="color:rgba(22,195,204,0.5);font-family:'Barlow Condensed',sans-serif;font-size:26px;letter-spacing:2px;text-transform:uppercase;">↑ Acesse o link na bio ↑</p>
+  </div>
+
+  <div class="footer">@smartguest.app | smartguest.app</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartGuest — Pousadas Pequenas Crescem Mais</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#111;display:flex;flex-wrap:wrap;gap:16px;padding:24px;font-family:'Inter',sans-serif}
+  .slide{
+    width:1080px;height:1080px;background:#060E12;position:relative;overflow:hidden;
+    flex-shrink:0;display:flex;flex-direction:column;justify-content:center;
+  }
+  .glow{
+    position:absolute;width:700px;height:700px;border-radius:50%;
+    background:radial-gradient(circle,rgba(22,195,204,0.13) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .bar-top{
+    position:absolute;top:0;left:0;right:0;height:4px;
+    background:linear-gradient(90deg,#16C3CC,#0a8a91,transparent);
+  }
+  .bar-left{
+    position:absolute;top:0;left:0;width:6px;height:100%;
+    background:linear-gradient(180deg,#16C3CC 0%,#0a8a91 50%,transparent 100%);
+  }
+  .brand{
+    position:absolute;top:40px;right:48px;
+    font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;
+    color:#16C3CC;letter-spacing:2px;text-transform:lowercase;opacity:.9;
+  }
+  .footer{
+    position:absolute;bottom:36px;left:60px;right:60px;
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:18px;color:rgba(255,255,255,0.35);font-family:'Inter',sans-serif;
+  }
+  .slide-num{
+    position:absolute;bottom:36px;right:60px;
+    font-family:'Barlow Condensed',sans-serif;font-size:20px;
+    color:rgba(22,195,204,0.5);letter-spacing:1px;
+  }
+  .content{padding:80px 60px 80px 80px;position:relative;z-index:2;}
+  .tag{
+    display:inline-block;background:rgba(22,195,204,0.15);border:1px solid rgba(22,195,204,0.4);
+    color:#16C3CC;font-size:16px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+    padding:8px 20px;border-radius:4px;margin-bottom:32px;
+    font-family:'Barlow Condensed',sans-serif;
+  }
+  h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;color:#fff;line-height:1.0;text-transform:uppercase;}
+  h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;color:#fff;line-height:1.05;text-transform:uppercase;}
+  p.body{color:rgba(255,255,255,0.7);font-size:22px;line-height:1.6;margin-top:24px;}
+  .accent{color:#16C3CC;}
+  .highlight-box{
+    background:rgba(22,195,204,0.08);border:1px solid rgba(22,195,204,0.25);
+    border-radius:12px;padding:28px 32px;margin-top:32px;
+  }
+  .divider{width:60px;height:3px;background:#16C3CC;margin:24px 0;border-radius:2px;}
+  .arrow-hint{
+    position:absolute;bottom:80px;right:60px;
+    font-family:'Barlow Condensed',sans-serif;font-size:22px;
+    color:rgba(22,195,204,0.6);letter-spacing:2px;
+  }
+  .vantagem-list{display:flex;flex-direction:column;gap:16px;margin-top:24px;}
+  .v-item{
+    display:flex;align-items:flex-start;gap:16px;
+    background:rgba(22,195,204,0.05);border:1px solid rgba(22,195,204,0.15);
+    border-radius:10px;padding:18px 24px;
+  }
+  .v-icon{font-size:28px;flex-shrink:0;margin-top:2px;}
+  .v-text .vt-title{color:#fff;font-size:19px;font-weight:600;margin-bottom:4px;}
+  .v-text .vt-sub{color:rgba(255,255,255,0.5);font-size:16px;line-height:1.4;}
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px;}
+  .cg-item{border-radius:12px;padding:20px 24px;}
+  .cg-label{font-family:'Barlow Condensed',sans-serif;font-size:18px;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;}
+  .cg-list{display:flex;flex-direction:column;gap:10px;}
+  .cg-row{display:flex;align-items:center;gap:10px;font-size:17px;}
+  .case-item{
+    background:rgba(22,195,204,0.06);border:1px solid rgba(22,195,204,0.2);
+    border-radius:12px;padding:20px 24px;margin-bottom:16px;
+  }
+  .case-name{color:#16C3CC;font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;margin-bottom:8px;}
+  .case-result{color:#fff;font-size:18px;line-height:1.5;}
+  .step-item{
+    display:flex;align-items:flex-start;gap:16px;
+    border-left:3px solid #16C3CC;padding:0 0 24px 20px;
+  }
+  .step-item:last-child{padding-bottom:0;}
+  .step-num-teal{
+    font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:900;
+    color:#16C3CC;line-height:1;min-width:28px;
+  }
+  .step-text-box .st-title{color:#fff;font-size:19px;font-weight:600;margin-bottom:4px;}
+  .step-text-box .st-sub{color:rgba(255,255,255,0.5);font-size:16px;}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — CAPA -->
+<div class="slide" id="s1">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:-80px;left:250px;"></div>
+  <div class="glow" style="bottom:-150px;right:-80px;width:500px;height:500px;opacity:.5;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content" style="padding-top:80px;">
+    <div class="tag">Crescimento</div>
+    <h1 style="font-size:88px;margin-top:8px;">
+      Por que pousadas<br>
+      <span class="accent">menores</span><br>
+      crescem mais<br>
+      <span style="color:rgba(255,255,255,0.35);font-size:70px;">rápido com</span><br>
+      <span class="accent">tecnologia</span>
+    </h1>
+    <div class="divider"></div>
+    <p class="body">A virada de chave que ninguém te contou</p>
+  </div>
+  <div class="arrow-hint">Arraste →</div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">01 / 06</div>
+</div>
+
+<!-- SLIDE 2 — VANTAGEM DA AGILIDADE -->
+<div class="slide" id="s2">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:80px;right:0;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag">A Vantagem</div>
+    <h2 style="font-size:78px;">Pousada pequena<br>tem a <span class="accent">agilidade</span><br>que hotel não tem</h2>
+    <div class="divider"></div>
+    <p class="body">Tamanho menor significa menos burocracia, mais velocidade de decisão.</p>
+    <div class="vantagem-list">
+      <div class="v-item">
+        <span class="v-icon">⚡</span>
+        <div class="v-text">
+          <div class="vt-title">Implementa mudança em horas, não meses</div>
+          <div class="vt-sub">Rede grande precisa de aprovação em 3 departamentos</div>
+        </div>
+      </div>
+      <div class="v-item">
+        <span class="v-icon">🎯</span>
+        <div class="v-text">
+          <div class="vt-title">Conhece cada hóspede pelo nome</div>
+          <div class="vt-sub">Personalização que nenhum hotel grande consegue replicar</div>
+        </div>
+      </div>
+      <div class="v-item">
+        <span class="v-icon">💡</span>
+        <div class="v-text">
+          <div class="vt-title">Adapta oferta em tempo real</div>
+          <div class="vt-sub">Nova promoção hoje, resultados amanhã</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">02 / 06</div>
+</div>
+
+<!-- SLIDE 3 — TECNOLOGIA EQUALIZA -->
+<div class="slide" id="s3">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="bottom:0;left:100px;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag">Equalização</div>
+    <h2 style="font-size:76px;">Tecnologia equaliza<br>a competição com<br><span class="accent">grandes redes</span></h2>
+    <div class="divider"></div>
+    <p class="body">O que antes era exclusividade de hotel 5 estrelas, hoje custa R$99/mês.</p>
+    <div class="compare-grid">
+      <div class="cg-item" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);">
+        <div class="cg-label" style="color:rgba(255,255,255,0.4);">Antes</div>
+        <div class="cg-list">
+          <div class="cg-row"><span style="color:rgba(255,80,80,0.7);">✗</span><span style="color:rgba(255,255,255,0.5);">PMS caro</span></div>
+          <div class="cg-row"><span style="color:rgba(255,80,80,0.7);">✗</span><span style="color:rgba(255,255,255,0.5);">Channel manager inacessível</span></div>
+          <div class="cg-row"><span style="color:rgba(255,80,80,0.7);">✗</span><span style="color:rgba(255,255,255,0.5);">Motor de reservas = fortuna</span></div>
+          <div class="cg-row"><span style="color:rgba(255,80,80,0.7);">✗</span><span style="color:rgba(255,255,255,0.5);">Análise de dados complexa</span></div>
+        </div>
+      </div>
+      <div class="cg-item" style="background:rgba(22,195,204,0.06);border:1px solid rgba(22,195,204,0.2);">
+        <div class="cg-label" style="color:#16C3CC;">Hoje</div>
+        <div class="cg-list">
+          <div class="cg-row"><span style="color:#16C3CC;">✓</span><span style="color:rgba(255,255,255,0.7);">PMS simples e acessível</span></div>
+          <div class="cg-row"><span style="color:#16C3CC;">✓</span><span style="color:rgba(255,255,255,0.7);">Canais integrados</span></div>
+          <div class="cg-row"><span style="color:#16C3CC;">✓</span><span style="color:rgba(255,255,255,0.7);">Motor na bio do Instagram</span></div>
+          <div class="cg-row"><span style="color:#16C3CC;">✓</span><span style="color:rgba(255,255,255,0.7);">Dashboard automático</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">03 / 06</div>
+</div>
+
+<!-- SLIDE 4 — CASES DE CRESCIMENTO -->
+<div class="slide" id="s4">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:80px;right:0;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag">Cases Reais</div>
+    <h2 style="font-size:78px;">Pousadas pequenas<br>que <span class="accent">cresceram</span></h2>
+    <div class="divider"></div>
+    <div class="case-item">
+      <div class="case-name">Pousada com 6 quartos — Litoral</div>
+      <div class="case-result">Saiu de <span style="color:rgba(255,255,255,0.4);">60%</span> para <span class="accent">88% de ocupação</span> em 90 dias após implementar motor de reservas e automações</div>
+    </div>
+    <div class="case-item">
+      <div class="case-name">Chalés com 10 unidades — Serra</div>
+      <div class="case-result">Reduziu comissão de OTAs de <span style="color:rgba(255,80,80,0.7);">38%</span> para <span class="accent">11%</span> da receita com reservas diretas via Instagram</div>
+    </div>
+    <div class="case-item">
+      <div class="case-name">Pousada familiar — 8 quartos</div>
+      <div class="case-result">Economizou <span class="accent">12h por semana</span> em tarefas manuais, reinvestidas em atendimento e experiência</div>
+    </div>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">04 / 06</div>
+</div>
+
+<!-- SLIDE 5 — O QUE FAZER NOS PRÓXIMOS 30 DIAS -->
+<div class="slide" id="s5">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="bottom:0;right:0;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag">Plano de Ação</div>
+    <h2 style="font-size:76px;">O que fazer nos<br>próximos <span class="accent">30 dias</span></h2>
+    <div class="divider"></div>
+    <div style="margin-top:24px;">
+      <div class="step-item">
+        <div class="step-num-teal">1</div>
+        <div class="step-text-box">
+          <div class="st-title">Semana 1 — Configure seu motor de reservas</div>
+          <div class="st-sub">Link na bio ativo recebendo reservas diretas</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num-teal">2</div>
+        <div class="step-text-box">
+          <div class="st-title">Semana 2 — Automatize comunicação com hóspedes</div>
+          <div class="st-sub">Confirmação, pré-chegada e pós-estadia automáticos</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num-teal">3</div>
+        <div class="step-text-box">
+          <div class="st-title">Semana 3 — Implante relatórios semanais</div>
+          <div class="st-sub">Acompanhe ocupação, RevPAR e retenção toda segunda</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num-teal">4</div>
+        <div class="step-text-box">
+          <div class="st-title">Semana 4 — Meça e ajuste</div>
+          <div class="st-sub">Com dados reais, tome decisões com precisão</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">05 / 06</div>
+</div>
+
+<!-- SLIDE 6 — CTA FINAL DE CAMPANHA -->
+<div class="slide" id="s6">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:50%;left:50%;transform:translate(-50%,-50%);width:900px;height:900px;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content" style="text-align:center;padding:72px 80px;">
+    <div class="tag" style="display:block;text-align:center;margin:0 auto 28px;">Semana 6 — Encerramento</div>
+    <h2 style="font-size:80px;">Sua pousada<br><span class="accent">merece</span><br>tecnologia de<br>grande hotel</h2>
+    <div class="divider" style="margin:24px auto;"></div>
+    <p class="body" style="font-size:19px;max-width:720px;margin:0 auto;">Motor de reservas, automações, relatórios e muito mais. Feito especialmente para pousadas e hotéis independentes.</p>
+    <div style="margin-top:40px;">
+      <div style="display:inline-block;background:#16C3CC;color:#060E12;font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:900;letter-spacing:1px;text-transform:uppercase;padding:20px 64px;border-radius:6px;">
+        smartguest.app
+      </div>
+    </div>
+    <p style="color:rgba(255,255,255,0.3);font-size:16px;margin-top:16px;">Demo gratuita disponível — configure em menos de 1 hora</p>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">06 / 06</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartGuest — Story Canal de Reservas</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#111;display:flex;align-items:flex-start;justify-content:center;padding:24px;font-family:'Inter',sans-serif;}
+  .story{
+    width:1080px;height:1920px;background:#060E12;position:relative;overflow:hidden;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+  }
+  .bar-top{position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#16C3CC,#0a8a91,transparent);}
+  .bar-left{position:absolute;top:0;left:0;width:8px;height:100%;background:linear-gradient(180deg,#16C3CC 0%,#0a8a91 40%,transparent 100%);}
+  .glow{position:absolute;border-radius:50%;pointer-events:none;}
+  .brand{position:absolute;top:64px;left:50%;transform:translateX(-50%);font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:700;color:#16C3CC;letter-spacing:3px;text-transform:lowercase;opacity:.9;white-space:nowrap;}
+  .footer{position:absolute;bottom:60px;left:0;right:0;text-align:center;font-size:24px;color:rgba(255,255,255,0.3);}
+  .accent{color:#16C3CC;}
+  .tag{display:inline-block;background:rgba(22,195,204,0.15);border:1px solid rgba(22,195,204,0.4);color:#16C3CC;font-size:22px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:10px 28px;border-radius:6px;font-family:'Barlow Condensed',sans-serif;}
+  h2{font-family:'Barlow Condensed',sans-serif;font-weight:900;color:#fff;font-size:84px;line-height:1.0;text-transform:uppercase;}
+  .divider{width:80px;height:4px;background:#16C3CC;margin:36px auto;border-radius:2px;}
+  .option{
+    width:100%;border-radius:16px;padding:28px 40px;
+    display:flex;align-items:center;gap:24px;
+    background:rgba(255,255,255,0.04);border:2px solid rgba(255,255,255,0.10);
+  }
+  .option-letter{
+    width:56px;height:56px;border-radius:50%;
+    background:rgba(22,195,204,0.15);border:2px solid rgba(22,195,204,0.4);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:900;
+    color:#16C3CC;flex-shrink:0;
+  }
+  .option-content{display:flex;flex-direction:column;gap:2px;text-align:left;}
+  .option-title{color:#fff;font-size:26px;font-weight:600;}
+  .option-sub{color:rgba(255,255,255,0.4);font-size:19px;}
+</style>
+</head>
+<body>
+
+<div class="story">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="width:900px;height:900px;top:-200px;right:-100px;background:radial-gradient(circle,rgba(22,195,204,0.13) 0%,transparent 70%);"></div>
+  <div class="glow" style="width:700px;height:700px;bottom:-150px;left:-100px;background:radial-gradient(circle,rgba(22,195,204,0.09) 0%,transparent 70%);"></div>
+  <div class="brand">smartguest</div>
+
+  <div style="width:860px;position:relative;z-index:2;text-align:center;">
+    <div class="tag">Pergunta</div>
+    <div style="font-size:96px;line-height:1;margin:28px 0 24px;">📲</div>
+    <h2>Qual canal<br>traz mais<br><span class="accent">reservas</span><br>para você?</h2>
+    <div class="divider"></div>
+
+    <div style="display:flex;flex-direction:column;gap:18px;">
+      <div class="option">
+        <div class="option-letter">A</div>
+        <div class="option-content">
+          <span class="option-title">Booking.com</span>
+          <span class="option-sub">paga comissão por reserva</span>
+        </div>
+      </div>
+      <div class="option">
+        <div class="option-letter">B</div>
+        <div class="option-content">
+          <span class="option-title">Airbnb</span>
+          <span class="option-sub">paga comissão por reserva</span>
+        </div>
+      </div>
+      <div class="option">
+        <div class="option-letter">C</div>
+        <div class="option-content">
+          <span class="option-title">WhatsApp</span>
+          <span class="option-sub">manual e sem controle</span>
+        </div>
+      </div>
+      <div class="option" style="border-color:rgba(22,195,204,0.35);background:rgba(22,195,204,0.07);">
+        <div class="option-letter">D</div>
+        <div class="option-content">
+          <span class="option-title" style="color:#16C3CC;">Site próprio</span>
+          <span class="option-sub" style="color:rgba(22,195,204,0.6);">zero comissão, 100% seu</span>
+        </div>
+      </div>
+    </div>
+
+    <p style="color:rgba(255,255,255,0.4);font-size:22px;line-height:1.5;margin-top:36px;">A opção D é o objetivo.<br>O SmartGuest te ajuda a chegar lá.</p>
+  </div>
+
+  <div class="footer">@smartguest.app | smartguest.app</div>
+</div>
+
+</body>
+</html>

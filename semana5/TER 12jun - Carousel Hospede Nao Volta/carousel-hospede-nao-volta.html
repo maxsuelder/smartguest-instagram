@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartGuest — Por que hóspedes não voltam</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#111;display:flex;flex-wrap:wrap;gap:16px;padding:24px;font-family:'Inter',sans-serif}
+  .slide{width:1080px;height:1080px;background:#060E12;position:relative;overflow:hidden;flex-shrink:0;display:flex;flex-direction:column;justify-content:center;}
+  .glow{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(22,195,204,0.13) 0%,transparent 70%);pointer-events:none;}
+  .bar-top{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#16C3CC,#0a8a91,transparent);}
+  .bar-left{position:absolute;top:0;left:0;width:6px;height:100%;background:linear-gradient(180deg,#16C3CC 0%,#0a8a91 50%,transparent 100%);}
+  .brand{position:absolute;top:40px;right:48px;font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;color:#16C3CC;letter-spacing:2px;text-transform:lowercase;opacity:.9;}
+  .footer{position:absolute;bottom:36px;left:60px;right:60px;display:flex;justify-content:space-between;align-items:center;font-size:18px;color:rgba(255,255,255,0.35);}
+  .slide-num{position:absolute;bottom:36px;right:60px;font-family:'Barlow Condensed',sans-serif;font-size:20px;color:rgba(22,195,204,0.5);letter-spacing:1px;}
+  .content{padding:80px 60px 80px 80px;position:relative;z-index:2;}
+  .tag{display:inline-block;background:rgba(22,195,204,0.15);border:1px solid rgba(22,195,204,0.4);color:#16C3CC;font-size:16px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:8px 20px;border-radius:4px;margin-bottom:32px;font-family:'Barlow Condensed',sans-serif;}
+  h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;color:#fff;line-height:1.0;text-transform:uppercase;}
+  h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;color:#fff;line-height:1.05;text-transform:uppercase;}
+  p.body{color:rgba(255,255,255,0.7);font-size:22px;line-height:1.6;margin-top:24px;}
+  .accent{color:#16C3CC;}
+  .highlight-box{background:rgba(22,195,204,0.08);border:1px solid rgba(22,195,204,0.25);border-radius:12px;padding:28px 32px;margin-top:32px;}
+  .big-number{font-family:'Barlow Condensed',sans-serif;font-weight:900;color:#16C3CC;font-size:140px;line-height:1;}
+  .icon-item{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:16px 24px;}
+  .icon-dot{width:10px;height:10px;border-radius:50%;background:#16C3CC;flex-shrink:0;}
+  .icon-text{color:rgba(255,255,255,0.8);font-size:19px;}
+  .divider{width:60px;height:3px;background:#16C3CC;margin:24px 0;border-radius:2px;}
+  .arrow-hint{position:absolute;bottom:80px;right:60px;font-family:'Barlow Condensed',sans-serif;font-size:22px;color:rgba(22,195,204,0.6);letter-spacing:2px;}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — CAPA -->
+<div class="slide" id="s1">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:-80px;right:0;"></div>
+  <div class="glow" style="bottom:-150px;left:50px;width:500px;height:500px;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content" style="padding-top:90px;">
+    <div class="tag">Fidelização</div>
+    <h1 style="font-size:96px;margin-top:8px;">
+      Por que<br>
+      <span class="accent">hóspedes</span><br>
+      não voltam<br>
+      <span style="color:rgba(255,255,255,0.35);font-size:70px;">para sua pousada</span>
+    </h1>
+    <div class="divider"></div>
+    <p class="body" style="font-size:20px;">4 motivos que custam 5x mais do que você imagina</p>
+  </div>
+  <div class="arrow-hint">Arraste →</div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">01 / 06</div>
+</div>
+
+<!-- SLIDE 2 — Check-in demorado -->
+<div class="slide" id="s2">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:50px;right:-100px;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag">Motivo #1</div>
+    <h2 style="font-size:80px;">Check-in<br><span class="accent">demorado</span><br>e confuso</h2>
+    <div class="divider"></div>
+    <p class="body">A primeira impressão define toda a experiência. Um check-in cheio de papelada e espera <strong style="color:#fff;">arruína o humor do hóspede antes mesmo de ele ver o quarto.</strong></p>
+    <div class="highlight-box" style="margin-top:36px;display:flex;align-items:center;gap:24px;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:72px;font-weight:900;color:rgba(255,255,255,0.12);">15<span style="font-size:36px;">min</span></div>
+      <div>
+        <p style="color:#fff;font-size:20px;">de espera no check-in</p>
+        <p style="color:rgba(255,255,255,0.4);font-size:17px;margin-top:4px;">é suficiente para o hóspede decidir que não volta</p>
+      </div>
+    </div>
+    <p style="color:rgba(255,255,255,0.5);font-size:19px;margin-top:32px;">Com check-in digital, o hóspede chega e já entra.</p>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">02 / 06</div>
+</div>
+
+<!-- SLIDE 3 — Sem comunicação pós-estadia -->
+<div class="slide" id="s3">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="bottom:0;left:200px;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag">Motivo #2</div>
+    <h2 style="font-size:75px;">Zero comunicação<br><span class="accent">após</span> a estadia</h2>
+    <div class="divider"></div>
+    <p class="body">O hóspede vai embora e… silêncio. Nenhum e-mail de agradecimento, nenhuma pesquisa de satisfação, nenhuma oferta de retorno.</p>
+    <div style="display:flex;flex-direction:column;gap:16px;margin-top:32px;">
+      <div class="icon-item" style="border-color:rgba(255,255,255,0.06);">
+        <div class="icon-dot" style="background:rgba(255,255,255,0.2);"></div>
+        <span class="icon-text" style="color:rgba(255,255,255,0.4);">Sem e-mail pós check-out</span>
+      </div>
+      <div class="icon-item" style="border-color:rgba(255,255,255,0.06);">
+        <div class="icon-dot" style="background:rgba(255,255,255,0.2);"></div>
+        <span class="icon-text" style="color:rgba(255,255,255,0.4);">Sem pedido de avaliação</span>
+      </div>
+      <div class="icon-item" style="border-color:rgba(255,255,255,0.06);">
+        <div class="icon-dot" style="background:rgba(255,255,255,0.2);"></div>
+        <span class="icon-text" style="color:rgba(255,255,255,0.4);">Sem oferta de desconto para retorno</span>
+      </div>
+      <div class="icon-item" style="border-color:rgba(22,195,204,0.3);background:rgba(22,195,204,0.06);">
+        <div class="icon-dot"></div>
+        <span class="icon-text" style="color:#16C3CC;">Com SmartGuest: tudo automático</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">03 / 06</div>
+</div>
+
+<!-- SLIDE 4 — Sem fidelidade -->
+<div class="slide" id="s4">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:0;right:0;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag">Motivo #3</div>
+    <h2 style="font-size:75px;">Sem programa<br>de <span class="accent">fidelidade</span></h2>
+    <div class="divider"></div>
+    <p class="body">Por que o hóspede voltaria para você em vez de pesquisar no Booking novamente? Se não há nenhuma vantagem em retornar direto, ele compara preços como se fosse a primeira vez.</p>
+    <div class="highlight-box" style="margin-top:36px;">
+      <p style="color:rgba(255,255,255,0.5);font-size:17px;margin-bottom:12px;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;text-transform:uppercase;">O que funciona</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;">
+        <span style="background:rgba(22,195,204,0.15);border:1px solid rgba(22,195,204,0.3);color:#16C3CC;padding:8px 18px;border-radius:20px;font-size:17px;">desconto retorno</span>
+        <span style="background:rgba(22,195,204,0.15);border:1px solid rgba(22,195,204,0.3);color:#16C3CC;padding:8px 18px;border-radius:20px;font-size:17px;">upgrade de quarto</span>
+        <span style="background:rgba(22,195,204,0.15);border:1px solid rgba(22,195,204,0.3);color:#16C3CC;padding:8px 18px;border-radius:20px;font-size:17px;">late checkout</span>
+        <span style="background:rgba(22,195,204,0.15);border:1px solid rgba(22,195,204,0.3);color:#16C3CC;padding:8px 18px;border-radius:20px;font-size:17px;">café da manhã grátis</span>
+      </div>
+    </div>
+    <p style="color:rgba(255,255,255,0.5);font-size:19px;margin-top:28px;">Pequenas vantagens geram grande lealdade.</p>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">04 / 06</div>
+</div>
+
+<!-- SLIDE 5 — Problemas operacionais -->
+<div class="slide" id="s5">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="bottom:-50px;right:50px;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag">Motivo #4</div>
+    <h2 style="font-size:72px;">Problemas<br>operacionais<br><span class="accent">visíveis</span></h2>
+    <div class="divider"></div>
+    <p class="body">Quarto não pronto no horário, informação errada sobre café da manhã, falta de resposta a pedidos simples. O hóspede nota tudo.</p>
+    <div style="display:flex;flex-direction:column;gap:14px;margin-top:32px;">
+      <div class="icon-item">
+        <div class="icon-dot" style="background:#ff6b6b;"></div>
+        <span class="icon-text">Quarto não preparado no horário</span>
+      </div>
+      <div class="icon-item">
+        <div class="icon-dot" style="background:#ff6b6b;"></div>
+        <span class="icon-text">Informações inconsistentes da equipe</span>
+      </div>
+      <div class="icon-item">
+        <div class="icon-dot" style="background:#ff6b6b;"></div>
+        <span class="icon-text">Pedidos ignorados ou esquecidos</span>
+      </div>
+    </div>
+    <p style="color:rgba(255,255,255,0.5);font-size:19px;margin-top:28px;">Sistema centralizado = equipe alinhada = experiência impecável.</p>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">05 / 06</div>
+</div>
+
+<!-- SLIDE 6 — CTA -->
+<div class="slide" id="s6">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content" style="text-align:center;padding:80px 80px;">
+    <div class="tag" style="display:block;text-align:center;margin:0 auto 32px;">Transforme hóspedes em fãs</div>
+    <h2 style="font-size:84px;">Fidelize com<br><span class="accent">SmartGuest</span></h2>
+    <div class="divider" style="margin:28px auto;"></div>
+    <p class="body" style="font-size:20px;max-width:700px;margin:0 auto;">Check-in digital, comunicação automática pós-estadia e gestão centralizada. Tudo que você precisa para hóspedes que voltam sempre.</p>
+    <div style="margin-top:48px;">
+      <div style="display:inline-block;background:#16C3CC;color:#060E12;font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:900;letter-spacing:1px;text-transform:uppercase;padding:20px 64px;border-radius:6px;">
+        smartguest.app
+      </div>
+    </div>
+    <p style="color:rgba(255,255,255,0.3);font-size:17px;margin-top:20px;">Conquiste a fidelidade dos seus hóspedes</p>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">06 / 06</div>
+</div>
+
+</body>
+</html>

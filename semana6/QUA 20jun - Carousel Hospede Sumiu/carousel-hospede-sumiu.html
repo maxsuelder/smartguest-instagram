@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartGuest — Hóspede Sumiu Sem Pagar</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#111;display:flex;flex-wrap:wrap;gap:16px;padding:24px;font-family:'Inter',sans-serif}
+  .slide{
+    width:1080px;height:1080px;background:#060E12;position:relative;overflow:hidden;
+    flex-shrink:0;display:flex;flex-direction:column;justify-content:center;
+  }
+  .glow{
+    position:absolute;width:700px;height:700px;border-radius:50%;
+    background:radial-gradient(circle,rgba(22,195,204,0.13) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .glow-red{
+    position:absolute;width:600px;height:600px;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,80,80,0.10) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .bar-top{
+    position:absolute;top:0;left:0;right:0;height:4px;
+    background:linear-gradient(90deg,#16C3CC,#0a8a91,transparent);
+  }
+  .bar-left{
+    position:absolute;top:0;left:0;width:6px;height:100%;
+    background:linear-gradient(180deg,#16C3CC 0%,#0a8a91 50%,transparent 100%);
+  }
+  .brand{
+    position:absolute;top:40px;right:48px;
+    font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;
+    color:#16C3CC;letter-spacing:2px;text-transform:lowercase;opacity:.9;
+  }
+  .footer{
+    position:absolute;bottom:36px;left:60px;right:60px;
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:18px;color:rgba(255,255,255,0.35);font-family:'Inter',sans-serif;
+  }
+  .slide-num{
+    position:absolute;bottom:36px;right:60px;
+    font-family:'Barlow Condensed',sans-serif;font-size:20px;
+    color:rgba(22,195,204,0.5);letter-spacing:1px;
+  }
+  .content{padding:80px 60px 80px 80px;position:relative;z-index:2;}
+  .tag{
+    display:inline-block;background:rgba(22,195,204,0.15);border:1px solid rgba(22,195,204,0.4);
+    color:#16C3CC;font-size:16px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+    padding:8px 20px;border-radius:4px;margin-bottom:32px;
+    font-family:'Barlow Condensed',sans-serif;
+  }
+  .tag-danger{background:rgba(255,80,80,0.15);border-color:rgba(255,80,80,0.4);color:#ff6b6b;}
+  h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;color:#fff;line-height:1.0;text-transform:uppercase;}
+  h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;color:#fff;line-height:1.05;text-transform:uppercase;}
+  p.body{color:rgba(255,255,255,0.7);font-size:22px;line-height:1.6;margin-top:24px;}
+  .accent{color:#16C3CC;}
+  .danger{color:#ff6b6b;}
+  .highlight-box{
+    background:rgba(22,195,204,0.08);border:1px solid rgba(22,195,204,0.25);
+    border-radius:12px;padding:28px 32px;margin-top:32px;
+  }
+  .danger-box{
+    background:rgba(255,80,80,0.07);border:1px solid rgba(255,80,80,0.25);
+    border-radius:12px;padding:28px 32px;margin-top:24px;
+  }
+  .divider{width:60px;height:3px;background:#16C3CC;margin:24px 0;border-radius:2px;}
+  .arrow-hint{
+    position:absolute;bottom:80px;right:60px;
+    font-family:'Barlow Condensed',sans-serif;font-size:22px;
+    color:rgba(22,195,204,0.6);letter-spacing:2px;
+  }
+  .timeline{display:flex;flex-direction:column;gap:0;margin-top:28px;}
+  .tl-item{display:flex;gap:20px;align-items:flex-start;padding:16px 0;}
+  .tl-time{
+    font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;
+    color:rgba(255,255,255,0.3);min-width:60px;padding-top:2px;
+  }
+  .tl-line{display:flex;flex-direction:column;align-items:center;gap:0;margin-top:6px;}
+  .tl-dot{width:10px;height:10px;border-radius:50%;background:#ff6b6b;flex-shrink:0;}
+  .tl-connector{width:2px;height:40px;background:rgba(255,80,80,0.25);margin-top:4px;}
+  .tl-text{color:rgba(255,255,255,0.75);font-size:19px;line-height:1.4;padding-top:0;}
+  .tl-time-teal{color:#16C3CC;}
+  .tl-dot-teal{background:#16C3CC;}
+  .protect-row{display:flex;flex-direction:column;gap:16px;margin-top:24px;}
+  .protect-item{
+    display:flex;align-items:center;gap:16px;
+    background:rgba(22,195,204,0.06);border:1px solid rgba(22,195,204,0.2);
+    border-radius:10px;padding:16px 24px;
+  }
+  .protect-icon{font-size:28px;}
+  .protect-text .pt-title{color:#fff;font-size:19px;font-weight:600;}
+  .protect-text .pt-sub{color:rgba(22,195,204,0.7);font-size:16px;margin-top:2px;}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — CAPA DRAMÁTICA -->
+<div class="slide" id="s1">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow-red" style="top:-80px;left:200px;"></div>
+  <div class="glow" style="bottom:-150px;right:-80px;width:500px;height:500px;opacity:.4;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content" style="padding-top:80px;">
+    <div class="tag tag-danger">Alerta</div>
+    <h1 style="font-size:96px;margin-top:8px;">
+      Hóspede que<br>
+      <span class="danger">some</span><br>
+      sem pagar:<br>
+      <span style="color:rgba(255,255,255,0.35);font-size:70px;">como evitar</span>
+    </h1>
+    <div class="divider" style="background:#ff6b6b;"></div>
+    <p class="body">Isso acontece mais do que você imagina — e é quase sempre evitável</p>
+  </div>
+  <div class="arrow-hint">Arraste →</div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">01 / 06</div>
+</div>
+
+<!-- SLIDE 2 — COMO ACONTECE -->
+<div class="slide" id="s2">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow-red" style="top:80px;right:0;width:500px;height:500px;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag tag-danger">O Cenário</div>
+    <h2 style="font-size:76px;">Como acontece<br>na <span class="danger">prática</span></h2>
+    <div class="divider" style="background:#ff6b6b;"></div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">06:00</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-text">Hóspede sai às 6h da manhã enquanto recepção está vazia</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">07:00</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-text">Quarto encontrado vazio. Chaves na porta. Conta em aberto.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">08:00</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-text">Consumos do frigobar, serviço de quarto, lavanderia — tudo sem pagar</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time" class="tl-time-teal" style="color:rgba(255,255,255,0.3);">???</div>
+        <div class="tl-line"><div class="tl-dot" style="background:rgba(255,255,255,0.2);"></div></div>
+        <div class="tl-text" style="color:rgba(255,255,255,0.4);">Sem rastreio, sem alerta, sem proteção</div>
+      </div>
+    </div>
+    <div class="danger-box" style="margin-top:16px;">
+      <p style="color:#ff6b6b;font-size:20px;font-weight:600;">Prejuízo médio por ocorrência: <span style="font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:900;">R$ 380</span></p>
+    </div>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">02 / 06</div>
+</div>
+
+<!-- SLIDE 3 — SEM SISTEMA -->
+<div class="slide" id="s3">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow-red" style="bottom:0;left:100px;width:500px;height:500px;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag tag-danger">Sem Sistema</div>
+    <h2 style="font-size:76px;">Sem sistema<br>você não consegue<br><span class="danger">agir antes</span></h2>
+    <div class="divider" style="background:#ff6b6b;"></div>
+    <p class="body">Sem tecnologia, você depende de memória, atenção e sorte para evitar esse problema.</p>
+    <div class="danger-box" style="margin-top:28px;">
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span style="color:#ff6b6b;font-size:20px;">✗</span>
+          <span style="color:rgba(255,255,255,0.7);font-size:18px;">Nenhum alerta automático de checkout pendente</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span style="color:#ff6b6b;font-size:20px;">✗</span>
+          <span style="color:rgba(255,255,255,0.7);font-size:18px;">Conta dos extras não consolidada em tempo real</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span style="color:#ff6b6b;font-size:20px;">✗</span>
+          <span style="color:rgba(255,255,255,0.7);font-size:18px;">Sem histórico do hóspede para avaliação de risco</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span style="color:#ff6b6b;font-size:20px;">✗</span>
+          <span style="color:rgba(255,255,255,0.7);font-size:18px;">Sem cobrança prévia automática como garantia</span>
+        </div>
+      </div>
+    </div>
+    <p style="color:rgba(255,255,255,0.4);font-size:17px;margin-top:20px;">Resultado: você descobre o problema depois que o hóspede já foi embora.</p>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">03 / 06</div>
+</div>
+
+<!-- SLIDE 4 — COM SISTEMA: ALERTA AUTOMÁTICO -->
+<div class="slide" id="s4">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:80px;right:0;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag">Com SmartGuest</div>
+    <h2 style="font-size:76px;">Alerta automático<br>antes do <span class="accent">checkout</span></h2>
+    <div class="divider"></div>
+    <p class="body">O sistema age por você — mesmo quando você está dormindo.</p>
+    <div class="protect-row">
+      <div class="protect-item">
+        <span class="protect-icon">🔔</span>
+        <div class="protect-text">
+          <div class="pt-title">Alerta 1h antes do checkout</div>
+          <div class="pt-sub">Notificação automática para equipe conferir conta</div>
+        </div>
+      </div>
+      <div class="protect-item">
+        <span class="protect-icon">📊</span>
+        <div class="protect-text">
+          <div class="pt-title">Conta consolidada em tempo real</div>
+          <div class="pt-sub">Frigobar, serviço, extras — tudo calculado automaticamente</div>
+        </div>
+      </div>
+      <div class="protect-item">
+        <span class="protect-icon">💳</span>
+        <div class="protect-text">
+          <div class="pt-title">Pré-autorização de cartão</div>
+          <div class="pt-sub">Garante pagamento mesmo se hóspede sair cedo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">04 / 06</div>
+</div>
+
+<!-- SLIDE 5 — OUTRAS PROTEÇÕES -->
+<div class="slide" id="s5">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="bottom:0;right:0;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag">Proteção Completa</div>
+    <h2 style="font-size:78px;">Outras proteções<br><span class="accent">importantes</span></h2>
+    <div class="divider"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px;">
+      <div style="background:rgba(22,195,204,0.06);border:1px solid rgba(22,195,204,0.2);border-radius:12px;padding:24px;">
+        <div style="font-size:32px;margin-bottom:12px;">🗂️</div>
+        <div style="color:#fff;font-size:19px;font-weight:600;margin-bottom:6px;">Histórico de hóspedes</div>
+        <div style="color:rgba(255,255,255,0.5);font-size:16px;">Identifique hóspedes problemáticos antes do check-in</div>
+      </div>
+      <div style="background:rgba(22,195,204,0.06);border:1px solid rgba(22,195,204,0.2);border-radius:12px;padding:24px;">
+        <div style="font-size:32px;margin-bottom:12px;">📝</div>
+        <div style="color:#fff;font-size:19px;font-weight:600;margin-bottom:6px;">Assinatura digital</div>
+        <div style="color:rgba(255,255,255,0.5);font-size:16px;">Termos de hospedagem assinados no check-in</div>
+      </div>
+      <div style="background:rgba(22,195,204,0.06);border:1px solid rgba(22,195,204,0.2);border-radius:12px;padding:24px;">
+        <div style="font-size:32px;margin-bottom:12px;">💬</div>
+        <div style="color:#fff;font-size:19px;font-weight:600;margin-bottom:6px;">Comunicação registrada</div>
+        <div style="color:rgba(255,255,255,0.5);font-size:16px;">Todo contato salvo no sistema para comprovação</div>
+      </div>
+      <div style="background:rgba(22,195,204,0.06);border:1px solid rgba(22,195,204,0.2);border-radius:12px;padding:24px;">
+        <div style="font-size:32px;margin-bottom:12px;">📊</div>
+        <div style="color:#fff;font-size:19px;font-weight:600;margin-bottom:6px;">Relatório de pendências</div>
+        <div style="color:rgba(255,255,255,0.5);font-size:16px;">Visão em tempo real de quem deve o quê</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">05 / 06</div>
+</div>
+
+<!-- SLIDE 6 — CTA -->
+<div class="slide" id="s6">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:50%;left:50%;transform:translate(-50%,-50%);width:900px;height:900px;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content" style="text-align:center;padding:80px;">
+    <div class="tag" style="display:block;text-align:center;margin:0 auto 32px;">Proteja sua pousada</div>
+    <h2 style="font-size:84px;">Sem sustos.<br>Sem prejuízo.<br><span class="accent">Com controle total.</span></h2>
+    <div class="divider" style="margin:28px auto;"></div>
+    <p class="body" style="font-size:20px;max-width:720px;margin:0 auto;">O SmartGuest monitora checkouts, consolida contas e te avisa antes que o problema aconteça.</p>
+    <div style="margin-top:48px;">
+      <div style="display:inline-block;background:#16C3CC;color:#060E12;font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:900;letter-spacing:1px;text-transform:uppercase;padding:20px 64px;border-radius:6px;">
+        smartguest.app
+      </div>
+    </div>
+    <p style="color:rgba(255,255,255,0.3);font-size:17px;margin-top:20px;">Comece a proteger sua pousada hoje</p>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">06 / 06</div>
+</div>
+
+</body>
+</html>

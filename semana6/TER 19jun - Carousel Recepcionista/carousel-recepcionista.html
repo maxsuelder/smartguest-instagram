@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartGuest — Recepcionista Sobrecarregado</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#111;display:flex;flex-wrap:wrap;gap:16px;padding:24px;font-family:'Inter',sans-serif}
+  .slide{
+    width:1080px;height:1080px;background:#060E12;position:relative;overflow:hidden;
+    flex-shrink:0;display:flex;flex-direction:column;justify-content:center;
+  }
+  .glow{
+    position:absolute;width:700px;height:700px;border-radius:50%;
+    background:radial-gradient(circle,rgba(22,195,204,0.13) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .bar-top{
+    position:absolute;top:0;left:0;right:0;height:4px;
+    background:linear-gradient(90deg,#16C3CC,#0a8a91,transparent);
+  }
+  .bar-left{
+    position:absolute;top:0;left:0;width:6px;height:100%;
+    background:linear-gradient(180deg,#16C3CC 0%,#0a8a91 50%,transparent 100%);
+  }
+  .brand{
+    position:absolute;top:40px;right:48px;
+    font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;
+    color:#16C3CC;letter-spacing:2px;text-transform:lowercase;opacity:.9;
+  }
+  .footer{
+    position:absolute;bottom:36px;left:60px;right:60px;
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:18px;color:rgba(255,255,255,0.35);font-family:'Inter',sans-serif;
+  }
+  .slide-num{
+    position:absolute;bottom:36px;right:60px;
+    font-family:'Barlow Condensed',sans-serif;font-size:20px;
+    color:rgba(22,195,204,0.5);letter-spacing:1px;
+  }
+  .content{padding:80px 60px 80px 80px;position:relative;z-index:2;}
+  .tag{
+    display:inline-block;background:rgba(22,195,204,0.15);border:1px solid rgba(22,195,204,0.4);
+    color:#16C3CC;font-size:16px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+    padding:8px 20px;border-radius:4px;margin-bottom:32px;
+    font-family:'Barlow Condensed',sans-serif;
+  }
+  h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;color:#fff;line-height:1.0;text-transform:uppercase;}
+  h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;color:#fff;line-height:1.05;text-transform:uppercase;}
+  p.body{color:rgba(255,255,255,0.7);font-size:22px;line-height:1.6;margin-top:24px;}
+  .accent{color:#16C3CC;}
+  .highlight-box{
+    background:rgba(22,195,204,0.08);border:1px solid rgba(22,195,204,0.25);
+    border-radius:12px;padding:28px 32px;margin-top:32px;
+  }
+  .icon-item{
+    display:flex;align-items:center;gap:12px;
+    background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);
+    border-radius:10px;padding:16px 24px;
+  }
+  .icon-dot{width:10px;height:10px;border-radius:50%;background:#16C3CC;flex-shrink:0;}
+  .icon-text{color:rgba(255,255,255,0.8);font-size:19px;}
+  .divider{width:60px;height:3px;background:#16C3CC;margin:24px 0;border-radius:2px;}
+  .arrow-hint{
+    position:absolute;bottom:80px;right:60px;
+    font-family:'Barlow Condensed',sans-serif;font-size:22px;
+    color:rgba(22,195,204,0.6);letter-spacing:2px;
+  }
+  .task-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px;}
+  .task-item{
+    background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);
+    border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:12px;
+  }
+  .task-emoji{font-size:24px;}
+  .task-label{color:rgba(255,255,255,0.75);font-size:17px;line-height:1.3;}
+  .error-item{
+    display:flex;align-items:flex-start;gap:16px;
+    border-left:3px solid #ff6b6b;padding-left:20px;margin-bottom:20px;
+  }
+  .error-num{
+    font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:900;
+    color:#ff6b6b;line-height:1;min-width:32px;
+  }
+  .error-text .et-title{color:#fff;font-size:20px;font-weight:600;margin-bottom:4px;}
+  .error-text .et-sub{color:rgba(255,255,255,0.5);font-size:17px;}
+  .cost-item{
+    display:flex;justify-content:space-between;align-items:center;
+    border-bottom:1px solid rgba(255,255,255,0.07);padding:16px 0;
+  }
+  .cost-label{color:rgba(255,255,255,0.6);font-size:19px;}
+  .cost-val{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:800;color:#ff6b6b;}
+  .auto-row{display:flex;flex-direction:column;gap:16px;margin-top:24px;}
+  .auto-item{
+    display:flex;align-items:center;gap:20px;
+    background:rgba(22,195,204,0.06);border:1px solid rgba(22,195,204,0.2);
+    border-radius:10px;padding:16px 24px;
+  }
+  .auto-icon{font-size:28px;}
+  .auto-text .at-title{color:#fff;font-size:19px;font-weight:600;margin-bottom:2px;}
+  .auto-text .at-sub{color:rgba(22,195,204,0.7);font-size:16px;}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — CAPA -->
+<div class="slide" id="s1">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:-80px;left:250px;"></div>
+  <div class="glow" style="bottom:-150px;right:-80px;width:500px;height:500px;opacity:.5;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content" style="padding-top:80px;">
+    <div class="tag">Operação</div>
+    <h1 style="font-size:96px;margin-top:8px;">
+      O custo<br>
+      <span class="accent">invisível</span><br>
+      do recepcionista<br>
+      <span style="color:rgba(255,255,255,0.35);font-size:72px;">sobrecarregado</span>
+    </h1>
+    <div class="divider"></div>
+    <p class="body">Quando uma pessoa faz 10 tarefas, nenhuma é feita bem</p>
+  </div>
+  <div class="arrow-hint">Arraste →</div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">01 / 06</div>
+</div>
+
+<!-- SLIDE 2 — 10 TAREFAS AO MESMO TEMPO -->
+<div class="slide" id="s2">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:80px;right:0;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag">A Realidade</div>
+    <h2 style="font-size:72px;">Seu recepcionista<br>faz tudo <span class="accent">ao mesmo tempo</span></h2>
+    <div class="divider"></div>
+    <div class="task-grid">
+      <div class="task-item"><span class="task-emoji">📱</span><span class="task-label">Responde WhatsApp</span></div>
+      <div class="task-item"><span class="task-emoji">🏨</span><span class="task-label">Faz check-in</span></div>
+      <div class="task-item"><span class="task-emoji">📊</span><span class="task-label">Atualiza planilha</span></div>
+      <div class="task-item"><span class="task-emoji">📞</span><span class="task-label">Atende telefone</span></div>
+      <div class="task-item"><span class="task-emoji">💳</span><span class="task-label">Processa pagamento</span></div>
+      <div class="task-item"><span class="task-emoji">🔑</span><span class="task-label">Controla chaves</span></div>
+      <div class="task-item"><span class="task-emoji">🍽️</span><span class="task-label">Organiza café</span></div>
+      <div class="task-item"><span class="task-emoji">📋</span><span class="task-label">Preenche formulários</span></div>
+    </div>
+    <p style="color:rgba(255,255,255,0.4);font-size:17px;margin-top:16px;">Isso não é multitarefa. É caos com sorriso na cara.</p>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">02 / 06</div>
+</div>
+
+<!-- SLIDE 3 — ERROS DA SOBRECARGA -->
+<div class="slide" id="s3">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="bottom:0;left:100px;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag">As Consequências</div>
+    <h2 style="font-size:80px;">Erros que <span class="accent">custam caro</span><br>toda semana</h2>
+    <div class="divider"></div>
+    <div style="margin-top:24px;">
+      <div class="error-item">
+        <div class="error-num">01</div>
+        <div class="error-text">
+          <div class="et-title">Reserva digitada errada</div>
+          <div class="et-sub">Data, quarto ou nome — um erro e vira conflito</div>
+        </div>
+      </div>
+      <div class="error-item">
+        <div class="error-num">02</div>
+        <div class="error-text">
+          <div class="et-title">Mensagem não respondida</div>
+          <div class="et-sub">Hóspede esperando 3h = reserva perdida para concorrente</div>
+        </div>
+      </div>
+      <div class="error-item">
+        <div class="error-num">03</div>
+        <div class="error-text">
+          <div class="et-title">Check-in demorado</div>
+          <div class="et-sub">Primeira impressão ruim = avaliação ruim</div>
+        </div>
+      </div>
+      <div class="error-item">
+        <div class="error-num">04</div>
+        <div class="error-text">
+          <div class="et-title">Overbooking por desatenção</div>
+          <div class="et-sub">A pior situação possível — e a mais evitável</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">03 / 06</div>
+</div>
+
+<!-- SLIDE 4 — CUSTO DO ERRO -->
+<div class="slide" id="s4">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:50px;right:0;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag">O Custo Real</div>
+    <h2 style="font-size:80px;">Quanto custa<br>um erro <span class="accent">operacional</span></h2>
+    <div class="divider"></div>
+    <p class="body">Cada erro carrega um custo direto ou indireto:</p>
+    <div style="margin-top:28px;">
+      <div class="cost-item">
+        <span class="cost-label">Reserva perdida por demora</span>
+        <span class="cost-val">- R$ 450</span>
+      </div>
+      <div class="cost-item">
+        <span class="cost-label">Reembolso por overbooking</span>
+        <span class="cost-val">- R$ 800</span>
+      </div>
+      <div class="cost-item">
+        <span class="cost-label">Avaliação negativa (impacto)</span>
+        <span class="cost-val">- R$ 1.200</span>
+      </div>
+      <div class="cost-item">
+        <span class="cost-label">Horas extras de retrabalho</span>
+        <span class="cost-val">- R$ 300</span>
+      </div>
+      <div style="padding:20px 0;display:flex;justify-content:space-between;align-items:center;">
+        <span style="color:#fff;font-size:22px;font-weight:600;">Total mensal estimado</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:48px;font-weight:900;color:#ff6b6b;">- R$ 2.750</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">04 / 06</div>
+</div>
+
+<!-- SLIDE 5 — COMO AUTOMATIZAR -->
+<div class="slide" id="s5">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="bottom:0;right:0;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content">
+    <div class="tag">A Solução</div>
+    <h2 style="font-size:78px;">Automatize as<br>tarefas <span class="accent">repetitivas</span></h2>
+    <div class="divider"></div>
+    <p class="body">Deixe o sistema trabalhar — seu recepcionista faz o que humano faz melhor.</p>
+    <div class="auto-row">
+      <div class="auto-item">
+        <span class="auto-icon">⚡</span>
+        <div class="auto-text">
+          <div class="at-title">Confirmações automáticas de reserva</div>
+          <div class="at-sub">Enviadas no segundo que a reserva entra</div>
+        </div>
+      </div>
+      <div class="auto-item">
+        <span class="auto-icon">📅</span>
+        <div class="auto-text">
+          <div class="at-title">Bloqueio automático de datas</div>
+          <div class="at-sub">Sem overbooking, sem conferência manual</div>
+        </div>
+      </div>
+      <div class="auto-item">
+        <span class="auto-icon">📲</span>
+        <div class="auto-text">
+          <div class="at-title">Lembretes de check-in/out</div>
+          <div class="at-sub">Hóspede chega preparado, check-in em 2 minutos</div>
+        </div>
+      </div>
+      <div class="auto-item">
+        <span class="auto-icon">📊</span>
+        <div class="auto-text">
+          <div class="at-title">Relatórios gerados automaticamente</div>
+          <div class="at-sub">Fim da planilha manual, dados em tempo real</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">05 / 06</div>
+</div>
+
+<!-- SLIDE 6 — CTA -->
+<div class="slide" id="s6">
+  <div class="bar-top"></div>
+  <div class="bar-left"></div>
+  <div class="glow" style="top:50%;left:50%;transform:translate(-50%,-50%);width:900px;height:900px;"></div>
+  <div class="brand">smartguest</div>
+  <div class="content" style="text-align:center;padding:80px;">
+    <div class="tag" style="display:block;text-align:center;margin:0 auto 32px;">Liberte sua equipe</div>
+    <h2 style="font-size:86px;">Deixe o<br><span class="accent">SmartGuest</span><br>trabalhar por você</h2>
+    <div class="divider" style="margin:28px auto;"></div>
+    <p class="body" style="font-size:20px;max-width:720px;margin:0 auto;">Automatize check-in, reservas e confirmações. Sua equipe cuida do que realmente importa: o hóspede.</p>
+    <div style="margin-top:48px;">
+      <div style="display:inline-block;background:#16C3CC;color:#060E12;font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:900;letter-spacing:1px;text-transform:uppercase;padding:20px 64px;border-radius:6px;">
+        smartguest.app
+      </div>
+    </div>
+    <p style="color:rgba(255,255,255,0.3);font-size:17px;margin-top:20px;">Demo gratuita — configure em menos de 1 hora</p>
+  </div>
+  <div class="footer"><span>@smartguest.app</span><span>smartguest.app</span></div>
+  <div class="slide-num">06 / 06</div>
+</div>
+
+</body>
+</html>

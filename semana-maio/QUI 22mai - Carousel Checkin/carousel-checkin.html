@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O Check-in Perfeito — SmartGuest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #030a0d; font-family: 'Inter', sans-serif; }
+  .slide {
+    width: 1080px;
+    height: 1080px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px;
+    background: #060E12;
+  }
+  .slide::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 10;
+  }
+  .brand-tag {
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #A0AEC0;
+    letter-spacing: 0.08em;
+    z-index: 5;
+    white-space: nowrap;
+  }
+  .brand-tag span { color: #16C3CC; }
+  .slide-number {
+    position: absolute;
+    top: 44px;
+    right: 52px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #16C3CC;
+    opacity: 0.6;
+    z-index: 5;
+  }
+
+  /* SLIDE 1 — CAPA */
+  #slide1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, #0a2a2e 0%, #060E12 70%);
+  }
+  #slide1 .star-icon {
+    font-size: 80px;
+    margin-bottom: 24px;
+    filter: drop-shadow(0 0 20px #FFD70088);
+  }
+  #slide1 .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #FFD700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  #slide1 h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 96px;
+    font-weight: 900;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    line-height: 0.9;
+    margin-bottom: 16px;
+    text-shadow: 0 0 60px #16C3CC33;
+  }
+  #slide1 h1 .hl { color: #16C3CC; }
+  #slide1 .sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    color: #A0AEC0;
+    max-width: 700px;
+    line-height: 1.5;
+    margin-top: 28px;
+  }
+  #slide1 .sub strong { color: #FFFFFF; }
+
+  /* SLIDE CONTENT BASE */
+  .c-slide {
+    padding: 80px 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+  .c-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .c-tag.bad { color: #FF4444; }
+  .c-tag.bad::before { content:''; display:block; width:40px; height:3px; background:#FF4444; box-shadow:0 0 10px #FF4444; border-radius:2px; }
+  .c-tag.teal { color: #16C3CC; }
+  .c-tag.teal::before { content:''; display:block; width:40px; height:3px; background:#16C3CC; box-shadow:0 0 10px #16C3CC; border-radius:2px; }
+  .c-tag.gold { color: #FFD700; }
+  .c-tag.gold::before { content:''; display:block; width:40px; height:3px; background:#FFD700; box-shadow:0 0 10px #FFD700; border-radius:2px; }
+
+  .c-h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 82px;
+    font-weight: 800;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    line-height: 0.92;
+    margin-bottom: 44px;
+  }
+  .c-h2 .red { color: #FF4444; }
+  .c-h2 .teal { color: #16C3CC; }
+  .c-h2 .gold { color: #FFD700; }
+
+  .items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .item-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .item-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 10px;
+  }
+  .item-dot.bad { background: #FF4444; box-shadow: 0 0 10px #FF4444; }
+  .item-dot.good { background: #16C3CC; box-shadow: 0 0 10px #16C3CC; }
+  .item-dot.gold { background: #FFD700; box-shadow: 0 0 10px #FFD700; }
+  .item-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: #A0AEC0;
+    line-height: 1.4;
+  }
+  .item-text strong { color: #FFFFFF; }
+
+  /* SLIDE 3 — PRÉ CHECK-IN */
+  #slide3 {
+    background: radial-gradient(ellipse 70% 60% at 20% 40%, #0a2a2e 0%, #060E12 70%);
+  }
+  .steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .step-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .step-num {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: #16C3CC22;
+    border: 2px solid #16C3CC66;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: #16C3CC;
+    flex-shrink: 0;
+  }
+  .step-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 26px;
+    color: #A0AEC0;
+    line-height: 1.4;
+    padding-top: 8px;
+  }
+  .step-text strong { color: #FFFFFF; }
+
+  /* SLIDE 5 — SMARTGUEST AUTOMATIZA */
+  #slide5 {
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, #0a2a2e 0%, #060E12 70%);
+  }
+  .feat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 0;
+  }
+  .feat-card {
+    background: #16C3CC11;
+    border: 1px solid #16C3CC33;
+    border-radius: 16px;
+    padding: 28px 30px;
+  }
+  .feat-card .ft-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #16C3CC;
+    margin-bottom: 10px;
+  }
+  .feat-card .ft-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    color: #A0AEC0;
+    line-height: 1.4;
+  }
+
+  /* SLIDE 6 — CTA */
+  #slide6 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse 90% 70% at 50% 50%, #0a2a2e 0%, #060E12 65%);
+    text-align: center;
+    padding: 80px;
+  }
+  #slide6 .cta-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: #16C3CC;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  #slide6 h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 88px;
+    font-weight: 900;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    line-height: 0.92;
+    margin-bottom: 20px;
+  }
+  #slide6 h2 .hl { color: #16C3CC; }
+  #slide6 .cta-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    color: #A0AEC0;
+    margin-bottom: 56px;
+    line-height: 1.5;
+    max-width: 720px;
+  }
+  #slide6 .cta-box {
+    background: linear-gradient(135deg, #16C3CC22, #16C3CC11);
+    border: 1.5px solid #16C3CC55;
+    border-radius: 20px;
+    padding: 36px 80px;
+    box-shadow: 0 0 60px #16C3CC22;
+    margin-bottom: 32px;
+  }
+  #slide6 .cta-url {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 64px;
+    font-weight: 800;
+    color: #16C3CC;
+    text-shadow: 0 0 30px #16C3CC88;
+  }
+  #slide6 .cta-whats {
+    font-family: 'Inter', sans-serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: #A0AEC0;
+  }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — CAPA -->
+<div class="slide" id="slide1">
+  <div class="eyebrow">Os melhores hotéis do mundo fazem assim</div>
+  <h1>O CHECK-IN<br><span class="hl">PERFEITO</span></h1>
+  <p class="sub">A primeira impressão define se o hóspede vai <strong>avaliar bem</strong> — e <strong>voltar</strong></p>
+  <div class="brand-tag"><span>smartguest</span>.app</div>
+</div>
+
+<!-- SLIDE 2 — O QUE NÃO FAZER -->
+<div class="slide" id="slide2">
+  <div class="c-slide" style="background: linear-gradient(150deg, #1a0606 0%, #060E12 70%);">
+    <div class="c-tag bad">O que NÃO fazer</div>
+    <h2 class="c-h2">ERROS QUE<br>DESTROEM A<br><span class="red">PRIMEIRA IMPRESSÃO</span></h2>
+    <div class="items-list">
+      <div class="item-row">
+        <div class="item-dot bad"></div>
+        <div class="item-text"><strong>Fila no balcão</strong> — hóspede cansado de viagem esperando em pé</div>
+      </div>
+      <div class="item-row">
+        <div class="item-dot bad"></div>
+        <div class="item-text"><strong>Papelada manual</strong> — ficha em papel, assinatura, cópia de documento</div>
+      </div>
+      <div class="item-row">
+        <div class="item-dot bad"></div>
+        <div class="item-text"><strong>Dados perdidos</strong> — "como é seu nome mesmo?" depois de já ter feito a reserva</div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-tag"><span>smartguest</span>.app</div>
+  <div class="slide-number">02/06</div>
+</div>
+
+<!-- SLIDE 3 — PRÉ CHECK-IN DIGITAL -->
+<div class="slide" id="slide3">
+  <div class="c-slide">
+    <div class="c-tag teal">Como funciona</div>
+    <h2 class="c-h2">PRÉ CHECK-IN<br><span class="teal">DIGITAL</span><br>EM 3 PASSOS</h2>
+    <div class="steps-list">
+      <div class="step-row">
+        <div class="step-num">1</div>
+        <div class="step-text"><strong>Hóspede recebe link</strong> automaticamente após reserva</div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">2</div>
+        <div class="step-text"><strong>Preenche os dados</strong> pelo celular, no conforto de casa</div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">3</div>
+        <div class="step-text"><strong>Chega e vai direto ao quarto</strong> — sem fila, sem papelada</div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-tag"><span>smartguest</span>.app</div>
+  <div class="slide-number">03/06</div>
+</div>
+
+<!-- SLIDE 4 — COMUNICAÇÃO ANTES DA CHEGADA -->
+<div class="slide" id="slide4">
+  <div class="c-slide" style="background: radial-gradient(ellipse 70% 60% at 30% 50%, #0a1a22 0%, #060E12 70%);">
+    <div class="c-tag gold">Antes da chegada</div>
+    <h2 class="c-h2">COMUNICAÇÃO<br>QUE <span class="gold">ENCANTA</span><br>ANTES DO CHECK-IN</h2>
+    <div class="items-list">
+      <div class="item-row">
+        <div class="item-dot gold"></div>
+        <div class="item-text"><strong>Confirmação automática</strong> — hóspede sabe que reserva está garantida</div>
+      </div>
+      <div class="item-row">
+        <div class="item-dot gold"></div>
+        <div class="item-text"><strong>Mensagem de boas-vindas</strong> com informações de acesso e horários</div>
+      </div>
+      <div class="item-row">
+        <div class="item-dot gold"></div>
+        <div class="item-text"><strong>Lembrete 24h antes</strong> — ninguém esquece e você parece profissional</div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-tag"><span>smartguest</span>.app</div>
+  <div class="slide-number">04/06</div>
+</div>
+
+<!-- SLIDE 5 — SMARTGUEST AUTOMATIZA -->
+<div class="slide" id="slide5">
+  <div class="c-slide">
+    <div class="c-tag teal">SmartGuest</div>
+    <h2 class="c-h2">CHECK-IN<br><span class="teal">AUTOMATIZADO</span><br>NO SMARTGUEST</h2>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="ft-title">Pré check-in digital</div>
+        <div class="ft-desc">Link enviado automaticamente para o hóspede</div>
+      </div>
+      <div class="feat-card">
+        <div class="ft-title">Ficha eletrônica</div>
+        <div class="ft-desc">Dados coletados antes da chegada, sem papelada</div>
+      </div>
+      <div class="feat-card">
+        <div class="ft-title">Comunicação automática</div>
+        <div class="ft-desc">Confirmação, lembrete e boas-vindas programados</div>
+      </div>
+      <div class="feat-card">
+        <div class="ft-title">Histórico do hóspede</div>
+        <div class="ft-desc">Informações do hóspede disponíveis para a equipe</div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-tag"><span>smartguest</span>.app</div>
+  <div class="slide-number">05/06</div>
+</div>
+
+<!-- SLIDE 6 — CTA -->
+<div class="slide" id="slide6">
+  <div class="cta-eyebrow">Dê ao hóspede a experiência que merece</div>
+  <h2>CHECK-IN<br>SEM<br><span class="hl">ESTRESSE</span></h2>
+  <p class="cta-sub">Automatize o check-in e libere sua equipe para o que realmente importa: <strong style="color:#fff">atender bem</strong></p>
+  <div class="cta-box">
+    <div class="cta-url">smartguest.app</div>
+  </div>
+  <div class="cta-whats">👇 Chama no WhatsApp abaixo</div>
+  <div class="brand-tag"><span>smartguest</span>.app</div>
+  <div class="slide-number">06/06</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartGuest – Setup em 7 Dias</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #030a0d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  #story {
+    width: 1080px;
+    height: 1080px;
+    overflow: hidden;
+    position: relative;
+    background: #060E12;
+    display: flex;
+    flex-direction: column;
+    padding: 64px 80px;
+  }
+
+  #story::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .glow-right {
+    position: absolute;
+    right: -80px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 500px;
+    height: 600px;
+    background: radial-gradient(ellipse, rgba(22,195,204,0.1) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 48px;
+  }
+
+  .logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: #16C3CC;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .tag {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #A0AEC0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 7px 18px;
+    border-radius: 100px;
+  }
+
+  .headline {
+    margin-bottom: 52px;
+  }
+
+  .headline-sub {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    color: #16C3CC;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 10px;
+  }
+
+  .headline-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 100px;
+    line-height: 0.88;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+
+  .headline-title .num {
+    color: #16C3CC;
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    flex: 1;
+  }
+
+  .step {
+    display: flex;
+    gap: 32px;
+    align-items: stretch;
+    position: relative;
+  }
+
+  .step-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 56px;
+    flex-shrink: 0;
+  }
+
+  .step-circle {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(22,195,204,0.12);
+    border: 2px solid #16C3CC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .step-circle svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: #16C3CC;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .step-line {
+    flex: 1;
+    width: 2px;
+    background: linear-gradient(180deg, rgba(22,195,204,0.5), rgba(22,195,204,0.1));
+    margin: 6px auto;
+    min-height: 32px;
+  }
+
+  .step:last-child .step-line {
+    display: none;
+  }
+
+  .step-right {
+    padding: 0 0 36px 0;
+    flex: 1;
+  }
+
+  .step-days {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #16C3CC;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 4px;
+  }
+
+  .step-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 34px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .step-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    color: #A0AEC0;
+    line-height: 1.4;
+  }
+
+  .footer-bar {
+    margin-top: auto;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    color: #A0AEC0;
+  }
+
+  .footer-text strong {
+    color: #FFFFFF;
+  }
+
+  .footer-url {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #16C3CC;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div id="story">
+  <div class="glow-right"></div>
+  <div class="content">
+    <div class="top-row">
+      <div class="logo">SmartGuest</div>
+      <div class="tag">Bastidores</div>
+    </div>
+
+    <div class="headline">
+      <div class="headline-sub">Do zero ao funcionando em</div>
+      <div class="headline-title">SETUP<br>EM <span class="num">7</span><br>DIAS</div>
+    </div>
+
+    <div class="timeline">
+      <div class="step">
+        <div class="step-left">
+          <div class="step-circle">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-right">
+          <div class="step-days">Dia 1 – 2</div>
+          <div class="step-title">Cadastro e Configuração</div>
+          <div class="step-desc">Dados do hotel, tipos de quarto, tarifas e políticas de cancelamento</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-left">
+          <div class="step-circle">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-right">
+          <div class="step-days">Dia 3 – 4</div>
+          <div class="step-title">Integração com OTAs</div>
+          <div class="step-desc">Booking.com, Airbnb e outros canais conectados e sincronizados</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-left">
+          <div class="step-circle">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+        </div>
+        <div class="step-right">
+          <div class="step-days">Dia 5 – 7</div>
+          <div class="step-title">Motor no Ar + Treinamento</div>
+          <div class="step-desc">Reservas diretas funcionando e equipe treinada para operar</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bar">
+      <div class="footer-text"><strong>Suporte humano</strong> em cada etapa.</div>
+      <div class="footer-url">smartguest.app</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

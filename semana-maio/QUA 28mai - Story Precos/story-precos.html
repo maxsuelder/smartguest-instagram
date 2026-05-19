@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartGuest – Preço Dinâmico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #030a0d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  #story {
+    width: 1080px;
+    height: 1080px;
+    overflow: hidden;
+    position: relative;
+    background: #060E12;
+    display: flex;
+    flex-direction: column;
+    padding: 60px 80px 56px;
+  }
+
+  #story::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .glow-top-right {
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(ellipse, rgba(22,195,204,0.13) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 44px;
+  }
+
+  .logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: #16C3CC;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .tag {
+    background: linear-gradient(135deg, rgba(22,195,204,0.2), rgba(22,195,204,0.08));
+    border: 1px solid rgba(22,195,204,0.5);
+    color: #16C3CC;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 7px 18px;
+    border-radius: 100px;
+  }
+
+  .headline {
+    margin-bottom: 48px;
+  }
+
+  .headline-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #16C3CC;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 8px;
+  }
+
+  .headline-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 88px;
+    line-height: 0.88;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+
+  .tips {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+  }
+
+  .tip-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 16px;
+    padding: 28px 36px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tip-card.up {
+    border-color: rgba(74,222,128,0.2);
+    background: rgba(74,222,128,0.04);
+  }
+
+  .tip-card.down {
+    border-color: rgba(251,146,60,0.2);
+    background: rgba(251,146,60,0.04);
+  }
+
+  .tip-card.special {
+    border-color: rgba(22,195,204,0.3);
+    background: rgba(22,195,204,0.06);
+  }
+
+  .tip-indicator {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .tip-card.up .tip-indicator { background: rgba(74,222,128,0.15); }
+  .tip-card.down .tip-indicator { background: rgba(251,146,60,0.15); }
+  .tip-card.special .tip-indicator { background: rgba(22,195,204,0.15); }
+
+  .tip-indicator svg {
+    width: 26px;
+    height: 26px;
+    fill: none;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .tip-card.up .tip-indicator svg { stroke: #4ade80; }
+  .tip-card.down .tip-indicator svg { stroke: #fb923c; }
+  .tip-card.special .tip-indicator svg { stroke: #16C3CC; }
+
+  .tip-body {
+    flex: 1;
+  }
+
+  .tip-action {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 30px;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .tip-card.up .tip-action { color: #4ade80; }
+  .tip-card.down .tip-action { color: #fb923c; }
+  .tip-card.special .tip-action { color: #16C3CC; }
+
+  .tip-when {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    color: #A0AEC0;
+  }
+
+  .tip-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 44px;
+    line-height: 1;
+  }
+
+  .tip-card.up .tip-value { color: #4ade80; }
+  .tip-card.down .tip-value { color: #fb923c; }
+  .tip-card.special .tip-value { color: #16C3CC; }
+
+  .footer-box {
+    margin-top: 24px;
+    background: rgba(22,195,204,0.07);
+    border: 1px solid rgba(22,195,204,0.2);
+    border-radius: 14px;
+    padding: 20px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    color: #A0AEC0;
+    line-height: 1.4;
+  }
+
+  .footer-text strong { color: #FFFFFF; }
+
+  .footer-url {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #16C3CC;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    margin-left: 24px;
+  }
+</style>
+</head>
+<body>
+<div id="story">
+  <div class="glow-top-right"></div>
+  <div class="content">
+    <div class="top-row">
+      <div class="logo">SmartGuest</div>
+      <div class="tag">Revenue Hack</div>
+    </div>
+
+    <div class="headline">
+      <div class="headline-sub">Maximize seu faturamento com</div>
+      <div class="headline-title">PREÇO<br>DINÂMICO<br>EM 3 PASSOS</div>
+    </div>
+
+    <div class="tips">
+      <div class="tip-card up">
+        <div class="tip-indicator">
+          <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+        </div>
+        <div class="tip-body">
+          <div class="tip-action">Suba o preço</div>
+          <div class="tip-when">Feriados e fins de semana</div>
+        </div>
+        <div class="tip-value">+20%</div>
+      </div>
+
+      <div class="tip-card down">
+        <div class="tip-indicator">
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="tip-body">
+          <div class="tip-action">Baixe o preço</div>
+          <div class="tip-when">Dias parados sem reservas</div>
+        </div>
+        <div class="tip-value">-10%</div>
+      </div>
+
+      <div class="tip-card special">
+        <div class="tip-indicator">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="tip-body">
+          <div class="tip-action">Tarifa Especial</div>
+          <div class="tip-when">Copa do Mundo e eventos</div>
+        </div>
+        <div class="tip-value">VIP</div>
+      </div>
+    </div>
+
+    <div class="footer-box">
+      <div class="footer-text"><strong>SmartGuest</strong> te mostra quando subir e quando baixar.</div>
+      <div class="footer-url">smartguest.app</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

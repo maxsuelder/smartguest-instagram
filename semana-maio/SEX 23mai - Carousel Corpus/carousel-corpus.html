@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corpus Christi Chegando — SmartGuest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #030a0d; font-family: 'Inter', sans-serif; }
+  .slide {
+    width: 1080px;
+    height: 1080px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px;
+    background: #060E12;
+  }
+  .slide::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 10;
+  }
+  .brand-tag {
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #A0AEC0;
+    letter-spacing: 0.08em;
+    z-index: 5;
+    white-space: nowrap;
+  }
+  .brand-tag span { color: #16C3CC; }
+  .slide-number {
+    position: absolute;
+    top: 44px;
+    right: 52px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #16C3CC;
+    opacity: 0.6;
+    z-index: 5;
+  }
+
+  /* SLIDE 1 — CAPA URGENTE */
+  #slide1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px;
+    background: radial-gradient(ellipse 80% 60% at 50% 45%, #1a1000 0%, #060E12 70%);
+  }
+  #slide1 .urgency-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 8px;
+    background: linear-gradient(90deg, #FF4444, #FFD700, #16C3CC);
+  }
+  #slide1 .date-pill {
+    background: #FFD70022;
+    border: 1.5px solid #FFD700;
+    border-radius: 100px;
+    padding: 12px 36px;
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #FFD700;
+    letter-spacing: 0.1em;
+    margin-bottom: 32px;
+  }
+  #slide1 h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 100px;
+    font-weight: 900;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    line-height: 0.88;
+    margin-bottom: 24px;
+    text-shadow: 0 0 60px #FFD70033;
+  }
+  #slide1 h1 .hl { color: #FFD700; text-shadow: 0 0 60px #FFD70088; }
+  #slide1 .sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    color: #A0AEC0;
+    max-width: 720px;
+    line-height: 1.5;
+    margin-bottom: 36px;
+  }
+  #slide1 .sub strong { color: #FFFFFF; }
+  #slide1 .countdown-box {
+    background: #FF444422;
+    border: 1.5px solid #FF444466;
+    border-radius: 16px;
+    padding: 20px 48px;
+  }
+  #slide1 .countdown-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    color: #FF4444;
+    letter-spacing: 0.04em;
+  }
+
+  /* CONTENT SLIDES */
+  .c-slide {
+    padding: 80px 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+  .c-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .c-tag.gold { color: #FFD700; }
+  .c-tag.gold::before { content:''; display:block; width:40px; height:3px; background:#FFD700; box-shadow:0 0 10px #FFD700; border-radius:2px; }
+  .c-tag.bad { color: #FF4444; }
+  .c-tag.bad::before { content:''; display:block; width:40px; height:3px; background:#FF4444; box-shadow:0 0 10px #FF4444; border-radius:2px; }
+  .c-tag.teal { color: #16C3CC; }
+  .c-tag.teal::before { content:''; display:block; width:40px; height:3px; background:#16C3CC; box-shadow:0 0 10px #16C3CC; border-radius:2px; }
+
+  .c-h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 82px;
+    font-weight: 800;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    line-height: 0.92;
+    margin-bottom: 44px;
+  }
+  .c-h2 .red { color: #FF4444; }
+  .c-h2 .teal { color: #16C3CC; }
+  .c-h2 .gold { color: #FFD700; }
+
+  .items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .item-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .item-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 10px;
+  }
+  .item-dot.bad { background: #FF4444; box-shadow: 0 0 10px #FF4444; }
+  .item-dot.gold { background: #FFD700; box-shadow: 0 0 10px #FFD700; }
+  .item-dot.teal { background: #16C3CC; box-shadow: 0 0 10px #16C3CC; }
+  .item-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: #A0AEC0;
+    line-height: 1.4;
+  }
+  .item-text strong { color: #FFFFFF; }
+
+  /* SLIDE 4 — PREÇOS */
+  #slide4 { background: radial-gradient(ellipse 70% 60% at 40% 40%, #0a1800 0%, #060E12 70%); }
+  .price-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 8px;
+  }
+  .price-card {
+    border-radius: 16px;
+    padding: 28px 30px;
+  }
+  .price-card.bad-card {
+    background: #FF444415;
+    border: 1px solid #FF444433;
+  }
+  .price-card.good-card {
+    background: #16C3CC15;
+    border: 1px solid #16C3CC33;
+  }
+  .pc-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+  .pc-label.bad { color: #FF4444; }
+  .pc-label.good { color: #16C3CC; }
+  .pc-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    color: #A0AEC0;
+    line-height: 1.4;
+  }
+
+  /* SLIDE 5 — SMARTGUEST */
+  #slide5 { background: radial-gradient(ellipse 70% 60% at 50% 40%, #0a2a2e 0%, #060E12 70%); }
+  .feat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .feat-card {
+    background: #16C3CC11;
+    border: 1px solid #16C3CC33;
+    border-radius: 16px;
+    padding: 28px 30px;
+  }
+  .feat-card .ft-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #16C3CC;
+    margin-bottom: 10px;
+  }
+  .feat-card .ft-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    color: #A0AEC0;
+    line-height: 1.4;
+  }
+
+  /* SLIDE 6 — CTA URGENTE */
+  #slide6 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse 90% 70% at 50% 50%, #1a1000 0%, #060E12 65%);
+    text-align: center;
+    padding: 80px;
+  }
+  #slide6 .urgency-bar {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #FF4444, #FFD700, #16C3CC);
+  }
+  #slide6 .cta-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: #FFD700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  #slide6 h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 82px;
+    font-weight: 900;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    line-height: 0.92;
+    margin-bottom: 20px;
+  }
+  #slide6 h2 .hl { color: #FFD700; text-shadow: 0 0 30px #FFD70066; }
+  #slide6 .cta-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 26px;
+    color: #A0AEC0;
+    margin-bottom: 48px;
+    line-height: 1.5;
+    max-width: 720px;
+  }
+  #slide6 .cta-box {
+    background: linear-gradient(135deg, #16C3CC22, #16C3CC11);
+    border: 1.5px solid #16C3CC55;
+    border-radius: 20px;
+    padding: 32px 72px;
+    box-shadow: 0 0 60px #16C3CC22;
+    margin-bottom: 28px;
+  }
+  #slide6 .cta-url {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 64px;
+    font-weight: 800;
+    color: #16C3CC;
+    text-shadow: 0 0 30px #16C3CC88;
+  }
+  #slide6 .cta-whats {
+    font-family: 'Inter', sans-serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: #A0AEC0;
+  }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — CAPA URGENTE -->
+<div class="slide" id="slide1">
+  <div class="urgency-bar"></div>
+  <div class="date-pill">19 de Junho de 2025 — Corpus Christi</div>
+  <h1>SEU HOTEL<br>ESTÁ <span class="hl">PRONTO</span><br>PARA O FERIADO?</h1>
+  <p class="sub">Feriado prolongado significa <strong>pico de ocupação</strong>. Quem se prepara agora vai ganhar. Quem não se prepara vai perder para o concorrente.</p>
+  <div class="countdown-box">
+    <div class="countdown-text">O tempo está passando — aja agora</div>
+  </div>
+  <div class="brand-tag"><span>smartguest</span>.app</div>
+</div>
+
+<!-- SLIDE 2 — PICO DE OCUPAÇÃO -->
+<div class="slide" id="slide2">
+  <div class="c-slide" style="background: radial-gradient(ellipse 70% 60% at 30% 40%, #0a1800 0%, #060E12 70%);">
+    <div class="c-tag gold">Oportunidade real</div>
+    <h2 class="c-h2">FERIADO<br>PROLONGADO =<br><span class="gold">PICO DE LOTAÇÃO</span></h2>
+    <div class="items-list">
+      <div class="item-row">
+        <div class="item-dot gold"></div>
+        <div class="item-text"><strong>Quinta a domingo</strong> — 4 noites de alta demanda</div>
+      </div>
+      <div class="item-row">
+        <div class="item-dot gold"></div>
+        <div class="item-text">Famílias e casais <strong>reservam com antecedência</strong> — se você não aparecer, o concorrente aparece</div>
+      </div>
+      <div class="item-row">
+        <div class="item-dot gold"></div>
+        <div class="item-text">Quem tem <strong>disponibilidade atualizada</strong> nas OTAs aparece primeiro no ranking</div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-tag"><span>smartguest</span>.app</div>
+  <div class="slide-number">02/06</div>
+</div>
+
+<!-- SLIDE 3 — 3 ERROS -->
+<div class="slide" id="slide3">
+  <div class="c-slide" style="background: linear-gradient(150deg, #1a0606 0%, #060E12 70%);">
+    <div class="c-tag bad">Os erros mais comuns</div>
+    <h2 class="c-h2">3 ERROS QUE<br>HOTÉIS COMETEM<br>NO <span class="red">FERIADO</span></h2>
+    <div class="items-list">
+      <div class="item-row">
+        <div class="item-dot bad"></div>
+        <div class="item-text"><strong>Não atualizar preços</strong> — cobrar diária normal em alta temporada</div>
+      </div>
+      <div class="item-row">
+        <div class="item-dot bad"></div>
+        <div class="item-text"><strong>Disponibilidade incorreta</strong> nas OTAs — aparece fechado quando tem quarto livre</div>
+      </div>
+      <div class="item-row">
+        <div class="item-dot bad"></div>
+        <div class="item-text"><strong>Equipe despreparada</strong> para o volume de check-ins no mesmo horário</div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-tag"><span>smartguest</span>.app</div>
+  <div class="slide-number">03/06</div>
+</div>
+
+<!-- SLIDE 4 — PREPARAR PREÇOS E DISPONIBILIDADE -->
+<div class="slide" id="slide4">
+  <div class="c-slide">
+    <div class="c-tag gold">Como se preparar</div>
+    <h2 class="c-h2">PREÇOS E<br>DISPONIBILIDADE<br><span class="gold">ESTRATÉGICOS</span></h2>
+    <div class="price-grid">
+      <div class="price-card bad-card">
+        <div class="pc-label bad">Sem preparação</div>
+        <div class="pc-text">Preço igual ao dia normal, quarto parado, dinheiro na mesa</div>
+      </div>
+      <div class="price-card good-card">
+        <div class="pc-label good">Com o SmartGuest</div>
+        <div class="pc-text">Preço dinâmico para o feriado, disponibilidade sincronizada em todos os canais</div>
+      </div>
+      <div class="price-card bad-card">
+        <div class="pc-label bad">Problema</div>
+        <div class="pc-text">Overbooking por canal desatualizado, cliente frustrado</div>
+      </div>
+      <div class="price-card good-card">
+        <div class="pc-label good">Solução</div>
+        <div class="pc-text">Channel Manager sincroniza tudo em tempo real, zero risco</div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-tag"><span>smartguest</span>.app</div>
+  <div class="slide-number">04/06</div>
+</div>
+
+<!-- SLIDE 5 — SMARTGUEST -->
+<div class="slide" id="slide5">
+  <div class="c-slide">
+    <div class="c-tag teal">Configure em minutos</div>
+    <h2 class="c-h2">TUDO PRONTO<br>PARA O FERIADO<br>NO <span class="teal">SMARTGUEST</span></h2>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="ft-title">Precificação por período</div>
+        <div class="ft-desc">Defina preços especiais para o feriado em segundos</div>
+      </div>
+      <div class="feat-card">
+        <div class="ft-title">Channel Manager</div>
+        <div class="ft-desc">Sincroniza Booking, Airbnb e todos os canais em tempo real</div>
+      </div>
+      <div class="feat-card">
+        <div class="ft-title">Motor de reservas</div>
+        <div class="ft-desc">Aceita reservas diretas 24h, mesmo enquanto você dorme</div>
+      </div>
+      <div class="feat-card">
+        <div class="ft-title">Painel unificado</div>
+        <div class="ft-desc">Visão completa de todas as reservas e ocupação do feriado</div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-tag"><span>smartguest</span>.app</div>
+  <div class="slide-number">05/06</div>
+</div>
+
+<!-- SLIDE 6 — CTA URGENTE -->
+<div class="slide" id="slide6">
+  <div class="urgency-bar"></div>
+  <div class="cta-eyebrow">Corpus Christi — 19 de junho. Configure hoje.</div>
+  <h2>AINDA DÁ<br>TEMPO DE<br><span class="hl">SE PREPARAR</span></h2>
+  <p class="cta-sub">Configure preços, disponibilidade e canais agora — antes que o concorrente tome os seus hóspedes</p>
+  <div class="cta-box">
+    <div class="cta-url">smartguest.app</div>
+  </div>
+  <div class="cta-whats">👇 Chama no WhatsApp abaixo</div>
+  <div class="brand-tag"><span>smartguest</span>.app</div>
+  <div class="slide-number">06/06</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartGuest – Como Responder Avaliação Negativa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #030a0d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  #story {
+    width: 1080px;
+    height: 1080px;
+    overflow: hidden;
+    position: relative;
+    background: #060E12;
+    display: flex;
+    flex-direction: column;
+    padding: 64px 80px;
+  }
+
+  #story::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .glow-top {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(22,195,204,0.12) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 44px;
+  }
+
+  .logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: #16C3CC;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .tag {
+    background: rgba(22,195,204,0.12);
+    border: 1px solid rgba(22,195,204,0.4);
+    color: #16C3CC;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 7px 18px;
+    border-radius: 100px;
+  }
+
+  .headline {
+    margin-bottom: 48px;
+  }
+
+  .headline-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #A0AEC0;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 10px;
+  }
+
+  .headline-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 72px;
+    line-height: 0.92;
+    color: #FFFFFF;
+    text-transform: uppercase;
+  }
+
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+  }
+
+  .step-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .step-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: #16C3CC;
+    border-radius: 4px 0 0 4px;
+  }
+
+  .step-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 52px;
+    color: rgba(22,195,204,0.2);
+    line-height: 1;
+    width: 44px;
+    flex-shrink: 0;
+    text-align: center;
+  }
+
+  .step-body {}
+
+  .step-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 30px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .step-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    color: #A0AEC0;
+    line-height: 1.4;
+  }
+
+  .impact-box {
+    margin-top: 24px;
+    padding: 24px 32px;
+    background: rgba(22,195,204,0.07);
+    border: 1.5px solid rgba(22,195,204,0.3);
+    border-radius: 16px;
+    position: relative;
+  }
+
+  .impact-box::before {
+    content: '"';
+    position: absolute;
+    top: -20px;
+    left: 24px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 80px;
+    color: #16C3CC;
+    line-height: 1;
+    opacity: 0.6;
+  }
+
+  .impact-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #FFFFFF;
+    font-style: italic;
+    padding-top: 8px;
+  }
+
+  .footer-bar {
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-credit {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: rgba(255,255,255,0.25);
+  }
+
+  .footer-url {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #16C3CC;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div id="story">
+  <div class="glow-top"></div>
+  <div class="content">
+    <div class="top-row">
+      <div class="logo">SmartGuest</div>
+      <div class="tag">Dica do Dia</div>
+    </div>
+
+    <div class="headline">
+      <div class="headline-label">Como responder</div>
+      <div class="headline-title">AVALIAÇÃO<br>NEGATIVA</div>
+    </div>
+
+    <div class="steps">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">Agradeça pela avaliação</div>
+          <div class="step-desc">Mostre que você valoriza o feedback, independente do tom</div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">Peça desculpas sem se justificar</div>
+          <div class="step-desc">Valide a experiência do hóspede — sem defesas ou argumentos</div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">Convide para retornar</div>
+          <div class="step-desc">Mostre que você melhorou e que a próxima estadia será diferente</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="impact-box">
+      <p class="impact-text">Sua resposta não é só para quem reclamou. É para quem está lendo.</p>
+    </div>
+
+    <div class="footer-bar">
+      <div class="footer-credit">Gestão hoteleira inteligente</div>
+      <div class="footer-url">smartguest.app</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

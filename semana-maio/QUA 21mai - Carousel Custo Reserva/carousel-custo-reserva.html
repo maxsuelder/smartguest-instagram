@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quanto Custa Cada Reserva que Você Perde — SmartGuest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #030a0d; font-family: 'Inter', sans-serif; }
+  .slide {
+    width: 1080px;
+    height: 1080px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px;
+    background: #060E12;
+  }
+  .slide::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 10;
+  }
+  .brand-tag {
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #A0AEC0;
+    letter-spacing: 0.08em;
+    z-index: 5;
+    white-space: nowrap;
+  }
+  .brand-tag span { color: #16C3CC; }
+  .slide-number {
+    position: absolute;
+    top: 44px;
+    right: 52px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #16C3CC;
+    opacity: 0.6;
+    z-index: 5;
+  }
+
+  /* SLIDE 1 — CAPA */
+  #slide1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse 80% 65% at 50% 45%, #1a0a00 0%, #060E12 70%);
+    text-align: center;
+    padding: 80px;
+  }
+  #slide1 .capa-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: #FF4444;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  #slide1 .big-q {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 220px;
+    font-weight: 900;
+    color: #FF4444;
+    line-height: 0.8;
+    text-shadow: 0 0 100px #FF444466;
+    margin-bottom: 0;
+  }
+  #slide1 h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 82px;
+    font-weight: 900;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    line-height: 0.95;
+    margin-bottom: 36px;
+  }
+  #slide1 .capa-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    color: #A0AEC0;
+    max-width: 760px;
+    line-height: 1.5;
+  }
+  #slide1 .capa-desc strong { color: #FFFFFF; }
+
+  /* SLIDES CONTEÚDO */
+  .c-slide {
+    padding: 80px 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+  .c-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #FF4444;
+  }
+  .c-tag::before {
+    content: '';
+    display: block;
+    width: 40px; height: 3px;
+    background: #FF4444;
+    box-shadow: 0 0 10px #FF4444;
+    border-radius: 2px;
+  }
+  .c-tag.teal { color: #16C3CC; }
+  .c-tag.teal::before { background: #16C3CC; box-shadow: 0 0 10px #16C3CC; }
+  .c-tag.gold { color: #FFD700; }
+  .c-tag.gold::before { background: #FFD700; box-shadow: 0 0 10px #FFD700; }
+
+  .c-h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 82px;
+    font-weight: 800;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    line-height: 0.92;
+    margin-bottom: 44px;
+  }
+  .c-h2 .red { color: #FF4444; }
+  .c-h2 .teal { color: #16C3CC; }
+  .c-h2 .gold { color: #FFD700; }
+
+  .c-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: #A0AEC0;
+    line-height: 1.6;
+    max-width: 830px;
+  }
+  .c-desc strong { color: #FFFFFF; }
+
+  .cost-badge {
+    display: inline-block;
+    background: #FF444422;
+    border: 1px solid #FF444466;
+    border-radius: 12px;
+    padding: 16px 32px;
+    margin-top: 36px;
+  }
+  .cost-badge .cb-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 72px;
+    font-weight: 900;
+    color: #FF4444;
+    line-height: 1;
+    text-shadow: 0 0 30px #FF444466;
+  }
+  .cost-badge .cb-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: #A0AEC0;
+    margin-top: 4px;
+  }
+
+  /* SLIDE 4 — OVERBOOKING */
+  #slide4 {
+    background: linear-gradient(150deg, #1a0606 0%, #060E12 70%);
+  }
+
+  /* SLIDE 3 — OTA */
+  #slide3 {
+    background: linear-gradient(150deg, #100808 0%, #060E12 70%);
+  }
+  .ota-calc {
+    background: #FF444415;
+    border: 1px solid #FF444433;
+    border-radius: 20px;
+    padding: 36px 44px;
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .ota-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .ota-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 26px;
+    color: #A0AEC0;
+  }
+  .ota-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 44px;
+    font-weight: 800;
+    color: #FF4444;
+  }
+  .ota-divider {
+    height: 1px;
+    background: #FF444433;
+  }
+
+  /* SLIDE 5 — RESERVA DIRETA */
+  #slide5 {
+    background: radial-gradient(ellipse 70% 60% at 50% 45%, #0a2a2e 0%, #060E12 70%);
+  }
+  .direct-calc {
+    background: #16C3CC15;
+    border: 1px solid #16C3CC33;
+    border-radius: 20px;
+    padding: 36px 44px;
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .direct-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .direct-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 26px;
+    color: #A0AEC0;
+  }
+  .direct-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 44px;
+    font-weight: 800;
+  }
+  .direct-value.good { color: #16C3CC; }
+  .direct-value.zero { color: #FFD700; text-shadow: 0 0 20px #FFD70066; }
+  .direct-divider { height: 1px; background: #16C3CC33; }
+
+  /* SLIDE 6 — CTA */
+  #slide6 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse 90% 70% at 50% 50%, #0a2a2e 0%, #060E12 65%);
+    text-align: center;
+    padding: 80px;
+  }
+  #slide6 .cta-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: #16C3CC;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  #slide6 h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 90px;
+    font-weight: 900;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    line-height: 0.92;
+    margin-bottom: 20px;
+  }
+  #slide6 h2 .hl { color: #16C3CC; }
+  #slide6 .cta-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    color: #A0AEC0;
+    margin-bottom: 56px;
+    line-height: 1.5;
+    max-width: 720px;
+  }
+  #slide6 .cta-box {
+    background: linear-gradient(135deg, #16C3CC22, #16C3CC11);
+    border: 1.5px solid #16C3CC55;
+    border-radius: 20px;
+    padding: 36px 80px;
+    box-shadow: 0 0 60px #16C3CC22;
+    margin-bottom: 32px;
+  }
+  #slide6 .cta-url {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 64px;
+    font-weight: 800;
+    color: #16C3CC;
+    text-shadow: 0 0 30px #16C3CC88;
+  }
+  #slide6 .cta-whats {
+    font-family: 'Inter', sans-serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: #A0AEC0;
+  }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — CAPA -->
+<div class="slide" id="slide1">
+  <div class="capa-sub">A pergunta que ninguém faz</div>
+  <div class="big-q">R$???</div>
+  <h1>QUANTO CUSTA CADA<br>RESERVA QUE VOCÊ<br>PERDE?</h1>
+  <p class="capa-desc">Não é só a receita perdida. É <strong>muito mais caro</strong> do que você imagina</p>
+  <div class="brand-tag"><span>smartguest</span>.app</div>
+</div>
+
+<!-- SLIDE 2 — CUSTO INVISÍVEL -->
+<div class="slide" id="slide2">
+  <div class="c-slide">
+    <div class="c-tag">O custo invisível</div>
+    <h2 class="c-h2">RESERVA NÃO<br>CONFIRMADA<br>A <span class="red">TEMPO</span></h2>
+    <p class="c-desc">O hóspede mandou mensagem, <strong>esperou 4 horas</strong> sem resposta e fechou com o concorrente. Você nem ficou sabendo. Isso acontece todo dia.</p>
+    <div class="cost-badge">
+      <div class="cb-num">= ZERO</div>
+      <div class="cb-label">receita de um quarto vazio que poderia estar ocupado</div>
+    </div>
+  </div>
+  <div class="brand-tag"><span>smartguest</span>.app</div>
+  <div class="slide-number">02/06</div>
+</div>
+
+<!-- SLIDE 3 — CUSTO DA OTA -->
+<div class="slide" id="slide3">
+  <div class="c-slide">
+    <div class="c-tag">O custo da OTA</div>
+    <h2 class="c-h2"><span class="red">15% a 25%</span><br>DE COMISSÃO<br>EM CADA VENDA</h2>
+    <div class="ota-calc">
+      <div class="ota-row">
+        <span class="ota-label">Diária de R$ 400</span>
+        <span class="ota-value">R$ 400</span>
+      </div>
+      <div class="ota-divider"></div>
+      <div class="ota-row">
+        <span class="ota-label">Comissão Booking (20%)</span>
+        <span class="ota-value">- R$ 80</span>
+      </div>
+      <div class="ota-divider"></div>
+      <div class="ota-row">
+        <span class="ota-label" style="color:#fff;font-weight:600">Você recebe</span>
+        <span class="ota-value">R$ 320</span>
+      </div>
+    </div>
+  </div>
+  <div class="brand-tag"><span>smartguest</span>.app</div>
+  <div class="slide-number">03/06</div>
+</div>
+
+<!-- SLIDE 4 — OVERBOOKING -->
+<div class="slide" id="slide4">
+  <div class="c-slide">
+    <div class="c-tag">O pior de todos</div>
+    <h2 class="c-h2">O CUSTO DO<br><span class="red">OVERBOOKING</span><br>É DUPLO</h2>
+    <p class="c-desc"><strong>Reembolso</strong> do valor pago — mais o custo de realocação. <strong>Avaliação 1 estrela</strong> no Booking que fica lá para sempre. Reputação destruída publicamente.</p>
+    <div class="cost-badge" style="background:#FF444415;border-color:#FF444466;margin-top:36px">
+      <div class="cb-num" style="font-size:52px">= PREJUÍZO + VERGONHA</div>
+      <div class="cb-label">tudo por falta de sincronização automática</div>
+    </div>
+  </div>
+  <div class="brand-tag"><span>smartguest</span>.app</div>
+  <div class="slide-number">04/06</div>
+</div>
+
+<!-- SLIDE 5 — RESERVA DIRETA -->
+<div class="slide" id="slide5">
+  <div class="c-slide">
+    <div class="c-tag teal">A solução</div>
+    <h2 class="c-h2">RESERVA DIRETA<br>VIA MOTOR =<br><span class="teal">COMISSÃO ZERO</span></h2>
+    <div class="direct-calc">
+      <div class="direct-row">
+        <span class="direct-label">Diária de R$ 400</span>
+        <span class="direct-value good">R$ 400</span>
+      </div>
+      <div class="direct-divider"></div>
+      <div class="direct-row">
+        <span class="direct-label">Comissão da OTA</span>
+        <span class="direct-value zero">R$ 0</span>
+      </div>
+      <div class="direct-divider"></div>
+      <div class="direct-row">
+        <span class="direct-label" style="color:#fff;font-weight:600">Você recebe</span>
+        <span class="direct-value good">R$ 400</span>
+      </div>
+    </div>
+  </div>
+  <div class="brand-tag"><span>smartguest</span>.app</div>
+  <div class="slide-number">05/06</div>
+</div>
+
+<!-- SLIDE 6 — CTA -->
+<div class="slide" id="slide6">
+  <div class="cta-eyebrow">Pare de pagar comissão desnecessária</div>
+  <h2>ATIVE SEU<br>MOTOR DE<br><span class="hl">RESERVAS</span></h2>
+  <p class="cta-sub">Motor de reservas direto + Channel Manager + PMS, tudo integrado no SmartGuest</p>
+  <div class="cta-box">
+    <div class="cta-url">smartguest.app</div>
+  </div>
+  <div class="cta-whats">👇 Chama no WhatsApp abaixo</div>
+  <div class="brand-tag"><span>smartguest</span>.app</div>
+  <div class="slide-number">06/06</div>
+</div>
+
+</body>
+</html>

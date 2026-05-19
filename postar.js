@@ -172,7 +172,7 @@ async function publicar(containerId) {
   // Renovar token antes de publicar
   await renovarToken();
 
-  const semanas = ['semana1', 'semana2', 'semana3', 'semana4', 'semana5', 'semana6', 'semana-ia'];
+  const semanas = ['semana1', 'semana2', 'semana3', 'semana4', 'semana5', 'semana6', 'semana-ia', 'semana-maio', 'posts-especiais/neymar-copa'];
   let post = null;
   let semanaDir = null;
 

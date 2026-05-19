@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartGuest – Rate Parity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #030a0d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+  }
+
+  #story {
+    width: 1080px;
+    height: 1080px;
+    overflow: hidden;
+    position: relative;
+    background: #060E12;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 72px;
+  }
+
+  #story::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* diagonal gradient accent */
+  .bg-accent {
+    position: absolute;
+    right: -100px;
+    bottom: -100px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(ellipse, rgba(22,195,204,0.14) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .bg-accent2 {
+    position: absolute;
+    left: -80px;
+    top: -80px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(22,195,204,0.08) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 52px;
+  }
+
+  .logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: #16C3CC;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(22,195,204,0.12);
+    border: 1px solid rgba(22,195,204,0.4);
+    color: #16C3CC;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 7px 18px;
+    border-radius: 100px;
+  }
+
+  .tag::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #16C3CC;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .main-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 130px;
+    line-height: 0.88;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+
+  .main-title-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    color: #16C3CC;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 48px;
+  }
+
+  .divider {
+    width: 64px;
+    height: 3px;
+    background: linear-gradient(90deg, #16C3CC, transparent);
+    margin-bottom: 40px;
+    border-radius: 2px;
+  }
+
+  .explanation {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    line-height: 1.55;
+    color: #A0AEC0;
+    max-width: 780px;
+    margin-bottom: 44px;
+  }
+
+  .explanation strong {
+    color: #FFFFFF;
+    font-weight: 600;
+  }
+
+  .explanation .highlight {
+    color: #16C3CC;
+    font-weight: 600;
+  }
+
+  .tip-box {
+    background: rgba(22,195,204,0.07);
+    border: 1.5px solid rgba(22,195,204,0.3);
+    border-radius: 16px;
+    padding: 28px 36px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .tip-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(22,195,204,0.15);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .tip-icon svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: #16C3CC;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .tip-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #FFFFFF;
+  }
+
+  .tip-text span {
+    color: #16C3CC;
+    font-weight: 600;
+  }
+
+  .bottom-url {
+    margin-top: 40px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div id="story">
+  <div class="bg-accent"></div>
+  <div class="bg-accent2"></div>
+  <div class="content">
+    <div class="top-bar">
+      <div class="logo">SmartGuest</div>
+      <div class="tag">Você Sabia?</div>
+    </div>
+
+    <div class="main-title">RATE<br>PARITY</div>
+    <div class="main-title-sub">O conceito que todo hoteleiro precisa dominar</div>
+
+    <div class="divider"></div>
+
+    <p class="explanation">
+      É quando seu quarto custa o <strong>mesmo valor em todos os canais</strong> de venda —
+      Booking.com, Airbnb, site próprio. O <span class="highlight">Booking.com exige isso</span>.
+      Quem descumpre é <strong>penalizado no ranking</strong> e perde visibilidade.
+    </p>
+
+    <div class="tip-box">
+      <div class="tip-icon">
+        <svg viewBox="0 0 24 24">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+      <div class="tip-text">
+        <span>SmartGuest</span> sincroniza seus preços em todos os canais
+        automaticamente — sem risco de penalização.
+      </div>
+    </div>
+
+    <div class="bottom-url">smartguest.app</div>
+  </div>
+</div>
+</body>
+</html>

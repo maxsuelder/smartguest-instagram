@@ -1,0 +1,182 @@
+[
+  {
+    "id": "seg19-carousel-sinais",
+    "tipo": "CAROUSEL",
+    "html": "SEG 19mai - Carousel Sinais Sistema/carousel-sinais.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slides": ["slide1","slide2","slide3","slide4","slide5","slide6","slide7"],
+    "legenda": "Sua pousada está te dando sinais. Você está ouvindo? 🏨\n\nSe você se identificou com 2 ou mais desses sinais, é hora de evoluir.\n\nO SmartGuest resolve cada um deles — PMS, Channel Manager e Motor de Reservas em um só lugar.\n\n⚡ Setup em 7 dias\n🤝 Suporte humano real\n💰 Sem contrato longo\n\n👉 smartguest.app\n📲 Chama no WhatsApp na bio\n\n.\n.\n.\n#SmartGuest #GestaHoteleira #Hotelaria #PousadasBrasil #HoteisBrasil #SistemaHoteleiro #ChannelManager #MotorDeReservas #PMS #OverbookingZero #ReservasDiretas #TecnologiaHoteleira #GestaoHotel #AutomacaoHoteleira #HotelTech #Hospitalidade #PousadaInteligente #HotelariaDigital"
+  },
+  {
+    "id": "seg19-story-pergunta",
+    "tipo": "STORIES",
+    "html": "SEG 19mai - Story Pergunta Tempo/story-pergunta.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slide": "story",
+    "legenda": "Responde nos comentários! 👇 Com SmartGuest você cai para menos de 20 minutos. smartguest.app #SmartGuest #GestaHoteleira #Hotelaria"
+  },
+  {
+    "id": "ter20-carousel-hospede-volta",
+    "tipo": "CAROUSEL",
+    "html": "TER 20mai - Carousel Hospede Volta/carousel-hospede-volta.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slides": ["slide1","slide2","slide3","slide4","slide5","slide6"],
+    "legenda": "Hóspede recorrente vale 5x mais do que um novo. Você está cuidando deles? 🏨\n\nA diferença entre o hóspede que volta e o que some para sempre está nos detalhes — e o SmartGuest te ajuda a acertar cada um.\n\n👉 smartguest.app\n📲 Chama no WhatsApp na bio\n\n#SmartGuest #Hotelaria #HotelariaDigital #PousadasBrasil #FidelizacaoDeClientes #GestaHoteleira #HotelTech #Hospitalidade"
+  },
+  {
+    "id": "ter20-story-rate-parity",
+    "tipo": "STORIES",
+    "html": "TER 20mai - Story Rate Parity/story-rate-parity.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slide": "story",
+    "legenda": "Rate Parity: o conceito que pode estar te custando posição no Booking.com. SmartGuest sincroniza tudo. smartguest.app #SmartGuest #Hotelaria #ChannelManager"
+  },
+  {
+    "id": "qua21-carousel-custo-reserva",
+    "tipo": "CAROUSEL",
+    "html": "QUA 21mai - Carousel Custo Reserva/carousel-custo-reserva.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slides": ["slide1","slide2","slide3","slide4","slide5","slide6"],
+    "legenda": "Cada reserva perdida tem um custo real. Você sabe qual é o seu? 💸\n\nOTA com 20% de comissão + reservas que escapam = prejuízo silencioso todo mês. Motor de reservas direto muda esse jogo.\n\n👉 smartguest.app\n📲 Chama no WhatsApp\n\n#SmartGuest #MotorDeReservas #ReservasDiretas #Hotelaria #PousadasBrasil #GestaHoteleira #HotelTech"
+  },
+  {
+    "id": "qua21-story-planilha",
+    "tipo": "STORIES",
+    "html": "QUA 21mai - Story Planilha/story-planilha.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slide": "story",
+    "legenda": "Sem julgamentos 😄 Mas se você ainda usa planilha, a gente precisa conversar. smartguest.app #SmartGuest #GestaHoteleira #Hotelaria"
+  },
+  {
+    "id": "qui22-carousel-checkin",
+    "tipo": "CAROUSEL",
+    "html": "QUI 22mai - Carousel Checkin/carousel-checkin.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slides": ["slide1","slide2","slide3","slide4","slide5","slide6"],
+    "legenda": "O check-in é a primeira impressão presencial. Você não tem segunda chance. 🏨\n\nOs melhores hotéis já automatizaram essa etapa — e os hóspedes adoram. Menos fila, mais acolhimento.\n\n👉 smartguest.app\n📲 Chama no WhatsApp\n\n#SmartGuest #Checkin #Hotelaria #PousadasBrasil #GestaHoteleira #HotelTech #Hospitalidade #AutomacaoHoteleira"
+  },
+  {
+    "id": "qui22-story-setup",
+    "tipo": "STORIES",
+    "html": "QUI 22mai - Story Setup/story-setup.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slide": "story",
+    "legenda": "7 dias para transformar a gestão do seu hotel. Suporte humano em cada etapa. smartguest.app #SmartGuest #Setup #Hotelaria"
+  },
+  {
+    "id": "sex23-carousel-corpus",
+    "tipo": "CAROUSEL",
+    "html": "SEX 23mai - Carousel Corpus/carousel-corpus.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slides": ["slide1","slide2","slide3","slide4","slide5","slide6"],
+    "legenda": "Corpus Christi é feriado prolongado — e seu hotel precisa estar pronto agora. ⛪\n\nQuem se prepara antes fatura mais. Quem deixa para última hora perde para o concorrente.\n\n👉 smartguest.app\n📲 Chama no WhatsApp\n\n#SmartGuest #CorpusChristi #Feriado #Hotelaria #PousadasBrasil #GestaHoteleira #TemporadaAlta #HotelTech"
+  },
+  {
+    "id": "sex23-story-avaliacoes",
+    "tipo": "STORIES",
+    "html": "SEX 23mai - Story Avaliacoes/story-avaliacoes.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slide": "story",
+    "legenda": "Sua resposta para avaliações negativas é lida por centenas de futuros hóspedes. Faz ela valer. 💬 smartguest.app #SmartGuest #Hotelaria #Avaliacoes #Booking"
+  },
+  {
+    "id": "seg26-carousel-booking",
+    "tipo": "CAROUSEL",
+    "html": "SEG 26mai - Carousel Booking/carousel-booking.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slides": ["slide1","slide2","slide3","slide4","slide5","slide6","slide7"],
+    "legenda": "Você sabia que disponibilidade desatualizada te faz cair no ranking do Booking? 📉\n\nChannel Manager sincronizado = mais visibilidade = mais reservas. É simples assim.\n\n👉 smartguest.app\n📲 Chama no WhatsApp\n\n#SmartGuest #Booking #ChannelManager #Hotelaria #PousadasBrasil #GestaHoteleira #RankingBooking #HotelTech"
+  },
+  {
+    "id": "seg26-story-quiz",
+    "tipo": "STORIES",
+    "html": "SEG 26mai - Story Quiz/story-quiz.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slide": "story",
+    "legenda": "Qual você é? 😄 O objetivo é chegar no 😎 — e o SmartGuest te leva até lá. smartguest.app #SmartGuest #Hotelaria #GestaHoteleira"
+  },
+  {
+    "id": "ter27-carousel-revenue",
+    "tipo": "CAROUSEL",
+    "html": "TER 27mai - Carousel Revenue/carousel-revenue.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slides": ["slide1","slide2","slide3","slide4","slide5","slide6"],
+    "legenda": "Revenue Management não é só para grandes redes. Pousada pequena também pode — e deve. 📊\n\nPreço certo, na hora certa, no canal certo. SmartGuest te dá os dados para fazer isso.\n\n👉 smartguest.app\n📲 Chama no WhatsApp\n\n#SmartGuest #RevenueManagement #Hotelaria #PousadasBrasil #GestaHoteleira #HotelTech #Receita #PrecoDinamico"
+  },
+  {
+    "id": "ter27-story-depoimento",
+    "tipo": "STORIES",
+    "html": "TER 27mai - Story Depoimento/story-depoimento.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slide": "story",
+    "legenda": "+40% em reservas diretas em 30 dias. Resultado real de quem usou SmartGuest. 🏆 smartguest.app #SmartGuest #Resultado #Hotelaria #ReservasDiretas"
+  },
+  {
+    "id": "qua28-carousel-erro",
+    "tipo": "CAROUSEL",
+    "html": "QUA 28mai - Carousel Erro/carousel-erro.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slides": ["slide1","slide2","slide3","slide4","slide5","slide6"],
+    "legenda": "30% da receita indo embora todo mês e você nem percebe. 💸\n\nComissão de OTA parece pequena por reserva — mas some tudo no fim do mês e vai chorar.\n\nMotor de reservas direto = você fica com tudo.\n\n👉 smartguest.app\n📲 Chama no WhatsApp\n\n#SmartGuest #ReservasDiretas #MotorDeReservas #Hotelaria #PousadasBrasil #GestaHoteleira #OTA #Booking #HotelTech"
+  },
+  {
+    "id": "qua28-story-precos",
+    "tipo": "STORIES",
+    "html": "QUA 28mai - Story Precos/story-precos.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slide": "story",
+    "legenda": "3 ajustes de preço que podem aumentar sua receita essa semana. 💰 smartguest.app #SmartGuest #RevenueManagement #Hotelaria #PrecoDinamico"
+  },
+  {
+    "id": "qui29-carousel-comparacao",
+    "tipo": "CAROUSEL",
+    "html": "QUI 29mai - Carousel Comparacao/carousel-comparacao.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slides": ["slide1","slide2","slide3","slide4","slide5","slide6"],
+    "legenda": "Planilha tem custo zero? Só se o seu tempo não valer nada. ⏰\n\n3h por dia × 30 dias = 90h por mês gerenciando reservas na mão. Quanto vale 90h do seu tempo?\n\nSmartGuest: menos de 20min por dia.\n\n👉 smartguest.app\n📲 Chama no WhatsApp\n\n#SmartGuest #Hotelaria #PousadasBrasil #GestaHoteleira #SistemaHoteleiro #Automacao #HotelTech #Produtividade"
+  },
+  {
+    "id": "qui29-story-tempo",
+    "tipo": "STORIES",
+    "html": "QUI 29mai - Story Tempo/story-tempo.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slide": "story",
+    "legenda": "15h por semana. Você tem coisas melhores para fazer com esse tempo. 🕐 smartguest.app #SmartGuest #Hotelaria #Automacao #GestaHoteleira"
+  },
+  {
+    "id": "sex30-carousel-junho",
+    "tipo": "CAROUSEL",
+    "html": "SEX 30mai - Carousel Junho/carousel-junho.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slides": ["slide1","slide2","slide3","slide4","slide5","slide6"],
+    "legenda": "Maio acabou. Junho chegou com tudo. ⚽🏆\n\nCorpus Christi + Copa do Mundo = maior temporada da hotelaria brasileira em anos.\n\nSetup em 7 dias. Ainda dá tempo.\n\n👉 smartguest.app\n📲 Chama no WhatsApp agora\n\n#SmartGuest #Copa2026 #CopadoMundo #Hotelaria #PousadasBrasil #GestaHoteleira #TemporadaAlta #HotelTech #CorpusChristi #Junho"
+  },
+  {
+    "id": "sex30-story-cta",
+    "tipo": "STORIES",
+    "html": "SEX 30mai - Story CTA/story-cta-maio.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slide": "story",
+    "legenda": "Junho chegando. Copa chegando. Seu hotel pronto? 🏆 smartguest.app #SmartGuest #Copa2026 #Hotelaria #TemporadaAlta"
+  }
+]

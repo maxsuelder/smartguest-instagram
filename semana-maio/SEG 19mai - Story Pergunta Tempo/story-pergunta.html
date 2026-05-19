@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartGuest – Quanto Tempo Você Perde?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #030a0d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+  }
+
+  #story {
+    width: 1080px;
+    height: 1080px;
+    overflow: hidden;
+    position: relative;
+    background: #060E12;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 64px 72px;
+  }
+
+  /* grain overlay */
+  #story::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* teal glow top */
+  #story::after {
+    content: '';
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(22,195,204,0.18) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: #16C3CC;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .question-block {
+    text-align: center;
+  }
+
+  .tag {
+    display: inline-block;
+    background: rgba(22,195,204,0.12);
+    border: 1px solid rgba(22,195,204,0.4);
+    color: #16C3CC;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+
+  .question {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 72px;
+    line-height: 1;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  .question span {
+    color: #16C3CC;
+  }
+
+  .options {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 860px;
+  }
+
+  .option {
+    background: rgba(255,255,255,0.04);
+    border: 1.5px solid rgba(22,195,204,0.3);
+    border-radius: 16px;
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: border-color 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .option::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, #16C3CC, rgba(22,195,204,0.3));
+    border-radius: 3px 0 0 3px;
+  }
+
+  .option-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid rgba(22,195,204,0.5);
+    flex-shrink: 0;
+  }
+
+  .option-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    color: #FFFFFF;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 20px 40px;
+    background: rgba(22,195,204,0.08);
+    border: 1px solid rgba(22,195,204,0.2);
+    border-radius: 100px;
+  }
+
+  .footer-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    color: #A0AEC0;
+  }
+
+  .footer-text strong {
+    color: #16C3CC;
+  }
+
+  .footer-url {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #16C3CC;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+</style>
+</head>
+<body>
+<div id="story">
+  <div class="content">
+    <div class="logo">SmartGuest</div>
+
+    <div class="question-block">
+      <div class="tag">Enquete</div>
+      <h1 class="question">QUANTO TEMPO VOCÊ PERDE POR DIA <span>GERENCIANDO RESERVAS?</span></h1>
+    </div>
+
+    <div class="options">
+      <div class="option">
+        <div class="option-dot"></div>
+        <span class="option-text">Menos de 1h</span>
+      </div>
+      <div class="option">
+        <div class="option-dot"></div>
+        <span class="option-text">1 a 2 horas</span>
+      </div>
+      <div class="option">
+        <div class="option-dot"></div>
+        <span class="option-text">2 a 4 horas</span>
+      </div>
+      <div class="option" style="border-color: rgba(22,195,204,0.6); background: rgba(22,195,204,0.07);">
+        <div class="option-dot" style="border-color: #16C3CC;"></div>
+        <span class="option-text" style="color: #16C3CC;">Mais de 4h</span>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-text">Com SmartGuest: <strong>menos de 20min por dia.</strong></div>
+      <div class="footer-url">smartguest.app</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

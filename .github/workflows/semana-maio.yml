@@ -1,0 +1,109 @@
+name: SmartGuest — Maio 2026
+
+on:
+  schedule:
+    # ter 20/05 às 10h BRT = 13h UTC
+    - cron: '0 13 20 5 *'
+    # ter 20/05 às 19h BRT = 22h UTC
+    - cron: '0 22 20 5 *'
+    # qua 21/05 às 10h BRT = 13h UTC
+    - cron: '0 13 21 5 *'
+    # qua 21/05 às 19h BRT = 22h UTC
+    - cron: '0 22 21 5 *'
+    # qui 22/05 às 10h BRT = 13h UTC
+    - cron: '0 13 22 5 *'
+    # qui 22/05 às 19h BRT = 22h UTC
+    - cron: '0 22 22 5 *'
+    # sex 23/05 às 10h BRT = 13h UTC
+    - cron: '0 13 23 5 *'
+    # sex 23/05 às 19h BRT = 22h UTC
+    - cron: '0 22 23 5 *'
+    # seg 26/05 às 10h BRT = 13h UTC
+    - cron: '0 13 26 5 *'
+    # seg 26/05 às 19h BRT = 22h UTC
+    - cron: '0 22 26 5 *'
+    # ter 27/05 às 10h BRT = 13h UTC
+    - cron: '0 13 27 5 *'
+    # ter 27/05 às 19h BRT = 22h UTC
+    - cron: '0 22 27 5 *'
+    # qua 28/05 às 10h BRT = 13h UTC
+    - cron: '0 13 28 5 *'
+    # qua 28/05 às 19h BRT = 22h UTC
+    - cron: '0 22 28 5 *'
+    # qui 29/05 às 10h BRT = 13h UTC
+    - cron: '0 13 29 5 *'
+    # qui 29/05 às 19h BRT = 22h UTC
+    - cron: '0 22 29 5 *'
+    # sex 30/05 às 10h BRT = 13h UTC
+    - cron: '0 13 30 5 *'
+    # sex 30/05 às 19h BRT = 22h UTC
+    - cron: '0 22 30 5 *'
+
+  workflow_dispatch:
+    inputs:
+      post_id:
+        description: 'ID do post para publicar manualmente'
+        required: true
+        type: string
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Instalar Playwright (Chromium)
+        run: npx playwright install chromium --with-deps
+
+      - name: Determinar post do dia
+        id: post
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "id=${{ inputs.post_id }}" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          DIA=$(date -u +"%m-%d")
+          HORA=$(date -u +"%H")
+          case "${DIA}-${HORA}" in
+            "05-20-13") echo "id=ter20-carousel-hospede-volta" >> $GITHUB_OUTPUT ;;
+            "05-20-22") echo "id=ter20-story-rate-parity" >> $GITHUB_OUTPUT ;;
+            "05-21-13") echo "id=qua21-carousel-custo-reserva" >> $GITHUB_OUTPUT ;;
+            "05-21-22") echo "id=qua21-story-planilha" >> $GITHUB_OUTPUT ;;
+            "05-22-13") echo "id=qui22-carousel-checkin" >> $GITHUB_OUTPUT ;;
+            "05-22-22") echo "id=qui22-story-setup" >> $GITHUB_OUTPUT ;;
+            "05-23-13") echo "id=sex23-carousel-corpus" >> $GITHUB_OUTPUT ;;
+            "05-23-22") echo "id=sex23-story-avaliacoes" >> $GITHUB_OUTPUT ;;
+            "05-26-13") echo "id=seg26-carousel-booking" >> $GITHUB_OUTPUT ;;
+            "05-26-22") echo "id=seg26-story-quiz" >> $GITHUB_OUTPUT ;;
+            "05-27-13") echo "id=ter27-carousel-revenue" >> $GITHUB_OUTPUT ;;
+            "05-27-22") echo "id=ter27-story-depoimento" >> $GITHUB_OUTPUT ;;
+            "05-28-13") echo "id=qua28-carousel-erro" >> $GITHUB_OUTPUT ;;
+            "05-28-22") echo "id=qua28-story-precos" >> $GITHUB_OUTPUT ;;
+            "05-29-13") echo "id=qui29-carousel-comparacao" >> $GITHUB_OUTPUT ;;
+            "05-29-22") echo "id=qui29-story-tempo" >> $GITHUB_OUTPUT ;;
+            "05-30-13") echo "id=sex30-carousel-junho" >> $GITHUB_OUTPUT ;;
+            "05-30-22") echo "id=sex30-story-cta" >> $GITHUB_OUTPUT ;;
+            *)
+              echo "Nenhum post agendado para $DIA às $HORA UTC"
+              exit 1
+              ;;
+          esac
+
+      - name: Publicar no Instagram
+        env:
+          INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
+          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+          IMGBB_KEY: ${{ secrets.IMGBB_KEY }}
+        run: node postar.js ${{ steps.post.outputs.id }}

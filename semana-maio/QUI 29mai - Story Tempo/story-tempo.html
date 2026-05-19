@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartGuest – 15h por Semana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #030a0d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  #story {
+    width: 1080px;
+    height: 1080px;
+    overflow: hidden;
+    position: relative;
+    background: #060E12;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 64px 88px;
+  }
+
+  #story::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* big glow behind the number */
+  .glow-number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -58%);
+    width: 700px;
+    height: 500px;
+    background: radial-gradient(ellipse, rgba(22,195,204,0.18) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0;
+  }
+
+  .logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: #16C3CC;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
+
+  .big-number {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 240px;
+    line-height: 0.8;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    /* glow text */
+    text-shadow:
+      0 0 60px rgba(22,195,204,0.4),
+      0 0 120px rgba(22,195,204,0.2),
+      0 0 200px rgba(22,195,204,0.1);
+    margin-bottom: 16px;
+  }
+
+  .big-number span {
+    color: #16C3CC;
+  }
+
+  .subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    color: #A0AEC0;
+    line-height: 1.5;
+    max-width: 680px;
+    margin-bottom: 52px;
+  }
+
+  .subtitle strong {
+    color: #FFFFFF;
+  }
+
+  .divider-line {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(22,195,204,0.4), transparent);
+    margin-bottom: 40px;
+  }
+
+  .comparison {
+    display: flex;
+    gap: 24px;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .comp-card {
+    flex: 1;
+    border-radius: 16px;
+    padding: 24px 28px;
+    text-align: left;
+  }
+
+  .comp-card.bad {
+    background: rgba(255,70,70,0.06);
+    border: 1px solid rgba(255,70,70,0.2);
+  }
+
+  .comp-card.good {
+    background: rgba(22,195,204,0.08);
+    border: 1.5px solid rgba(22,195,204,0.35);
+  }
+
+  .comp-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 8px;
+  }
+
+  .comp-card.bad .comp-label { color: #FF7070; }
+  .comp-card.good .comp-label { color: #16C3CC; }
+
+  .comp-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 56px;
+    line-height: 1;
+  }
+
+  .comp-card.bad .comp-value { color: rgba(255,70,70,0.7); }
+  .comp-card.good .comp-value { color: #16C3CC; }
+
+  .comp-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #A0AEC0;
+    margin-top: 4px;
+  }
+
+  .extra-time {
+    background: rgba(22,195,204,0.08);
+    border: 1px solid rgba(22,195,204,0.25);
+    border-radius: 14px;
+    padding: 20px 32px;
+    margin-bottom: 32px;
+    width: 100%;
+  }
+
+  .extra-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+  }
+
+  .extra-text span { color: #16C3CC; }
+
+  .cta-url {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div id="story">
+  <div class="glow-number"></div>
+  <div class="content">
+    <div class="logo">SmartGuest</div>
+
+    <div class="big-number"><span>15</span>h</div>
+    <p class="subtitle">
+      Por semana é o que o <strong>dono médio de pousada</strong>
+      perde gerenciando reservas manualmente
+    </p>
+
+    <div class="divider-line"></div>
+
+    <div class="comparison">
+      <div class="comp-card bad">
+        <div class="comp-label">Sem sistema</div>
+        <div class="comp-value">15h</div>
+        <div class="comp-desc">Toda semana, jogando fora</div>
+      </div>
+      <div class="comp-card good">
+        <div class="comp-label">Com SmartGuest</div>
+        <div class="comp-value">&lt;2h</div>
+        <div class="comp-desc">Sistema faz o resto</div>
+      </div>
+    </div>
+
+    <div class="extra-time">
+      <div class="extra-text">Você tem <span>13h extras</span> por semana esperando por você.</div>
+    </div>
+
+    <div class="cta-url">smartguest.app</div>
+  </div>
+</div>
+</body>
+</html>

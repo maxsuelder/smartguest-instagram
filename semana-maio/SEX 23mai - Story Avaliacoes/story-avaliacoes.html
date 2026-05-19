@@ -3,20 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SmartGuest – Como Responder Avaliação Negativa</title>
+<title>Hóspede Corporativo — SmartGuest</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: #030a0d;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-  }
+  body { background: #030a0d; font-family: 'Inter', sans-serif; }
 
   #story {
     width: 1080px;
@@ -26,251 +19,192 @@
     background: #060E12;
     display: flex;
     flex-direction: column;
-    padding: 64px 80px;
+    align-items: center;
+    justify-content: center;
+    padding: 64px 72px;
   }
 
-  #story::before {
+  /* grain overlay */
+  #story::after {
     content: '';
     position: absolute;
     inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
     opacity: 0.35;
     pointer-events: none;
-    z-index: 0;
+    z-index: 20;
   }
 
-  .glow-top {
+  /* glow background */
+  #story::before {
+    content: '';
     position: absolute;
-    top: -100px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 800px;
-    height: 400px;
-    background: radial-gradient(ellipse, rgba(22,195,204,0.12) 0%, transparent 70%);
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 40%, #0a2a2e 0%, #060E12 70%);
     pointer-events: none;
     z-index: 0;
   }
 
-  .content {
+  .inner {
     position: relative;
-    z-index: 1;
+    z-index: 5;
     display: flex;
     flex-direction: column;
-    height: 100%;
-  }
-
-  .top-row {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 44px;
+    width: 100%;
   }
 
-  .logo {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: 22px;
-    color: #16C3CC;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  .tag {
-    background: rgba(22,195,204,0.12);
-    border: 1px solid rgba(22,195,204,0.4);
-    color: #16C3CC;
+  /* ── TOP EYEBROW ── */
+  .eyebrow {
     font-family: 'Inter', sans-serif;
+    font-size: 19px;
     font-weight: 600;
-    font-size: 13px;
-    letter-spacing: 0.14em;
+    color: #A0AEC0;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    padding: 7px 18px;
-    border-radius: 100px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .eyebrow::before, .eyebrow::after {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #16C3CC88);
+  }
+  .eyebrow::after { background: linear-gradient(90deg, #16C3CC88, transparent); }
+
+  /* ── MAIN TITLE ── */
+  .main-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 96px;
+    font-weight: 900;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    line-height: 0.9;
+    text-align: center;
+    margin-bottom: 12px;
+    text-shadow: 0 0 60px #16C3CC33;
   }
 
-  .headline {
+  /* ── SUBTITLE ── */
+  .subtitle {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: #16C3CC;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-align: center;
+    margin-bottom: 48px;
+    text-shadow: 0 0 20px #16C3CC66;
+  }
+
+  /* ── CARDS GRID ── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    width: 100%;
     margin-bottom: 48px;
   }
-
-  .headline-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    color: #A0AEC0;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-bottom: 10px;
-  }
-
-  .headline-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: 72px;
-    line-height: 0.92;
-    color: #FFFFFF;
-    text-transform: uppercase;
-  }
-
-  .steps {
+  .corp-card {
+    background: linear-gradient(135deg, #16C3CC0e, #16C3CC08);
+    border: 1.5px solid #16C3CC2e;
+    border-radius: 18px;
+    padding: 28px 28px 24px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    flex: 1;
-  }
-
-  .step-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 16px;
-    padding: 28px 32px;
-    display: flex;
-    align-items: center;
-    gap: 28px;
+    gap: 10px;
     position: relative;
     overflow: hidden;
+    transition: border-color 0.2s;
   }
-
-  .step-card::before {
+  .corp-card::before {
     content: '';
     position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 4px;
-    background: #16C3CC;
-    border-radius: 4px 0 0 4px;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #16C3CC66, transparent);
   }
-
-  .step-num {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: 52px;
-    color: rgba(22,195,204,0.2);
+  .card-icon {
+    font-size: 36px;
+    filter: drop-shadow(0 0 10px #16C3CC66);
     line-height: 1;
-    width: 44px;
-    flex-shrink: 0;
-    text-align: center;
   }
-
-  .step-body {}
-
-  .step-title {
+  .card-title {
     font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
     font-size: 30px;
+    font-weight: 800;
     color: #FFFFFF;
     text-transform: uppercase;
     line-height: 1;
-    margin-bottom: 6px;
   }
-
-  .step-desc {
+  .card-desc {
     font-family: 'Inter', sans-serif;
-    font-size: 17px;
+    font-size: 20px;
     color: #A0AEC0;
     line-height: 1.4;
   }
+  .card-desc strong { color: #16C3CC; }
 
-  .impact-box {
-    margin-top: 24px;
-    padding: 24px 32px;
-    background: rgba(22,195,204,0.07);
-    border: 1.5px solid rgba(22,195,204,0.3);
-    border-radius: 16px;
-    position: relative;
-  }
-
-  .impact-box::before {
-    content: '"';
-    position: absolute;
-    top: -20px;
-    left: 24px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 80px;
-    color: #16C3CC;
-    line-height: 1;
-    opacity: 0.6;
-  }
-
-  .impact-text {
+  /* ── FOOTER ── */
+  .footer-text {
     font-family: 'Inter', sans-serif;
     font-size: 20px;
-    line-height: 1.5;
-    color: #FFFFFF;
-    font-style: italic;
-    padding-top: 8px;
+    font-weight: 600;
+    color: #A0AEC0;
+    letter-spacing: 0.06em;
+    text-align: center;
   }
-
-  .footer-bar {
-    margin-top: 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .footer-credit {
-    font-family: 'Inter', sans-serif;
-    font-size: 15px;
-    color: rgba(255,255,255,0.25);
-  }
-
-  .footer-url {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    color: #16C3CC;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
+  .footer-text span { color: #16C3CC; }
 </style>
 </head>
 <body>
+
 <div id="story">
-  <div class="glow-top"></div>
-  <div class="content">
-    <div class="top-row">
-      <div class="logo">SmartGuest</div>
-      <div class="tag">Dica do Dia</div>
-    </div>
+  <div class="inner">
 
-    <div class="headline">
-      <div class="headline-label">Como responder</div>
-      <div class="headline-title">AVALIAÇÃO<br>NEGATIVA</div>
-    </div>
+    <div class="eyebrow">Segmento estratégico</div>
 
-    <div class="steps">
-      <div class="step-card">
-        <div class="step-num">1</div>
-        <div class="step-body">
-          <div class="step-title">Agradeça pela avaliação</div>
-          <div class="step-desc">Mostre que você valoriza o feedback, independente do tom</div>
-        </div>
+    <div class="main-title">HÓSPEDE<br>CORPORATIVO</div>
+
+    <div class="subtitle">O cliente que volta toda semana</div>
+
+    <div class="cards-grid">
+
+      <div class="corp-card">
+        <div class="card-icon">💼</div>
+        <div class="card-title">Viaja a negócios</div>
+        <div class="card-desc">Alta frequência — <strong>pode voltar toda semana</strong> à sua cidade</div>
       </div>
 
-      <div class="step-card">
-        <div class="step-num">2</div>
-        <div class="step-body">
-          <div class="step-title">Peça desculpas sem se justificar</div>
-          <div class="step-desc">Valide a experiência do hóspede — sem defesas ou argumentos</div>
-        </div>
+      <div class="corp-card">
+        <div class="card-icon">💳</div>
+        <div class="card-title">Cartão corporativo</div>
+        <div class="card-desc">Sem pechincha no preço — <strong>a empresa paga</strong></div>
       </div>
 
-      <div class="step-card">
-        <div class="step-num">3</div>
-        <div class="step-body">
-          <div class="step-title">Convide para retornar</div>
-          <div class="step-desc">Mostre que você melhorou e que a próxima estadia será diferente</div>
-        </div>
+      <div class="corp-card">
+        <div class="card-icon">⭐</div>
+        <div class="card-title">Menos exigente</div>
+        <div class="card-desc">Quer <strong>eficiência e praticidade</strong> — não spa e decoração</div>
       </div>
+
+      <div class="corp-card">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Precisa de NF</div>
+        <div class="card-desc">Nota fiscal obrigatória — <strong>SmartGuest emite</strong> automaticamente</div>
+      </div>
+
     </div>
 
-    <div class="impact-box">
-      <p class="impact-text">Sua resposta não é só para quem reclamou. É para quem está lendo.</p>
-    </div>
+    <div class="footer-text">Prepare sua pousada para o corporativo · <span>smartguest</span>.app</div>
 
-    <div class="footer-bar">
-      <div class="footer-credit">Gestão hoteleira inteligente</div>
-      <div class="footer-url">smartguest.app</div>
-    </div>
   </div>
 </div>
+
 </body>
 </html>

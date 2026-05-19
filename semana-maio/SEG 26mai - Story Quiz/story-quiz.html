@@ -20,14 +20,14 @@
 
   #story {
     width: 1080px;
-    height: 1080px;
+    height: 1920px;
     overflow: hidden;
     position: relative;
     background: #060E12;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 60px 80px 52px;
+    padding: 0;
   }
 
   #story::before {
@@ -42,38 +42,32 @@
 
   .glow-center {
     position: absolute;
-    bottom: -50px;
+    bottom: -80px;
     left: 50%;
     transform: translateX(-50%);
-    width: 800px;
-    height: 500px;
+    width: 1100px;
+    height: 800px;
     background: radial-gradient(ellipse, rgba(22,195,204,0.1) 0%, transparent 65%);
     pointer-events: none;
     z-index: 0;
   }
 
-  .content {
+  /* ── ZONA TOPO ~300px ── */
+  .zone-top {
+    height: 300px;
     position: relative;
     z-index: 1;
     width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-  }
-
-  .top-row {
-    display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    margin-bottom: 40px;
+    padding: 0 88px;
   }
 
   .logo {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 800;
-    font-size: 22px;
+    font-size: 32px;
     color: #16C3CC;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -85,22 +79,36 @@
     color: #A0AEC0;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    font-size: 13px;
+    font-size: 20px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    padding: 7px 18px;
+    padding: 10px 28px;
     border-radius: 100px;
+  }
+
+  /* ── ZONA MEIO ~1100px ── */
+  .zone-mid {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 88px;
+    justify-content: center;
+    gap: 0;
   }
 
   .quiz-title {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 900;
-    font-size: 72px;
+    font-size: 100px;
     line-height: 0.92;
     color: #FFFFFF;
     text-transform: uppercase;
     text-align: center;
-    margin-bottom: 52px;
+    margin-bottom: 72px;
   }
 
   .quiz-title span { color: #16C3CC; }
@@ -108,17 +116,16 @@
   .profiles {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 28px;
     width: 100%;
-    flex: 1;
   }
 
   .profile-card {
-    border-radius: 20px;
-    padding: 28px 36px;
+    border-radius: 28px;
+    padding: 44px 48px;
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 32px;
     position: relative;
     overflow: hidden;
   }
@@ -136,14 +143,14 @@
   .profile-card.automated {
     background: rgba(22,195,204,0.09);
     border: 2px solid rgba(22,195,204,0.45);
-    box-shadow: 0 0 32px rgba(22,195,204,0.1);
+    box-shadow: 0 0 48px rgba(22,195,204,0.1);
   }
 
   .profile-emoji {
-    font-size: 52px;
+    font-size: 72px;
     line-height: 1;
     flex-shrink: 0;
-    width: 64px;
+    width: 88px;
     text-align: center;
   }
 
@@ -154,10 +161,10 @@
   .profile-name {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 800;
-    font-size: 36px;
+    font-size: 48px;
     text-transform: uppercase;
     line-height: 1;
-    margin-bottom: 6px;
+    margin-bottom: 10px;
   }
 
   .profile-card.analytic .profile-name { color: #a5b4fc; }
@@ -166,47 +173,50 @@
 
   .profile-desc {
     font-family: 'Inter', sans-serif;
-    font-size: 18px;
+    font-size: 26px;
     color: #A0AEC0;
     line-height: 1.3;
-  }
-
-  .profile-card.automated .profile-desc {
-    color: rgba(160,174,192,0.9);
   }
 
   .profile-badge {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     font-family: 'Inter', sans-serif;
-    font-size: 13px;
+    font-size: 18px;
     font-weight: 600;
     color: #16C3CC;
     background: rgba(22,195,204,0.15);
     border-radius: 100px;
-    padding: 5px 14px;
+    padding: 8px 20px;
     flex-shrink: 0;
   }
 
-  .cta-bottom {
-    margin-top: 32px;
-    text-align: center;
+  /* ── ZONA BASE ~520px ── */
+  .zone-base {
+    height: 520px;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
   }
 
   .cta-text {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 800;
-    font-size: 40px;
+    font-size: 56px;
     text-transform: uppercase;
     color: #FFFFFF;
-    margin-bottom: 4px;
   }
 
   .cta-url {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 700;
-    font-size: 22px;
+    font-size: 34px;
     color: #16C3CC;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -216,12 +226,15 @@
 <body>
 <div id="story">
   <div class="glow-center"></div>
-  <div class="content">
-    <div class="top-row">
-      <div class="logo">SmartGuest</div>
-      <div class="tag">Quiz</div>
-    </div>
 
+  <!-- TOPO -->
+  <div class="zone-top">
+    <div class="logo">SmartGuest</div>
+    <div class="tag">Quiz</div>
+  </div>
+
+  <!-- MEIO -->
+  <div class="zone-mid">
     <h1 class="quiz-title">QUAL GESTOR<br>HOTELEIRO <span>VOCÊ É?</span></h1>
 
     <div class="profiles">
@@ -250,12 +263,14 @@
         <div class="profile-badge">Seja esse</div>
       </div>
     </div>
-
-    <div class="cta-bottom">
-      <div class="cta-text">Seja o 😎</div>
-      <div class="cta-url">smartguest.app</div>
-    </div>
   </div>
+
+  <!-- BASE -->
+  <div class="zone-base">
+    <div class="cta-text">Seja o 😎</div>
+    <div class="cta-url">smartguest.app</div>
+  </div>
+
 </div>
 </body>
 </html>

@@ -20,13 +20,13 @@
 
   #story {
     width: 1080px;
-    height: 1080px;
+    height: 1920px;
     overflow: hidden;
     position: relative;
     background: #060E12;
     display: flex;
     flex-direction: column;
-    padding: 60px 80px 56px;
+    padding: 0;
   }
 
   #story::before {
@@ -41,34 +41,30 @@
 
   .glow-top-right {
     position: absolute;
-    top: -80px;
-    right: -80px;
-    width: 500px;
-    height: 500px;
+    top: -100px;
+    right: -100px;
+    width: 700px;
+    height: 700px;
     background: radial-gradient(ellipse, rgba(22,195,204,0.13) 0%, transparent 65%);
     pointer-events: none;
     z-index: 0;
   }
 
-  .content {
+  /* ── ZONA TOPO ~300px ── */
+  .zone-top {
+    height: 300px;
     position: relative;
     z-index: 1;
     display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-
-  .top-row {
-    display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 44px;
+    padding: 0 88px;
   }
 
   .logo {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 800;
-    font-size: 22px;
+    font-size: 32px;
     color: #16C3CC;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -80,52 +76,60 @@
     color: #16C3CC;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    font-size: 13px;
+    font-size: 20px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    padding: 7px 18px;
+    padding: 10px 28px;
     border-radius: 100px;
   }
 
-  .headline {
-    margin-bottom: 48px;
+  /* ── ZONA MEIO ~1100px ── */
+  .zone-mid {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0 88px;
+    justify-content: center;
+    gap: 0;
   }
 
   .headline-sub {
     font-family: 'Inter', sans-serif;
-    font-size: 16px;
+    font-size: 24px;
     font-weight: 600;
     color: #16C3CC;
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
   }
 
   .headline-title {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 900;
-    font-size: 88px;
+    font-size: 120px;
     line-height: 0.88;
     color: #FFFFFF;
     text-transform: uppercase;
     letter-spacing: -0.01em;
+    margin-bottom: 72px;
   }
 
   .tips {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    flex: 1;
+    gap: 28px;
   }
 
   .tip-card {
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 16px;
-    padding: 28px 36px;
+    border-radius: 24px;
+    padding: 44px 48px;
     display: flex;
     align-items: center;
-    gap: 28px;
+    gap: 36px;
     position: relative;
     overflow: hidden;
   }
@@ -146,9 +150,9 @@
   }
 
   .tip-indicator {
-    width: 52px;
-    height: 52px;
-    border-radius: 14px;
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -160,8 +164,8 @@
   .tip-card.special .tip-indicator { background: rgba(22,195,204,0.15); }
 
   .tip-indicator svg {
-    width: 26px;
-    height: 26px;
+    width: 36px;
+    height: 36px;
     fill: none;
     stroke-width: 2.5;
     stroke-linecap: round;
@@ -179,10 +183,10 @@
   .tip-action {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 800;
-    font-size: 30px;
+    font-size: 42px;
     text-transform: uppercase;
     line-height: 1;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
 
   .tip-card.up .tip-action { color: #4ade80; }
@@ -191,14 +195,14 @@
 
   .tip-when {
     font-family: 'Inter', sans-serif;
-    font-size: 18px;
+    font-size: 26px;
     color: #A0AEC0;
   }
 
   .tip-value {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 900;
-    font-size: 44px;
+    font-size: 60px;
     line-height: 1;
   }
 
@@ -206,20 +210,30 @@
   .tip-card.down .tip-value { color: #fb923c; }
   .tip-card.special .tip-value { color: #16C3CC; }
 
+  /* ── ZONA BASE ~520px ── */
+  .zone-base {
+    height: 520px;
+    position: relative;
+    z-index: 1;
+    padding: 0 88px;
+    display: flex;
+    align-items: center;
+  }
+
   .footer-box {
-    margin-top: 24px;
     background: rgba(22,195,204,0.07);
     border: 1px solid rgba(22,195,204,0.2);
-    border-radius: 14px;
-    padding: 20px 28px;
+    border-radius: 20px;
+    padding: 36px 44px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
   }
 
   .footer-text {
     font-family: 'Inter', sans-serif;
-    font-size: 17px;
+    font-size: 26px;
     color: #A0AEC0;
     line-height: 1.4;
   }
@@ -229,28 +243,29 @@
   .footer-url {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 30px;
     color: #16C3CC;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     flex-shrink: 0;
-    margin-left: 24px;
+    margin-left: 32px;
   }
 </style>
 </head>
 <body>
 <div id="story">
   <div class="glow-top-right"></div>
-  <div class="content">
-    <div class="top-row">
-      <div class="logo">SmartGuest</div>
-      <div class="tag">Revenue Hack</div>
-    </div>
 
-    <div class="headline">
-      <div class="headline-sub">Maximize seu faturamento com</div>
-      <div class="headline-title">PREÇO<br>DINÂMICO<br>EM 3 PASSOS</div>
-    </div>
+  <!-- TOPO -->
+  <div class="zone-top">
+    <div class="logo">SmartGuest</div>
+    <div class="tag">Revenue Hack</div>
+  </div>
+
+  <!-- MEIO -->
+  <div class="zone-mid">
+    <div class="headline-sub">Maximize seu faturamento com</div>
+    <div class="headline-title">PREÇO<br>DINÂMICO<br>EM 3 PASSOS</div>
 
     <div class="tips">
       <div class="tip-card up">
@@ -286,12 +301,16 @@
         <div class="tip-value">VIP</div>
       </div>
     </div>
+  </div>
 
+  <!-- BASE -->
+  <div class="zone-base">
     <div class="footer-box">
       <div class="footer-text"><strong>SmartGuest</strong> te mostra quando subir e quando baixar.</div>
       <div class="footer-url">smartguest.app</div>
     </div>
   </div>
+
 </div>
 </body>
 </html>

@@ -20,15 +20,14 @@
 
   #story {
     width: 1080px;
-    height: 1080px;
+    height: 1920px;
     overflow: hidden;
     position: relative;
     background: #060E12;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 64px 88px;
+    padding: 0;
   }
 
   /* grain */
@@ -45,11 +44,11 @@
   /* dramatic teal flood bottom */
   .glow-flood {
     position: absolute;
-    bottom: -120px;
+    bottom: -180px;
     left: 50%;
     transform: translateX(-50%);
-    width: 1200px;
-    height: 700px;
+    width: 1400px;
+    height: 1000px;
     background: radial-gradient(ellipse, rgba(22,195,204,0.22) 0%, rgba(22,195,204,0.05) 40%, transparent 70%);
     pointer-events: none;
     z-index: 0;
@@ -58,25 +57,25 @@
   /* secondary glow top */
   .glow-top {
     position: absolute;
-    top: -80px;
+    top: -120px;
     left: 50%;
     transform: translateX(-50%);
-    width: 800px;
-    height: 400px;
+    width: 1000px;
+    height: 600px;
     background: radial-gradient(ellipse, rgba(22,195,204,0.1) 0%, transparent 65%);
     pointer-events: none;
     z-index: 0;
   }
 
-  .content {
+  /* ── ZONA TOPO ~300px ── */
+  .zone-top {
+    height: 300px;
     position: relative;
     z-index: 1;
     width: 100%;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    text-align: center;
-    gap: 0;
+    justify-content: center;
   }
 
   .tag {
@@ -86,44 +85,57 @@
     color: #16C3CC;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 22px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    padding: 8px 24px;
+    padding: 14px 36px;
     border-radius: 100px;
-    margin-bottom: 32px;
+  }
+
+  /* ── ZONA MEIO ~1100px ── */
+  .zone-mid {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 88px;
+    text-align: center;
+    gap: 0;
   }
 
   .main-title {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 900;
-    font-size: 160px;
+    font-size: 220px;
     line-height: 0.85;
     color: #16C3CC;
     text-transform: uppercase;
     letter-spacing: -0.02em;
-    /* intense glow */
     text-shadow:
       0 0 40px rgba(22,195,204,0.6),
       0 0 80px rgba(22,195,204,0.3),
       0 0 160px rgba(22,195,204,0.15);
-    margin-bottom: 8px;
+    margin-bottom: 16px;
   }
 
   .subtitle {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 900;
-    font-size: 52px;
+    font-size: 64px;
     color: #FFFFFF;
     text-transform: uppercase;
     letter-spacing: 0.02em;
-    margin-bottom: 32px;
+    margin-bottom: 56px;
   }
 
   .events-row {
     display: flex;
-    gap: 12px;
-    margin-bottom: 40px;
+    gap: 16px;
+    margin-bottom: 56px;
     flex-wrap: wrap;
     justify-content: center;
   }
@@ -134,49 +146,54 @@
     color: #FFFFFF;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    font-size: 17px;
-    padding: 10px 20px;
+    font-size: 24px;
+    padding: 14px 28px;
     border-radius: 100px;
   }
 
   .urgency-box {
     background: rgba(22,195,204,0.1);
     border: 2px solid rgba(22,195,204,0.4);
-    border-radius: 20px;
-    padding: 28px 40px;
-    margin-bottom: 36px;
+    border-radius: 28px;
+    padding: 48px 56px;
     width: 100%;
   }
 
   .urgency-title {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 900;
-    font-size: 48px;
+    font-size: 64px;
     color: #FFFFFF;
     text-transform: uppercase;
     line-height: 1;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
   }
 
   .urgency-subtitle {
     font-family: 'Inter', sans-serif;
-    font-size: 20px;
+    font-size: 30px;
     color: #16C3CC;
     font-weight: 500;
   }
 
-  .cta-block {
+  /* ── ZONA BASE ~520px ── */
+  .zone-base {
+    height: 520px;
+    position: relative;
+    z-index: 1;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 88px;
   }
 
   .cta-url {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 900;
-    font-size: 64px;
+    font-size: 88px;
     color: #FFFFFF;
     text-transform: uppercase;
     letter-spacing: 0.02em;
@@ -185,16 +202,16 @@
 
   .cta-whatsapp {
     font-family: 'Inter', sans-serif;
-    font-size: 22px;
+    font-size: 30px;
     color: #A0AEC0;
     font-weight: 500;
   }
 
   .logo-bottom {
-    margin-top: 32px;
+    margin-top: 16px;
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 800;
-    font-size: 18px;
+    font-size: 24px;
     color: rgba(22,195,204,0.4);
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -205,9 +222,14 @@
 <div id="story">
   <div class="glow-flood"></div>
   <div class="glow-top"></div>
-  <div class="content">
-    <div class="tag">Ultimo Dia de Maio</div>
 
+  <!-- TOPO -->
+  <div class="zone-top">
+    <div class="tag">Ultimo Dia de Maio</div>
+  </div>
+
+  <!-- MEIO -->
+  <div class="zone-mid">
     <div class="main-title">JUNHO<br>É AQUI</div>
     <div class="subtitle">Copa do Mundo. Feriados.<br>Alta temporada.</div>
 
@@ -221,14 +243,15 @@
       <div class="urgency-title">Seu hotel precisa estar pronto.</div>
       <div class="urgency-subtitle">Setup em 7 dias — ainda da tempo.</div>
     </div>
+  </div>
 
-    <div class="cta-block">
-      <div class="cta-url">smartguest.app</div>
-      <div class="cta-whatsapp">Chama no WhatsApp agora</div>
-    </div>
-
+  <!-- BASE -->
+  <div class="zone-base">
+    <div class="cta-url">smartguest.app</div>
+    <div class="cta-whatsapp">Chama no WhatsApp agora</div>
     <div class="logo-bottom">SmartGuest</div>
   </div>
+
 </div>
 </body>
 </html>

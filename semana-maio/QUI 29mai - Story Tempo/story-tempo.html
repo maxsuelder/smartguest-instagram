@@ -20,15 +20,14 @@
 
   #story {
     width: 1080px;
-    height: 1080px;
+    height: 1920px;
     overflow: hidden;
     position: relative;
     background: #060E12;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 64px 88px;
+    padding: 0;
   }
 
   #story::before {
@@ -44,51 +43,63 @@
   /* big glow behind the number */
   .glow-number {
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -58%);
-    width: 700px;
-    height: 500px;
+    width: 900px;
+    height: 700px;
     background: radial-gradient(ellipse, rgba(22,195,204,0.18) 0%, transparent 60%);
     pointer-events: none;
     z-index: 0;
   }
 
-  .content {
+  /* ── ZONA TOPO ~300px ── */
+  .zone-top {
+    height: 300px;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 36px;
+    color: #16C3CC;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* ── ZONA MEIO ~1100px ── */
+  .zone-mid {
+    flex: 1;
     position: relative;
     z-index: 1;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: center;
+    padding: 0 88px;
     gap: 0;
-  }
-
-  .logo {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: 22px;
-    color: #16C3CC;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 48px;
   }
 
   .big-number {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 900;
-    font-size: 240px;
+    font-size: 320px;
     line-height: 0.8;
     color: #FFFFFF;
-    text-transform: uppercase;
     letter-spacing: -0.04em;
-    /* glow text */
     text-shadow:
       0 0 60px rgba(22,195,204,0.4),
       0 0 120px rgba(22,195,204,0.2),
       0 0 200px rgba(22,195,204,0.1);
-    margin-bottom: 16px;
+    margin-bottom: 24px;
   }
 
   .big-number span {
@@ -97,11 +108,11 @@
 
   .subtitle {
     font-family: 'Inter', sans-serif;
-    font-size: 22px;
+    font-size: 32px;
     color: #A0AEC0;
     line-height: 1.5;
-    max-width: 680px;
-    margin-bottom: 52px;
+    max-width: 820px;
+    margin-bottom: 72px;
   }
 
   .subtitle strong {
@@ -112,20 +123,19 @@
     width: 100%;
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(22,195,204,0.4), transparent);
-    margin-bottom: 40px;
+    margin-bottom: 56px;
   }
 
   .comparison {
     display: flex;
-    gap: 24px;
+    gap: 32px;
     width: 100%;
-    margin-bottom: 40px;
   }
 
   .comp-card {
     flex: 1;
-    border-radius: 16px;
-    padding: 24px 28px;
+    border-radius: 24px;
+    padding: 40px 36px;
     text-align: left;
   }
 
@@ -141,11 +151,11 @@
 
   .comp-label {
     font-family: 'Inter', sans-serif;
-    font-size: 13px;
+    font-size: 18px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
   }
 
   .comp-card.bad .comp-label { color: #FF7070; }
@@ -154,7 +164,7 @@
   .comp-value {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 900;
-    font-size: 56px;
+    font-size: 80px;
     line-height: 1;
   }
 
@@ -163,24 +173,38 @@
 
   .comp-desc {
     font-family: 'Inter', sans-serif;
-    font-size: 15px;
+    font-size: 22px;
     color: #A0AEC0;
-    margin-top: 4px;
+    margin-top: 8px;
+  }
+
+  /* ── ZONA BASE ~520px ── */
+  .zone-base {
+    height: 520px;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 0 88px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
   }
 
   .extra-time {
     background: rgba(22,195,204,0.08);
     border: 1px solid rgba(22,195,204,0.25);
-    border-radius: 14px;
-    padding: 20px 32px;
-    margin-bottom: 32px;
+    border-radius: 20px;
+    padding: 36px 48px;
     width: 100%;
+    text-align: center;
   }
 
   .extra-text {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 800;
-    font-size: 32px;
+    font-size: 44px;
     color: #FFFFFF;
     text-transform: uppercase;
   }
@@ -190,7 +214,7 @@
   .cta-url {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 34px;
     color: rgba(255,255,255,0.3);
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -200,9 +224,14 @@
 <body>
 <div id="story">
   <div class="glow-number"></div>
-  <div class="content">
-    <div class="logo">SmartGuest</div>
 
+  <!-- TOPO -->
+  <div class="zone-top">
+    <div class="logo">SmartGuest</div>
+  </div>
+
+  <!-- MEIO -->
+  <div class="zone-mid">
     <div class="big-number"><span>15</span>h</div>
     <p class="subtitle">
       Por semana é o que o <strong>dono médio de pousada</strong>
@@ -223,13 +252,16 @@
         <div class="comp-desc">Sistema faz o resto</div>
       </div>
     </div>
+  </div>
 
+  <!-- BASE -->
+  <div class="zone-base">
     <div class="extra-time">
       <div class="extra-text">Você tem <span>13h extras</span> por semana esperando por você.</div>
     </div>
-
     <div class="cta-url">smartguest.app</div>
   </div>
+
 </div>
 </body>
 </html>

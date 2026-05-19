@@ -9,11 +9,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #030a0d; font-family: 'Inter', sans-serif; }
+  body { background: #030a0d; font-family: 'Inter', sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
 
   #story {
     width: 1080px;
-    height: 1080px;
+    height: 1920px;
     overflow: hidden;
     position: relative;
     background: #060E12;
@@ -32,44 +32,56 @@
     z-index: 20;
   }
 
-  /* ── TOP LABEL ── */
-  .top-label {
-    text-align: center;
-    padding: 44px 60px 0;
+  /* ── ZONA TOPO ~300px ── */
+  .zone-top {
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 5;
+    padding: 0 60px;
     font-family: 'Inter', sans-serif;
-    font-size: 20px;
+    font-size: 28px;
     font-weight: 600;
     color: #A0AEC0;
     letter-spacing: 0.14em;
     text-transform: uppercase;
+  }
+
+  /* ── ZONA MEIO ~1100px ── */
+  .zone-mid {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0 48px;
+    gap: 0;
     position: relative;
     z-index: 5;
   }
 
-  /* ── SPLIT CONTAINER ── */
+  /* SPLIT CONTAINER */
   .split {
     display: flex;
     flex: 1;
-    margin: 32px 40px 0;
-    border-radius: 24px;
+    border-radius: 32px;
     overflow: hidden;
-    position: relative;
-    z-index: 5;
     box-shadow: 0 0 80px #00000066;
+    position: relative;
   }
 
-  /* ── LEFT — OTA ── */
+  /* LEFT — OTA */
   .split-left {
     flex: 1;
     background: linear-gradient(160deg, #2a0808 0%, #1a0404 100%);
     border: 1.5px solid #FF444433;
     border-right: none;
-    border-radius: 24px 0 0 24px;
+    border-radius: 32px 0 0 32px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 40px 30px;
+    padding: 60px 40px;
     position: relative;
   }
   .split-left::before {
@@ -81,51 +93,51 @@
   }
   .side-badge-left {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 28px;
+    font-size: 38px;
     font-weight: 800;
     color: #FF4444;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    margin-bottom: 20px;
-    padding: 8px 24px;
+    margin-bottom: 28px;
+    padding: 10px 32px;
     background: #FF444422;
     border: 1px solid #FF444455;
     border-radius: 100px;
   }
   .side-icon-left {
-    font-size: 64px;
-    margin-bottom: 20px;
-    filter: drop-shadow(0 0 16px #FF444488);
+    font-size: 90px;
+    margin-bottom: 28px;
+    filter: drop-shadow(0 0 20px #FF444488);
   }
   .side-title-left {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 28px;
+    font-size: 38px;
     font-weight: 700;
     color: #FF6666;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     text-align: center;
-    margin-bottom: 24px;
+    margin-bottom: 36px;
     line-height: 1.2;
   }
   .money-row {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 24px;
+    gap: 12px;
+    margin-bottom: 32px;
     width: 100%;
   }
   .money-total {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 52px;
+    font-size: 72px;
     font-weight: 900;
     color: #FFFFFF;
     line-height: 1;
   }
   .money-label {
     font-family: 'Inter', sans-serif;
-    font-size: 17px;
+    font-size: 22px;
     color: #A0AEC0;
     text-align: center;
   }
@@ -137,7 +149,7 @@
   }
   .money-you-left {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 72px;
+    font-size: 96px;
     font-weight: 900;
     color: #FF4444;
     line-height: 1;
@@ -145,7 +157,7 @@
   }
   .money-you-label-left {
     font-family: 'Inter', sans-serif;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 600;
     color: #FF6666;
     text-align: center;
@@ -153,37 +165,37 @@
   .ota-fee-box {
     background: #FF444422;
     border: 1px solid #FF444444;
-    border-radius: 12px;
-    padding: 12px 20px;
+    border-radius: 16px;
+    padding: 18px 24px;
     text-align: center;
     width: 100%;
   }
   .ota-fee-box .fee-label {
     font-family: 'Inter', sans-serif;
-    font-size: 16px;
+    font-size: 20px;
     color: #FF6666;
     font-weight: 600;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
   .ota-fee-box .fee-amount {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 40px;
+    font-size: 56px;
     font-weight: 800;
     color: #FF4444;
   }
 
-  /* ── RIGHT — DIRETO ── */
+  /* RIGHT — DIRETO */
   .split-right {
     flex: 1;
     background: linear-gradient(160deg, #062a2e 0%, #041a1e 100%);
     border: 1.5px solid #16C3CC33;
     border-left: none;
-    border-radius: 0 24px 24px 0;
+    border-radius: 0 32px 32px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 40px 30px;
+    padding: 60px 40px;
     position: relative;
   }
   .split-right::before {
@@ -195,36 +207,36 @@
   }
   .side-badge-right {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 28px;
+    font-size: 38px;
     font-weight: 800;
     color: #16C3CC;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    margin-bottom: 20px;
-    padding: 8px 24px;
+    margin-bottom: 28px;
+    padding: 10px 32px;
     background: #16C3CC22;
     border: 1px solid #16C3CC55;
     border-radius: 100px;
   }
   .side-icon-right {
-    font-size: 64px;
-    margin-bottom: 20px;
-    filter: drop-shadow(0 0 16px #16C3CC88);
+    font-size: 90px;
+    margin-bottom: 28px;
+    filter: drop-shadow(0 0 20px #16C3CC88);
   }
   .side-title-right {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 28px;
+    font-size: 38px;
     font-weight: 700;
     color: #16C3CC;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     text-align: center;
-    margin-bottom: 24px;
+    margin-bottom: 36px;
     line-height: 1.2;
   }
   .money-you-right {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 72px;
+    font-size: 96px;
     font-weight: 900;
     color: #16C3CC;
     line-height: 1;
@@ -232,7 +244,7 @@
   }
   .money-you-label-right {
     font-family: 'Inter', sans-serif;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 600;
     color: #16C3CC;
     text-align: center;
@@ -240,33 +252,33 @@
   .direct-bonus {
     background: #16C3CC22;
     border: 1px solid #16C3CC44;
-    border-radius: 12px;
-    padding: 12px 20px;
+    border-radius: 16px;
+    padding: 18px 24px;
     text-align: center;
     width: 100%;
-    margin-top: 24px;
+    margin-top: 32px;
   }
   .direct-bonus .bonus-label {
     font-family: 'Inter', sans-serif;
-    font-size: 16px;
+    font-size: 20px;
     color: #16C3CC;
     font-weight: 600;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
   .direct-bonus .bonus-text {
     font-family: 'Inter', sans-serif;
-    font-size: 18px;
+    font-size: 22px;
     color: #A0AEC0;
   }
 
-  /* ── CENTER DIVIDER ── */
+  /* CENTER VS BADGE */
   .vs-badge {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 64px;
-    height: 64px;
+    width: 80px;
+    height: 80px;
     background: #060E12;
     border: 3px solid #A0AEC033;
     border-radius: 50%;
@@ -274,51 +286,55 @@
     align-items: center;
     justify-content: center;
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 26px;
+    font-size: 32px;
     font-weight: 900;
     color: #A0AEC0;
     z-index: 10;
     box-shadow: 0 0 20px #00000088;
   }
 
-  /* ── BOTTOM BAR ── */
-  .bottom-bar {
+  /* ── ZONA BASE ~520px ── */
+  .zone-base {
+    height: 520px;
     position: relative;
     z-index: 5;
-    margin: 20px 40px 0;
+    padding: 32px 48px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .bottom-bar {
     background: linear-gradient(135deg, #0a2020, #080e12);
     border: 1.5px solid #16C3CC44;
-    border-radius: 20px;
-    padding: 24px 40px;
+    border-radius: 24px;
+    padding: 36px 48px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 0 40px #16C3CC22;
+    flex: 1;
   }
   .bottom-bar .diff-label {
     font-family: 'Inter', sans-serif;
-    font-size: 20px;
+    font-size: 26px;
     color: #A0AEC0;
     line-height: 1.4;
   }
   .bottom-bar .diff-label strong { color: #FFFFFF; }
   .bottom-bar .diff-amount {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 58px;
+    font-size: 80px;
     font-weight: 900;
     color: #FFD700;
     text-shadow: 0 0 30px #FFD70088;
     white-space: nowrap;
   }
 
-  /* ── FOOTER ── */
   .footer {
-    position: relative;
-    z-index: 5;
     text-align: center;
-    padding: 18px 40px 36px;
     font-family: 'Inter', sans-serif;
-    font-size: 20px;
+    font-size: 26px;
     font-weight: 600;
     color: #A0AEC0;
     letter-spacing: 0.06em;
@@ -330,58 +346,61 @@
 
 <div id="story">
 
-  <div class="top-label">Por que reserva direta muda tudo</div>
+  <!-- TOPO -->
+  <div class="zone-top">Por que reserva direta muda tudo</div>
 
-  <!-- SPLIT AREA -->
-  <div class="split">
-    <!-- LEFT: OTA -->
-    <div class="split-left">
-      <div class="side-badge-left">OTA</div>
-      <div class="side-icon-left">😬</div>
-      <div class="side-title-left">Booking ·<br>Airbnb · Expedia</div>
-      <div class="money-row">
-        <div class="money-total">R$ 800</div>
-        <div class="money-label">Valor da diária</div>
-        <div class="money-divider"></div>
-        <div class="money-you-left">R$ 640</div>
-        <div class="money-you-label-left">Você recebe</div>
+  <!-- MEIO -->
+  <div class="zone-mid">
+    <div class="split">
+      <!-- LEFT: OTA -->
+      <div class="split-left">
+        <div class="side-badge-left">OTA</div>
+        <div class="side-icon-left">😬</div>
+        <div class="side-title-left">Booking ·<br>Airbnb · Expedia</div>
+        <div class="money-row">
+          <div class="money-total">R$ 800</div>
+          <div class="money-label">Valor da diária</div>
+          <div class="money-divider"></div>
+          <div class="money-you-left">R$ 640</div>
+          <div class="money-you-label-left">Você recebe</div>
+        </div>
+        <div class="ota-fee-box">
+          <div class="fee-label">🏦 A OTA fica com</div>
+          <div class="fee-amount">R$ 160</div>
+        </div>
       </div>
-      <div class="ota-fee-box">
-        <div class="fee-label">🏦 A OTA fica com</div>
-        <div class="fee-amount">R$ 160</div>
-      </div>
-    </div>
 
-    <!-- VS BADGE -->
-    <div class="vs-badge">VS</div>
+      <!-- VS BADGE -->
+      <div class="vs-badge">VS</div>
 
-    <!-- RIGHT: DIRETO -->
-    <div class="split-right">
-      <div class="side-badge-right">DIRETO</div>
-      <div class="side-icon-right">🎯</div>
-      <div class="side-title-right">Motor de<br>Reservas Próprio</div>
-      <div class="money-row">
-        <div class="money-total">R$ 800</div>
-        <div class="money-label">Valor da diária</div>
-        <div class="money-divider" style="background: linear-gradient(90deg, transparent, #16C3CC55, transparent);"></div>
-        <div class="money-you-right">R$ 800</div>
-        <div class="money-you-label-right">Você fica com TUDO</div>
-      </div>
-      <div class="direct-bonus">
-        <div class="bonus-label">✅ Zero comissão</div>
-        <div class="bonus-text">100% do valor entra no seu caixa</div>
+      <!-- RIGHT: DIRETO -->
+      <div class="split-right">
+        <div class="side-badge-right">DIRETO</div>
+        <div class="side-icon-right">🎯</div>
+        <div class="side-title-right">Motor de<br>Reservas Próprio</div>
+        <div class="money-row">
+          <div class="money-total">R$ 800</div>
+          <div class="money-label">Valor da diária</div>
+          <div class="money-divider" style="background: linear-gradient(90deg, transparent, #16C3CC55, transparent);"></div>
+          <div class="money-you-right">R$ 800</div>
+          <div class="money-you-label-right">Você fica com TUDO</div>
+        </div>
+        <div class="direct-bonus">
+          <div class="bonus-label">✅ Zero comissão</div>
+          <div class="bonus-text">100% do valor entra no seu caixa</div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- BOTTOM BAR -->
-  <div class="bottom-bar">
-    <div class="diff-label">A diferença em 1 ano<br><strong>com 100 reservas:</strong></div>
-    <div class="diff-amount">R$ 16.000</div>
+  <!-- BASE -->
+  <div class="zone-base">
+    <div class="bottom-bar">
+      <div class="diff-label">A diferença em 1 ano<br><strong>com 100 reservas:</strong></div>
+      <div class="diff-amount">R$ 16.000</div>
+    </div>
+    <div class="footer">Motor de reservas direto · <span>smartguest</span>.app</div>
   </div>
-
-  <!-- FOOTER -->
-  <div class="footer">Motor de reservas direto · <span>smartguest</span>.app</div>
 
 </div>
 

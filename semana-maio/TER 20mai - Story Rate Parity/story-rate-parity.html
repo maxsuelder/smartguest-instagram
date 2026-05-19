@@ -21,15 +21,13 @@
 
   #story {
     width: 1080px;
-    height: 1080px;
+    height: 1920px;
     overflow: hidden;
     position: relative;
     background: #060E12;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 72px;
+    padding: 0;
   }
 
   #story::before {
@@ -42,13 +40,12 @@
     z-index: 0;
   }
 
-  /* diagonal gradient accent */
   .bg-accent {
     position: absolute;
-    right: -100px;
-    bottom: -100px;
-    width: 600px;
-    height: 600px;
+    right: -120px;
+    bottom: -120px;
+    width: 900px;
+    height: 900px;
     background: radial-gradient(ellipse, rgba(22,195,204,0.14) 0%, transparent 65%);
     pointer-events: none;
     z-index: 0;
@@ -56,35 +53,31 @@
 
   .bg-accent2 {
     position: absolute;
-    left: -80px;
-    top: -80px;
-    width: 400px;
-    height: 400px;
+    left: -100px;
+    top: -100px;
+    width: 600px;
+    height: 600px;
     background: radial-gradient(ellipse, rgba(22,195,204,0.08) 0%, transparent 65%);
     pointer-events: none;
     z-index: 0;
   }
 
-  .content {
+  /* ── ZONA TOPO ~300px ── */
+  .zone-top {
     position: relative;
     z-index: 1;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .top-bar {
+    height: 300px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 52px;
+    padding: 0 88px;
   }
 
   .logo {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 800;
-    font-size: 22px;
+    font-size: 32px;
     color: #16C3CC;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -93,23 +86,23 @@
   .tag {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     background: rgba(22,195,204,0.12);
     border: 1px solid rgba(22,195,204,0.4);
     color: #16C3CC;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    font-size: 13px;
+    font-size: 20px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    padding: 7px 18px;
+    padding: 12px 28px;
     border-radius: 100px;
   }
 
   .tag::before {
     content: '';
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background: #16C3CC;
     animation: pulse 2s infinite;
@@ -120,42 +113,54 @@
     50% { opacity: 0.5; transform: scale(0.8); }
   }
 
+  /* ── ZONA MEIO ~1100px ── */
+  .zone-mid {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 88px;
+    gap: 0;
+  }
+
   .main-title {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 900;
-    font-size: 130px;
+    font-size: 180px;
     line-height: 0.88;
     color: #FFFFFF;
     text-transform: uppercase;
     letter-spacing: -0.02em;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
   }
 
   .main-title-sub {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 700;
-    font-size: 36px;
+    font-size: 46px;
     color: #16C3CC;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 48px;
+    letter-spacing: 0.06em;
+    margin-bottom: 64px;
   }
 
   .divider {
-    width: 64px;
-    height: 3px;
+    width: 80px;
+    height: 4px;
     background: linear-gradient(90deg, #16C3CC, transparent);
-    margin-bottom: 40px;
+    margin-bottom: 56px;
     border-radius: 2px;
   }
 
   .explanation {
     font-family: 'Inter', sans-serif;
-    font-size: 24px;
+    font-size: 34px;
     line-height: 1.55;
     color: #A0AEC0;
-    max-width: 780px;
-    margin-bottom: 44px;
+    margin-bottom: 56px;
   }
 
   .explanation strong {
@@ -171,18 +176,18 @@
   .tip-box {
     background: rgba(22,195,204,0.07);
     border: 1.5px solid rgba(22,195,204,0.3);
-    border-radius: 16px;
-    padding: 28px 36px;
+    border-radius: 24px;
+    padding: 44px 48px;
     display: flex;
     align-items: flex-start;
-    gap: 20px;
+    gap: 28px;
   }
 
   .tip-icon {
-    width: 44px;
-    height: 44px;
+    width: 64px;
+    height: 64px;
     background: rgba(22,195,204,0.15);
-    border-radius: 12px;
+    border-radius: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -190,18 +195,18 @@
   }
 
   .tip-icon svg {
-    width: 22px;
-    height: 22px;
+    width: 32px;
+    height: 32px;
     fill: none;
     stroke: #16C3CC;
-    stroke-width: 2;
+    stroke-width: 2.5;
     stroke-linecap: round;
     stroke-linejoin: round;
   }
 
   .tip-text {
     font-family: 'Inter', sans-serif;
-    font-size: 20px;
+    font-size: 30px;
     line-height: 1.5;
     color: #FFFFFF;
   }
@@ -211,11 +216,22 @@
     font-weight: 600;
   }
 
+  /* ── ZONA BASE ~520px ── */
+  .zone-base {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 520px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 88px;
+  }
+
   .bottom-url {
-    margin-top: 40px;
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 700;
-    font-size: 22px;
+    font-size: 36px;
     color: rgba(255,255,255,0.3);
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -226,12 +242,15 @@
 <div id="story">
   <div class="bg-accent"></div>
   <div class="bg-accent2"></div>
-  <div class="content">
-    <div class="top-bar">
-      <div class="logo">SmartGuest</div>
-      <div class="tag">Você Sabia?</div>
-    </div>
 
+  <!-- TOPO -->
+  <div class="zone-top">
+    <div class="logo">SmartGuest</div>
+    <div class="tag">Você Sabia?</div>
+  </div>
+
+  <!-- MEIO -->
+  <div class="zone-mid">
     <div class="main-title">RATE<br>PARITY</div>
     <div class="main-title-sub">O conceito que todo hoteleiro precisa dominar</div>
 
@@ -254,9 +273,13 @@
         automaticamente — sem risco de penalização.
       </div>
     </div>
+  </div>
 
+  <!-- BASE -->
+  <div class="zone-base">
     <div class="bottom-url">smartguest.app</div>
   </div>
+
 </div>
 </body>
 </html>

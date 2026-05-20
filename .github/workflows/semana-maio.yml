@@ -2,42 +2,63 @@ name: SmartGuest — Maio 2026
 
 on:
   schedule:
-    # ter 20/05 às 10h BRT = 13h UTC
-    - cron: '0 13 20 5 *'
-    # ter 20/05 às 19h BRT = 22h UTC
-    - cron: '0 22 20 5 *'
-    # qua 21/05 às 10h BRT = 13h UTC
-    - cron: '0 13 21 5 *'
-    # qua 21/05 às 19h BRT = 22h UTC
-    - cron: '0 22 21 5 *'
-    # qui 22/05 às 10h BRT = 13h UTC
-    - cron: '0 13 22 5 *'
-    # qui 22/05 às 19h BRT = 22h UTC
-    - cron: '0 22 22 5 *'
-    # sex 23/05 às 10h BRT = 13h UTC
-    - cron: '0 13 23 5 *'
-    # sex 23/05 às 19h BRT = 22h UTC
-    - cron: '0 22 23 5 *'
-    # seg 26/05 às 10h BRT = 13h UTC
-    - cron: '0 13 26 5 *'
-    # seg 26/05 às 19h BRT = 22h UTC
-    - cron: '0 22 26 5 *'
-    # ter 27/05 às 10h BRT = 13h UTC
-    - cron: '0 13 27 5 *'
-    # ter 27/05 às 19h BRT = 22h UTC
-    - cron: '0 22 27 5 *'
-    # qua 28/05 às 10h BRT = 13h UTC
-    - cron: '0 13 28 5 *'
-    # qua 28/05 às 19h BRT = 22h UTC
-    - cron: '0 22 28 5 *'
-    # qui 29/05 às 10h BRT = 13h UTC
-    - cron: '0 13 29 5 *'
-    # qui 29/05 às 19h BRT = 22h UTC
-    - cron: '0 22 29 5 *'
-    # sex 30/05 às 10h BRT = 13h UTC
-    - cron: '0 13 30 5 *'
-    # sex 30/05 às 19h BRT = 22h UTC
-    - cron: '0 22 30 5 *'
+    # ── PRIMÁRIOS (horário exato) ──────────────────────────
+    - cron: '0 13 20 5 *'   # ter 20/05 10h BRT
+    - cron: '0 22 20 5 *'   # ter 20/05 19h BRT
+    - cron: '0 13 21 5 *'   # qua 21/05 10h BRT
+    - cron: '0 22 21 5 *'   # qua 21/05 19h BRT
+    - cron: '0 13 22 5 *'   # qui 22/05 10h BRT
+    - cron: '0 22 22 5 *'   # qui 22/05 19h BRT
+    - cron: '0 13 23 5 *'   # sex 23/05 10h BRT
+    - cron: '0 22 23 5 *'   # sex 23/05 19h BRT
+    - cron: '0 13 26 5 *'   # seg 26/05 10h BRT
+    - cron: '0 22 26 5 *'   # seg 26/05 19h BRT
+    - cron: '0 13 27 5 *'   # ter 27/05 10h BRT
+    - cron: '0 22 27 5 *'   # ter 27/05 19h BRT
+    - cron: '0 13 28 5 *'   # qua 28/05 10h BRT
+    - cron: '0 22 28 5 *'   # qua 28/05 19h BRT
+    - cron: '0 13 29 5 *'   # qui 29/05 10h BRT
+    - cron: '0 22 29 5 *'   # qui 29/05 19h BRT
+    - cron: '0 13 30 5 *'   # sex 30/05 10h BRT
+    - cron: '0 22 30 5 *'   # sex 30/05 19h BRT
+    # ── BACKUP +20min (caso GitHub atrase o primário) ──────
+    - cron: '20 13 20 5 *'
+    - cron: '20 22 20 5 *'
+    - cron: '20 13 21 5 *'
+    - cron: '20 22 21 5 *'
+    - cron: '20 13 22 5 *'
+    - cron: '20 22 22 5 *'
+    - cron: '20 13 23 5 *'
+    - cron: '20 22 23 5 *'
+    - cron: '20 13 26 5 *'
+    - cron: '20 22 26 5 *'
+    - cron: '20 13 27 5 *'
+    - cron: '20 22 27 5 *'
+    - cron: '20 13 28 5 *'
+    - cron: '20 22 28 5 *'
+    - cron: '20 13 29 5 *'
+    - cron: '20 22 29 5 *'
+    - cron: '20 13 30 5 *'
+    - cron: '20 22 30 5 *'
+    # ── BACKUP +40min (segurança extra) ───────────────────
+    - cron: '40 13 20 5 *'
+    - cron: '40 22 20 5 *'
+    - cron: '40 13 21 5 *'
+    - cron: '40 22 21 5 *'
+    - cron: '40 13 22 5 *'
+    - cron: '40 22 22 5 *'
+    - cron: '40 13 23 5 *'
+    - cron: '40 22 23 5 *'
+    - cron: '40 13 26 5 *'
+    - cron: '40 22 26 5 *'
+    - cron: '40 13 27 5 *'
+    - cron: '40 22 27 5 *'
+    - cron: '40 13 28 5 *'
+    - cron: '40 22 28 5 *'
+    - cron: '40 13 29 5 *'
+    - cron: '40 22 29 5 *'
+    - cron: '40 13 30 5 *'
+    - cron: '40 22 30 5 *'
 
   workflow_dispatch:
     inputs:
@@ -45,6 +66,11 @@ on:
         description: 'ID do post para publicar manualmente'
         required: true
         type: string
+
+# Garante que apenas 1 execução roda por vez para o mesmo slot
+concurrency:
+  group: smartguest-maio-${{ github.workflow }}
+  cancel-in-progress: false
 
 jobs:
   publicar:
@@ -76,32 +102,76 @@ jobs:
 
           DIA=$(date -u +"%m-%d")
           HORA=$(date -u +"%H")
+
+          # Mapeia dia+hora → post ID
           case "${DIA}-${HORA}" in
-            "05-20-13") echo "id=ter20-carousel-hospede-volta" >> $GITHUB_OUTPUT ;;
-            "05-20-22") echo "id=ter20-story-rate-parity" >> $GITHUB_OUTPUT ;;
-            "05-21-13") echo "id=qua21-carousel-custo-reserva" >> $GITHUB_OUTPUT ;;
-            "05-21-22") echo "id=qua21-story-planilha" >> $GITHUB_OUTPUT ;;
-            "05-22-13") echo "id=qui22-carousel-checkin" >> $GITHUB_OUTPUT ;;
-            "05-22-22") echo "id=qui22-story-setup" >> $GITHUB_OUTPUT ;;
-            "05-23-13") echo "id=sex23-carousel-corpus" >> $GITHUB_OUTPUT ;;
-            "05-23-22") echo "id=sex23-story-avaliacoes" >> $GITHUB_OUTPUT ;;
-            "05-26-13") echo "id=seg26-carousel-booking" >> $GITHUB_OUTPUT ;;
-            "05-26-22") echo "id=seg26-story-quiz" >> $GITHUB_OUTPUT ;;
-            "05-27-13") echo "id=ter27-carousel-revenue" >> $GITHUB_OUTPUT ;;
-            "05-27-22") echo "id=ter27-story-depoimento" >> $GITHUB_OUTPUT ;;
-            "05-28-13") echo "id=qua28-carousel-erro" >> $GITHUB_OUTPUT ;;
-            "05-28-22") echo "id=qua28-story-precos" >> $GITHUB_OUTPUT ;;
-            "05-29-13") echo "id=qui29-carousel-comparacao" >> $GITHUB_OUTPUT ;;
-            "05-29-22") echo "id=qui29-story-tempo" >> $GITHUB_OUTPUT ;;
-            "05-30-13") echo "id=sex30-carousel-junho" >> $GITHUB_OUTPUT ;;
-            "05-30-22") echo "id=sex30-story-cta" >> $GITHUB_OUTPUT ;;
+            "05-20-13") POST_ID="ter20-carousel-hospede-volta" ;;
+            "05-20-22") POST_ID="ter20-story-rate-parity" ;;
+            "05-21-13") POST_ID="qua21-carousel-custo-reserva" ;;
+            "05-21-22") POST_ID="qua21-story-planilha" ;;
+            "05-22-13") POST_ID="qui22-carousel-checkin" ;;
+            "05-22-22") POST_ID="qui22-story-setup" ;;
+            "05-23-13") POST_ID="sex23-carousel-corpus" ;;
+            "05-23-22") POST_ID="sex23-story-avaliacoes" ;;
+            "05-26-13") POST_ID="seg26-carousel-booking" ;;
+            "05-26-22") POST_ID="seg26-story-quiz" ;;
+            "05-27-13") POST_ID="ter27-carousel-revenue" ;;
+            "05-27-22") POST_ID="ter27-story-depoimento" ;;
+            "05-28-13") POST_ID="qua28-carousel-erro" ;;
+            "05-28-22") POST_ID="qua28-story-precos" ;;
+            "05-29-13") POST_ID="qui29-carousel-comparacao" ;;
+            "05-29-22") POST_ID="qui29-story-tempo" ;;
+            "05-30-13") POST_ID="sex30-carousel-junho" ;;
+            "05-30-22") POST_ID="sex30-story-cta" ;;
             *)
-              echo "Nenhum post agendado para $DIA às $HORA UTC"
-              exit 1
+              echo "⏭️  Nenhum post agendado para $DIA às $HORA UTC — run de backup ignorado."
+              exit 0
               ;;
           esac
 
+          echo "id=${POST_ID}" >> $GITHUB_OUTPUT
+
+      - name: Verificar se já foi postado hoje (anti-dupla-postagem)
+        if: steps.post.outputs.id != '' && github.event_name != 'workflow_dispatch'
+        env:
+          INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
+          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+        run: |
+          POST_ID="${{ steps.post.outputs.id }}"
+          echo "🔍 Verificando se '$POST_ID' já foi publicado na última hora..."
+
+          RESULT=$(curl -s "https://graph.instagram.com/v21.0/${INSTAGRAM_USER_ID}/media?fields=timestamp&limit=5&access_token=${INSTAGRAM_TOKEN}")
+
+          ALREADY=$(echo "$RESULT" | python3 -c "
+          import json, sys, datetime
+          data = json.load(sys.stdin)
+          now = datetime.datetime.utcnow()
+          for item in data.get('data', []):
+              ts_str = item.get('timestamp', '')
+              try:
+                  ts = datetime.datetime.strptime(ts_str, '%Y-%m-%dT%H:%M:%S+%f')
+              except:
+                  try:
+                      ts = datetime.datetime.fromisoformat(ts_str.replace('Z', ''))
+                  except:
+                      continue
+              diff = (now - ts).total_seconds()
+              if diff < 3600:
+                  print('yes')
+                  sys.exit()
+          print('no')
+          " 2>/dev/null || echo "no")
+
+          if [ "$ALREADY" = "yes" ]; then
+            echo "✅ Post recente detectado na última 1h — este slot já foi publicado. Pulando run de backup."
+            echo "skip=true" >> $GITHUB_ENV
+          else
+            echo "🚀 Nenhum post recente — prosseguindo com publicação."
+            echo "skip=false" >> $GITHUB_ENV
+          fi
+
       - name: Publicar no Instagram
+        if: steps.post.outputs.id != '' && env.skip != 'true'
         env:
           INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
           INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}

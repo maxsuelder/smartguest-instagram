@@ -2,26 +2,38 @@ name: SmartGuest — Semana 5
 
 on:
   schedule:
-    # seg 11/06 às 10h BRT = 13h UTC
-    - cron: '0 13 11 6 *'
-    # seg 11/06 às 19h BRT = 22h UTC
-    - cron: '0 22 11 6 *'
-    # ter 12/06 às 10h BRT = 13h UTC
-    - cron: '0 13 12 6 *'
-    # ter 12/06 às 19h BRT = 22h UTC
-    - cron: '0 22 12 6 *'
-    # qua 13/06 às 10h BRT = 13h UTC
-    - cron: '0 13 13 6 *'
-    # qua 13/06 às 19h BRT = 22h UTC
-    - cron: '0 22 13 6 *'
-    # qui 14/06 às 10h BRT = 13h UTC
-    - cron: '0 13 14 6 *'
-    # qui 14/06 às 19h BRT = 22h UTC
-    - cron: '0 22 14 6 *'
-    # sex 15/06 às 10h BRT = 13h UTC
-    - cron: '0 13 15 6 *'
-    # sex 15/06 às 19h BRT = 22h UTC
-    - cron: '0 22 15 6 *'
+    - cron: '0 13 11 6 *'   # seg 11/06 10h BRT
+    - cron: '0 22 11 6 *'   # seg 11/06 19h BRT
+    - cron: '0 13 12 6 *'   # ter 12/06 10h BRT
+    - cron: '0 22 12 6 *'   # ter 12/06 19h BRT
+    - cron: '0 13 13 6 *'   # qua 13/06 10h BRT
+    - cron: '0 22 13 6 *'   # qua 13/06 19h BRT
+    - cron: '0 13 14 6 *'   # qui 14/06 10h BRT
+    - cron: '0 22 14 6 *'   # qui 14/06 19h BRT
+    - cron: '0 13 15 6 *'   # sex 15/06 10h BRT
+    - cron: '0 22 15 6 *'   # sex 15/06 19h BRT
+    # backups +20min
+    - cron: '20 13 11 6 *'
+    - cron: '20 22 11 6 *'
+    - cron: '20 13 12 6 *'
+    - cron: '20 22 12 6 *'
+    - cron: '20 13 13 6 *'
+    - cron: '20 22 13 6 *'
+    - cron: '20 13 14 6 *'
+    - cron: '20 22 14 6 *'
+    - cron: '20 13 15 6 *'
+    - cron: '20 22 15 6 *'
+    # backups +40min
+    - cron: '40 13 11 6 *'
+    - cron: '40 22 11 6 *'
+    - cron: '40 13 12 6 *'
+    - cron: '40 22 12 6 *'
+    - cron: '40 13 13 6 *'
+    - cron: '40 22 13 6 *'
+    - cron: '40 13 14 6 *'
+    - cron: '40 22 14 6 *'
+    - cron: '40 13 15 6 *'
+    - cron: '40 22 15 6 *'
 
   workflow_dispatch:
     inputs:
@@ -30,56 +42,70 @@ on:
         required: true
         type: string
 
+concurrency:
+  group: smartguest-semana5
+  cancel-in-progress: false
+
 jobs:
   publicar:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-
-      - name: Instalar dependências
-        run: npm ci
-
-      - name: Instalar Playwright (Chromium)
-        run: npx playwright install chromium --with-deps
 
       - name: Determinar post do dia
         id: post
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "id=${{ inputs.post_id }}" >> $GITHUB_OUTPUT
-            exit 0
+            echo "id=${{ inputs.post_id }}" >> $GITHUB_OUTPUT; exit 0
           fi
-
-          DIA=$(date -u +"%m-%d")
-          HORA=$(date -u +"%H")
+          DIA=$(date -u +"%m-%d"); HORA=$(date -u +"%H")
           case "${DIA}-${HORA}" in
-            "06-11-13") echo "id=seg11-carousel-whatsapp" >> $GITHUB_OUTPUT ;;
-            "06-11-22") echo "id=seg11-story-quartos" >> $GITHUB_OUTPUT ;;
-            "06-12-13") echo "id=ter12-carousel-hospede" >> $GITHUB_OUTPUT ;;
-            "06-12-22") echo "id=ter12-story-checkin" >> $GITHUB_OUTPUT ;;
-            "06-13-13") echo "id=qua13-carousel-avaliacao" >> $GITHUB_OUTPUT ;;
-            "06-13-22") echo "id=qua13-story-quiz" >> $GITHUB_OUTPUT ;;
-            "06-14-13") echo "id=qui14-carousel-comissao" >> $GITHUB_OUTPUT ;;
-            "06-14-22") echo "id=qui14-story-canal" >> $GITHUB_OUTPUT ;;
-            "06-15-13") echo "id=sex15-carousel-temporada" >> $GITHUB_OUTPUT ;;
-            "06-15-22") echo "id=sex15-story-novidade" >> $GITHUB_OUTPUT ;;
-            *)
-              echo "Nenhum post agendado para $DIA às $HORA UTC"
-              exit 1
-              ;;
+            "06-11-13") POST_ID="seg11-carousel-whatsapp" ;;
+            "06-11-22") POST_ID="seg11-story-quartos" ;;
+            "06-12-13") POST_ID="ter12-carousel-hospede" ;;
+            "06-12-22") POST_ID="ter12-story-checkin" ;;
+            "06-13-13") POST_ID="qua13-carousel-avaliacao" ;;
+            "06-13-22") POST_ID="qua13-story-quiz" ;;
+            "06-14-13") POST_ID="qui14-carousel-comissao" ;;
+            "06-14-22") POST_ID="qui14-story-canal" ;;
+            "06-15-13") POST_ID="sex15-carousel-temporada" ;;
+            "06-15-22") POST_ID="sex15-story-novidade" ;;
+            *) echo "⏭️  Backup ignorado."; echo "id=" >> $GITHUB_OUTPUT; exit 0 ;;
           esac
+          echo "id=${POST_ID}" >> $GITHUB_OUTPUT
+
+      - name: Verificar cache (anti-dupla)
+        id: cache
+        if: steps.post.outputs.id != ''
+        uses: actions/cache@v4
+        with:
+          path: .cache-posted
+          key: posted-${{ steps.post.outputs.id }}
+
+      - name: Setup Node.js
+        if: steps.post.outputs.id != '' && steps.cache.outputs.cache-hit != 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Instalar dependências
+        if: steps.post.outputs.id != '' && steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: Instalar Playwright
+        if: steps.post.outputs.id != '' && steps.cache.outputs.cache-hit != 'true'
+        run: npx playwright install chromium --with-deps
 
       - name: Publicar no Instagram
+        if: steps.post.outputs.id != '' && steps.cache.outputs.cache-hit != 'true'
         env:
           INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
           INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
           IMGBB_KEY: ${{ secrets.IMGBB_KEY }}
         run: node postar.js ${{ steps.post.outputs.id }}
+
+      - name: Marcar como publicado
+        if: steps.post.outputs.id != '' && steps.cache.outputs.cache-hit != 'true'
+        run: mkdir -p .cache-posted && echo "ok" > .cache-posted/${{ steps.post.outputs.id }}

@@ -1,18 +1,8 @@
 name: SmartGuest — Semana 1
 
 on:
-  schedule:
-    # Todos os horários em UTC (Brasil = UTC-3)
-    # sex 16/05 às 11h BRT = 14h UTC
-    - cron: '0 14 16 5 *'
-    # sab 17/05 às 10h BRT = 13h UTC
-    - cron: '0 13 17 5 *'
-    # seg 19/05 às 10h BRT = 13h UTC
-    - cron: '0 13 19 5 *'
-    # qua 21/05 às 11h BRT = 14h UTC
-    - cron: '0 14 21 5 *'
-    # qui 22/05 às 11h BRT = 14h UTC
-    - cron: '0 14 22 5 *'
+  # ── Crons de maio desativados — semana-maio.yml gerencia todo o mês de maio ──
+  # (sex16, sab17, seg19 já passaram; qua21 e qui22 conflitam com semana-maio)
 
   workflow_dispatch:
     inputs:

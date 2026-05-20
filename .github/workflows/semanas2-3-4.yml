@@ -2,22 +2,10 @@ name: SmartGuest — Semanas 2, 3 e 4
 
 on:
   schedule:
-    # ── SEMANA 2 ────────────────────────────────────────
-    # seg 23/05 às 10h BRT = 13h UTC
-    - cron: '0 13 23 5 *'
-    # ter 24/05 às 11h BRT = 14h UTC
-    - cron: '0 14 24 5 *'
-    # qua 25/05 às 11h BRT = 14h UTC
-    - cron: '0 14 25 5 *'
-    # qui 26/05 às 11h BRT = 14h UTC
-    - cron: '0 14 26 5 *'
-    # sex 27/05 às 11h BRT = 14h UTC
-    - cron: '0 14 27 5 *'
+    # ── SEMANA 2 (maio) — desativada, semana-maio.yml gerencia 23-30/05 ────────
 
     # ── SEMANA 3 ────────────────────────────────────────
-    # seg 30/05 às 10h BRT = 13h UTC
-    - cron: '0 13 30 5 *'
-    # ter 31/05 às 11h BRT = 14h UTC
+    # ter 31/05 às 11h BRT = 14h UTC (não conflita com semana-maio)
     - cron: '0 14 31 5 *'
     # qua 01/06 às 11h BRT = 14h UTC
     - cron: '0 14 1 6 *'

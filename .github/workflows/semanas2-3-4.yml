@@ -82,8 +82,9 @@ jobs:
             "06-09") echo "id=qui09-post-comparativo" >> $GITHUB_OUTPUT ;;
             "06-10") echo "id=sex10-post-cta"         >> $GITHUB_OUTPUT ;;
             *)
-              echo "Nenhum post agendado para $DIA"
-              exit 1
+              echo "⏭️  Nenhum post agendado para $DIA — ignorado."
+              echo "id=" >> $GITHUB_OUTPUT
+              exit 0
               ;;
           esac
 

@@ -61,19 +61,28 @@ jobs:
             echo "id=${{ inputs.post_id }}" >> $GITHUB_OUTPUT; exit 0
           fi
           DIA=$(date -u +"%m-%d"); HORA=$(date -u +"%H")
-          case "${DIA}-${HORA}" in
-            "06-18-13") POST_ID="seg18-carousel-link" ;;
-            "06-18-22") POST_ID="seg18-story-avaliacao" ;;
-            "06-19-13") POST_ID="ter19-carousel-recepcionista" ;;
-            "06-19-22") POST_ID="ter19-story-motor" ;;
-            "06-20-13") POST_ID="qua20-carousel-hospede" ;;
-            "06-20-22") POST_ID="qua20-story-bastidores" ;;
-            "06-21-13") POST_ID="qui21-carousel-metricas" ;;
-            "06-21-22") POST_ID="qui21-story-dificuldade" ;;
-            "06-22-13") POST_ID="sex22-carousel-pequenas" ;;
-            "06-22-22") POST_ID="sex22-story-cta" ;;
-            *) echo "⏭️  Backup ignorado."; echo "id=" >> $GITHUB_OUTPUT; exit 0 ;;
+          MANHA=0; NOITE=0
+          if [ "$HORA" -ge 12 ] && [ "$HORA" -le 18 ]; then MANHA=1; fi
+          if [ "$HORA" -ge 21 ] || [ "$HORA" -le 4 ];  then NOITE=1; fi
+          POST_ID=""
+          case "$DIA" in
+            "06-18") [ $MANHA -eq 1 ] && POST_ID="seg18-carousel-link"           || true
+                     [ $NOITE -eq 1 ] && POST_ID="seg18-story-avaliacao"          || true ;;
+            "06-19") [ $MANHA -eq 1 ] && POST_ID="ter19-carousel-recepcionista"  || true
+                     [ $NOITE -eq 1 ] && POST_ID="ter19-story-motor"              || true ;;
+            "06-20") [ $MANHA -eq 1 ] && POST_ID="qua20-carousel-hospede"        || true
+                     [ $NOITE -eq 1 ] && POST_ID="qua20-story-bastidores"         || true ;;
+            "06-21") [ $MANHA -eq 1 ] && POST_ID="qui21-carousel-metricas"       || true
+                     [ $NOITE -eq 1 ] && POST_ID="qui21-story-dificuldade"        || true ;;
+            "06-22") [ $MANHA -eq 1 ] && POST_ID="sex22-carousel-pequenas"       || true
+                     [ $NOITE -eq 1 ] && POST_ID="sex22-story-cta"                || true ;;
+            *) echo "⏭️  Sem post para $DIA."; echo "id=" >> $GITHUB_OUTPUT; exit 0 ;;
           esac
+          if [ -z "$POST_ID" ]; then
+            echo "⏭️  $DIA às ${HORA}h UTC — fora das janelas. Ignorado."
+            echo "id=" >> $GITHUB_OUTPUT; exit 0
+          fi
+          echo "✅ Post: $POST_ID ($DIA ${HORA}h UTC)"
           echo "id=${POST_ID}" >> $GITHUB_OUTPUT
 
       - name: Verificar cache (anti-dupla)

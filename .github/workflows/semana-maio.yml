@@ -92,32 +92,47 @@ jobs:
           DIA=$(date -u +"%m-%d")
           HORA=$(date -u +"%H")
 
-          case "${DIA}-${HORA}" in
-            "05-20-13") POST_ID="ter20-carousel-hospede-volta" ;;
-            "05-20-22") POST_ID="ter20-story-rate-parity" ;;
-            "05-21-13") POST_ID="qua21-carousel-custo-reserva" ;;
-            "05-21-22") POST_ID="qua21-story-planilha" ;;
-            "05-22-13") POST_ID="qui22-carousel-checkin" ;;
-            "05-22-22") POST_ID="qui22-story-setup" ;;
-            "05-23-13") POST_ID="sex23-carousel-corpus" ;;
-            "05-23-22") POST_ID="sex23-story-avaliacoes" ;;
-            "05-26-13") POST_ID="seg26-carousel-booking" ;;
-            "05-26-22") POST_ID="seg26-story-quiz" ;;
-            "05-27-13") POST_ID="ter27-carousel-revenue" ;;
-            "05-27-22") POST_ID="ter27-story-depoimento" ;;
-            "05-28-13") POST_ID="qua28-carousel-erro" ;;
-            "05-28-22") POST_ID="qua28-story-precos" ;;
-            "05-29-13") POST_ID="qui29-carousel-comparacao" ;;
-            "05-29-22") POST_ID="qui29-story-tempo" ;;
-            "05-30-13") POST_ID="sex30-carousel-junho" ;;
-            "05-30-22") POST_ID="sex30-story-cta" ;;
+          # Janelas tolerantes ao atraso do GitHub Actions (crons podem atrasar 1-3h):
+          # Manhã  = 10h BRT = 13h UTC → aceita 12h-18h UTC
+          # Noite  = 19h BRT = 22h UTC → aceita 21h-04h UTC (cruza meia-noite)
+          MANHA=0; NOITE=0
+          if [ "$HORA" -ge 12 ] && [ "$HORA" -le 18 ]; then MANHA=1; fi
+          if [ "$HORA" -ge 21 ] || [ "$HORA" -le 4 ];  then NOITE=1; fi
+
+          POST_ID=""
+          case "$DIA" in
+            "05-20") [ $MANHA -eq 1 ] && POST_ID="ter20-carousel-hospede-volta" || true
+                     [ $NOITE -eq 1 ] && POST_ID="ter20-story-rate-parity"      || true ;;
+            "05-21") [ $MANHA -eq 1 ] && POST_ID="qua21-carousel-custo-reserva" || true
+                     [ $NOITE -eq 1 ] && POST_ID="qua21-story-planilha"         || true ;;
+            "05-22") [ $MANHA -eq 1 ] && POST_ID="qui22-carousel-checkin"       || true
+                     [ $NOITE -eq 1 ] && POST_ID="qui22-story-setup"            || true ;;
+            "05-23") [ $MANHA -eq 1 ] && POST_ID="sex23-carousel-corpus"        || true
+                     [ $NOITE -eq 1 ] && POST_ID="sex23-story-avaliacoes"       || true ;;
+            "05-26") [ $MANHA -eq 1 ] && POST_ID="seg26-carousel-booking"       || true
+                     [ $NOITE -eq 1 ] && POST_ID="seg26-story-quiz"             || true ;;
+            "05-27") [ $MANHA -eq 1 ] && POST_ID="ter27-carousel-revenue"       || true
+                     [ $NOITE -eq 1 ] && POST_ID="ter27-story-depoimento"       || true ;;
+            "05-28") [ $MANHA -eq 1 ] && POST_ID="qua28-carousel-erro"          || true
+                     [ $NOITE -eq 1 ] && POST_ID="qua28-story-precos"           || true ;;
+            "05-29") [ $MANHA -eq 1 ] && POST_ID="qui29-carousel-comparacao"    || true
+                     [ $NOITE -eq 1 ] && POST_ID="qui29-story-tempo"            || true ;;
+            "05-30") [ $MANHA -eq 1 ] && POST_ID="sex30-carousel-junho"         || true
+                     [ $NOITE -eq 1 ] && POST_ID="sex30-story-cta"              || true ;;
             *)
-              echo "⏭️  Nenhum post para $DIA às $HORA UTC — backup ignorado."
+              echo "⏭️  Nenhum post para $DIA — ignorado."
               echo "id=" >> $GITHUB_OUTPUT
               exit 0
               ;;
           esac
 
+          if [ -z "$POST_ID" ]; then
+            echo "⏭️  $DIA às ${HORA}h UTC — fora das janelas manhã/noite. Ignorado."
+            echo "id=" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          echo "✅ Post identificado: $POST_ID ($DIA às ${HORA}h UTC)"
           echo "id=${POST_ID}" >> $GITHUB_OUTPUT
 
       # Cache com chave = post ID: se o cache existe, esse post já foi publicado

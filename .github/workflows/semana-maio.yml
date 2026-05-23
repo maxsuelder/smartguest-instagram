@@ -113,10 +113,10 @@ jobs:
                      [ $NOITE -eq 1 ] && POST_ID="qua21-story-planilha"         || true ;;
             "05-22") [ $MANHA -eq 1 ] && POST_ID="qui22-carousel-checkin"       || true
                      [ $NOITE -eq 1 ] && POST_ID="qui22-story-setup"            || true ;;
-            "05-23") [ $MANHA -eq 1 ] && POST_ID="sex23-carousel-corpus"        || true
-                     [ $NOITE -eq 1 ] && POST_ID="sex23-story-avaliacoes"       || true ;;
-            "05-24") [ $MANHA -eq 1 ] && POST_ID="sab24-carousel-ia-recepcao"  || true
-                     [ $NOITE -eq 1 ] && POST_ID="sab24-story-gerente-ia"      || true ;;
+            "05-23") [ $MANHA -eq 1 ] && POST_ID="sex23-reels-burocracia"        || true
+                     [ $NOITE -eq 1 ] && POST_ID="sex23-reels-novo-recepcao"    || true ;;
+            "05-24") [ $MANHA -eq 1 ] && POST_ID="sab24-reels-atitude-branco"  || true
+                     [ $NOITE -eq 1 ] && POST_ID="sab24-reels-ia-preto"         || true ;;
             "05-26") [ $MANHA -eq 1 ] && POST_ID="seg26-carousel-booking"       || true
                      [ $NOITE -eq 1 ] && POST_ID="seg26-story-quiz"             || true ;;
             "05-27") [ $MANHA -eq 1 ] && POST_ID="ter27-carousel-revenue"       || true

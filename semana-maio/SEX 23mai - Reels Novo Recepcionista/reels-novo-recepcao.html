@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#030a0d;font-family:'Inter',sans-serif;}
+.slide{width:1080px;height:1920px;overflow:hidden;position:relative;background:#060E12;}
+.noise{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");opacity:.4;pointer-events:none;z-index:10;}
+.bar-top{position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#16C3CC,transparent);z-index:20;}
+.brand{position:absolute;top:64px;left:64px;font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;letter-spacing:4px;color:#16C3CC;text-transform:uppercase;z-index:20;}
+.glow-top{position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:900px;height:900px;background:radial-gradient(ellipse,rgba(22,195,204,.1),transparent 65%);pointer-events:none;}
+.glow-bot{position:absolute;bottom:-200px;right:-100px;width:700px;height:700px;background:radial-gradient(ellipse,rgba(22,195,204,.06),transparent 65%);pointer-events:none;}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(22,195,204,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(22,195,204,.025) 1px,transparent 1px);background-size:90px 90px;}
+
+.content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:160px 72px;z-index:5;}
+
+.eyebrow{font-size:14px;font-weight:800;letter-spacing:6px;color:#16C3CC;text-transform:uppercase;margin-bottom:36px;display:flex;align-items:center;gap:14px;}
+.eyebrow::before,.eyebrow::after{content:'';flex:1;height:1px;background:rgba(22,195,204,.2);}
+
+.h1{font-family:'Barlow Condensed',sans-serif;font-size:120px;font-weight:900;text-transform:uppercase;line-height:.83;color:#fff;margin-bottom:44px;}
+.h1 em{color:#16C3CC;font-style:normal;}
+
+.divider{width:80px;height:3px;background:linear-gradient(90deg,#16C3CC,transparent);border-radius:2px;margin-bottom:44px;}
+
+.manifesto{font-size:28px;font-weight:600;color:rgba(184,205,211,.75);line-height:1.6;margin-bottom:56px;max-width:900px;}
+.manifesto strong{color:#fff;}
+
+.cards{display:flex;flex-direction:column;gap:16px;}
+.card{display:flex;align-items:center;gap:22px;padding:24px 28px;background:rgba(22,195,204,.04);border:1px solid rgba(22,195,204,.14);border-radius:16px;}
+.card-icon{font-size:30px;width:52px;height:52px;display:flex;align-items:center;justify-content:center;background:rgba(22,195,204,.08);border-radius:12px;flex-shrink:0;}
+.card-body{display:flex;flex-direction:column;gap:4px;}
+.card-title{font-size:20px;font-weight:700;color:#fff;}
+.card-sub{font-size:16px;font-weight:500;color:rgba(184,205,211,.5);}
+
+.bottom{position:absolute;bottom:80px;left:72px;right:72px;z-index:5;}
+.bottom-bar{width:100%;height:1px;background:rgba(22,195,204,.15);margin-bottom:28px;}
+.cta-row{display:flex;align-items:center;justify-content:space-between;}
+.cta-txt{font-size:20px;font-weight:700;color:rgba(22,195,204,.7);}
+.cta-btn{background:#16C3CC;color:#030a0d;font-size:16px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:18px 36px;border-radius:100px;}
+</style>
+</head>
+<body>
+<div class="slide" id="story">
+  <div class="noise"></div>
+  <div class="bar-top"></div>
+  <div class="grid"></div>
+  <div class="glow-top"></div>
+  <div class="glow-bot"></div>
+  <div class="brand">SmartGuest</div>
+
+  <div class="content">
+    <div class="eyebrow">O novo padrão</div>
+
+    <div class="h1">O NOVO<br>RECEP-<br>CIONISTA<br>AGE COMO<br><em>GERENTE.</em></div>
+
+    <div class="divider"></div>
+
+    <div class="manifesto">
+      A rotina? <strong>A IA do SmartGuest resolve.</strong><br>
+      Agora você tem tempo para o que importa de verdade.
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-body">
+          <div class="card-title">Antecipa o que o hóspede precisa</div>
+          <div class="card-sub">Antes mesmo de ele pedir</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⭐</div>
+        <div class="card-body">
+          <div class="card-title">Cria memórias, não só check-ins</div>
+          <div class="card-sub">A diferença que gera avaliação 5 estrelas</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💡</div>
+        <div class="card-body">
+          <div class="card-title">Resolve problemas na hora</div>
+          <div class="card-sub">Atitude de dono, postura de gestor</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🚀</div>
+        <div class="card-body">
+          <div class="card-title">Faz o a mais, sempre</div>
+          <div class="card-sub">Porque a burocracia ficou com a IA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="bottom-bar"></div>
+    <div class="cta-row">
+      <div class="cta-txt">smartguest.app</div>
+      <div class="cta-btn">Comece agora</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

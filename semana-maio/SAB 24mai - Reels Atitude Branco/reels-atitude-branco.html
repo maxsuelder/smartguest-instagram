@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#fff;font-family:'Inter',sans-serif;}
+.slide{width:1080px;height:1920px;overflow:hidden;position:relative;background:#F7F9FC;}
+.bar-top{position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,#0A8FA0,#16C3CC,#0A8FA0);z-index:20;}
+.brand{position:absolute;top:64px;left:64px;font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;letter-spacing:4px;color:#0A8FA0;text-transform:uppercase;z-index:20;}
+.accent-circle{position:absolute;top:-200px;right:-200px;width:700px;height:700px;border-radius:50%;background:radial-gradient(ellipse,rgba(22,195,204,.08),transparent 70%);pointer-events:none;}
+.accent-circle2{position:absolute;bottom:-300px;left:-200px;width:800px;height:800px;border-radius:50%;background:radial-gradient(ellipse,rgba(10,143,160,.05),transparent 70%);pointer-events:none;}
+.dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(10,143,160,.06) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+
+.content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:160px 80px;z-index:5;}
+
+.label{font-size:13px;font-weight:800;letter-spacing:6px;color:#0A8FA0;text-transform:uppercase;margin-bottom:28px;}
+
+.h1{font-family:'Barlow Condensed',sans-serif;font-size:116px;font-weight:900;text-transform:uppercase;line-height:.84;color:#0D1117;margin-bottom:40px;}
+.h1 em{color:#16C3CC;font-style:normal;}
+
+.bar{width:72px;height:5px;background:#16C3CC;border-radius:3px;margin-bottom:44px;}
+
+.quote{font-size:30px;font-weight:700;color:#0D1117;line-height:1.5;border-left:4px solid #16C3CC;padding-left:28px;margin-bottom:60px;}
+.quote span{color:#0A8FA0;}
+
+.steps{display:flex;flex-direction:column;gap:0;}
+.step{display:flex;align-items:flex-start;gap:28px;padding:28px 0;border-bottom:1px solid rgba(13,17,23,.07);}
+.step:last-child{border-bottom:none;}
+.step-num{font-family:'Barlow Condensed',sans-serif;font-size:48px;font-weight:900;color:#16C3CC;line-height:1;width:48px;flex-shrink:0;}
+.step-body{padding-top:4px;}
+.step-title{font-size:22px;font-weight:800;color:#0D1117;margin-bottom:6px;}
+.step-sub{font-size:17px;font-weight:500;color:rgba(13,17,23,.5);line-height:1.5;}
+
+.bottom{position:absolute;bottom:80px;left:80px;right:80px;z-index:5;}
+.bottom-card{background:#0D1117;border-radius:24px;padding:40px 48px;display:flex;align-items:center;justify-content:space-between;}
+.bottom-txt{font-size:20px;font-weight:700;color:rgba(255,255,255,.75);}
+.bottom-url{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;letter-spacing:2px;color:#16C3CC;text-transform:uppercase;}
+</style>
+</head>
+<body>
+<div class="slide" id="story">
+  <div class="bar-top"></div>
+  <div class="dots"></div>
+  <div class="accent-circle"></div>
+  <div class="accent-circle2"></div>
+  <div class="brand">SmartGuest</div>
+
+  <div class="content">
+    <div class="label">Novo perfil · Nova era</div>
+
+    <div class="h1">SEU TIME<br>MERECE<br>FAZER O<br><em>QUE</em><br><em>IMPORTA.</em></div>
+
+    <div class="bar"></div>
+
+    <div class="quote">
+      "A rotina deixa com a IA.<br>
+      Você foca em <span>encantar o hóspede.</span>"
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <div class="step-title">Antecipa necessidades</div>
+          <div class="step-sub">O novo recepcionista conhece o hóspede antes do check-in</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <div class="step-title">Age como gerente, não como digitador</div>
+          <div class="step-sub">Toma decisões, resolve, vai além do esperado</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <div class="step-title">Transforma estadias em memórias</div>
+          <div class="step-sub">O hóspede lembra de você — não do formulário de check-in</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="bottom-card">
+      <div class="bottom-txt">A IA faz a rotina.<br>Você faz a diferença.</div>
+      <div class="bottom-url">smartguest.app</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

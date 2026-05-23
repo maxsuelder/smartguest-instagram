@@ -250,5 +250,23 @@
     "altura": 1920,
     "slide": "story",
     "legenda": "Junho chegando. Copa chegando. Seu hotel pronto? 🏆 smartguest.app #SmartGuest #Copa2026 #Hotelaria #TemporadaAlta"
+  },
+  {
+    "id": "sab24-carousel-ia-recepcao",
+    "tipo": "CAROUSEL",
+    "html": "SAB 24mai - Carousel IA Recepcao/carousel-ia-recepcao.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slides": ["slide1","slide2","slide3","slide4","slide5","slide6"],
+    "legenda": "O novo recepcionista do seu hotel não vai pedir folga. 🤖\n\nEle faz check-in, confirma reservas, responde hóspedes às 3h da manhã e ainda ajusta os preços automaticamente.\n\nIsso é o SmartGuest — a IA que trabalha 24h pelo seu hotel.\n\n✅ Zero overbooking\n📈 Precificação dinâmica\n🛎️ Atendimento automático\n📊 Relatórios em 1 minuto\n\n👉 smartguest.app\n📲 Chama no WhatsApp na bio\n\n.\n.\n.\n#SmartGuest #IAHotelaria #InteligenciaArtificial #Hotelaria #HotelTech #GestaHoteleira #RecepcionistaIA #AutomacaoHoteleira #PousadasBrasil #HoteisBrasil #FuturoHotelaria #ChannelManager #PMS #MotorDeReservas #HotelariaDigital #TecnologiaHoteleira"
+  },
+  {
+    "id": "sab24-story-gerente-ia",
+    "tipo": "STORIES",
+    "html": "SAB 24mai - Story Gerente IA/story-gerente-ia.html",
+    "largura": 1080,
+    "altura": 1920,
+    "slide": "story",
+    "legenda": "A IA já está no seu hotel — ou no do concorrente 🤖 smartguest.app #SmartGuest #IAHotelaria #Hotelaria #HotelTech"
   }
 ]

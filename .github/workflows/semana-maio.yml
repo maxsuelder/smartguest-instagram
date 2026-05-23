@@ -11,6 +11,8 @@ on:
     - cron: '0 22 22 5 *'   # qui 22/05 19h BRT
     - cron: '0 13 23 5 *'   # sex 23/05 10h BRT
     - cron: '0 22 23 5 *'   # sex 23/05 19h BRT
+    - cron: '0 13 24 5 *'   # sab 24/05 10h BRT
+    - cron: '0 18 24 5 *'   # sab 24/05 15h BRT (story no sábado)
     - cron: '0 13 26 5 *'   # seg 26/05 10h BRT
     - cron: '0 22 26 5 *'   # seg 26/05 19h BRT
     - cron: '0 13 27 5 *'   # ter 27/05 10h BRT
@@ -30,6 +32,8 @@ on:
     - cron: '20 22 22 5 *'
     - cron: '20 13 23 5 *'
     - cron: '20 22 23 5 *'
+    - cron: '20 13 24 5 *'
+    - cron: '20 18 24 5 *'
     - cron: '20 13 26 5 *'
     - cron: '20 22 26 5 *'
     - cron: '20 13 27 5 *'
@@ -49,6 +53,8 @@ on:
     - cron: '40 22 22 5 *'
     - cron: '40 13 23 5 *'
     - cron: '40 22 23 5 *'
+    - cron: '40 13 24 5 *'
+    - cron: '40 18 24 5 *'
     - cron: '40 13 26 5 *'
     - cron: '40 22 26 5 *'
     - cron: '40 13 27 5 *'
@@ -109,6 +115,8 @@ jobs:
                      [ $NOITE -eq 1 ] && POST_ID="qui22-story-setup"            || true ;;
             "05-23") [ $MANHA -eq 1 ] && POST_ID="sex23-carousel-corpus"        || true
                      [ $NOITE -eq 1 ] && POST_ID="sex23-story-avaliacoes"       || true ;;
+            "05-24") [ $MANHA -eq 1 ] && POST_ID="sab24-carousel-ia-recepcao"  || true
+                     [ $NOITE -eq 1 ] && POST_ID="sab24-story-gerente-ia"      || true ;;
             "05-26") [ $MANHA -eq 1 ] && POST_ID="seg26-carousel-booking"       || true
                      [ $NOITE -eq 1 ] && POST_ID="seg26-story-quiz"             || true ;;
             "05-27") [ $MANHA -eq 1 ] && POST_ID="ter27-carousel-revenue"       || true

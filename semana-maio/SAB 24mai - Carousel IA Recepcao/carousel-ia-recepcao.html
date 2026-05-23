@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#030a0d;font-family:'Inter',sans-serif;}
+.slide{width:1080px;height:1080px;overflow:hidden;position:relative;margin-bottom:20px;background:#060E12;}
+.noise{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");opacity:.35;pointer-events:none;z-index:10;}
+.brand{position:absolute;top:44px;left:60px;font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;letter-spacing:4px;color:#16C3CC;text-transform:uppercase;z-index:20;}
+.num{position:absolute;top:44px;right:60px;font-size:12px;font-weight:700;letter-spacing:3px;color:rgba(22,195,204,0.35);text-transform:uppercase;z-index:20;}
+.bar-left{position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(180deg,#16C3CC,#0A4550 60%,transparent);z-index:15;}
+.glow-tl{position:absolute;top:-200px;left:-200px;width:700px;height:700px;background:radial-gradient(ellipse,rgba(22,195,204,0.07),transparent 65%);pointer-events:none;}
+.glow-br{position:absolute;bottom:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(ellipse,rgba(22,195,204,0.05),transparent 65%);pointer-events:none;}
+
+/* ── SLIDE 1 — CAPA ── */
+#slide1 .bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(22,195,204,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(22,195,204,0.04) 1px,transparent 1px);background-size:60px 60px;}
+#slide1 .content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:110px 64px 90px;z-index:5;}
+#slide1 .eyebrow{font-size:13px;font-weight:800;letter-spacing:6px;color:#16C3CC;text-transform:uppercase;margin-bottom:22px;display:flex;align-items:center;gap:12px;}
+#slide1 .eyebrow::before{content:'';width:32px;height:2px;background:#16C3CC;}
+#slide1 .h1{font-family:'Barlow Condensed',sans-serif;font-size:100px;font-weight:900;text-transform:uppercase;line-height:.86;color:#fff;margin-bottom:28px;}
+#slide1 .h1 em{color:#16C3CC;font-style:normal;}
+#slide1 .sub{font-size:23px;font-weight:500;color:rgba(184,205,211,.65);line-height:1.5;max-width:760px;}
+#slide1 .sub strong{color:#fff;}
+#slide1 .badge{margin-top:44px;display:inline-flex;align-items:center;gap:10px;background:rgba(22,195,204,.08);border:1px solid rgba(22,195,204,.25);border-radius:100px;padding:12px 24px;}
+#slide1 .badge-dot{width:8px;height:8px;border-radius:50%;background:#16C3CC;box-shadow:0 0 10px #16C3CC;}
+#slide1 .badge-txt{font-size:14px;font-weight:700;letter-spacing:2px;color:#16C3CC;text-transform:uppercase;}
+
+/* ── SLIDE 2 — O QUE ELE FAZ ── */
+#slide2 .content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:100px 64px 80px;z-index:5;}
+#slide2 .label{font-size:13px;font-weight:800;letter-spacing:5px;color:#16C3CC;text-transform:uppercase;margin-bottom:14px;}
+#slide2 .h2{font-family:'Barlow Condensed',sans-serif;font-size:72px;font-weight:900;text-transform:uppercase;line-height:.88;color:#fff;margin-bottom:32px;}
+#slide2 .h2 span{color:#16C3CC;}
+#slide2 .tasks{display:flex;flex-direction:column;gap:18px;}
+#slide2 .task{display:flex;align-items:flex-start;gap:20px;padding:22px 28px;background:rgba(22,195,204,.04);border:1px solid rgba(22,195,204,.12);border-radius:14px;}
+#slide2 .task-icon{width:44px;height:44px;border-radius:10px;background:rgba(22,195,204,.1);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+#slide2 .task-text{display:flex;flex-direction:column;gap:4px;}
+#slide2 .task-title{font-size:18px;font-weight:700;color:#fff;}
+#slide2 .task-sub{font-size:15px;font-weight:500;color:rgba(184,205,211,.55);}
+
+/* ── SLIDE 3 — GERENTE ── */
+#slide3 .content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:100px 64px 80px;z-index:5;}
+#slide3 .label{font-size:13px;font-weight:800;letter-spacing:5px;color:#F59E0B;text-transform:uppercase;margin-bottom:14px;}
+#slide3 .h3{font-family:'Barlow Condensed',sans-serif;font-size:72px;font-weight:900;text-transform:uppercase;line-height:.88;color:#fff;margin-bottom:32px;}
+#slide3 .h3 span{color:#F59E0B;}
+#slide3 .glow-gold{position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(ellipse,rgba(245,158,11,.07),transparent 65%);pointer-events:none;}
+#slide3 .metrics{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+#slide3 .metric{padding:28px;background:rgba(245,158,11,.04);border:1px solid rgba(245,158,11,.15);border-radius:16px;}
+#slide3 .metric-val{font-family:'Barlow Condensed',sans-serif;font-size:52px;font-weight:900;color:#F59E0B;line-height:1;}
+#slide3 .metric-label{font-size:16px;font-weight:600;color:rgba(184,205,211,.7);margin-top:6px;}
+
+/* ── SLIDE 4 — 24H ── */
+#slide4 .content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:80px 64px;z-index:5;text-align:center;}
+#slide4 .big{font-family:'Barlow Condensed',sans-serif;font-size:220px;font-weight:900;color:rgba(22,195,204,.12);line-height:1;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;z-index:1;}
+#slide4 .center{position:relative;z-index:5;display:flex;flex-direction:column;align-items:center;gap:20px;}
+#slide4 .h4{font-family:'Barlow Condensed',sans-serif;font-size:82px;font-weight:900;text-transform:uppercase;line-height:.9;color:#fff;}
+#slide4 .h4 em{color:#16C3CC;font-style:normal;}
+#slide4 .divider{width:80px;height:3px;background:linear-gradient(90deg,transparent,#16C3CC,transparent);border-radius:2px;}
+#slide4 .sub4{font-size:26px;font-weight:500;color:rgba(184,205,211,.65);max-width:700px;line-height:1.5;}
+#slide4 .sub4 strong{color:#fff;}
+#slide4 .tags{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:8px;}
+#slide4 .tag{font-size:13px;font-weight:700;letter-spacing:2px;color:#16C3CC;text-transform:uppercase;padding:8px 18px;border:1px solid rgba(22,195,204,.3);border-radius:100px;}
+
+/* ── SLIDE 5 — ANTES/DEPOIS ── */
+#slide5 .content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:100px 64px 80px;z-index:5;}
+#slide5 .label{font-size:13px;font-weight:800;letter-spacing:5px;color:#16C3CC;text-transform:uppercase;margin-bottom:18px;}
+#slide5 .h5{font-family:'Barlow Condensed',sans-serif;font-size:68px;font-weight:900;text-transform:uppercase;line-height:.88;color:#fff;margin-bottom:32px;}
+#slide5 .compare{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+#slide5 .col{padding:28px;border-radius:16px;}
+#slide5 .col.sem{background:rgba(255,69,69,.04);border:1px solid rgba(255,69,69,.18);}
+#slide5 .col.com{background:rgba(22,195,204,.05);border:1px solid rgba(22,195,204,.2);}
+#slide5 .col-title{font-size:13px;font-weight:800;letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;}
+#slide5 .col.sem .col-title{color:#FF4545;}
+#slide5 .col.com .col-title{color:#16C3CC;}
+#slide5 .col-item{font-size:16px;font-weight:500;line-height:1.6;padding-left:16px;position:relative;}
+#slide5 .col-item::before{content:'';position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;}
+#slide5 .col.sem .col-item{color:rgba(255,69,69,.7);}
+#slide5 .col.sem .col-item::before{background:#FF4545;}
+#slide5 .col.com .col-item{color:rgba(184,205,211,.8);}
+#slide5 .col.com .col-item::before{background:#16C3CC;}
+#slide5 .col-item+.col-item{margin-top:10px;}
+
+/* ── SLIDE 6 — CTA ── */
+#slide6 .bg-lines{position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent,transparent 40px,rgba(22,195,204,.025) 40px,rgba(22,195,204,.025) 41px);}
+#slide6 .content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:80px 64px;z-index:5;text-align:center;}
+#slide6 .eyebrow6{font-size:13px;font-weight:800;letter-spacing:6px;color:#16C3CC;text-transform:uppercase;margin-bottom:20px;}
+#slide6 .h6{font-family:'Barlow Condensed',sans-serif;font-size:90px;font-weight:900;text-transform:uppercase;line-height:.87;color:#fff;margin-bottom:28px;}
+#slide6 .h6 em{color:#16C3CC;font-style:normal;}
+#slide6 .sub6{font-size:24px;font-weight:500;color:rgba(184,205,211,.65);max-width:700px;line-height:1.5;margin-bottom:44px;}
+#slide6 .cta-btn{display:inline-flex;align-items:center;gap:12px;background:#16C3CC;color:#030a0d;font-size:18px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:20px 48px;border-radius:100px;}
+#slide6 .url{font-size:14px;font-weight:700;letter-spacing:3px;color:rgba(22,195,204,.5);text-transform:uppercase;margin-top:24px;}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — CAPA -->
+<div class="slide" id="slide1">
+  <div class="noise"></div>
+  <div class="bar-left"></div>
+  <div class="bg-grid"></div>
+  <div class="glow-tl"></div>
+  <div class="brand">SmartGuest</div>
+  <div class="num">01 / 06</div>
+  <div class="content">
+    <div class="eyebrow">Tecnologia Hoteleira</div>
+    <div class="h1">O NOVO<br><em>RECEPCIONISTA</em><br>DO SEU HOTEL</div>
+    <div class="sub">Ele não pede folga. Não erra reserva.<br><strong>Trabalha 24h por dia, 7 dias por semana.</strong></div>
+    <div class="badge">
+      <div class="badge-dot"></div>
+      <div class="badge-txt">Conheça o futuro da hotelaria</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 2 — O QUE ELE FAZ (RECEPCIONISTA) -->
+<div class="slide" id="slide2">
+  <div class="noise"></div>
+  <div class="bar-left"></div>
+  <div class="glow-tl"></div>
+  <div class="brand">SmartGuest</div>
+  <div class="num">02 / 06</div>
+  <div class="content">
+    <div class="label">O Recepcionista IA</div>
+    <div class="h2">ELE FAZ<br>TUDO ISSO<br><span>POR VOCÊ</span></div>
+    <div class="tasks">
+      <div class="task">
+        <div class="task-icon">🛎️</div>
+        <div class="task-text">
+          <div class="task-title">Check-in e check-out automatizados</div>
+          <div class="task-sub">Confirma, registra e libera — sem fila, sem papel</div>
+        </div>
+      </div>
+      <div class="task">
+        <div class="task-icon">💬</div>
+        <div class="task-text">
+          <div class="task-title">Responde hóspedes às 3h da manhã</div>
+          <div class="task-sub">Sem você precisar acordar — jamais</div>
+        </div>
+      </div>
+      <div class="task">
+        <div class="task-icon">📋</div>
+        <div class="task-text">
+          <div class="task-title">Centraliza todas as reservas</div>
+          <div class="task-sub">Booking, Airbnb, site próprio — tudo em um lugar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 3 — O GERENTE IA -->
+<div class="slide" id="slide3">
+  <div class="noise"></div>
+  <div class="bar-left"></div>
+  <div class="glow-gold"></div>
+  <div class="brand">SmartGuest</div>
+  <div class="num">03 / 06</div>
+  <div class="content">
+    <div class="label" style="color:#F59E0B;">O Gerente IA</div>
+    <div class="h3">TAMBÉM É<br>SEU <span>GERENTE</span><br>AGORA</div>
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-val">+27%</div>
+        <div class="metric-label">de ocupação com precificação inteligente</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val">Zero</div>
+        <div class="metric-label">overbooking com sincronização em tempo real</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val">24h</div>
+        <div class="metric-label">monitorando preços e disponibilidade</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val">1 min</div>
+        <div class="metric-label">para gerar relatório completo do mês</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 4 — 24H SEM PARAR -->
+<div class="slide" id="slide4">
+  <div class="noise"></div>
+  <div class="bar-left"></div>
+  <div class="big">24H</div>
+  <div class="brand">SmartGuest</div>
+  <div class="num">04 / 06</div>
+  <div class="content">
+    <div class="center">
+      <div class="h4">NUNCA<br>PARA.<br><em>NUNCA.</em></div>
+      <div class="divider"></div>
+      <div class="sub4">Enquanto você dorme, a IA do SmartGuest está <strong>cuidando do seu hotel.</strong></div>
+      <div class="tags">
+        <div class="tag">Reservas</div>
+        <div class="tag">Preços</div>
+        <div class="tag">Check-in</div>
+        <div class="tag">Relatórios</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 5 — ANTES / DEPOIS -->
+<div class="slide" id="slide5">
+  <div class="noise"></div>
+  <div class="bar-left"></div>
+  <div class="glow-tl"></div>
+  <div class="brand">SmartGuest</div>
+  <div class="num">05 / 06</div>
+  <div class="content">
+    <div class="label">A diferença é clara</div>
+    <div class="h5">SEM IA<br>VS.<br>COM IA</div>
+    <div class="compare">
+      <div class="col sem">
+        <div class="col-title">Sem SmartGuest</div>
+        <div class="col-item">Planilhas e anotações no papel</div>
+        <div class="col-item">Overbooking toda temporada</div>
+        <div class="col-item">Recepcionista sobrecarregado</div>
+        <div class="col-item">Perde reserva fora do horário</div>
+        <div class="col-item">Preços manuais desatualizados</div>
+      </div>
+      <div class="col com">
+        <div class="col-title">Com SmartGuest</div>
+        <div class="col-item">Tudo centralizado em 1 sistema</div>
+        <div class="col-item">Zero overbooking automaticamente</div>
+        <div class="col-item">Equipe focada no hóspede</div>
+        <div class="col-item">Reservas aceitas a qualquer hora</div>
+        <div class="col-item">Precificação dinâmica automática</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 6 — CTA -->
+<div class="slide" id="slide6">
+  <div class="noise"></div>
+  <div class="bar-left"></div>
+  <div class="bg-lines"></div>
+  <div class="glow-tl"></div>
+  <div class="brand">SmartGuest</div>
+  <div class="num">06 / 06</div>
+  <div class="content">
+    <div class="eyebrow6">Comece hoje mesmo</div>
+    <div class="h6">SEU HOTEL<br>MERECE UM<br><em>SISTEMA</em><br>INTELIGENTE</div>
+    <div class="sub6">PMS + Channel Manager + Motor de Reservas.<br>Setup em 7 dias. Suporte humano real.</div>
+    <div class="cta-btn">▶ smartguest.app</div>
+    <div class="url">@smartguest.app · WhatsApp na bio</div>
+  </div>
+</div>
+
+</body>
+</html>

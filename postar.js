@@ -139,32 +139,45 @@ function converterParaVideo(pngFile, mp4File) {
   execSync(cmd, { stdio: 'pipe' });
 }
 
-// ── Hospedar vídeo (catbox → transfer.sh) ────────────
-async function hospedarVideo(filePath) {
-  // 1. catbox.moe (aceita vídeo, CDN global)
-  try {
-    const form = new FormData();
-    form.append('reqtype', 'fileupload');
-    form.append('fileToUpload', fs.createReadStream(filePath));
-    const res = await axios.post('https://catbox.moe/user/api.php', form, {
-      headers: form.getHeaders(), maxContentLength: Infinity, maxBodyLength: Infinity, timeout: 120000
-    });
-    const url = res.data.trim();
-    if (url && url.startsWith('http')) { console.log(`  ☁️  Catbox OK: ${url}`); return url; }
-  } catch (e) { console.log(`  ⚠️ Catbox falhou: ${e.message}`); }
+// ── Hospedar vídeo via GitHub Releases ───────────────
+async function hospedarVideo(filePath, postId) {
+  const ghToken = process.env.GITHUB_TOKEN;
+  const owner   = 'maxsuelder';
+  const repo    = 'smartguest-instagram';
+  const tag     = 'media-assets';
+  const fname   = `${postId}.mp4`;
+  const ghHeaders = {
+    Authorization: `Bearer ${ghToken}`,
+    Accept: 'application/vnd.github+json',
+    'X-GitHub-Api-Version': '2022-11-28'
+  };
 
-  // 2. transfer.sh (fallback)
+  // 1. Pega ou cria a release "media-assets"
+  let releaseId;
   try {
-    const fname = path.basename(filePath);
-    const res = await axios.put(`https://transfer.sh/${fname}`, fs.readFileSync(filePath), {
-      headers: { 'Content-Type': 'video/mp4', 'Max-Downloads': '50', 'Max-Days': '1' },
-      maxContentLength: Infinity, maxBodyLength: Infinity, timeout: 120000
-    });
-    const url = res.data.trim();
-    if (url && url.startsWith('http')) { console.log(`  ☁️  Transfer.sh OK: ${url}`); return url; }
-  } catch (e) { console.log(`  ⚠️ Transfer.sh falhou: ${e.message}`); }
+    const r = await axios.get(`https://api.github.com/repos/${owner}/${repo}/releases/tags/${tag}`, { headers: ghHeaders });
+    releaseId = r.data.id;
+    // Apaga asset anterior com mesmo nome (se existir)
+    const existing = r.data.assets.find(a => a.name === fname);
+    if (existing) {
+      await axios.delete(`https://api.github.com/repos/${owner}/${repo}/releases/assets/${existing.id}`, { headers: ghHeaders });
+    }
+  } catch (e) {
+    const r = await axios.post(`https://api.github.com/repos/${owner}/${repo}/releases`, {
+      tag_name: tag, name: 'Media Assets', body: 'Hospedagem temporária de vídeos para Instagram', draft: false, prerelease: true
+    }, { headers: ghHeaders });
+    releaseId = r.data.id;
+  }
 
-  throw new Error('Todos os serviços de hospedagem de vídeo falharam');
+  // 2. Faz upload do MP4
+  const uploadRes = await axios.post(
+    `https://uploads.github.com/repos/${owner}/${repo}/releases/${releaseId}/assets?name=${fname}`,
+    fs.readFileSync(filePath),
+    { headers: { ...ghHeaders, 'Content-Type': 'video/mp4' }, maxContentLength: Infinity, maxBodyLength: Infinity, timeout: 120000 }
+  );
+  const url = uploadRes.data.browser_download_url;
+  console.log(`  ☁️  GitHub Release OK: ${url}`);
+  return url;
 }
 
 // ── Criar container Reels ─────────────────────────────
@@ -276,7 +289,7 @@ async function publicar(containerId) {
       console.log(`  🎬 MP4 gerado (${Math.round(fs.statSync(mp4File).size / 1024)}kb)`);
 
       // 3. Hospedar vídeo
-      const videoUrl = await hospedarVideo(mp4File);
+      const videoUrl = await hospedarVideo(mp4File, post.id);
 
       // 4. Criar container Reels
       const cid = await criarContainerReels(videoUrl, post.legenda);

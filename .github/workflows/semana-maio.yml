@@ -184,6 +184,7 @@ jobs:
           INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
           INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
           IMGBB_KEY: ${{ secrets.IMGBB_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node postar.js ${{ steps.post.outputs.id }}
 
       # Salva o marker APÓS publicar com sucesso — backups vão ver o cache e pular

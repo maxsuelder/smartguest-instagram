@@ -170,6 +170,10 @@ jobs:
         if: steps.post.outputs.id != '' && steps.cache.outputs.cache-hit != 'true'
         run: npm ci
 
+      - name: Instalar ffmpeg
+        if: steps.post.outputs.id != '' && steps.cache.outputs.cache-hit != 'true'
+        run: sudo apt-get install -y ffmpeg
+
       - name: Instalar Playwright (Chromium)
         if: steps.post.outputs.id != '' && steps.cache.outputs.cache-hit != 'true'
         run: npx playwright install chromium --with-deps

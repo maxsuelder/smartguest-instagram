@@ -2,275 +2,86 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SmartGuest – Qual Gestor Você É?</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#060E12;font-family:'Inter',sans-serif;}
+.slide{width:1080px;height:1920px;overflow:hidden;position:relative;background:linear-gradient(160deg,#060E12 0%,#081218 50%,#060E12 100%);}
+.noise{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");opacity:.4;pointer-events:none;z-index:10;}
+.glow{position:absolute;top:30%;left:50%;transform:translateX(-50%);width:1000px;height:900px;background:radial-gradient(ellipse,rgba(22,195,204,.09),transparent 65%);pointer-events:none;}
+.bar-top{position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#16C3CC,rgba(22,195,204,.3),transparent);z-index:20;}
+.brand{position:absolute;top:64px;left:64px;font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;letter-spacing:4px;color:#16C3CC;text-transform:uppercase;z-index:20;}
 
-  body {
-    background: #030a0d;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-  }
+.content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:160px 72px;z-index:5;text-align:center;gap:36px;}
 
-  #story {
-    width: 1080px;
-    height: 1920px;
-    overflow: hidden;
-    position: relative;
-    background: #060E12;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0;
-  }
+.chip{display:inline-flex;align-items:center;gap:10px;background:rgba(22,195,204,.06);border:1px solid rgba(22,195,204,.2);border-radius:100px;padding:12px 28px;}
+.chip-dot{width:8px;height:8px;border-radius:50%;background:#16C3CC;box-shadow:0 0 8px #16C3CC;}
+.chip-txt{font-size:13px;font-weight:700;letter-spacing:4px;color:#16C3CC;text-transform:uppercase;}
 
-  #story::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    opacity: 0.35;
-    pointer-events: none;
-    z-index: 0;
-  }
+.h1{font-family:'Barlow Condensed',sans-serif;font-size:108px;font-weight:900;text-transform:uppercase;line-height:.84;color:#fff;}
+.h1 em{color:#16C3CC;font-style:normal;}
 
-  .glow-center {
-    position: absolute;
-    bottom: -80px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 1100px;
-    height: 800px;
-    background: radial-gradient(ellipse, rgba(22,195,204,0.1) 0%, transparent 65%);
-    pointer-events: none;
-    z-index: 0;
-  }
+.divider{width:72px;height:3px;background:linear-gradient(90deg,#16C3CC,transparent);border-radius:2px;}
 
-  /* ── ZONA TOPO ~300px ── */
-  .zone-top {
-    height: 300px;
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 88px;
-  }
+.cards{width:100%;display:flex;flex-direction:column;gap:16px;}
+.card{display:flex;align-items:center;gap:20px;padding:26px 30px;background:rgba(22,195,204,.04);border:1px solid rgba(22,195,204,.1);border-radius:16px;text-align:left;}
+.card-icon{font-size:30px;width:56px;height:56px;border-radius:13px;background:rgba(22,195,204,.07);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.card-text{font-size:22px;font-weight:600;color:rgba(184,205,211,.8);line-height:1.4;}
+.card-text strong{color:#fff;}
 
-  .logo {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: 32px;
-    color: #16C3CC;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
+.bottom-txt{font-size:28px;font-weight:600;color:rgba(184,205,211,.5);line-height:1.5;text-align:center;}
+.bottom-txt em{color:#16C3CC;font-style:normal;}
 
-  .tag {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.12);
-    color: #A0AEC0;
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: 20px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    padding: 10px 28px;
-    border-radius: 100px;
-  }
-
-  /* ── ZONA MEIO ~1100px ── */
-  .zone-mid {
-    flex: 1;
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 88px;
-    justify-content: center;
-    gap: 0;
-  }
-
-  .quiz-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: 100px;
-    line-height: 0.92;
-    color: #FFFFFF;
-    text-transform: uppercase;
-    text-align: center;
-    margin-bottom: 72px;
-  }
-
-  .quiz-title span { color: #16C3CC; }
-
-  .profiles {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-    width: 100%;
-  }
-
-  .profile-card {
-    border-radius: 28px;
-    padding: 44px 48px;
-    display: flex;
-    align-items: center;
-    gap: 32px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .profile-card.analytic {
-    background: rgba(99,102,241,0.1);
-    border: 1.5px solid rgba(99,102,241,0.3);
-  }
-
-  .profile-card.firefighter {
-    background: rgba(251,146,60,0.08);
-    border: 1.5px solid rgba(251,146,60,0.25);
-  }
-
-  .profile-card.automated {
-    background: rgba(22,195,204,0.09);
-    border: 2px solid rgba(22,195,204,0.45);
-    box-shadow: 0 0 48px rgba(22,195,204,0.1);
-  }
-
-  .profile-emoji {
-    font-size: 72px;
-    line-height: 1;
-    flex-shrink: 0;
-    width: 88px;
-    text-align: center;
-  }
-
-  .profile-body {
-    flex: 1;
-  }
-
-  .profile-name {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: 48px;
-    text-transform: uppercase;
-    line-height: 1;
-    margin-bottom: 10px;
-  }
-
-  .profile-card.analytic .profile-name { color: #a5b4fc; }
-  .profile-card.firefighter .profile-name { color: #fb923c; }
-  .profile-card.automated .profile-name { color: #16C3CC; }
-
-  .profile-desc {
-    font-family: 'Inter', sans-serif;
-    font-size: 26px;
-    color: #A0AEC0;
-    line-height: 1.3;
-  }
-
-  .profile-badge {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-family: 'Inter', sans-serif;
-    font-size: 18px;
-    font-weight: 600;
-    color: #16C3CC;
-    background: rgba(22,195,204,0.15);
-    border-radius: 100px;
-    padding: 8px 20px;
-    flex-shrink: 0;
-  }
-
-  /* ── ZONA BASE ~520px ── */
-  .zone-base {
-    height: 520px;
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-
-  .cta-text {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: 56px;
-    text-transform: uppercase;
-    color: #FFFFFF;
-  }
-
-  .cta-url {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 34px;
-    color: #16C3CC;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
+.cta-box{position:absolute;bottom:90px;left:72px;right:72px;z-index:5;display:flex;flex-direction:column;align-items:center;gap:14px;}
+.cta-btn{background:#16C3CC;color:#030a0d;font-size:20px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:24px 64px;border-radius:100px;}
+.cta-sub{font-size:14px;font-weight:600;letter-spacing:3px;color:rgba(22,195,204,.35);text-transform:uppercase;}
 </style>
 </head>
 <body>
-<div id="story">
-  <div class="glow-center"></div>
+<div class="slide" id="story">
+  <div class="noise"></div>
+  <div class="bar-top"></div>
+  <div class="glow"></div>
+  <div class="brand">SmartGuest</div>
 
-  <!-- TOPO -->
-  <div class="zone-top">
-    <div class="logo">SmartGuest</div>
-    <div class="tag">Quiz</div>
-  </div>
+  <div class="content">
+    <div class="chip">
+      <div class="chip-dot"></div>
+      <div class="chip-txt">Agora mesmo</div>
+    </div>
 
-  <!-- MEIO -->
-  <div class="zone-mid">
-    <h1 class="quiz-title">QUAL GESTOR<br>HOTELEIRO <span>VOCÊ É?</span></h1>
+    <div class="h1">A IA DO<br>SEU HOTEL<br>ESTÁ<br>TRABA-<br><em>LHANDO.</em></div>
 
-    <div class="profiles">
-      <div class="profile-card analytic">
-        <div class="profile-emoji">📊</div>
-        <div class="profile-body">
-          <div class="profile-name">O Analítico</div>
-          <div class="profile-desc">Vive em planilhas. Sabe tudo de cor mas gasta horas nisso.</div>
-        </div>
+    <div class="divider"></div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <div class="card-text"><strong>Reserva confirmada</strong> e instruções enviadas ao hóspede</div>
       </div>
-
-      <div class="profile-card firefighter">
-        <div class="profile-emoji">🔥</div>
-        <div class="profile-body">
-          <div class="profile-name">O Apagador</div>
-          <div class="profile-desc">Sempre resolvendo crise. Overbooking, conflito, urgência constante.</div>
-        </div>
+      <div class="card">
+        <div class="card-icon">🧹</div>
+        <div class="card-text"><strong>Equipe avisada</strong> — quarto pronto antes da chegada</div>
       </div>
-
-      <div class="profile-card automated">
-        <div class="profile-emoji">😎</div>
-        <div class="profile-body">
-          <div class="profile-name">O Automatizado</div>
-          <div class="profile-desc">Sistema faz tudo. Sobra tempo pra crescer o negócio.</div>
-        </div>
-        <div class="profile-badge">Seja esse</div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-text"><strong>Relatório do dia</strong> gerado sem você abrir planilha</div>
       </div>
+      <div class="card">
+        <div class="card-icon">🌙</div>
+        <div class="card-text"><strong>Atendimento ativo</strong> — hóspede respondido às 3h da manhã</div>
+      </div>
+    </div>
+
+    <div class="bottom-txt">
+      Seu recepcionista livre<br>para <em>fazer o que a IA não faz:</em><br>encantar de verdade.
     </div>
   </div>
 
-  <!-- BASE -->
-  <div class="zone-base">
-    <div class="cta-text">Seja o 😎</div>
-    <div class="cta-url">smartguest.app</div>
+  <div class="cta-box">
+    <div class="cta-btn">smartguest.app</div>
+    <div class="cta-sub">Setup em 7 dias · Suporte real</div>
   </div>
-
 </div>
 </body>
 </html>

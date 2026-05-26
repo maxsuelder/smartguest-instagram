@@ -5,6 +5,7 @@
  */
 
 const { chromium } = require('playwright');
+const { execSync }  = require('child_process');
 const fs    = require('fs');
 const path  = require('path');
 const axios = require('axios');
@@ -124,6 +125,73 @@ async function hospedar(filePath) {
   throw new Error('Todos os serviços de hospedagem falharam');
 }
 
+// ── Converter PNG → MP4 (Reels) ──────────────────────
+function converterParaVideo(pngFile, mp4File) {
+  // Vídeo estático 9s com efeito Ken Burns suave (zoom in lento)
+  const cmd = [
+    'ffmpeg -y',
+    `-loop 1 -i "${pngFile}"`,
+    `-c:v libx264 -t 9`,
+    `-vf "scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2,zoompan=z='min(zoom+0.0008,1.04)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=270:s=1080x1920"`,
+    `-pix_fmt yuv420p -movflags +faststart`,
+    `"${mp4File}"`
+  ].join(' ');
+  execSync(cmd, { stdio: 'pipe' });
+}
+
+// ── Hospedar vídeo (catbox → transfer.sh) ────────────
+async function hospedarVideo(filePath) {
+  // 1. catbox.moe (aceita vídeo, CDN global)
+  try {
+    const form = new FormData();
+    form.append('reqtype', 'fileupload');
+    form.append('fileToUpload', fs.createReadStream(filePath));
+    const res = await axios.post('https://catbox.moe/user/api.php', form, {
+      headers: form.getHeaders(), maxContentLength: Infinity, maxBodyLength: Infinity, timeout: 120000
+    });
+    const url = res.data.trim();
+    if (url && url.startsWith('http')) { console.log(`  ☁️  Catbox OK: ${url}`); return url; }
+  } catch (e) { console.log(`  ⚠️ Catbox falhou: ${e.message}`); }
+
+  // 2. transfer.sh (fallback)
+  try {
+    const fname = path.basename(filePath);
+    const res = await axios.put(`https://transfer.sh/${fname}`, fs.readFileSync(filePath), {
+      headers: { 'Content-Type': 'video/mp4', 'Max-Downloads': '50', 'Max-Days': '1' },
+      maxContentLength: Infinity, maxBodyLength: Infinity, timeout: 120000
+    });
+    const url = res.data.trim();
+    if (url && url.startsWith('http')) { console.log(`  ☁️  Transfer.sh OK: ${url}`); return url; }
+  } catch (e) { console.log(`  ⚠️ Transfer.sh falhou: ${e.message}`); }
+
+  throw new Error('Todos os serviços de hospedagem de vídeo falharam');
+}
+
+// ── Criar container Reels ─────────────────────────────
+async function criarContainerReels(videoUrl, legenda) {
+  return comRetry(async () => {
+    const params = { video_url: videoUrl, media_type: 'REELS', access_token: TOKEN };
+    if (legenda) params.caption = legenda;
+    const res = await axios.post(`${BASE}/${USER_ID}/media`, null, { params });
+    return res.data.id;
+  }, 3, 'criarContainerReels');
+}
+
+// ── Aguardar processamento do vídeo ───────────────────
+async function aguardarProcessamento(containerId, max = 20) {
+  for (let i = 0; i < max; i++) {
+    await new Promise(r => setTimeout(r, 8000));
+    const res = await axios.get(`${BASE}/${containerId}`, {
+      params: { fields: 'status_code,status', access_token: TOKEN }
+    });
+    const status = res.data.status_code;
+    console.log(`  ⏳ Processando vídeo: ${status} (${i + 1}/${max})`);
+    if (status === 'FINISHED') return;
+    if (status === 'ERROR') throw new Error(`Erro no processamento: ${JSON.stringify(res.data.status)}`);
+  }
+  throw new Error('Timeout: vídeo não processou a tempo');
+}
+
 // ── Criar container Instagram ─────────────────────────
 async function criarContainer(imageUrl, tipo, legenda) {
   return comRetry(async () => {
@@ -194,7 +262,35 @@ async function publicar(containerId) {
   const browser  = await chromium.launch();
 
   try {
-    if (post.tipo === 'STORIES' || post.tipo === 'IMAGE') {
+    if (post.tipo === 'REELS') {
+      const pngFile = path.join(OUTPUT, `${post.id}.png`);
+      const mp4File = path.join(OUTPUT, `${post.id}.mp4`);
+
+      // 1. Screenshot
+      await exportarSlide(browser, htmlPath, post.slide || 'body', pngFile, post.largura, post.altura);
+      console.log(`  📸 Screenshot exportado`);
+
+      // 2. Converter PNG → MP4
+      console.log(`  🎬 Convertendo para MP4...`);
+      converterParaVideo(pngFile, mp4File);
+      console.log(`  🎬 MP4 gerado (${Math.round(fs.statSync(mp4File).size / 1024)}kb)`);
+
+      // 3. Hospedar vídeo
+      const videoUrl = await hospedarVideo(mp4File);
+
+      // 4. Criar container Reels
+      const cid = await criarContainerReels(videoUrl, post.legenda);
+      console.log(`  📦 Container Reels: ${cid}`);
+
+      // 5. Aguardar processamento pelo Instagram
+      await aguardarProcessamento(cid);
+      console.log(`  ✅ Vídeo processado`);
+
+      // 6. Publicar
+      const mid = await publicar(cid);
+      console.log(`  ✅ Reels publicado! ID: ${mid}`);
+
+    } else if (post.tipo === 'STORIES' || post.tipo === 'IMAGE') {
       const outFile = path.join(OUTPUT, `${post.id}.png`);
       await exportarSlide(browser, htmlPath, post.slide || 'body', outFile, post.largura, post.altura);
       console.log(`  📸 PNG exportado`);

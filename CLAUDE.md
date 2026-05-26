@@ -9,10 +9,10 @@
 
 ## Formato dos posts
 
-- **Manhã (10h BRT)**: Reels vertical 1080×1920, tipo IMAGE (feed permanente)
+- **Manhã (10h BRT)**: Reels vertical 1080×1920, **tipo REELS** (vídeo MP4 gerado via ffmpeg)
 - **Noite (19h BRT)**: Story vertical 1080×1920, tipo STORIES (efêmero)
 - Posts todos os dias, incluindo fins de semana e domingo
-- Nunca usar tipo CAROUSEL para Reels — sempre IMAGE + slide: "story"
+- NUNCA usar tipo IMAGE ou CAROUSEL para o post da manhã — sempre REELS
 
 ## Identidade visual
 

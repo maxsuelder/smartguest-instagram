@@ -119,7 +119,7 @@ jobs:
             "05-24") [ $MANHA -eq 1 ] && POST_ID="sab24-reels-atitude-branco"  || true
                      [ $NOITE -eq 1 ] && POST_ID="sab24-story-tarde-ia"         || true ;;
             "05-25") [ $MANHA -eq 1 ] && POST_ID="dom25-reels-fimdesemana"      || true ;;
-            "05-26") [ $MANHA -eq 1 ] && POST_ID="seg26-carousel-booking"       || true
+            "05-26") [ $MANHA -eq 1 ] && POST_ID="seg26-reels-ia-operacional"    || true
                      [ $NOITE -eq 1 ] && POST_ID="seg26-story-quiz"             || true ;;
             "05-27") [ $MANHA -eq 1 ] && POST_ID="ter27-carousel-revenue"       || true
                      [ $NOITE -eq 1 ] && POST_ID="ter27-story-depoimento"       || true ;;

@@ -83,6 +83,8 @@ jobs:
   publicar:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout

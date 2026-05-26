@@ -6,204 +6,109 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:#060E12;font-family:'Inter',sans-serif;}
-.slide{width:1080px;height:1080px;overflow:hidden;position:relative;background:#060E12;margin-bottom:20px;}
-.noise{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");opacity:.4;pointer-events:none;z-index:10;}
-.bar-top{position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#16C3CC,rgba(22,195,204,.3),transparent);z-index:20;}
-.brand{position:absolute;bottom:48px;left:50%;transform:translateX(-50%);font-family:'Inter',sans-serif;font-size:20px;font-weight:600;color:rgba(160,174,192,.7);letter-spacing:.08em;z-index:5;white-space:nowrap;}
-.brand span{color:#16C3CC;}
-.num{position:absolute;top:44px;right:52px;font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;color:#16C3CC;opacity:.5;z-index:5;}
+.slide{width:1080px;height:1920px;overflow:hidden;position:relative;background:#060E12;}
 
-/* SLIDE 1 — CAPA */
-#slide1{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px;background:radial-gradient(ellipse 80% 70% at 50% 45%,rgba(22,195,204,.07),transparent 70%);}
-.tag1{display:inline-flex;align-items:center;gap:10px;margin-bottom:40px;}
+.noise{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");opacity:.4;pointer-events:none;z-index:10;}
+.glow-top{position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:900px;height:900px;background:radial-gradient(ellipse,rgba(22,195,204,.1),transparent 65%);pointer-events:none;}
+.glow-bot{position:absolute;bottom:-150px;right:-100px;width:700px;height:700px;background:radial-gradient(ellipse,rgba(22,195,204,.06),transparent 65%);pointer-events:none;}
+.bar-top{position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#16C3CC,rgba(22,195,204,.3),transparent);z-index:20;}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(22,195,204,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(22,195,204,.02) 1px,transparent 1px);background-size:80px 80px;}
+.brand{position:absolute;top:64px;left:64px;font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;letter-spacing:4px;color:#16C3CC;text-transform:uppercase;z-index:20;}
+
+.content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:160px 72px 220px;z-index:5;}
+
+.tag{display:inline-flex;align-items:center;gap:10px;margin-bottom:48px;width:fit-content;}
 .tag-dot{width:9px;height:9px;border-radius:50%;background:#16C3CC;box-shadow:0 0 10px #16C3CC;}
 .tag-txt{font-size:13px;font-weight:800;letter-spacing:5px;color:#16C3CC;text-transform:uppercase;}
-#slide1 h1{font-family:'Barlow Condensed',sans-serif;font-size:110px;font-weight:900;text-transform:uppercase;line-height:.85;color:#fff;margin-bottom:32px;}
-#slide1 h1 em{color:#16C3CC;font-style:normal;}
-#slide1 .sub{font-size:26px;font-weight:500;color:rgba(160,174,192,.7);line-height:1.5;max-width:780px;}
-#slide1 .sub strong{color:#fff;}
 
-/* CONTENT SLIDES — base */
-.c-slide{padding:76px 96px;display:flex;flex-direction:column;justify-content:center;height:100%;}
-.c-num{font-size:13px;font-weight:800;letter-spacing:5px;color:#16C3CC;text-transform:uppercase;margin-bottom:24px;display:flex;align-items:center;gap:14px;}
-.c-num::before{content:'';display:block;width:36px;height:3px;background:#16C3CC;border-radius:2px;box-shadow:0 0 8px #16C3CC;}
-.c-h2{font-family:'Barlow Condensed',sans-serif;font-size:84px;font-weight:900;text-transform:uppercase;line-height:.88;color:#fff;margin-bottom:36px;}
-.c-h2 em{color:#16C3CC;font-style:normal;}
-.box{background:rgba(22,195,204,.04);border:1px solid rgba(22,195,204,.12);border-radius:18px;padding:32px 36px;margin-bottom:20px;}
-.box-icon{font-size:32px;margin-bottom:14px;}
-.box-title{font-size:22px;font-weight:700;color:#fff;margin-bottom:8px;}
-.box-text{font-size:22px;font-weight:500;color:rgba(184,205,211,.65);line-height:1.5;}
-.box-text strong{color:#fff;}
-.row{display:flex;align-items:flex-start;gap:20px;margin-bottom:20px;}
-.row-dot{width:10px;height:10px;border-radius:50%;background:#16C3CC;box-shadow:0 0 8px #16C3CC;flex-shrink:0;margin-top:10px;}
-.row-text{font-size:26px;font-weight:500;color:rgba(184,205,211,.7);line-height:1.45;}
-.row-text strong{color:#fff;}
+.h1{font-family:'Barlow Condensed',sans-serif;font-size:118px;font-weight:900;text-transform:uppercase;line-height:.83;color:#fff;margin-bottom:16px;}
+.h1 em{color:#16C3CC;font-style:normal;}
 
-/* SLIDE 7 — CTA */
-#slide7{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px;background:radial-gradient(ellipse 80% 70% at 50% 50%,rgba(22,195,204,.08),transparent 65%);}
-#slide7 .eyebrow{font-size:14px;font-weight:800;letter-spacing:5px;color:#16C3CC;text-transform:uppercase;margin-bottom:32px;}
-#slide7 h2{font-family:'Barlow Condensed',sans-serif;font-size:96px;font-weight:900;text-transform:uppercase;line-height:.88;color:#fff;margin-bottom:24px;}
-#slide7 h2 em{color:#16C3CC;font-style:normal;}
-#slide7 .cta-sub{font-size:26px;color:rgba(160,174,192,.6);margin-bottom:52px;line-height:1.5;max-width:720px;}
-#slide7 .cta-box{background:linear-gradient(135deg,rgba(22,195,204,.12),rgba(22,195,204,.06));border:1.5px solid rgba(22,195,204,.4);border-radius:20px;padding:36px 80px;box-shadow:0 0 60px rgba(22,195,204,.15);margin-bottom:28px;}
-#slide7 .cta-url{font-family:'Barlow Condensed',sans-serif;font-size:68px;font-weight:800;color:#16C3CC;text-shadow:0 0 30px rgba(22,195,204,.5);}
-#slide7 .cta-hint{font-size:22px;color:rgba(160,174,192,.5);}
+.sub{font-size:26px;font-weight:500;color:rgba(184,205,211,.6);line-height:1.5;margin-bottom:52px;max-width:860px;}
+.sub strong{color:#fff;}
+
+.divider{width:72px;height:3px;background:linear-gradient(90deg,#16C3CC,transparent);border-radius:2px;margin-bottom:48px;}
+
+.cards{display:flex;flex-direction:column;gap:18px;}
+.card{display:flex;align-items:center;gap:24px;padding:28px 32px;background:rgba(22,195,204,.04);border:1px solid rgba(22,195,204,.12);border-radius:18px;}
+.card-icon{font-size:32px;width:60px;height:60px;background:rgba(22,195,204,.08);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.card-body .card-title{font-size:22px;font-weight:700;color:#fff;margin-bottom:4px;}
+.card-body .card-sub{font-size:17px;font-weight:500;color:rgba(184,205,211,.5);}
+
+.bottom{position:absolute;bottom:80px;left:72px;right:72px;z-index:5;}
+.bottom-line{width:100%;height:1px;background:rgba(22,195,204,.12);margin-bottom:28px;}
+.bottom-row{display:flex;align-items:center;justify-content:space-between;}
+.bottom-url{font-size:22px;font-weight:700;color:rgba(22,195,204,.6);}
+.bottom-btn{background:#16C3CC;color:#030a0d;font-size:15px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:20px 40px;border-radius:100px;}
 </style>
 </head>
 <body>
-
-<!-- SLIDE 1 — CAPA -->
-<div class="slide" id="slide1">
+<div class="slide" id="story">
   <div class="noise"></div>
   <div class="bar-top"></div>
-  <div class="tag1">
-    <div class="tag-dot"></div>
-    <div class="tag-txt">IA na Hotelaria</div>
-  </div>
-  <h1>O NOVO<br>RECEPCIONISTA<br>DO SEU HOTEL<br>NÃO PEDE<br><em>FOLGA.</em></h1>
-  <p class="sub">5 funções que a IA assume — para o seu time <strong>focar no que realmente importa</strong></p>
-  <div class="brand"><span>smartguest</span>.app</div>
-</div>
+  <div class="grid"></div>
+  <div class="glow-top"></div>
+  <div class="glow-bot"></div>
+  <div class="brand">SmartGuest</div>
 
-<!-- SLIDE 2 — FUNÇÃO 1: Check-in -->
-<div class="slide" id="slide2">
-  <div class="noise"></div>
-  <div class="bar-top"></div>
-  <div class="c-slide">
-    <div class="c-num">Função 1 de 5</div>
-    <h2 class="c-h2">CHECK-IN<br><em>AUTOMÁTICO</em></h2>
-    <div class="box">
-      <div class="box-icon">📋</div>
-      <div class="box-title">O que a IA faz</div>
-      <div class="box-text">Coleta dados, confirma a reserva e prepara o quarto — <strong>antes do hóspede chegar</strong>. Zero fila, zero papelada.</div>
+  <div class="content">
+    <div class="tag">
+      <div class="tag-dot"></div>
+      <div class="tag-txt">IA na Hotelaria</div>
     </div>
-    <div class="row">
-      <div class="row-dot"></div>
-      <div class="row-text">Recepcionista livre para <strong>dar boas-vindas de verdade</strong></div>
-    </div>
-    <div class="row">
-      <div class="row-dot"></div>
-      <div class="row-text">Primeira impressão que <strong>gera avaliação 10</strong></div>
-    </div>
-  </div>
-  <div class="brand"><span>smartguest</span>.app</div>
-  <div class="num">02/07</div>
-</div>
 
-<!-- SLIDE 3 — FUNÇÃO 2: OTAs -->
-<div class="slide" id="slide3">
-  <div class="noise"></div>
-  <div class="bar-top"></div>
-  <div class="c-slide" style="background:radial-gradient(ellipse 70% 60% at 80% 20%,rgba(22,195,204,.05),transparent 70%);">
-    <div class="c-num">Função 2 de 5</div>
-    <h2 class="c-h2">OTAS<br><em>SINCRONIZADAS</em><br>24H</h2>
-    <div class="box">
-      <div class="box-icon">🔄</div>
-      <div class="box-title">O que a IA faz</div>
-      <div class="box-text">Booking, Airbnb, Expedia — <strong>disponibilidade e preços atualizados em tempo real</strong> em todos os canais. Sem overbooking.</div>
-    </div>
-    <div class="row">
-      <div class="row-dot"></div>
-      <div class="row-text">Antes: 1h por dia atualizando canal por canal na mão</div>
-    </div>
-    <div class="row">
-      <div class="row-dot"></div>
-      <div class="row-text">Agora: <strong>zero minutos</strong> — a IA faz enquanto você dorme</div>
-    </div>
-  </div>
-  <div class="brand"><span>smartguest</span>.app</div>
-  <div class="num">03/07</div>
-</div>
+    <div class="h1">O NOVO<br>RECEP-<br>CIONISTA<br>NÃO PEDE<br><em>FOLGA.</em></div>
 
-<!-- SLIDE 4 — FUNÇÃO 3: Preços -->
-<div class="slide" id="slide4">
-  <div class="noise"></div>
-  <div class="bar-top"></div>
-  <div class="c-slide">
-    <div class="c-num">Função 3 de 5</div>
-    <h2 class="c-h2">PREÇO<br>CERTO NA<br><em>HORA CERTA</em></h2>
-    <div class="box">
-      <div class="box-icon">💰</div>
-      <div class="box-title">O que a IA faz</div>
-      <div class="box-text">Analisa demanda, concorrência e sazonalidade — e <strong>ajusta seus preços automaticamente</strong> para maximizar receita.</div>
-    </div>
-    <div class="row">
-      <div class="row-dot"></div>
-      <div class="row-text">Feriado chegando? <strong>A IA já subiu o preço</strong></div>
-    </div>
-    <div class="row">
-      <div class="row-dot"></div>
-      <div class="row-text">Baixa ocupação? <strong>A IA já ajustou para preencher</strong></div>
+    <div class="sub">5 funções que a IA assume para o seu time <strong>focar no que importa</strong></div>
+
+    <div class="divider"></div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <div class="card-body">
+          <div class="card-title">Check-in automático</div>
+          <div class="card-sub">Zero fila — hóspede já chega tudo pronto</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <div class="card-body">
+          <div class="card-title">OTAs sincronizadas 24h</div>
+          <div class="card-sub">Booking, Airbnb, Expedia — tudo em tempo real</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💰</div>
+        <div class="card-body">
+          <div class="card-title">Preço certo na hora certa</div>
+          <div class="card-sub">IA ajusta pela demanda automaticamente</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-body">
+          <div class="card-title">Relatórios em 1 minuto</div>
+          <div class="card-sub">Dados consolidados sem planilha manual</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌙</div>
+        <div class="card-body">
+          <div class="card-title">Atendimento às 3h da manhã</div>
+          <div class="card-sub">Hóspede nunca fica sem resposta</div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="brand"><span>smartguest</span>.app</div>
-  <div class="num">04/07</div>
-</div>
 
-<!-- SLIDE 5 — FUNÇÃO 4: Relatórios -->
-<div class="slide" id="slide5">
-  <div class="noise"></div>
-  <div class="bar-top"></div>
-  <div class="c-slide" style="background:radial-gradient(ellipse 60% 55% at 20% 80%,rgba(22,195,204,.05),transparent 70%);">
-    <div class="c-num">Função 4 de 5</div>
-    <h2 class="c-h2">RELATÓRIOS<br>EM <em>1 MINUTO</em></h2>
-    <div class="box">
-      <div class="box-icon">📊</div>
-      <div class="box-title">O que a IA faz</div>
-      <div class="box-text">Ocupação, receita, canais, hóspedes — <strong>tudo consolidado automaticamente</strong>. Você decide com dados, não com achismo.</div>
-    </div>
-    <div class="row">
-      <div class="row-dot"></div>
-      <div class="row-text">Antes: planilha manual, dado errado, decisão errada</div>
-    </div>
-    <div class="row">
-      <div class="row-dot"></div>
-      <div class="row-text">Agora: <strong>dashboard completo ao abrir o celular</strong></div>
+  <div class="bottom">
+    <div class="bottom-line"></div>
+    <div class="bottom-row">
+      <div class="bottom-url">smartguest.app</div>
+      <div class="bottom-btn">Saiba mais</div>
     </div>
   </div>
-  <div class="brand"><span>smartguest</span>.app</div>
-  <div class="num">05/07</div>
 </div>
-
-<!-- SLIDE 6 — FUNÇÃO 5: Atendimento -->
-<div class="slide" id="slide6">
-  <div class="noise"></div>
-  <div class="bar-top"></div>
-  <div class="c-slide">
-    <div class="c-num">Função 5 de 5</div>
-    <h2 class="c-h2">ATENDIMENTO<br>ÀS <em>3H DA</em><br><em>MANHÃ</em></h2>
-    <div class="box">
-      <div class="box-icon">🌙</div>
-      <div class="box-title">O que a IA faz</div>
-      <div class="box-text">Responde dúvidas de hóspedes, confirma check-out, envia informações de check-in — <strong>qualquer hora, sem ninguém acordado</strong>.</div>
-    </div>
-    <div class="row">
-      <div class="row-dot"></div>
-      <div class="row-text">Seu recepcionista <strong>chega descansado</strong> na manhã</div>
-    </div>
-    <div class="row">
-      <div class="row-dot"></div>
-      <div class="row-text">Seu hóspede <strong>nunca fica sem resposta</strong></div>
-    </div>
-  </div>
-  <div class="brand"><span>smartguest</span>.app</div>
-  <div class="num">06/07</div>
-</div>
-
-<!-- SLIDE 7 — CTA -->
-<div class="slide" id="slide7">
-  <div class="noise"></div>
-  <div class="bar-top"></div>
-  <div class="eyebrow">Libere seu time agora</div>
-  <h2>A IA FAZ<br>A ROTINA.<br>VOCÊ FAZ A<br><em>DIFERENÇA.</em></h2>
-  <p class="cta-sub">Setup em 7 dias. Suporte humano real. Sem contrato longo.</p>
-  <div class="cta-box">
-    <div class="cta-url">smartguest.app</div>
-  </div>
-  <div class="cta-hint">👇 WhatsApp na bio</div>
-  <div class="brand"><span>smartguest</span>.app</div>
-  <div class="num">07/07</div>
-</div>
-
 </body>
 </html>

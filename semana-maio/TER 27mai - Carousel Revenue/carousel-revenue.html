@@ -5,57 +5,57 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:#060E12;font-family:'Inter',sans-serif;}
-.slide{width:1080px;height:1080px;overflow:hidden;position:relative;background:#060E12;margin-bottom:20px;}
-.noise{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");opacity:.4;pointer-events:none;z-index:10;}
-.bar{position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#16C3CC,rgba(22,195,204,.3),transparent);z-index:20;}
-.brand{position:absolute;bottom:48px;left:50%;transform:translateX(-50%);font-size:20px;font-weight:600;color:rgba(160,174,192,.6);letter-spacing:.08em;z-index:5;white-space:nowrap;}
+body{background:#F7F9FC;font-family:'Inter',sans-serif;}
+.slide{width:1080px;height:1080px;overflow:hidden;position:relative;background:#F7F9FC;margin-bottom:20px;}
+.bar{position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#16C3CC,rgba(22,195,204,.4),transparent);z-index:20;}
+.brand{position:absolute;bottom:48px;left:50%;transform:translateX(-50%);font-size:20px;font-weight:600;color:rgba(30,40,60,.35);letter-spacing:.08em;z-index:5;white-space:nowrap;}
 .brand span{color:#16C3CC;}
 .num{position:absolute;top:44px;right:52px;font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;color:#16C3CC;opacity:.5;z-index:5;}
 
-#slide1{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px;background:radial-gradient(ellipse 80% 70% at 50% 45%,rgba(22,195,204,.08),transparent 70%);}
+#slide1{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px;}
 .tag1{display:inline-flex;align-items:center;gap:10px;margin-bottom:36px;}
-.tag-dot{width:9px;height:9px;border-radius:50%;background:#16C3CC;box-shadow:0 0 10px #16C3CC;}
+.tag-dot{width:9px;height:9px;border-radius:50%;background:#16C3CC;}
 .tag-txt{font-size:12px;font-weight:800;letter-spacing:5px;color:#16C3CC;text-transform:uppercase;}
-#slide1 h1{font-family:'Barlow Condensed',sans-serif;font-size:116px;font-weight:900;text-transform:uppercase;line-height:.85;color:#fff;margin-bottom:28px;}
+#slide1 h1{font-family:'Barlow Condensed',sans-serif;font-size:116px;font-weight:900;text-transform:uppercase;line-height:.85;color:#0D1F2D;margin-bottom:28px;}
 #slide1 h1 em{color:#16C3CC;font-style:normal;}
-#slide1 .sub{font-size:24px;font-weight:500;color:rgba(184,205,211,.6);line-height:1.5;max-width:780px;}
-#slide1 .sub strong{color:#fff;}
+#slide1 .sub{font-size:24px;font-weight:500;color:rgba(30,40,60,.5);line-height:1.5;max-width:780px;}
+#slide1 .sub strong{color:#0D1F2D;}
 
 .c{padding:72px 88px;display:flex;flex-direction:column;justify-content:center;height:100%;}
 .label{font-size:12px;font-weight:800;letter-spacing:5px;text-transform:uppercase;margin-bottom:22px;display:flex;align-items:center;gap:12px;}
 .label::before{content:'';display:block;width:32px;height:3px;border-radius:2px;}
 .label.red{color:#FF4545;}.label.red::before{background:#FF4545;}
 .label.teal{color:#16C3CC;}.label.teal::before{background:#16C3CC;}
-.label.white{color:rgba(184,205,211,.5);}.label.white::before{background:rgba(184,205,211,.3);}
+.label.white{color:rgba(30,40,60,.35);}.label.white::before{background:rgba(30,40,60,.2);}
 
-h2{font-family:'Barlow Condensed',sans-serif;font-size:82px;font-weight:900;text-transform:uppercase;line-height:.88;color:#fff;margin-bottom:32px;}
+h2{font-family:'Barlow Condensed',sans-serif;font-size:82px;font-weight:900;text-transform:uppercase;line-height:.88;color:#0D1F2D;margin-bottom:32px;}
 h2 em{color:#16C3CC;font-style:normal;}
 h2 .red{color:#FF4545;}
 
-.box{background:rgba(22,195,204,.04);border:1px solid rgba(22,195,204,.12);border-radius:16px;padding:28px 32px;margin-bottom:18px;}
-.box.bad{background:rgba(255,69,69,.04);border-color:rgba(255,69,69,.15);}
+.box{background:#fff;border:1.5px solid rgba(22,195,204,.25);border-radius:16px;padding:28px 32px;margin-bottom:18px;box-shadow:0 2px 12px rgba(22,195,204,.08);}
+.box.bad{background:#fff;border-color:rgba(255,69,69,.25);box-shadow:0 2px 12px rgba(255,69,69,.06);}
 .box-icon{font-size:26px;margin-bottom:10px;}
 .box-title{font-size:19px;font-weight:700;margin-bottom:6px;}
 .box-title.red{color:#FF4545;}.box-title.teal{color:#16C3CC;}
-.box-text{font-size:22px;font-weight:500;color:rgba(184,205,211,.65);line-height:1.45;}
-.box-text strong{color:#fff;}
+.box-text{font-size:22px;font-weight:500;color:rgba(30,40,60,.6);line-height:1.45;}
+.box-text strong{color:#0D1F2D;}
 
 .row{display:flex;align-items:flex-start;gap:16px;margin-bottom:18px;}
 .dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:9px;}
-.dot.teal{background:#16C3CC;box-shadow:0 0 8px #16C3CC;}
+.dot.teal{background:#16C3CC;}
 .dot.red{background:#FF4545;}
-.row-text{font-size:25px;font-weight:500;color:rgba(184,205,211,.7);line-height:1.4;}
-.row-text strong{color:#fff;}
+.row-text{font-size:25px;font-weight:500;color:rgba(30,40,60,.65);line-height:1.4;}
+.row-text strong{color:#0D1F2D;}
 
-#slide6{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px;background:radial-gradient(ellipse 80% 70% at 50% 50%,rgba(22,195,204,.09),transparent 65%);}
+#slide6{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px;background:#0D1F2D;}
 #slide6 .eyebrow{font-size:12px;font-weight:800;letter-spacing:5px;color:#16C3CC;text-transform:uppercase;margin-bottom:28px;}
 #slide6 h2{font-family:'Barlow Condensed',sans-serif;font-size:100px;font-weight:900;text-transform:uppercase;line-height:.87;color:#fff;margin-bottom:20px;}
 #slide6 h2 em{color:#16C3CC;font-style:normal;}
-#slide6 .sub{font-size:26px;color:rgba(160,174,192,.55);margin-bottom:52px;line-height:1.5;max-width:720px;}
-#slide6 .cta-box{background:linear-gradient(135deg,rgba(22,195,204,.12),rgba(22,195,204,.06));border:1.5px solid rgba(22,195,204,.4);border-radius:20px;padding:32px 80px;box-shadow:0 0 60px rgba(22,195,204,.15);margin-bottom:24px;}
-#slide6 .cta-url{font-family:'Barlow Condensed',sans-serif;font-size:68px;font-weight:800;color:#16C3CC;text-shadow:0 0 30px rgba(22,195,204,.5);}
-#slide6 .cta-hint{font-size:20px;color:rgba(160,174,192,.4);}
+#slide6 .sub{font-size:26px;color:rgba(255,255,255,.45);margin-bottom:52px;line-height:1.5;max-width:720px;}
+#slide6 .cta-box{background:rgba(22,195,204,.12);border:1.5px solid rgba(22,195,204,.4);border-radius:20px;padding:32px 80px;margin-bottom:24px;}
+#slide6 .cta-url{font-family:'Barlow Condensed',sans-serif;font-size:68px;font-weight:800;color:#16C3CC;}
+#slide6 .cta-hint{font-size:20px;color:rgba(255,255,255,.3);}
+#slide6 .brand{color:rgba(255,255,255,.3);}
 </style>
 </head>
 <body>
@@ -72,7 +72,7 @@ h2 .red{color:#FF4545;}
 <!-- SLIDE 2 — SEM IA -->
 <div class="slide" id="slide2">
   <div class="noise"></div><div class="bar"></div>
-  <div class="c" style="background:radial-gradient(ellipse 60% 50% at 20% 30%,rgba(255,69,69,.05),transparent 70%);">
+  <div class="c">
     <div class="label red">Sem IA — realidade hoje</div>
     <h2>A ROTINA<br>QUE <span class="red">CONSOME</span><br>SEU TIME</h2>
     <div class="row"><div class="dot red"></div><div class="row-text">Recepcionista <strong>80% do tempo</strong> em tarefas repetitivas</div></div>
@@ -86,7 +86,7 @@ h2 .red{color:#FF4545;}
 <!-- SLIDE 3 — COM IA -->
 <div class="slide" id="slide3">
   <div class="noise"></div><div class="bar"></div>
-  <div class="c" style="background:radial-gradient(ellipse 60% 50% at 80% 30%,rgba(22,195,204,.06),transparent 70%);">
+  <div class="c">
     <div class="label teal">Com IA SmartGuest</div>
     <h2>A ROTINA<br>QUE A <em>IA</em><br>RESOLVE</h2>
     <div class="row"><div class="dot teal"></div><div class="row-text"><strong>Confirmações, pré check-in e comunicação</strong> — automáticos</div></div>
@@ -118,7 +118,7 @@ h2 .red{color:#FF4545;}
 <!-- SLIDE 5 — NÚMEROS -->
 <div class="slide" id="slide5">
   <div class="noise"></div><div class="bar"></div>
-  <div class="c" style="background:radial-gradient(ellipse 60% 55% at 50% 80%,rgba(22,195,204,.05),transparent 70%);">
+  <div class="c">
     <div class="label teal">O que muda na prática</div>
     <h2>NÚMEROS<br>QUE FALAM<br><em>SOZINHOS</em></h2>
     <div class="box">

@@ -2,458 +2,148 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Revenue Management para Pousadas Pequenas — SmartGuest</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #030a0d; font-family: 'Inter', sans-serif; }
-  .slide {
-    width: 1080px;
-    height: 1080px;
-    overflow: hidden;
-    position: relative;
-    margin-bottom: 20px;
-    background: #060E12;
-  }
-  .slide::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    opacity: 0.35;
-    pointer-events: none;
-    z-index: 10;
-  }
-  .brand-tag {
-    position: absolute;
-    bottom: 48px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: 'Inter', sans-serif;
-    font-size: 22px;
-    font-weight: 600;
-    color: #A0AEC0;
-    letter-spacing: 0.08em;
-    z-index: 5;
-    white-space: nowrap;
-  }
-  .brand-tag span { color: #16C3CC; }
-  .slide-number {
-    position: absolute;
-    top: 44px;
-    right: 52px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: #16C3CC;
-    opacity: 0.6;
-    z-index: 5;
-  }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#060E12;font-family:'Inter',sans-serif;}
+.slide{width:1080px;height:1080px;overflow:hidden;position:relative;background:#060E12;margin-bottom:20px;}
+.noise{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");opacity:.4;pointer-events:none;z-index:10;}
+.bar{position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#16C3CC,rgba(22,195,204,.3),transparent);z-index:20;}
+.brand{position:absolute;bottom:48px;left:50%;transform:translateX(-50%);font-size:20px;font-weight:600;color:rgba(160,174,192,.6);letter-spacing:.08em;z-index:5;white-space:nowrap;}
+.brand span{color:#16C3CC;}
+.num{position:absolute;top:44px;right:52px;font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;color:#16C3CC;opacity:.5;z-index:5;}
 
-  /* SLIDE 1 — CAPA */
-  #slide1 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 80px;
-    background: radial-gradient(ellipse 80% 60% at 50% 40%, #0a1800 0%, #060E12 70%);
-  }
-  #slide1 .myth-box {
-    background: #FFD70022;
-    border: 1px solid #FFD70044;
-    border-radius: 12px;
-    padding: 12px 32px;
-    font-family: 'Inter', sans-serif;
-    font-size: 20px;
-    font-weight: 500;
-    color: #FFD700;
-    letter-spacing: 0.08em;
-    margin-bottom: 36px;
-    display: inline-block;
-  }
-  #slide1 h1 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 82px;
-    font-weight: 900;
-    color: #FFFFFF;
-    text-transform: uppercase;
-    line-height: 0.92;
-    margin-bottom: 28px;
-  }
-  #slide1 h1 .hl { color: #FFD700; text-shadow: 0 0 40px #FFD70066; }
-  #slide1 .sub {
-    font-family: 'Inter', sans-serif;
-    font-size: 26px;
-    color: #A0AEC0;
-    max-width: 760px;
-    line-height: 1.5;
-  }
-  #slide1 .sub strong { color: #FFFFFF; }
+#slide1{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px;background:radial-gradient(ellipse 80% 70% at 50% 45%,rgba(22,195,204,.08),transparent 70%);}
+.tag1{display:inline-flex;align-items:center;gap:10px;margin-bottom:36px;}
+.tag-dot{width:9px;height:9px;border-radius:50%;background:#16C3CC;box-shadow:0 0 10px #16C3CC;}
+.tag-txt{font-size:12px;font-weight:800;letter-spacing:5px;color:#16C3CC;text-transform:uppercase;}
+#slide1 h1{font-family:'Barlow Condensed',sans-serif;font-size:116px;font-weight:900;text-transform:uppercase;line-height:.85;color:#fff;margin-bottom:28px;}
+#slide1 h1 em{color:#16C3CC;font-style:normal;}
+#slide1 .sub{font-size:24px;font-weight:500;color:rgba(184,205,211,.6);line-height:1.5;max-width:780px;}
+#slide1 .sub strong{color:#fff;}
 
-  /* CONTENT BASE */
-  .c-slide {
-    padding: 80px 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-  }
-  .c-tag {
-    font-family: 'Inter', sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    margin-bottom: 28px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-  .c-tag.teal { color: #16C3CC; }
-  .c-tag.teal::before { content:''; display:block; width:40px; height:3px; background:#16C3CC; box-shadow:0 0 10px #16C3CC; border-radius:2px; }
-  .c-tag.gold { color: #FFD700; }
-  .c-tag.gold::before { content:''; display:block; width:40px; height:3px; background:#FFD700; box-shadow:0 0 10px #FFD700; border-radius:2px; }
-  .c-tag.bad { color: #FF4444; }
-  .c-tag.bad::before { content:''; display:block; width:40px; height:3px; background:#FF4444; box-shadow:0 0 10px #FF4444; border-radius:2px; }
+.c{padding:72px 88px;display:flex;flex-direction:column;justify-content:center;height:100%;}
+.label{font-size:12px;font-weight:800;letter-spacing:5px;text-transform:uppercase;margin-bottom:22px;display:flex;align-items:center;gap:12px;}
+.label::before{content:'';display:block;width:32px;height:3px;border-radius:2px;}
+.label.red{color:#FF4545;}.label.red::before{background:#FF4545;}
+.label.teal{color:#16C3CC;}.label.teal::before{background:#16C3CC;}
+.label.white{color:rgba(184,205,211,.5);}.label.white::before{background:rgba(184,205,211,.3);}
 
-  .c-h2 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 82px;
-    font-weight: 800;
-    color: #FFFFFF;
-    text-transform: uppercase;
-    line-height: 0.92;
-    margin-bottom: 44px;
-  }
-  .c-h2 .red { color: #FF4444; }
-  .c-h2 .teal { color: #16C3CC; }
-  .c-h2 .gold { color: #FFD700; }
+h2{font-family:'Barlow Condensed',sans-serif;font-size:82px;font-weight:900;text-transform:uppercase;line-height:.88;color:#fff;margin-bottom:32px;}
+h2 em{color:#16C3CC;font-style:normal;}
+h2 .red{color:#FF4545;}
 
-  /* SLIDE 2 — O QUE É */
-  #slide2 { background: radial-gradient(ellipse 70% 60% at 30% 40%, #0a1800 0%, #060E12 70%); }
-  .def-box {
-    background: #16C3CC11;
-    border: 1px solid #16C3CC33;
-    border-radius: 20px;
-    padding: 40px 48px;
-  }
-  .def-text {
-    font-family: 'Inter', sans-serif;
-    font-size: 30px;
-    color: #A0AEC0;
-    line-height: 1.6;
-  }
-  .def-text strong { color: #FFFFFF; }
-  .def-text .teal { color: #16C3CC; }
+.box{background:rgba(22,195,204,.04);border:1px solid rgba(22,195,204,.12);border-radius:16px;padding:28px 32px;margin-bottom:18px;}
+.box.bad{background:rgba(255,69,69,.04);border-color:rgba(255,69,69,.15);}
+.box-icon{font-size:26px;margin-bottom:10px;}
+.box-title{font-size:19px;font-weight:700;margin-bottom:6px;}
+.box-title.red{color:#FF4545;}.box-title.teal{color:#16C3CC;}
+.box-text{font-size:22px;font-weight:500;color:rgba(184,205,211,.65);line-height:1.45;}
+.box-text strong{color:#fff;}
 
-  /* SLIDE 3 — FIXO VS DINÂMICO */
-  #slide3 {}
-  .price-compare {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-top: 8px;
-  }
-  .pc-col {
-    border-radius: 16px;
-    padding: 32px 28px;
-  }
-  .pc-col.bad-col {
-    background: #FF444415;
-    border: 1px solid #FF444433;
-  }
-  .pc-col.good-col {
-    background: #16C3CC15;
-    border: 1px solid #16C3CC33;
-  }
-  .pc-col-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 32px;
-    font-weight: 800;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
-  .pc-col-title.bad { color: #FF4444; }
-  .pc-col-title.good { color: #16C3CC; }
-  .pc-col-items {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-  .pc-col-item {
-    font-family: 'Inter', sans-serif;
-    font-size: 22px;
-    color: #A0AEC0;
-    line-height: 1.4;
-  }
-  .pc-col-item strong { color: #FFFFFF; }
-  .revenue-arrow {
-    position: absolute;
-    right: 0;
-    bottom: 160px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: #16C3CC;
-    writing-mode: vertical-rl;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    opacity: 0.5;
-  }
+.row{display:flex;align-items:flex-start;gap:16px;margin-bottom:18px;}
+.dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:9px;}
+.dot.teal{background:#16C3CC;box-shadow:0 0 8px #16C3CC;}
+.dot.red{background:#FF4545;}
+.row-text{font-size:25px;font-weight:500;color:rgba(184,205,211,.7);line-height:1.4;}
+.row-text strong{color:#fff;}
 
-  /* SLIDE 4 — DEMANDA LOCAL */
-  #slide4 { background: radial-gradient(ellipse 70% 60% at 40% 40%, #0a1400 0%, #060E12 70%); }
-  .demand-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-  .demand-card {
-    background: #FFD70011;
-    border: 1px solid #FFD70033;
-    border-radius: 16px;
-    padding: 24px 28px;
-  }
-  .demand-card .dc-title {
-    font-family: 'Inter', sans-serif;
-    font-size: 18px;
-    font-weight: 600;
-    color: #FFD700;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-  .demand-card .dc-text {
-    font-family: 'Inter', sans-serif;
-    font-size: 22px;
-    color: #A0AEC0;
-    line-height: 1.4;
-  }
-
-  /* SLIDE 5 — SMARTGUEST */
-  #slide5 { background: radial-gradient(ellipse 70% 60% at 50% 40%, #0a2a2e 0%, #060E12 70%); }
-  .feat-list { display: flex; flex-direction: column; gap: 24px; }
-  .feat-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    background: #16C3CC11;
-    border: 1px solid #16C3CC22;
-    border-radius: 14px;
-    padding: 20px 28px;
-  }
-  .feat-icon {
-    width: 40px; height: 40px;
-    background: #16C3CC22;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-size: 20px;
-  }
-  .feat-content .ft-title {
-    font-family: 'Inter', sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    color: #16C3CC;
-    margin-bottom: 6px;
-  }
-  .feat-content .ft-desc {
-    font-family: 'Inter', sans-serif;
-    font-size: 22px;
-    color: #A0AEC0;
-    line-height: 1.4;
-  }
-
-  /* SLIDE 6 — CTA */
-  #slide6 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: radial-gradient(ellipse 90% 70% at 50% 50%, #0a2a2e 0%, #060E12 65%);
-    text-align: center;
-    padding: 80px;
-  }
-  #slide6 .cta-eyebrow {
-    font-family: 'Inter', sans-serif;
-    font-size: 22px;
-    font-weight: 500;
-    color: #FFD700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 28px;
-  }
-  #slide6 h2 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 86px;
-    font-weight: 900;
-    color: #FFFFFF;
-    text-transform: uppercase;
-    line-height: 0.92;
-    margin-bottom: 20px;
-  }
-  #slide6 h2 .hl { color: #16C3CC; }
-  #slide6 .cta-sub {
-    font-family: 'Inter', sans-serif;
-    font-size: 27px;
-    color: #A0AEC0;
-    margin-bottom: 52px;
-    line-height: 1.5;
-    max-width: 720px;
-  }
-  #slide6 .cta-box {
-    background: linear-gradient(135deg, #16C3CC22, #16C3CC11);
-    border: 1.5px solid #16C3CC55;
-    border-radius: 20px;
-    padding: 36px 80px;
-    box-shadow: 0 0 60px #16C3CC22;
-    margin-bottom: 32px;
-  }
-  #slide6 .cta-url {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 64px;
-    font-weight: 800;
-    color: #16C3CC;
-    text-shadow: 0 0 30px #16C3CC88;
-  }
-  #slide6 .cta-whats {
-    font-family: 'Inter', sans-serif;
-    font-size: 26px;
-    font-weight: 500;
-    color: #A0AEC0;
-  }
+#slide6{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px;background:radial-gradient(ellipse 80% 70% at 50% 50%,rgba(22,195,204,.09),transparent 65%);}
+#slide6 .eyebrow{font-size:12px;font-weight:800;letter-spacing:5px;color:#16C3CC;text-transform:uppercase;margin-bottom:28px;}
+#slide6 h2{font-family:'Barlow Condensed',sans-serif;font-size:100px;font-weight:900;text-transform:uppercase;line-height:.87;color:#fff;margin-bottom:20px;}
+#slide6 h2 em{color:#16C3CC;font-style:normal;}
+#slide6 .sub{font-size:26px;color:rgba(160,174,192,.55);margin-bottom:52px;line-height:1.5;max-width:720px;}
+#slide6 .cta-box{background:linear-gradient(135deg,rgba(22,195,204,.12),rgba(22,195,204,.06));border:1.5px solid rgba(22,195,204,.4);border-radius:20px;padding:32px 80px;box-shadow:0 0 60px rgba(22,195,204,.15);margin-bottom:24px;}
+#slide6 .cta-url{font-family:'Barlow Condensed',sans-serif;font-size:68px;font-weight:800;color:#16C3CC;text-shadow:0 0 30px rgba(22,195,204,.5);}
+#slide6 .cta-hint{font-size:20px;color:rgba(160,174,192,.4);}
 </style>
 </head>
 <body>
 
 <!-- SLIDE 1 — CAPA -->
 <div class="slide" id="slide1">
-  <div class="myth-box">Desmistificando o revenue management</div>
-  <h1>VOCÊ NÃO<br>PRECISA SER UM<br>HOTEL <span class="hl">5 ESTRELAS</span><br>PARA USAR ISSO</h1>
-  <p class="sub"><strong>Revenue management</strong> é para qualquer pousada que quer maximizar receita — do menor ao maior</p>
-  <div class="brand-tag"><span>smartguest</span>.app</div>
+  <div class="noise"></div><div class="bar"></div>
+  <div class="tag1"><div class="tag-dot"></div><div class="tag-txt">IA na Hotelaria</div></div>
+  <h1>SEU HOTEL<br>COM <em>IA</em><br>VS. SEM <em>IA.</em></h1>
+  <p class="sub">A diferença que ninguém te contou — <strong>veja slide a slide</strong></p>
+  <div class="brand"><span>smartguest</span>.app</div>
 </div>
 
-<!-- SLIDE 2 — O QUE É -->
+<!-- SLIDE 2 — SEM IA -->
 <div class="slide" id="slide2">
-  <div class="c-slide">
-    <div class="c-tag teal">Revenue management simples</div>
-    <h2 class="c-h2">O QUE É EM<br>TERMOS<br><span class="teal">SIMPLES</span></h2>
-    <div class="def-box">
-      <p class="def-text">Revenue management é a prática de <strong>cobrar o preço certo, no momento certo, para o hóspede certo</strong>. Em português: <span class="teal">vender mais caro quando tem muita demanda</span> e ajustar o preço quando a agenda está vazia.</p>
-    </div>
+  <div class="noise"></div><div class="bar"></div>
+  <div class="c" style="background:radial-gradient(ellipse 60% 50% at 20% 30%,rgba(255,69,69,.05),transparent 70%);">
+    <div class="label red">Sem IA — realidade hoje</div>
+    <h2>A ROTINA<br>QUE <span class="red">CONSOME</span><br>SEU TIME</h2>
+    <div class="row"><div class="dot red"></div><div class="row-text">Recepcionista <strong>80% do tempo</strong> em tarefas repetitivas</div></div>
+    <div class="row"><div class="dot red"></div><div class="row-text"><strong>Erros manuais</strong> em reservas, disponibilidade e cobranças</div></div>
+    <div class="row"><div class="dot red"></div><div class="row-text">Hóspede espera. Equipe corre. <strong>Ninguém foca no que importa</strong></div></div>
+    <div class="row"><div class="dot red"></div><div class="row-text">Relatórios na mão — <strong>dados atrasados, decisão errada</strong></div></div>
   </div>
-  <div class="brand-tag"><span>smartguest</span>.app</div>
-  <div class="slide-number">02/06</div>
+  <div class="brand"><span>smartguest</span>.app</div><div class="num">02/06</div>
 </div>
 
-<!-- SLIDE 3 — FIXO VS DINÂMICO -->
+<!-- SLIDE 3 — COM IA -->
 <div class="slide" id="slide3">
-  <div class="c-slide">
-    <div class="c-tag gold">A diferença na prática</div>
-    <h2 class="c-h2">PREÇO <span class="red">FIXO</span><br>VS PREÇO<br><span class="gold">DINÂMICO</span></h2>
-    <div class="price-compare">
-      <div class="pc-col bad-col">
-        <div class="pc-col-title bad">Preço Fixo</div>
-        <div class="pc-col-items">
-          <div class="pc-col-item">R$ 300 todo dia, sempre</div>
-          <div class="pc-col-item"><strong>Feriado:</strong> R$ 300 — dinheiro perdido</div>
-          <div class="pc-col-item"><strong>Baixa temporada:</strong> R$ 300 — quarto vazio</div>
-        </div>
-      </div>
-      <div class="pc-col good-col">
-        <div class="pc-col-title good">Preço Dinâmico</div>
-        <div class="pc-col-items">
-          <div class="pc-col-item"><strong>Feriado:</strong> R$ 550 — valor real</div>
-          <div class="pc-col-item"><strong>Baixa temporada:</strong> R$ 220 — quarto ocupado</div>
-          <div class="pc-col-item">Receita <strong>até 40% maior</strong> no ano</div>
-        </div>
-      </div>
-    </div>
+  <div class="noise"></div><div class="bar"></div>
+  <div class="c" style="background:radial-gradient(ellipse 60% 50% at 80% 30%,rgba(22,195,204,.06),transparent 70%);">
+    <div class="label teal">Com IA SmartGuest</div>
+    <h2>A ROTINA<br>QUE A <em>IA</em><br>RESOLVE</h2>
+    <div class="row"><div class="dot teal"></div><div class="row-text"><strong>Confirmações, pré check-in e comunicação</strong> — automáticos</div></div>
+    <div class="row"><div class="dot teal"></div><div class="row-text"><strong>Tarefas da equipe</strong> distribuídas e monitoradas em tempo real</div></div>
+    <div class="row"><div class="dot teal"></div><div class="row-text">Hóspede respondido às <strong>3h da manhã</strong> — sem ninguém acordado</div></div>
+    <div class="row"><div class="dot teal"></div><div class="row-text"><strong>Dashboard completo</strong> ao abrir o celular — dado na hora</div></div>
   </div>
-  <div class="brand-tag"><span>smartguest</span>.app</div>
-  <div class="slide-number">03/06</div>
+  <div class="brand"><span>smartguest</span>.app</div><div class="num">03/06</div>
 </div>
 
-<!-- SLIDE 4 — DEMANDA LOCAL -->
+<!-- SLIDE 4 — RECEPCIONISTA VIRA GERENTE -->
 <div class="slide" id="slide4">
-  <div class="c-slide">
-    <div class="c-tag gold">Como analisar a demanda</div>
-    <h2 class="c-h2">CONHEÇA O<br>QUE MOVE A<br><span class="gold">SUA REGIÃO</span></h2>
-    <div class="demand-grid">
-      <div class="demand-card">
-        <div class="dc-title">Feriados nacionais</div>
-        <div class="dc-text">Corpus, Carnaval, Ano Novo — alta previsível, preço deve subir</div>
-      </div>
-      <div class="demand-card">
-        <div class="dc-title">Eventos locais</div>
-        <div class="dc-text">Shows, festas, eventos esportivos — demanda espontânea alta</div>
-      </div>
-      <div class="demand-card">
-        <div class="dc-title">Copa do Mundo</div>
-        <div class="dc-text">2026 no Brasil — planejar agora é diferencial competitivo</div>
-      </div>
-      <div class="demand-card">
-        <div class="dc-title">Sazonalidade regional</div>
-        <div class="dc-text">Verão, inverno, período de praia — cada destino tem seu ritmo</div>
-      </div>
+  <div class="noise"></div><div class="bar"></div>
+  <div class="c">
+    <div class="label white">O maior impacto</div>
+    <h2>O RECEP-<br>CIONISTA<br>VIRA <em>GERENTE</em></h2>
+    <div class="box bad">
+      <div class="box-title red">Antes</div>
+      <div class="box-text">Preso em burocracia. <strong>Zero tempo para o hóspede.</strong></div>
+    </div>
+    <div class="box">
+      <div class="box-title teal">Com IA</div>
+      <div class="box-text">A IA faz o operacional. Ele antecipa necessidades e <strong>transforma estadias em memórias.</strong></div>
     </div>
   </div>
-  <div class="brand-tag"><span>smartguest</span>.app</div>
-  <div class="slide-number">04/06</div>
+  <div class="brand"><span>smartguest</span>.app</div><div class="num">04/06</div>
 </div>
 
-<!-- SLIDE 5 — SMARTGUEST -->
+<!-- SLIDE 5 — NÚMEROS -->
 <div class="slide" id="slide5">
-  <div class="c-slide">
-    <div class="c-tag teal">SmartGuest</div>
-    <h2 class="c-h2">RELATÓRIOS QUE<br>TE AJUDAM A<br><span class="teal">DECIDIR O PREÇO</span></h2>
-    <div class="feat-list">
-      <div class="feat-item">
-        <div class="feat-icon">📊</div>
-        <div class="feat-content">
-          <div class="ft-title">Taxa de ocupação por período</div>
-          <div class="ft-desc">Veja quais datas encheram e quais ficaram vazias para precificar melhor</div>
-        </div>
-      </div>
-      <div class="feat-item">
-        <div class="feat-icon">💰</div>
-        <div class="feat-content">
-          <div class="ft-title">Receita por canal</div>
-          <div class="ft-desc">Saiba exatamente quanto cada OTA e reserva direta geraram</div>
-        </div>
-      </div>
-      <div class="feat-item">
-        <div class="feat-icon">📅</div>
-        <div class="feat-content">
-          <div class="ft-title">Calendário de preços</div>
-          <div class="ft-desc">Configure tarifas diferentes por dia, semana e período especial</div>
-        </div>
-      </div>
+  <div class="noise"></div><div class="bar"></div>
+  <div class="c" style="background:radial-gradient(ellipse 60% 55% at 50% 80%,rgba(22,195,204,.05),transparent 70%);">
+    <div class="label teal">O que muda na prática</div>
+    <h2>NÚMEROS<br>QUE FALAM<br><em>SOZINHOS</em></h2>
+    <div class="box">
+      <div class="box-icon">⏱️</div>
+      <div class="box-title teal">Tempo operacional</div>
+      <div class="box-text">De <strong>3h por dia</strong> em tarefas manuais para <strong>menos de 20 minutos</strong></div>
+    </div>
+    <div class="box">
+      <div class="box-icon">⭐</div>
+      <div class="box-title teal">Experiência do hóspede</div>
+      <div class="box-text">Mais tempo para cuidar do que importa = <strong>avaliações mais altas, mais retorno</strong></div>
     </div>
   </div>
-  <div class="brand-tag"><span>smartguest</span>.app</div>
-  <div class="slide-number">05/06</div>
+  <div class="brand"><span>smartguest</span>.app</div><div class="num">05/06</div>
 </div>
 
 <!-- SLIDE 6 — CTA -->
 <div class="slide" id="slide6">
-  <div class="cta-eyebrow">Maximize sua receita com dados reais</div>
-  <h2>PREÇO<br>CERTO,<br><span class="hl">SEMPRE</span></h2>
-  <p class="cta-sub">Relatórios do SmartGuest mostram o que funciona para que você decida com confiança, não no chute</p>
-  <div class="cta-box">
-    <div class="cta-url">smartguest.app</div>
-  </div>
-  <div class="cta-whats">👇 Chama no WhatsApp abaixo</div>
-  <div class="brand-tag"><span>smartguest</span>.app</div>
-  <div class="slide-number">06/06</div>
+  <div class="noise"></div><div class="bar"></div>
+  <div class="eyebrow">Pronto para mudar?</div>
+  <h2>SETUP EM<br><em>7 DIAS.</em><br>SEM CONTRATO<br>LONGO.</h2>
+  <p class="sub">Suporte humano real em cada etapa.</p>
+  <div class="cta-box"><div class="cta-url">smartguest.app</div></div>
+  <div class="cta-hint">👇 WhatsApp na bio</div>
+  <div class="brand"><span>smartguest</span>.app</div><div class="num">06/06</div>
 </div>
 
 </body>

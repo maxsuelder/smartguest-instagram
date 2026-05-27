@@ -24,7 +24,6 @@ on:
     - cron: '0 22 29 5 *'   # qui 29/05 19h BRT
     - cron: '0 13 30 5 *'   # sex 30/05 10h BRT
     - cron: '0 22 30 5 *'   # sex 30/05 19h BRT
-    - cron: '0 6 27 5 *'    # ter 27/05 03h BRT (madrugada)
     # ── BACKUP +20min (caso GitHub atrase o primário) ──────
     - cron: '20 13 20 5 *'
     - cron: '20 22 20 5 *'
@@ -46,7 +45,6 @@ on:
     - cron: '20 22 29 5 *'
     - cron: '20 13 30 5 *'
     - cron: '20 22 30 5 *'
-    - cron: '20 6 27 5 *'   # ter 27/05 03h20 BRT backup
     # ── BACKUP +40min ──────────────────────────────────────
     - cron: '40 13 20 5 *'
     - cron: '40 22 20 5 *'
@@ -60,7 +58,6 @@ on:
     - cron: '40 22 24 5 *'
     - cron: '40 13 26 5 *'
     - cron: '40 22 26 5 *'
-    - cron: '40 6 27 5 *'   # ter 27/05 03h40 BRT backup
     - cron: '40 13 27 5 *'
     - cron: '40 22 27 5 *'
     - cron: '40 13 28 5 *'
@@ -107,11 +104,9 @@ jobs:
           # Janelas tolerantes ao atraso do GitHub Actions (crons podem atrasar 1-3h):
           # Manhã     = 10h BRT = 13h UTC → aceita 12h-18h UTC
           # Noite     = 19h BRT = 22h UTC → aceita 21h-04h UTC (cruza meia-noite)
-          # Madrugada = 03h BRT = 06h UTC → aceita 05h-09h UTC
-          MANHA=0; NOITE=0; MADRUGADA=0
+          MANHA=0; NOITE=0
           if [ "$HORA" -ge 12 ] && [ "$HORA" -le 18 ]; then MANHA=1; fi
           if [ "$HORA" -ge 21 ] || [ "$HORA" -le 4 ];  then NOITE=1; fi
-          if [ "$HORA" -ge 5  ] && [ "$HORA" -le 9  ]; then MADRUGADA=1; fi
 
           POST_ID=""
           case "$DIA" in
@@ -128,8 +123,7 @@ jobs:
             "05-25") [ $MANHA -eq 1 ] && POST_ID="dom25-reels-fimdesemana"      || true ;;
             "05-26") [ $MANHA -eq 1 ] && POST_ID="seg26-reels-ia-operacional"    || true
                      [ $NOITE -eq 1 ] && POST_ID="seg26-story-quiz"             || true ;;
-            "05-27") [ $MADRUGADA -eq 1 ] && POST_ID="ter27-carousel-madrugada-ia" || true
-                     [ $MANHA -eq 1 ] && POST_ID="ter27-carousel-revenue"       || true
+            "05-27") [ $MANHA -eq 1 ] && POST_ID="ter27-carousel-revenue"       || true
                      [ $NOITE -eq 1 ] && POST_ID="ter27-story-depoimento"       || true ;;
             "05-28") [ $MANHA -eq 1 ] && POST_ID="qua28-carousel-erro"          || true
                      [ $NOITE -eq 1 ] && POST_ID="qua28-story-precos"           || true ;;

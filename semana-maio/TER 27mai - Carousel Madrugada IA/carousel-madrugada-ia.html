@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#060E12;font-family:'Inter',sans-serif;}
+.slide{width:1080px;height:1080px;overflow:hidden;position:relative;background:#060E12;margin-bottom:20px;}
+.noise{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");opacity:.4;pointer-events:none;z-index:10;}
+.bar{position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#16C3CC,rgba(22,195,204,.3),transparent);z-index:20;}
+.brand{position:absolute;bottom:48px;left:50%;transform:translateX(-50%);font-size:20px;font-weight:600;color:rgba(160,174,192,.5);letter-spacing:.08em;z-index:5;white-space:nowrap;}
+.brand span{color:#16C3CC;}
+.num{position:absolute;top:44px;right:52px;font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;color:#16C3CC;opacity:.45;z-index:5;}
+
+/* SLIDE 1 — CAPA */
+#slide1{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px;background:radial-gradient(ellipse 80% 70% at 50% 45%,rgba(22,195,204,.07),transparent 70%);}
+.tag1{display:inline-flex;align-items:center;gap:10px;margin-bottom:36px;}
+.tag-dot{width:9px;height:9px;border-radius:50%;background:#16C3CC;box-shadow:0 0 12px #16C3CC;}
+.tag-txt{font-size:12px;font-weight:800;letter-spacing:5px;color:#16C3CC;text-transform:uppercase;}
+#slide1 h1{font-family:'Barlow Condensed',sans-serif;font-size:108px;font-weight:900;text-transform:uppercase;line-height:.85;color:#fff;margin-bottom:28px;}
+#slide1 h1 em{color:#16C3CC;font-style:normal;}
+#slide1 .sub{font-size:23px;font-weight:500;color:rgba(184,205,211,.55);line-height:1.5;max-width:800px;}
+#slide1 .sub strong{color:#fff;}
+
+/* SLIDES CONTEÚDO */
+.c{padding:72px 88px;display:flex;flex-direction:column;justify-content:center;height:100%;}
+.label{font-size:12px;font-weight:800;letter-spacing:5px;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+.label::before{content:'';display:block;width:32px;height:3px;border-radius:2px;background:#16C3CC;}
+.label.teal{color:#16C3CC;}
+
+h2{font-family:'Barlow Condensed',sans-serif;font-size:86px;font-weight:900;text-transform:uppercase;line-height:.88;color:#fff;margin-bottom:28px;}
+h2 em{color:#16C3CC;font-style:normal;}
+
+.time-badge{display:inline-flex;align-items:center;gap:12px;background:rgba(22,195,204,.08);border:1px solid rgba(22,195,204,.2);border-radius:100px;padding:12px 28px;margin-bottom:28px;}
+.time-txt{font-size:26px;font-weight:700;color:#16C3CC;}
+
+.box{background:rgba(22,195,204,.04);border:1px solid rgba(22,195,204,.12);border-radius:16px;padding:26px 30px;margin-bottom:16px;}
+.box-row{display:flex;align-items:center;gap:20px;}
+.box-icon{font-size:28px;width:52px;height:52px;background:rgba(22,195,204,.08);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.box-body .box-title{font-size:20px;font-weight:700;color:#fff;margin-bottom:4px;}
+.box-body .box-sub{font-size:18px;font-weight:500;color:rgba(184,205,211,.5);}
+
+.row{display:flex;align-items:flex-start;gap:16px;margin-bottom:18px;}
+.dot{width:10px;height:10px;border-radius:50%;background:#16C3CC;box-shadow:0 0 8px #16C3CC;flex-shrink:0;margin-top:9px;}
+.row-text{font-size:26px;font-weight:500;color:rgba(184,205,211,.7);line-height:1.4;}
+.row-text strong{color:#fff;}
+
+/* SLIDE 6 CTA */
+#slide6{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px;background:radial-gradient(ellipse 80% 70% at 50% 50%,rgba(22,195,204,.09),transparent 65%);}
+#slide6 .eyebrow{font-size:12px;font-weight:800;letter-spacing:5px;color:#16C3CC;text-transform:uppercase;margin-bottom:28px;}
+#slide6 h2{font-family:'Barlow Condensed',sans-serif;font-size:96px;font-weight:900;text-transform:uppercase;line-height:.87;color:#fff;margin-bottom:18px;}
+#slide6 h2 em{color:#16C3CC;font-style:normal;}
+#slide6 .sub{font-size:24px;color:rgba(160,174,192,.5);margin-bottom:48px;line-height:1.5;}
+#slide6 .cta-box{background:rgba(22,195,204,.1);border:1.5px solid rgba(22,195,204,.4);border-radius:20px;padding:32px 80px;margin-bottom:22px;}
+#slide6 .cta-url{font-family:'Barlow Condensed',sans-serif;font-size:68px;font-weight:800;color:#16C3CC;}
+#slide6 .cta-hint{font-size:20px;color:rgba(160,174,192,.35);}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — CAPA -->
+<div class="slide" id="slide1">
+  <div class="noise"></div><div class="bar"></div>
+  <div class="tag1"><div class="tag-dot"></div><div class="tag-txt">Agora mesmo — 3h da manhã</div></div>
+  <h1>ENQUANTO<br>VOCÊ<br>DORME,<br>A <em>IA</em><br>TRABALHA.</h1>
+  <p class="sub">O que o SmartGuest faz <strong>nesse exato momento</strong> no seu hotel</p>
+  <div class="brand"><span>smartguest</span>.app</div>
+</div>
+
+<!-- SLIDE 2 — RESERVA -->
+<div class="slide" id="slide2">
+  <div class="noise"></div><div class="bar"></div>
+  <div class="c">
+    <div class="label teal">03:00 — Agora</div>
+    <h2>RESERVA<br><em>CONFIRMADA</em><br>AGORA</h2>
+    <div class="time-badge">🌙 <span class="time-txt">Enquanto você dorme</span></div>
+    <div class="row"><div class="dot"></div><div class="row-text">Hóspede fez a reserva agora — <strong>confirmação enviada na hora</strong></div></div>
+    <div class="row"><div class="dot"></div><div class="row-text">Instruções de check-in já no celular dele — <strong>sem ninguém acordado</strong></div></div>
+    <div class="row"><div class="dot"></div><div class="row-text">Histórico atualizado — <strong>a equipe já sabe quem chega amanhã</strong></div></div>
+  </div>
+  <div class="brand"><span>smartguest</span>.app</div><div class="num">02/06</div>
+</div>
+
+<!-- SLIDE 3 — EQUIPE -->
+<div class="slide" id="slide3">
+  <div class="noise"></div><div class="bar"></div>
+  <div class="c" style="background:radial-gradient(ellipse 60% 50% at 80% 20%,rgba(22,195,204,.05),transparent 70%);">
+    <div class="label teal">03:00 — Bastidores</div>
+    <h2>EQUIPE<br>PRONTA<br>PRO <em>DIA</em></h2>
+    <div class="box">
+      <div class="box-row">
+        <div class="box-icon">🧹</div>
+        <div class="box-body">
+          <div class="box-title">Quartos priorizados automaticamente</div>
+          <div class="box-sub">IA já organizou a lista de limpeza de amanhã</div>
+        </div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="box-row">
+        <div class="box-icon">📋</div>
+        <div class="box-body">
+          <div class="box-title">Tarefas distribuídas por função</div>
+          <div class="box-sub">Cada um já sabe o que fazer ao chegar</div>
+        </div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="box-row">
+        <div class="box-icon">⚡</div>
+        <div class="box-body">
+          <div class="box-title">Manutenções pendentes sinalizadas</div>
+          <div class="box-sub">Zero surpresa no check-in da manhã</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="brand"><span>smartguest</span>.app</div><div class="num">03/06</div>
+</div>
+
+<!-- SLIDE 4 — RELATÓRIO -->
+<div class="slide" id="slide4">
+  <div class="noise"></div><div class="bar"></div>
+  <div class="c">
+    <div class="label teal">03:00 — Dados do dia</div>
+    <h2>RELATÓRIO<br>DO DIA<br><em>GERADO</em></h2>
+    <div class="row"><div class="dot"></div><div class="row-text"><strong>Ocupação, receita e check-outs</strong> de hoje — consolidados</div></div>
+    <div class="row"><div class="dot"></div><div class="row-text"><strong>Hóspedes que saem amanhã</strong> já identificados com preferências</div></div>
+    <div class="row"><div class="dot"></div><div class="row-text">Você acorda, abre o celular e <strong>já tem o panorama completo</strong></div></div>
+    <div class="row"><div class="dot"></div><div class="row-text">Sem planilha. Sem manual. <strong>Dado na hora, decisão certa.</strong></div></div>
+  </div>
+  <div class="brand"><span>smartguest</span>.app</div><div class="num">04/06</div>
+</div>
+
+<!-- SLIDE 5 — HÓSPEDE -->
+<div class="slide" id="slide5">
+  <div class="noise"></div><div class="bar"></div>
+  <div class="c" style="background:radial-gradient(ellipse 60% 55% at 20% 80%,rgba(22,195,204,.05),transparent 70%);">
+    <div class="label teal">03:00 — Experiência</div>
+    <h2>HÓSPEDE<br>NUNCA<br>FICA SEM<br><em>RESPOSTA</em></h2>
+    <div class="box">
+      <div class="box-row">
+        <div class="box-icon">💬</div>
+        <div class="box-body">
+          <div class="box-title">"Qual o Wi-Fi do quarto?"</div>
+          <div class="box-sub">Respondido em segundos — às 3h da manhã</div>
+        </div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="box-row">
+        <div class="box-icon">🛎️</div>
+        <div class="box-body">
+          <div class="box-title">"Posso fazer late check-out?"</div>
+          <div class="box-sub">IA verifica disponibilidade e confirma na hora</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="brand"><span>smartguest</span>.app</div><div class="num">05/06</div>
+</div>
+
+<!-- SLIDE 6 — CTA -->
+<div class="slide" id="slide6">
+  <div class="noise"></div><div class="bar"></div>
+  <div class="eyebrow">Seu hotel pode ter isso</div>
+  <h2>A IA QUE<br>NUNCA<br><em>DORME.</em></h2>
+  <p class="sub">Setup em 7 dias. Suporte humano real.<br>Sem contrato longo.</p>
+  <div class="cta-box"><div class="cta-url">smartguest.app</div></div>
+  <div class="cta-hint">👇 WhatsApp na bio</div>
+  <div class="brand"><span>smartguest</span>.app</div><div class="num">06/06</div>
+</div>
+
+</body>
+</html>

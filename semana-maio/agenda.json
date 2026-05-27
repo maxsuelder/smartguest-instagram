@@ -153,6 +153,15 @@
     "legenda": "A IA do seu hotel está trabalhando agora mesmo. 🤖\n\nReserva confirmada. Equipe avisada. Relatório pronto. Hóspede respondido às 3h da manhã.\n\nSeu recepcionista livre para fazer o que a IA não faz: encantar de verdade.\n\n👉 smartguest.app\n\n#SmartGuest #IAHotelaria #Hotelaria #HotelTech #AutomacaoHoteleira #RecepcionistaIA #ExperienciaHospede #Hospitalidade #PousadasBrasil"
   },
   {
+    "id": "ter27-carousel-madrugada-ia",
+    "tipo": "CAROUSEL",
+    "html": "TER 27mai - Carousel Madrugada IA/carousel-madrugada-ia.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slides": ["slide1","slide2","slide3","slide4","slide5","slide6"],
+    "legenda": "São 3h da manhã. Você dorme. A IA do SmartGuest não. 🌙🤖\n\nEnquanto você descansa, ela está:\n✅ Confirmando reservas\n🧹 Organizando a equipe para amanhã\n📊 Gerando o relatório do dia\n💬 Respondendo hóspedes em segundos\n\nSeu recepcionista chega descansado e foca no que importa: encantar.\n\n👉 smartguest.app\n📲 WhatsApp na bio\n\n#SmartGuest #IAHotelaria #InteligenciaArtificial #Hotelaria #PousadasBrasil #HoteisBrasil #HotelTech #AutomacaoHoteleira #RecepcionistaIA #HotelariaDigital #GestaHoteleira"
+  },
+  {
     "id": "ter27-carousel-revenue",
     "tipo": "CAROUSEL",
     "html": "TER 27mai - Carousel Revenue/carousel-revenue.html",

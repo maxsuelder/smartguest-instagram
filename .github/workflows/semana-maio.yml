@@ -17,6 +17,7 @@ on:
     - cron: '0 13 26 5 *'   # seg 26/05 10h BRT
     - cron: '0 22 26 5 *'   # seg 26/05 19h BRT
     - cron: '0 13 27 5 *'   # ter 27/05 10h BRT
+    - cron: '0 21 27 5 *'   # ter 27/05 18h BRT (carousel IA extra)
     - cron: '0 22 27 5 *'   # ter 27/05 19h BRT
     - cron: '0 13 28 5 *'   # qua 28/05 10h BRT
     - cron: '0 22 28 5 *'   # qua 28/05 19h BRT
@@ -38,6 +39,7 @@ on:
     - cron: '20 13 26 5 *'
     - cron: '20 22 26 5 *'
     - cron: '20 13 27 5 *'
+    - cron: '20 21 27 5 *'
     - cron: '20 22 27 5 *'
     - cron: '20 13 28 5 *'
     - cron: '20 22 28 5 *'
@@ -59,6 +61,7 @@ on:
     - cron: '40 13 26 5 *'
     - cron: '40 22 26 5 *'
     - cron: '40 13 27 5 *'
+    - cron: '40 21 27 5 *'
     - cron: '40 22 27 5 *'
     - cron: '40 13 28 5 *'
     - cron: '40 22 28 5 *'
@@ -103,10 +106,12 @@ jobs:
 
           # Janelas tolerantes ao atraso do GitHub Actions (crons podem atrasar 1-3h):
           # Manhã     = 10h BRT = 13h UTC → aceita 12h-18h UTC
-          # Noite     = 19h BRT = 22h UTC → aceita 21h-04h UTC (cruza meia-noite)
-          MANHA=0; NOITE=0
+          # Tarde     = 18h BRT = 21h UTC → aceita exatamente 21h UTC
+          # Noite     = 19h BRT = 22h UTC → aceita 22h-04h UTC (cruza meia-noite)
+          MANHA=0; TARDE=0; NOITE=0
           if [ "$HORA" -ge 12 ] && [ "$HORA" -le 18 ]; then MANHA=1; fi
-          if [ "$HORA" -ge 21 ] || [ "$HORA" -le 4 ];  then NOITE=1; fi
+          if [ "$HORA" -eq 21 ];                        then TARDE=1; fi
+          if [ "$HORA" -ge 22 ] || [ "$HORA" -le 4 ];  then NOITE=1; fi
 
           POST_ID=""
           case "$DIA" in
@@ -123,8 +128,9 @@ jobs:
             "05-25") [ $MANHA -eq 1 ] && POST_ID="dom25-reels-fimdesemana"      || true ;;
             "05-26") [ $MANHA -eq 1 ] && POST_ID="seg26-reels-ia-operacional"    || true
                      [ $NOITE -eq 1 ] && POST_ID="seg26-story-quiz"             || true ;;
-            "05-27") [ $MANHA -eq 1 ] && POST_ID="ter27-carousel-revenue"       || true
-                     [ $NOITE -eq 1 ] && POST_ID="ter27-story-depoimento"       || true ;;
+            "05-27") [ $MANHA -eq 1 ] && POST_ID="ter27-carousel-revenue"              || true
+                     [ $TARDE -eq 1 ] && POST_ID="ter27-carousel-ia-recepcionista" || true
+                     [ $NOITE -eq 1 ] && POST_ID="ter27-story-depoimento"          || true ;;
             "05-28") [ $MANHA -eq 1 ] && POST_ID="qua28-carousel-erro"          || true
                      [ $NOITE -eq 1 ] && POST_ID="qua28-story-precos"           || true ;;
             "05-29") [ $MANHA -eq 1 ] && POST_ID="qui29-carousel-comparacao"    || true
@@ -139,7 +145,7 @@ jobs:
           esac
 
           if [ -z "$POST_ID" ]; then
-            echo "⏭️  $DIA às ${HORA}h UTC — fora das janelas manhã/noite. Ignorado."
+            echo "⏭️  $DIA às ${HORA}h UTC — fora das janelas manhã/tarde/noite. Ignorado."
             echo "id=" >> $GITHUB_OUTPUT
             exit 0
           fi

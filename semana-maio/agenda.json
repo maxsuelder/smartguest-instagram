@@ -221,6 +221,15 @@
     "legenda": "3 ajustes de preço que podem aumentar sua receita essa semana. 💰 smartguest.app #SmartGuest #RevenueManagement #Hotelaria #PrecoDinamico"
   },
   {
+    "id": "qui29-carousel-sentimento",
+    "tipo": "CAROUSEL",
+    "html": "QUI 29mai - Carousel Sentimento/carousel-sentimento.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slides": ["s1","s2","s3","s4","s5","s6","s7"],
+    "legenda": "Você não lembra o nome do hotel. Mas lembra como se sentiu. 🏨✨\n\nIsso é marca. Não é logo. Não é slogan. É o sentimento que o hóspede carrega embora.\n\nO problema? Sua equipe passa 70% do tempo em tarefas operacionais — e sobra pouco tempo para criar esses momentos.\n\nA IA do SmartGuest assume o operacional. Com supervisão humana. Sempre.\n\nResultado: mais tempo para as pessoas. Mais momentos que fazem o hóspede querer voltar.\n\nA IA veio para nos ajudar — não para substituir o que cria marca. O sentimento humano, esse é seu. 💛\n\n👉 smartguest.app\n📲 Chama no WhatsApp na bio\n\n#SmartGuest #Hotelaria #Hospitalidade #ExperienciaHospede #PousadasBrasil #HoteisBrasil #GestaHoteleira #HotelTech #IAHotelaria #AutomacaoHoteleira #HotelariaDigital #RecepcionistaIA #MarcaEsentimento #AtendimentoHoteleiro #FidelizacaoDeClientes #HospedesFelizes #SistemaHoteleiro #PMS #TecnologiaHoteleira #FuturoHotelaria"
+  },
+  {
     "id": "qui29-carousel-comparacao",
     "tipo": "CAROUSEL",
     "html": "QUI 29mai - Carousel Comparacao/carousel-comparacao.html",

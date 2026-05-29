@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O Que Te Faz Voltar — SmartGuest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,700;1,900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #E8EDEF; font-family: 'Plus Jakarta Sans', sans-serif; }
+
+  .slide {
+    width: 1080px;
+    height: 1080px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px;
+    background: #FFFFFF;
+  }
+
+  .brand-tag {
+    position: absolute;
+    bottom: 52px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: rgba(13,31,45,0.3);
+    letter-spacing: 0.1em;
+    z-index: 20;
+    white-space: nowrap;
+  }
+  .brand-tag span { color: #16C3CC; }
+
+  .slide-num {
+    position: absolute;
+    top: 48px;
+    right: 52px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #16C3CC;
+    opacity: 0.5;
+    z-index: 20;
+    letter-spacing: 0.05em;
+  }
+
+  /* ═══════════════════════════
+     SLIDE 1 — CAPA
+  ═══════════════════════════ */
+  #s1 {
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 0 80px 120px;
+  }
+  #s1 .light-leak {
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 580px;
+    height: 580px;
+    background: radial-gradient(ellipse at center, rgba(232,168,80,0.15) 0%, rgba(232,120,40,0.06) 40%, transparent 70%);
+    z-index: 1;
+  }
+  #s1 .light-leak2 {
+    position: absolute;
+    bottom: -60px;
+    left: -40px;
+    width: 360px;
+    height: 360px;
+    background: radial-gradient(ellipse at center, rgba(22,195,204,0.1) 0%, transparent 65%);
+    z-index: 1;
+  }
+  #s1 .bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(22,195,204,0.04) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(22,195,204,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    z-index: 0;
+  }
+  #s1 .person-art {
+    position: absolute;
+    right: 50px;
+    bottom: 0;
+    z-index: 2;
+  }
+  #s1 .sector-pills {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 24px;
+    z-index: 5;
+    position: relative;
+  }
+  #s1 .sector-pill {
+    background: rgba(22,195,204,0.08);
+    border: 1px solid rgba(22,195,204,0.25);
+    border-radius: 50px;
+    padding: 7px 18px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #16C3CC;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  #s1 .eyebrow {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #E8A850;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    z-index: 5;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  #s1 .eyebrow::before {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 2px;
+    background: #E8A850;
+  }
+  #s1 h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 110px;
+    line-height: 0.9;
+    color: #0D1F2D;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    z-index: 5;
+    position: relative;
+    max-width: 620px;
+  }
+  #s1 h1 em { font-style: italic; color: #E8A850; }
+  #s1 .sub {
+    margin-top: 32px;
+    font-size: 22px;
+    color: rgba(13,31,45,0.5);
+    font-weight: 400;
+    line-height: 1.5;
+    max-width: 480px;
+    z-index: 5;
+    position: relative;
+  }
+  #s1 .sub strong { color: #0D1F2D; font-weight: 600; }
+
+  /* ═══════════════════════════
+     SLIDE 2 — VOCÊ NÃO LEMBRA
+  ═══════════════════════════ */
+  #s2 {
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px;
+  }
+  #s2 .bg-dot {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 700px; height: 700px;
+    background: radial-gradient(ellipse at center, rgba(232,168,80,0.06) 0%, transparent 65%);
+    z-index: 0;
+  }
+  #s2 .question {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 44px;
+    color: rgba(13,31,45,0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-align: center;
+    z-index: 5;
+    position: relative;
+    margin-bottom: 56px;
+  }
+  #s2 .cards-row {
+    display: flex;
+    gap: 32px;
+    z-index: 5;
+    position: relative;
+    margin-bottom: 72px;
+    align-items: center;
+  }
+  #s2 .mem-card {
+    width: 268px;
+    height: 330px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 32px 24px;
+    text-align: center;
+  }
+  #s2 .mem-card.forget {
+    background: #F5F7F9;
+    border: 1.5px solid #E2E8ED;
+  }
+  #s2 .mem-card.forget .icon-wrap {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: #EAECEE;
+    display: flex; align-items: center; justify-content: center;
+  }
+  #s2 .mem-card.remember {
+    background: #FFF9F0;
+    border: 1.5px solid rgba(232,168,80,0.35);
+  }
+  #s2 .mem-card.remember .icon-wrap {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: rgba(232,168,80,0.12);
+    display: flex; align-items: center; justify-content: center;
+  }
+  #s2 .mem-card .label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  #s2 .mem-card.forget .label { color: rgba(13,31,45,0.3); }
+  #s2 .mem-card.remember .label { color: #E8A850; }
+  #s2 .mem-card .value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 36px;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+  #s2 .mem-card.forget .value { color: rgba(13,31,45,0.2); text-decoration: line-through; }
+  #s2 .mem-card.remember .value { color: #0D1F2D; }
+  #s2 .mem-card .note { font-size: 14px; font-weight: 500; line-height: 1.4; }
+  #s2 .mem-card.forget .note { color: rgba(13,31,45,0.25); }
+  #s2 .mem-card.remember .note { color: rgba(232,168,80,0.8); }
+  #s2 .vs-badge {
+    width: 60px; height: 60px;
+    background: #F0F5F8;
+    border: 1.5px solid #D8E4EA;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 22px;
+    color: rgba(13,31,45,0.3);
+    flex-shrink: 0;
+  }
+  #s2 .big-statement {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 52px;
+    color: #0D1F2D;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    z-index: 5;
+    position: relative;
+    line-height: 1.1;
+  }
+  #s2 .big-statement span { color: #E8A850; }
+
+  /* ═══════════════════════════
+     SLIDE 3 — MARCA É SENTIMENTO
+  ═══════════════════════════ */
+  #s3 {
+    background: #0D1F2D;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px;
+    text-align: center;
+  }
+  #s3 .glow { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:800px; height:800px; background:radial-gradient(ellipse at center, rgba(232,168,80,0.12) 0%, rgba(22,195,204,0.04) 40%, transparent 70%); z-index:1; }
+  #s3 .eyebrow { font-size:16px; font-weight:700; color:#16C3CC; letter-spacing:0.3em; text-transform:uppercase; margin-bottom:40px; z-index:5; position:relative; }
+  #s3 .main-text { font-family:'Barlow Condensed',sans-serif; font-weight:900; line-height:0.9; text-transform:uppercase; z-index:5; position:relative; margin-bottom:52px; }
+  #s3 .main-text .l1 { font-size:70px; color:rgba(255,255,255,0.2); display:block; letter-spacing:-1px; }
+  #s3 .main-text .l2 { font-size:132px; color:#FFFFFF; display:block; letter-spacing:-4px; }
+  #s3 .main-text .l3 { font-size:100px; color:#E8A850; display:block; font-style:italic; letter-spacing:-3px; }
+  #s3 .divrow { display:flex; align-items:center; gap:24px; margin-bottom:48px; z-index:5; position:relative; }
+  #s3 .divrow span { font-size:13px; color:rgba(255,255,255,0.3); font-weight:600; letter-spacing:0.15em; text-transform:uppercase; }
+  #s3 .divrow::before, #s3 .divrow::after { content:''; flex:1; height:1px; background:rgba(255,255,255,0.1); }
+  #s3 .sub-items { display:flex; gap:52px; z-index:5; position:relative; }
+  #s3 .si .x { font-size:28px; color:rgba(255,255,255,0.15); display:block; margin-bottom:8px; }
+  #s3 .si .ok { font-size:28px; color:#E8A850; display:block; margin-bottom:8px; }
+  #s3 .si p { font-size:18px; color:rgba(255,255,255,0.4); font-weight:500; }
+  #s3 .si p strong { color:rgba(255,255,255,0.85); font-weight:600; }
+  #s3 .brand-tag { color:rgba(255,255,255,0.25); }
+  #s3 .brand-tag span { color:#16C3CC; }
+
+  /* ═══════════════════════════
+     SLIDE 4 — O PROBLEMA
+  ═══════════════════════════ */
+  #s4 {
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 80px 100px;
+  }
+  #s4 .bg-accent { position:absolute; top:0; right:0; width:380px; height:380px; background:radial-gradient(ellipse at top right, rgba(224,82,82,0.07) 0%, transparent 65%); z-index:0; }
+  #s4 .top-label { font-size:15px; font-weight:700; color:rgba(13,31,45,0.3); letter-spacing:0.25em; text-transform:uppercase; margin-bottom:32px; z-index:5; position:relative; }
+  #s4 h2 { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:88px; line-height:0.9; text-transform:uppercase; letter-spacing:-1px; color:#0D1F2D; margin-bottom:60px; z-index:5; position:relative; }
+  #s4 h2 em { color:#E05252; font-style:italic; }
+  #s4 .bar-label { font-size:14px; color:rgba(13,31,45,0.4); font-weight:600; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:14px; z-index:5; position:relative; }
+  #s4 .time-bar { width:100%; height:68px; border-radius:14px; overflow:hidden; display:flex; z-index:5; position:relative; margin-bottom:20px; }
+  #s4 .seg-ops { width:70%; background:linear-gradient(90deg,#E05252,#C0392B); display:flex; align-items:center; justify-content:center; font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:30px; color:#fff; letter-spacing:0.05em; }
+  #s4 .seg-ppl { flex:1; background:#EAF8F9; border:1px solid rgba(22,195,204,0.2); display:flex; align-items:center; justify-content:center; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:26px; color:rgba(13,31,45,0.35); }
+  #s4 .time-labels { display:flex; width:100%; z-index:5; position:relative; margin-bottom:44px; }
+  #s4 .lbl-ops { width:70%; display:flex; align-items:flex-start; gap:10px; padding-right:16px; }
+  #s4 .lbl-ppl { flex:1; display:flex; align-items:flex-start; gap:10px; padding-left:16px; }
+  #s4 .dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; margin-top:5px; }
+  #s4 .dot.red { background:#E05252; }
+  #s4 .dot.teal { background:#16C3CC; }
+  #s4 .time-labels p { font-size:16px; color:rgba(13,31,45,0.55); font-weight:500; line-height:1.4; }
+  #s4 .time-labels strong { color:#0D1F2D; }
+
+  /* ═══════════════════════════
+     SLIDE 5 — A IA ASSUME
+  ═══════════════════════════ */
+  #s5 {
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 72px 80px;
+  }
+  #s5 .teal-glow { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:700px; height:700px; background:radial-gradient(ellipse at center, rgba(22,195,204,0.07) 0%, transparent 65%); z-index:0; }
+  #s5 .ia-badge { display:flex; align-items:center; gap:14px; background:rgba(22,195,204,0.07); border:1px solid rgba(22,195,204,0.25); border-radius:50px; padding:12px 26px; margin-bottom:44px; z-index:5; position:relative; }
+  #s5 .ia-badge .dot { width:10px; height:10px; background:#16C3CC; border-radius:50%; box-shadow:0 0 10px #16C3CC; }
+  #s5 .ia-badge span { font-size:15px; font-weight:700; color:#16C3CC; letter-spacing:0.2em; text-transform:uppercase; }
+  #s5 h2 { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:92px; text-transform:uppercase; letter-spacing:-2px; text-align:center; color:#0D1F2D; line-height:0.9; z-index:5; position:relative; margin-bottom:14px; }
+  #s5 h2 span { color:#16C3CC; }
+  #s5 .sub { font-size:22px; color:rgba(13,31,45,0.45); text-align:center; font-weight:400; z-index:5; position:relative; margin-bottom:56px; line-height:1.5; }
+  #s5 .sub strong { color:rgba(13,31,45,0.7); font-weight:600; }
+  #s5 .tasks { display:grid; grid-template-columns:1fr 1fr; gap:14px; z-index:5; position:relative; width:800px; }
+  #s5 .task-row { display:flex; align-items:center; gap:14px; background:#F5F9FA; border:1px solid rgba(22,195,204,0.15); border-radius:12px; padding:16px 20px; }
+  #s5 .task-row .chk { width:30px; height:30px; background:rgba(22,195,204,0.1); border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  #s5 .task-row p { font-size:18px; color:rgba(13,31,45,0.65); font-weight:500; }
+
+  /* ═══════════════════════════
+     SLIDE 6 — RESULTADO
+  ═══════════════════════════ */
+  #s6 {
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 0 88px 100px;
+    overflow: hidden;
+  }
+  #s6 .bg-warm { position:absolute; inset:0; background:linear-gradient(135deg, rgba(232,168,80,0.05) 0%, transparent 50%), linear-gradient(315deg, rgba(22,195,204,0.04) 0%, transparent 50%); z-index:0; }
+  #s6 .scene { position:absolute; bottom:0; right:0; z-index:2; opacity:0.9; }
+  #s6 .content { z-index:5; position:relative; max-width:540px; }
+  #s6 .badge { display:inline-flex; align-items:center; gap:10px; background:rgba(232,168,80,0.08); border:1px solid rgba(232,168,80,0.3); border-radius:50px; padding:10px 20px; margin-bottom:28px; font-size:13px; font-weight:700; color:#C8860A; letter-spacing:0.2em; text-transform:uppercase; }
+  #s6 .badge .dot { width:8px; height:8px; background:#E8A850; border-radius:50%; }
+  #s6 h2 { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:88px; line-height:0.9; text-transform:uppercase; letter-spacing:-2px; color:#0D1F2D; margin-bottom:32px; }
+  #s6 h2 em { color:#E8A850; font-style:italic; }
+  #s6 p { font-size:22px; color:rgba(13,31,45,0.5); font-weight:400; line-height:1.55; }
+  #s6 p strong { color:#0D1F2D; font-weight:600; }
+
+  /* ═══════════════════════════
+     SLIDE 7 — CTA
+  ═══════════════════════════ */
+  #s7 {
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px;
+    text-align: center;
+  }
+  #s7 .ring { position:absolute; border-radius:50%; border:1px solid rgba(22,195,204,0.07); top:50%; left:50%; transform:translate(-50%,-50%); }
+  #s7 .r1 { width:380px; height:380px; }
+  #s7 .r2 { width:580px; height:580px; border-color:rgba(232,168,80,0.05); }
+  #s7 .r3 { width:800px; height:800px; border-color:rgba(22,195,204,0.04); }
+  #s7 .r4 { width:1040px; height:1040px; border-color:rgba(13,31,45,0.03); }
+  #s7 .center-glow { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:500px; height:500px; background:radial-gradient(ellipse at center, rgba(22,195,204,0.07) 0%, rgba(232,168,80,0.04) 40%, transparent 70%); z-index:1; }
+  #s7 .logo-block { display:flex; flex-direction:column; align-items:center; gap:4px; margin-bottom:52px; z-index:5; position:relative; }
+  #s7 .logo-icon { width:70px; height:70px; background:rgba(22,195,204,0.08); border:1.5px solid rgba(22,195,204,0.25); border-radius:17px; display:flex; align-items:center; justify-content:center; margin-bottom:14px; }
+  #s7 .logo-name { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:34px; color:#0D1F2D; letter-spacing:0.5px; }
+  #s7 .logo-name span { color:#16C3CC; }
+  #s7 .logo-sub { font-size:14px; color:rgba(13,31,45,0.35); font-weight:500; letter-spacing:0.1em; text-transform:uppercase; }
+  #s7 h2 { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:76px; text-transform:uppercase; letter-spacing:-1px; line-height:0.93; color:#0D1F2D; z-index:5; position:relative; margin-bottom:16px; }
+  #s7 h2 em { color:#E8A850; font-style:italic; }
+  #s7 h2 span { color:#16C3CC; }
+  #s7 .sub { font-size:21px; color:rgba(13,31,45,0.4); z-index:5; position:relative; margin-bottom:60px; font-weight:400; line-height:1.55; }
+  #s7 .sub strong { color:rgba(13,31,45,0.65); font-weight:600; }
+  #s7 .cta-row { display:flex; align-items:center; gap:20px; z-index:5; position:relative; }
+  #s7 .cta-pill { background:#16C3CC; border-radius:50px; padding:20px 44px; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:24px; color:#FFFFFF; letter-spacing:0.1em; text-transform:uppercase; }
+  #s7 .cta-ghost { border:1.5px solid rgba(13,31,45,0.15); border-radius:50px; padding:20px 36px; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:22px; color:rgba(13,31,45,0.4); letter-spacing:0.1em; text-transform:uppercase; }
+</style>
+</head>
+<body>
+
+<!-- ═══ SLIDE 1 — CAPA ═══ -->
+<div class="slide" id="s1">
+  <div class="bg-grid"></div>
+  <div class="light-leak"></div>
+  <div class="light-leak2"></div>
+
+  <div class="person-art">
+    <svg width="520" height="920" viewBox="0 0 520 920" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="260" cy="890" rx="180" ry="20" fill="rgba(13,31,45,0.08)"/>
+      <!-- Staff -->
+      <rect x="130" y="380" width="110" height="280" rx="18" fill="#1a3040"/>
+      <rect x="150" y="380" width="70" height="280" rx="10" fill="#162838"/>
+      <rect x="158" y="410" width="48" height="30" rx="5" fill="rgba(22,195,204,0.2)" stroke="rgba(22,195,204,0.5)" stroke-width="1.5"/>
+      <rect x="164" y="418" width="28" height="3" rx="2" fill="rgba(22,195,204,0.7)"/>
+      <rect x="164" y="424" width="20" height="2" rx="2" fill="rgba(22,195,204,0.35)"/>
+      <path d="M190 460 Q250 430 290 420" stroke="#1a3040" stroke-width="44" stroke-linecap="round"/>
+      <path d="M190 460 Q250 430 290 420" stroke="#162838" stroke-width="36" stroke-linecap="round"/>
+      <ellipse cx="294" cy="418" rx="18" ry="14" fill="#C8956A"/>
+      <ellipse cx="185" cy="340" rx="52" ry="58" fill="#C8956A"/>
+      <ellipse cx="185" cy="295" rx="52" ry="28" fill="#2C1810"/>
+      <ellipse cx="175" cy="350" rx="5" ry="6" fill="#8B5E3C"/>
+      <ellipse cx="196" cy="350" rx="5" ry="6" fill="#8B5E3C"/>
+      <path d="M172 364 Q185 376 198 364" stroke="#8B5E3C" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <rect x="145" y="650" width="44" height="240" rx="14" fill="#0F2535"/>
+      <rect x="201" y="650" width="44" height="240" rx="14" fill="#0F2535"/>
+      <rect x="138" y="878" width="58" height="22" rx="8" fill="#0A1820"/>
+      <rect x="194" y="878" width="58" height="22" rx="8" fill="#0A1820"/>
+      <!-- Guest -->
+      <rect x="300" y="400" width="100" height="260" rx="18" fill="#2C4A3E"/>
+      <rect x="316" y="400" width="68" height="260" rx="10" fill="#243D33"/>
+      <path d="M310 450 Q268 435 248 425" stroke="#2C4A3E" stroke-width="42" stroke-linecap="round"/>
+      <ellipse cx="244" cy="423" rx="16" ry="12" fill="#D4A574"/>
+      <ellipse cx="270" cy="421" rx="28" ry="20" fill="rgba(232,168,80,0.2)"/>
+      <ellipse cx="350" cy="355" rx="50" ry="56" fill="#D4A574"/>
+      <ellipse cx="350" cy="312" rx="50" ry="26" fill="#1C0E08"/>
+      <ellipse cx="338" cy="364" rx="5" ry="5.5" fill="#A0714A"/>
+      <ellipse cx="360" cy="364" rx="5" ry="5.5" fill="#A0714A"/>
+      <path d="M336 378 Q350 390 364 378" stroke="#A0714A" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <rect x="310" y="650" width="42" height="240" rx="14" fill="#1E3830"/>
+      <rect x="364" y="650" width="42" height="240" rx="14" fill="#1E3830"/>
+      <rect x="302" y="878" width="56" height="22" rx="8" fill="#12201C"/>
+      <rect x="358" y="878" width="56" height="22" rx="8" fill="#12201C"/>
+      <!-- Connection glow -->
+      <ellipse cx="268" cy="420" rx="55" ry="45" fill="rgba(232,168,80,0.15)"/>
+      <!-- Particles -->
+      <circle cx="220" cy="280" r="6" fill="rgba(232,168,80,0.45)"/>
+      <circle cx="310" cy="240" r="4" fill="rgba(22,195,204,0.4)"/>
+      <circle cx="400" cy="270" r="5" fill="rgba(232,168,80,0.3)"/>
+      <circle cx="170" cy="230" r="3" fill="rgba(22,195,204,0.3)"/>
+    </svg>
+  </div>
+
+  <div class="sector-pills">
+    <div class="sector-pill">Hotel</div>
+    <div class="sector-pill">Pousada</div>
+    <div class="sector-pill">Restaurante</div>
+  </div>
+  <div class="eyebrow">Marca é sentimento</div>
+  <h1>O que<br>te faz<br><em>voltar?</em></h1>
+  <div class="sub">Você não lembra o nome.<br><strong>Mas lembra como se sentiu.</strong></div>
+  <div class="brand-tag">Smart<span>Guest</span></div>
+</div>
+
+
+<!-- ═══ SLIDE 2 — VOCÊ NÃO LEMBRA ═══ -->
+<div class="slide" id="s2">
+  <div class="bg-dot"></div>
+  <div class="question">Pensa no último hotel que você ficou...</div>
+  <div class="cards-row">
+    <div class="mem-card forget">
+      <div class="icon-wrap">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="14" stroke="rgba(13,31,45,0.15)" stroke-width="2"/>
+          <path d="M12 12L24 24M24 12L12 24" stroke="rgba(13,31,45,0.2)" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="label">Você lembra</span>
+      <div class="value">O nome<br>do hotel</div>
+      <div class="note">Talvez sim,<br>talvez não...</div>
+    </div>
+    <div class="vs-badge">vs</div>
+    <div class="mem-card remember">
+      <div class="icon-wrap">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="14" stroke="#E8A850" stroke-width="2"/>
+          <path d="M11 18L16 23L25 13" stroke="#E8A850" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="label">Você lembra</span>
+      <div class="value">Como<br>se sentiu</div>
+      <div class="note">Isso nunca<br>esquece</div>
+    </div>
+  </div>
+  <div class="big-statement">Isso é o que <span>constrói marca</span>.</div>
+  <div class="brand-tag">Smart<span>Guest</span></div>
+</div>
+
+
+<!-- ═══ SLIDE 3 — MARCA É SENTIMENTO (dark) ═══ -->
+<div class="slide" id="s3">
+  <div class="glow"></div>
+  <div class="eyebrow">A verdade sobre marca</div>
+  <div class="main-text">
+    <span class="l1">Marca não é</span>
+    <span class="l2">LOGO.</span>
+    <span class="l3">É sentimento.</span>
+  </div>
+  <div class="divrow"><span>você constrói marca com</span></div>
+  <div class="sub-items">
+    <div class="si"><span class="x">✕</span><p>Cor e fonte bonita</p></div>
+    <div class="si"><span class="x">✕</span><p>Slogan bem escrito</p></div>
+    <div class="si"><span class="ok">✓</span><p><strong>Como o hóspede<br>se sentiu</strong></p></div>
+  </div>
+  <div class="brand-tag">Smart<span>Guest</span></div>
+</div>
+
+
+<!-- ═══ SLIDE 4 — O PROBLEMA ═══ -->
+<div class="slide" id="s4">
+  <div class="bg-accent"></div>
+  <div class="top-label">O problema real</div>
+  <h2>Sua equipe<br>quer estar<br>com as <em>pessoas.</em></h2>
+  <div class="bar-label">Como o tempo é gasto hoje</div>
+  <div class="time-bar">
+    <div class="seg-ops">70% Operacional</div>
+    <div class="seg-ppl">30%</div>
+  </div>
+  <div class="time-labels">
+    <div class="lbl-ops">
+      <div class="dot red"></div>
+      <p><strong>Operacional:</strong> check-in manual, reservas, relatórios, fechamento de caixa...</p>
+    </div>
+    <div class="lbl-ppl">
+      <div class="dot teal"></div>
+      <p><strong>Pessoas:</strong> o que realmente cria memória</p>
+    </div>
+  </div>
+  <div class="brand-tag">Smart<span>Guest</span></div>
+</div>
+
+
+<!-- ═══ SLIDE 5 — A IA ASSUME ═══ -->
+<div class="slide" id="s5">
+  <div class="teal-glow"></div>
+  <div class="ia-badge"><div class="dot"></div><span>SmartGuest IA</span></div>
+  <h2>A <span>IA</span><br>assume o<br>operacional.</h2>
+  <div class="sub">Com a equipe no controle.<br><strong>Com supervisão humana. Sempre.</strong></div>
+  <div class="tasks">
+    <div class="task-row"><div class="chk"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7 13L15 5" stroke="#16C3CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p>Check-in em menos de 60s</p></div>
+    <div class="task-row"><div class="chk"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7 13L15 5" stroke="#16C3CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p>Caixa aberto automaticamente</p></div>
+    <div class="task-row"><div class="chk"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7 13L15 5" stroke="#16C3CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p>Recibos enviados automáticos</p></div>
+    <div class="task-row"><div class="chk"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7 13L15 5" stroke="#16C3CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p>Histórico do hóspede na tela</p></div>
+    <div class="task-row"><div class="chk"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7 13L15 5" stroke="#16C3CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p>Relatórios em tempo real</p></div>
+    <div class="task-row"><div class="chk"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7 13L15 5" stroke="#16C3CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p>Mapa de quartos ao vivo</p></div>
+  </div>
+  <div class="brand-tag">Smart<span>Guest</span></div>
+</div>
+
+
+<!-- ═══ SLIDE 6 — RESULTADO ═══ -->
+<div class="slide" id="s6">
+  <div class="bg-warm"></div>
+  <div class="scene">
+    <svg width="560" height="960" viewBox="0 0 560 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="320" cy="920" rx="200" ry="20" fill="rgba(13,31,45,0.07)"/>
+      <ellipse cx="320" cy="480" rx="250" ry="310" fill="rgba(232,168,80,0.05)"/>
+      <!-- Staff -->
+      <rect x="220" y="390" width="120" height="310" rx="20" fill="#1a3040"/>
+      <rect x="242" y="390" width="76" height="310" rx="12" fill="#162838"/>
+      <rect x="252" y="420" width="52" height="32" rx="6" fill="rgba(22,195,204,0.15)" stroke="rgba(22,195,204,0.45)" stroke-width="1.5"/>
+      <rect x="258" y="428" width="30" height="3" rx="2" fill="rgba(22,195,204,0.65)"/>
+      <rect x="258" y="434" width="22" height="2" rx="2" fill="rgba(22,195,204,0.3)"/>
+      <path d="M225 460 Q200 510 195 560" stroke="#1a3040" stroke-width="46" stroke-linecap="round"/>
+      <path d="M335 460 Q368 490 386 528" stroke="#1a3040" stroke-width="46" stroke-linecap="round"/>
+      <ellipse cx="280" cy="340" rx="56" ry="62" fill="#C8956A"/>
+      <ellipse cx="280" cy="292" rx="56" ry="28" fill="#2C1810"/>
+      <ellipse cx="265" cy="348" rx="6" ry="7" fill="#8B5E3C"/>
+      <ellipse cx="295" cy="348" rx="6" ry="7" fill="#8B5E3C"/>
+      <path d="M260 366 Q280 382 300 366" stroke="#8B5E3C" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+      <ellipse cx="255" cy="360" rx="11" ry="7" fill="rgba(220,100,80,0.12)"/>
+      <ellipse cx="305" cy="360" rx="11" ry="7" fill="rgba(220,100,80,0.12)"/>
+      <rect x="240" y="690" width="50" height="240" rx="16" fill="#0F2535"/>
+      <rect x="302" y="690" width="50" height="240" rx="16" fill="#0F2535"/>
+      <rect x="232" y="916" width="64" height="22" rx="9" fill="#0A1820"/>
+      <rect x="296" y="916" width="64" height="22" rx="9" fill="#0A1820"/>
+      <!-- Guest -->
+      <rect x="398" y="410" width="108" height="290" rx="18" fill="#3D4E3A"/>
+      <rect x="416" y="410" width="72" height="290" rx="10" fill="#344433"/>
+      <path d="M398 465 Q372 480 356 518" stroke="#3D4E3A" stroke-width="44" stroke-linecap="round"/>
+      <ellipse cx="452" cy="362" rx="52" ry="58" fill="#D4A574"/>
+      <ellipse cx="452" cy="318" rx="52" ry="26" fill="#1C0E08"/>
+      <ellipse cx="438" cy="368" rx="5.5" ry="4" fill="#A0714A"/>
+      <ellipse cx="466" cy="368" rx="5.5" ry="4" fill="#A0714A"/>
+      <path d="M434 381 Q452 398 470 381" stroke="#A0714A" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+      <rect x="408" y="690" width="46" height="240" rx="14" fill="#2A3828"/>
+      <rect x="466" y="690" width="46" height="240" rx="14" fill="#2A3828"/>
+      <rect x="400" y="916" width="60" height="22" rx="9" fill="#1A2418"/>
+      <rect x="462" y="916" width="60" height="22" rx="9" fill="#1A2418"/>
+      <!-- Connection -->
+      <ellipse cx="360" cy="488" rx="52" ry="42" fill="rgba(232,168,80,0.15)"/>
+      <!-- Joy particles -->
+      <circle cx="380" cy="220" r="7" fill="rgba(232,168,80,0.5)"/>
+      <circle cx="430" cy="188" r="5" fill="rgba(232,168,80,0.35)"/>
+      <circle cx="490" cy="208" r="6" fill="rgba(232,168,80,0.45)"/>
+      <circle cx="340" cy="196" r="4" fill="rgba(22,195,204,0.45)"/>
+    </svg>
+  </div>
+  <div class="content">
+    <div class="badge"><div class="dot"></div>Resultado</div>
+    <h2>Mais tempo<br>para as<br><em>pessoas.</em></h2>
+    <p>Quando a IA cuida do operacional,<br><strong>sua equipe cria os momentos<br>que fazem o hóspede querer voltar.</strong></p>
+  </div>
+  <div class="brand-tag">Smart<span>Guest</span></div>
+</div>
+
+
+<!-- ═══ SLIDE 7 — CTA ═══ -->
+<div class="slide" id="s7">
+  <div class="ring r1"></div>
+  <div class="ring r2"></div>
+  <div class="ring r3"></div>
+  <div class="ring r4"></div>
+  <div class="center-glow"></div>
+  <div class="logo-block">
+    <div class="logo-icon">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+        <path d="M4 16l14-11 14 11v16a3 3 0 01-3 3H7a3 3 0 01-3-3V16z" stroke="#16C3CC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M13 32V21h10v11" stroke="#16C3CC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="logo-name">Smart<span>Guest</span></div>
+    <div class="logo-sub">Tecnologia que libera pessoas</div>
+  </div>
+  <h2>Dê à sua equipe<br>o que mais importa:<br><em>tempo</em> para <span>pessoas.</span></h2>
+  <div class="sub">
+    A IA veio para <strong>nos ajudar</strong> —<br>
+    não para substituir o que cria marca.<br>
+    O sentimento humano, esse é seu.
+  </div>
+  <div class="cta-row">
+    <div class="cta-pill">Conheça o SmartGuest</div>
+    <div class="cta-ghost">Link na bio →</div>
+  </div>
+  <div class="brand-tag">Smart<span>Guest</span></div>
+</div>
+
+</body>
+</html>

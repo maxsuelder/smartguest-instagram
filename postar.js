@@ -272,7 +272,12 @@ async function publicar(containerId) {
 
   console.log(`\n🚀 Publicando: ${post.id} (${post.tipo})\n`);
   const htmlPath = path.join(semanaDir, post.html);
-  const browser  = await chromium.launch();
+  const launchOpts = {};
+  if (process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH) {
+    launchOpts.executablePath = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH;
+    launchOpts.args = ['--no-sandbox', '--disable-setuid-sandbox'];
+  }
+  const browser  = await chromium.launch(launchOpts);
 
   try {
     if (post.tipo === 'REELS') {

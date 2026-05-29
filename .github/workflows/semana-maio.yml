@@ -182,16 +182,13 @@ jobs:
         if: steps.post.outputs.id != '' && steps.cache.outputs.cache-hit != 'true'
         run: sudo apt-get update -y && sudo apt-get install -y ffmpeg
 
-      - name: Cache Playwright browsers
+      - name: Localizar Chrome instalado
         if: steps.post.outputs.id != '' && steps.cache.outputs.cache-hit != 'true'
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/ms-playwright
-          key: playwright-chromium-${{ runner.os }}-v1
-
-      - name: Instalar Playwright (Chromium)
-        if: steps.post.outputs.id != '' && steps.cache.outputs.cache-hit != 'true'
-        run: npx playwright install chromium --with-deps
+        id: chrome
+        run: |
+          CHROME=$(which google-chrome-stable 2>/dev/null || which google-chrome 2>/dev/null || which chromium-browser 2>/dev/null || echo "")
+          echo "Encontrado: $CHROME"
+          echo "path=$CHROME" >> $GITHUB_OUTPUT
 
       - name: Publicar no Instagram
         if: steps.post.outputs.id != '' && steps.cache.outputs.cache-hit != 'true'
@@ -200,6 +197,7 @@ jobs:
           INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
           IMGBB_KEY: ${{ secrets.IMGBB_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH: ${{ steps.chrome.outputs.path }}
         run: node postar.js ${{ steps.post.outputs.id }}
 
       # Salva o marker APÓS publicar com sucesso — backups vão ver o cache e pular

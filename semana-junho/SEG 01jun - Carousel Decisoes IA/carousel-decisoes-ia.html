@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5 Decisões da IA — SmartGuest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,700;1,900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #E8EDEF; font-family: 'Plus Jakarta Sans', sans-serif; }
+
+  .slide {
+    width: 1080px;
+    height: 1080px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .brand-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: #16C3CC;
+    z-index: 20;
+  }
+
+  .brand-tag {
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: rgba(13,31,45,0.22);
+    letter-spacing: 0.12em;
+    z-index: 20;
+    white-space: nowrap;
+  }
+  .brand-tag span { color: #16C3CC; }
+
+  .slide-num {
+    position: absolute;
+    top: 44px;
+    right: 52px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #16C3CC;
+    opacity: 0.4;
+    z-index: 20;
+    letter-spacing: 0.05em;
+  }
+
+  /* ═══════════════════════════
+     SLIDE 1 — CAPA
+  ═══════════════════════════ */
+  #s1 {
+    background: #0D1F2D;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 0 88px 108px;
+  }
+
+  #s1 .ia-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(22,195,204,0.12);
+    border: 1.5px solid rgba(22,195,204,0.35);
+    border-radius: 100px;
+    padding: 10px 22px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #16C3CC;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 36px;
+  }
+
+  #s1 .big-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 260px;
+    font-weight: 900;
+    line-height: 0.82;
+    color: #16C3CC;
+    opacity: 0.9;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+
+  #s1 h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 78px;
+    font-weight: 900;
+    line-height: 1.0;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
+  }
+
+  #s1 .sub {
+    font-size: 24px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.5;
+  }
+
+  #s1 .brand-tag {
+    color: rgba(255,255,255,0.18);
+  }
+  #s1 .brand-tag span { color: #16C3CC; }
+
+  /* ═══════════════════════════
+     SLIDES 2-6 — DECISÕES
+  ═══════════════════════════ */
+  .dec-slide {
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 68px 80px 72px;
+  }
+
+  .dec-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    margin-bottom: 36px;
+    position: relative;
+  }
+
+  .dec-bg-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 180px;
+    font-weight: 900;
+    line-height: 1;
+    color: #16C3CC;
+    opacity: 0.07;
+    position: absolute;
+    top: -28px;
+    left: -12px;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .dec-title-block {
+    padding-left: 16px;
+    padding-top: 10px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .dec-eyebrow {
+    font-size: 14px;
+    font-weight: 700;
+    color: #16C3CC;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 8px;
+  }
+
+  .dec-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 58px;
+    font-weight: 900;
+    color: #0D1F2D;
+    line-height: 1.0;
+    text-transform: uppercase;
+  }
+
+  .scenario-box {
+    background: #F2F6F7;
+    border-left: 5px solid #16C3CC;
+    border-radius: 0 14px 14px 0;
+    padding: 26px 30px;
+    margin-bottom: 28px;
+  }
+
+  .scenario-eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    color: #16C3CC;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+  }
+
+  .scenario-text {
+    font-size: 21px;
+    font-weight: 500;
+    color: #0D1F2D;
+    line-height: 1.55;
+  }
+
+  .action-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 28px;
+  }
+
+  .arrow-dot {
+    width: 40px;
+    height: 40px;
+    background: #0D1F2D;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+  .arrow-dot svg { display: block; }
+
+  .action-text {
+    font-size: 20px;
+    font-weight: 600;
+    color: #0D1F2D;
+    line-height: 1.5;
+  }
+
+  .impact-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(232,168,80,0.1);
+    border: 1.5px solid rgba(232,168,80,0.45);
+    border-radius: 12px;
+    padding: 14px 22px;
+  }
+
+  .impact-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: #9E6810;
+    line-height: 1.3;
+  }
+
+  /* ═══════════════════════════
+     SLIDE 7 — CTA
+  ═══════════════════════════ */
+  #s7 {
+    background: #0D1F2D;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px;
+    text-align: center;
+  }
+
+  #s7 .question {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 68px;
+    font-weight: 900;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    line-height: 1.05;
+    margin-bottom: 28px;
+    letter-spacing: -0.01em;
+  }
+
+  #s7 .question em {
+    color: #16C3CC;
+    font-style: normal;
+  }
+
+  #s7 .sub {
+    font-size: 22px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.52);
+    line-height: 1.6;
+    max-width: 740px;
+    margin-bottom: 56px;
+  }
+
+  #s7 .cta-btn {
+    display: inline-block;
+    background: #16C3CC;
+    color: #0D1F2D;
+    font-size: 22px;
+    font-weight: 800;
+    padding: 22px 56px;
+    border-radius: 100px;
+    letter-spacing: 0.04em;
+    margin-bottom: 18px;
+    text-decoration: none;
+  }
+
+  #s7 .cta-sub {
+    font-size: 18px;
+    color: rgba(255,255,255,0.35);
+  }
+
+  #s7 .brand-tag {
+    color: rgba(255,255,255,0.18);
+  }
+  #s7 .brand-tag span { color: #16C3CC; }
+</style>
+</head>
+<body>
+
+<!-- ═══ SLIDE 1 — CAPA ═══ -->
+<div class="slide" id="s1">
+  <div class="brand-bar"></div>
+
+  <div class="ia-pill">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="10" stroke="#16C3CC" stroke-width="2"/>
+      <path d="M7 12l3.5 3.5L17 8" stroke="#16C3CC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    SmartGuest IA
+  </div>
+
+  <div class="big-num">5</div>
+
+  <h1>decisões que<br>a IA tomou<br>pelo seu hotel</h1>
+
+  <div class="sub">Hoje. Sem você pedir nada.</div>
+
+  <div class="brand-tag">Smart<span>Guest</span></div>
+</div>
+
+<!-- ═══ SLIDE 2 — DECISÃO 01 ═══ -->
+<div class="slide dec-slide" id="s2">
+  <div class="brand-bar"></div>
+  <div class="slide-num">02 / 07</div>
+
+  <div class="dec-top">
+    <div class="dec-bg-num">01</div>
+    <div class="dec-title-block">
+      <div class="dec-eyebrow">IA Detectou</div>
+      <div class="dec-title">Preferência<br>do hóspede</div>
+    </div>
+  </div>
+
+  <div class="scenario-box">
+    <div class="scenario-eyebrow">Situação real</div>
+    <div class="scenario-text">Ana reserva pela 4ª vez.<br>Sempre escolhe o quarto 12 — quieto, longe do elevador.</div>
+  </div>
+
+  <div class="action-row">
+    <div class="arrow-dot">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <path d="M5 12h14M13 6l6 6-6 6" stroke="#16C3CC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="action-text">A IA pré-alocou o quarto 12 automaticamente<br>antes mesmo do check-in.</div>
+  </div>
+
+  <div class="impact-chip">
+    <span style="font-size:22px">⭐</span>
+    <div class="impact-text">Ana deu 5 estrelas e escreveu "me sinto em casa"</div>
+  </div>
+
+  <div class="brand-tag">Smart<span>Guest</span></div>
+</div>
+
+<!-- ═══ SLIDE 3 — DECISÃO 02 ═══ -->
+<div class="slide dec-slide" id="s3">
+  <div class="brand-bar"></div>
+  <div class="slide-num">03 / 07</div>
+
+  <div class="dec-top">
+    <div class="dec-bg-num">02</div>
+    <div class="dec-title-block">
+      <div class="dec-eyebrow">IA Preveniu</div>
+      <div class="dec-title">Reclamação antes<br>de acontecer</div>
+    </div>
+  </div>
+
+  <div class="scenario-box">
+    <div class="scenario-eyebrow">Situação real</div>
+    <div class="scenario-text">Quarto 08 acumulou 3 reclamações de barulho<br>em 60 dias. Hóspede sensível chegando hoje.</div>
+  </div>
+
+  <div class="action-row">
+    <div class="arrow-dot">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <path d="M5 12h14M13 6l6 6-6 6" stroke="#16C3CC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="action-text">A IA bloqueou o quarto 08 e realocou<br>o hóspede para o quarto 15 — sem ninguém pedir.</div>
+  </div>
+
+  <div class="impact-chip">
+    <span style="font-size:22px">🛡️</span>
+    <div class="impact-text">Zero reclamação. Experiência protegida.</div>
+  </div>
+
+  <div class="brand-tag">Smart<span>Guest</span></div>
+</div>
+
+<!-- ═══ SLIDE 4 — DECISÃO 03 ═══ -->
+<div class="slide dec-slide" id="s4">
+  <div class="brand-bar"></div>
+  <div class="slide-num">04 / 07</div>
+
+  <div class="dec-top">
+    <div class="dec-bg-num">03</div>
+    <div class="dec-title-block">
+      <div class="dec-eyebrow">IA Evitou</div>
+      <div class="dec-title">Overbooking<br>às 22h de sexta</div>
+    </div>
+  </div>
+
+  <div class="scenario-box">
+    <div class="scenario-eyebrow">Situação real</div>
+    <div class="scenario-text">2 reservas do Booking e 1 direta chegaram<br>ao mesmo tempo — todas para o quarto 03.</div>
+  </div>
+
+  <div class="action-row">
+    <div class="arrow-dot">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <path d="M5 12h14M13 6l6 6-6 6" stroke="#16C3CC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="action-text">A IA detectou o conflito, cancelou a duplicata<br>e avisou o gestor em menos de 1 minuto.</div>
+  </div>
+
+  <div class="impact-chip">
+    <span style="font-size:22px">🚫</span>
+    <div class="impact-text">Overbooking evitado. Reputação intacta.</div>
+  </div>
+
+  <div class="brand-tag">Smart<span>Guest</span></div>
+</div>
+
+<!-- ═══ SLIDE 5 — DECISÃO 04 ═══ -->
+<div class="slide dec-slide" id="s5">
+  <div class="brand-bar"></div>
+  <div class="slide-num">05 / 07</div>
+
+  <div class="dec-top">
+    <div class="dec-bg-num">04</div>
+    <div class="dec-title-block">
+      <div class="dec-eyebrow">IA Organizou</div>
+      <div class="dec-title">A escala da<br>equipe sozinha</div>
+    </div>
+  </div>
+
+  <div class="scenario-box">
+    <div class="scenario-eyebrow">Situação real</div>
+    <div class="scenario-text">Segunda de manhã: 7 check-outs e 5 check-ins<br>programados para o mesmo horário.</div>
+  </div>
+
+  <div class="action-row">
+    <div class="arrow-dot">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <path d="M5 12h14M13 6l6 6-6 6" stroke="#16C3CC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="action-text">A IA distribuiu tarefas para camareira e recepção<br>com prioridade — tudo antes das 7h da manhã.</div>
+  </div>
+
+  <div class="impact-chip">
+    <span style="font-size:22px">⚡</span>
+    <div class="impact-text">Todos os quartos prontos antes do horário do check-in.</div>
+  </div>
+
+  <div class="brand-tag">Smart<span>Guest</span></div>
+</div>
+
+<!-- ═══ SLIDE 6 — DECISÃO 05 ═══ -->
+<div class="slide dec-slide" id="s6">
+  <div class="brand-bar"></div>
+  <div class="slide-num">06 / 07</div>
+
+  <div class="dec-top">
+    <div class="dec-bg-num">05</div>
+    <div class="dec-title-block">
+      <div class="dec-eyebrow">IA Respondeu</div>
+      <div class="dec-title">Avaliação negativa<br>em 6 minutos</div>
+    </div>
+  </div>
+
+  <div class="scenario-box">
+    <div class="scenario-eyebrow">Situação real</div>
+    <div class="scenario-text">3 estrelas no Booking, 2h da madrugada.<br>"Demora no check-in e Wi-Fi fraco."</div>
+  </div>
+
+  <div class="action-row">
+    <div class="arrow-dot">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <path d="M5 12h14M13 6l6 6-6 6" stroke="#16C3CC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="action-text">A IA respondeu com empatia e solução concreta.<br>Reputação gerenciada sem depender de ninguém.</div>
+  </div>
+
+  <div class="impact-chip">
+    <span style="font-size:22px">📈</span>
+    <div class="impact-text">Gestão de reputação 24h — mesmo dormindo.</div>
+  </div>
+
+  <div class="brand-tag">Smart<span>Guest</span></div>
+</div>
+
+<!-- ═══ SLIDE 7 — CTA ═══ -->
+<div class="slide" id="s7">
+  <div class="brand-bar"></div>
+  <div class="slide-num" style="color:rgba(255,255,255,0.25);">07 / 07</div>
+
+  <div class="question">Quantas dessas<br>decisões você<br>tomaria <em>sozinho?</em></div>
+
+  <div class="sub">A IA do SmartGuest trabalha enquanto você<br>foca no que importa: o hóspede na sua frente.</div>
+
+  <div class="cta-btn">smartguest.app</div>
+  <div class="cta-sub">Chama no WhatsApp — setup em 7 dias</div>
+
+  <div class="brand-tag">Smart<span>Guest</span></div>
+</div>
+
+</body>
+</html>

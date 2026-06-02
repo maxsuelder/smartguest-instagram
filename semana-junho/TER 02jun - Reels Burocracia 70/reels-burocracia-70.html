@@ -2,11 +2,10 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>70% Burocracia — SmartGuest Reels</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,700;1,900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: #060E12; font-family: 'Plus Jakarta Sans', sans-serif; }
@@ -21,289 +20,127 @@
     flex-direction: column;
   }
 
-  /* Teal top bar */
-  .top-bar {
-    width: 100%;
-    height: 6px;
-    background: #16C3CC;
-    flex-shrink: 0;
-  }
+  .top-bar { width: 100%; height: 6px; background: #16C3CC; flex-shrink: 0; }
 
-  /* Background texture circles */
-  .bg-circle-1 {
-    position: absolute;
-    width: 700px;
-    height: 700px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(22,195,204,0.06) 0%, transparent 70%);
-    top: -100px;
-    right: -200px;
-    pointer-events: none;
+  /* subtle radial glows */
+  .glow-tr {
+    position: absolute; width: 640px; height: 640px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(22,195,204,0.07) 0%, transparent 70%);
+    top: -120px; right: -180px; pointer-events: none;
   }
-  .bg-circle-2 {
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
+  .glow-bl {
+    position: absolute; width: 520px; height: 520px; border-radius: 50%;
     background: radial-gradient(circle, rgba(22,195,204,0.05) 0%, transparent 70%);
-    bottom: 200px;
-    left: -200px;
-    pointer-events: none;
+    bottom: 160px; left: -160px; pointer-events: none;
   }
 
-  /* ── TOP HOOK ── */
-  .hook-section {
-    padding: 64px 72px 0;
+  /* ── HOOK ───────────────────────── */
+  .hook {
+    padding: 52px 70px 0;
     flex-shrink: 0;
   }
-
   .brand-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(22,195,204,0.12);
-    border: 1.5px solid rgba(22,195,204,0.3);
-    border-radius: 100px;
-    padding: 9px 20px;
-    font-size: 17px;
-    font-weight: 700;
-    color: #16C3CC;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 32px;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(22,195,204,0.11); border: 1.5px solid rgba(22,195,204,0.28);
+    border-radius: 100px; padding: 8px 18px;
+    font-size: 15px; font-weight: 700; color: #16C3CC;
+    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 26px;
   }
-
-  .hook-eyebrow {
-    font-size: 26px;
-    font-weight: 600;
-    color: rgba(255,255,255,0.5);
-    letter-spacing: 0.02em;
-    margin-bottom: 14px;
-  }
-
-  .hook-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 102px;
-    font-weight: 900;
-    line-height: 0.9;
-    color: #FFFFFF;
-    text-transform: uppercase;
-    letter-spacing: -0.02em;
-    margin-bottom: 24px;
-  }
-
-  .hook-title .accent {
-    color: #E8A850;
-    display: block;
-  }
-
-  .hook-sub {
-    font-size: 27px;
-    font-weight: 500;
-    color: rgba(255,255,255,0.55);
-    line-height: 1.5;
-    max-width: 700px;
-  }
-
-  /* ── ILLUSTRATION SECTION ── */
-  .illus-section {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    padding: 20px 0;
-  }
-
-  /* Floating task bubbles */
-  .bubble {
-    position: absolute;
-    background: rgba(255,255,255,0.06);
-    border: 1.5px solid rgba(255,255,255,0.12);
-    border-radius: 100px;
-    padding: 12px 22px;
-    font-size: 19px;
-    font-weight: 600;
-    color: rgba(255,255,255,0.65);
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    backdrop-filter: blur(4px);
-  }
-
-  .bubble.red { border-color: rgba(255,80,80,0.4); color: rgba(255,150,150,0.9); background: rgba(255,80,80,0.07); }
-  .bubble.amber { border-color: rgba(232,168,80,0.4); color: rgba(232,168,80,0.9); background: rgba(232,168,80,0.07); }
-
-  .b1 { top: 40px; left: 60px; }
-  .b2 { top: 80px; right: 50px; }
-  .b3 { top: 200px; left: 20px; }
-  .b4 { top: 220px; right: 30px; }
-  .b5 { bottom: 180px; left: 40px; }
-  .b6 { bottom: 150px; right: 45px; }
-
-  /* ── BAR SECTION ── */
-  .bar-section {
-    padding: 0 72px;
-    flex-shrink: 0;
-    margin-bottom: 36px;
-  }
-
-  .bar-label-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 14px;
-  }
-
-  .bar-label {
-    font-size: 20px;
-    font-weight: 700;
-    color: rgba(255,255,255,0.5);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  .bar-track {
-    width: 100%;
-    height: 28px;
-    background: rgba(255,255,255,0.07);
-    border-radius: 100px;
-    overflow: hidden;
+  .eyebrow {
+    font-size: 21px; font-weight: 600; color: rgba(255,255,255,0.45);
     margin-bottom: 10px;
   }
-
-  .bar-fill {
-    height: 100%;
-    border-radius: 100px;
-    background: linear-gradient(90deg, #FF4040, #FF6B35);
-  }
-
-  .bar-fill.teal {
-    background: linear-gradient(90deg, #16C3CC, #0EA8B0);
-  }
-
-  .bar-stat {
+  .hook-title {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 32px;
-    font-weight: 900;
-    color: #FF6B35;
+    font-size: 82px; font-weight: 900; line-height: 0.92;
+    color: #FFFFFF; text-transform: uppercase; letter-spacing: -0.02em;
+    margin-bottom: 18px;
   }
-  .bar-stat.teal { color: #16C3CC; }
-
-  .bar-desc {
-    font-size: 19px;
-    font-weight: 500;
-    color: rgba(255,255,255,0.45);
+  .hook-title .accent { color: #E8A850; display: block; }
+  .hook-sub {
+    font-size: 21px; font-weight: 500; color: rgba(255,255,255,0.48); line-height: 1.5;
   }
 
-  /* ── DIVIDER / PIVOT ── */
-  .pivot-section {
-    margin: 0 72px 36px;
-    background: rgba(22,195,204,0.08);
-    border: 1.5px solid rgba(22,195,204,0.25);
-    border-radius: 20px;
-    padding: 28px 36px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-shrink: 0;
+  /* ── ILLUSTRATION ───────────────── */
+  .illus {
+    flex: 1;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    min-height: 0;
   }
+  .bubble {
+    position: absolute;
+    background: rgba(255,255,255,0.05); border: 1.5px solid rgba(255,255,255,0.1);
+    border-radius: 100px; padding: 10px 18px;
+    font-size: 16px; font-weight: 600; color: rgba(255,255,255,0.6);
+    white-space: nowrap; display: flex; align-items: center; gap: 7px;
+  }
+  .bubble.red  { border-color: rgba(255,80,80,0.38); color: rgba(255,150,130,0.9); background: rgba(255,80,80,0.07); }
+  .bubble.amb  { border-color: rgba(232,168,80,0.38); color: rgba(232,168,80,0.9); background: rgba(232,168,80,0.07); }
+  .b1 { top: 24px;  left: 40px;  }
+  .b2 { top: 52px;  right: 36px; }
+  .b3 { top: 160px; left: 14px;  }
+  .b4 { top: 178px; right: 22px; }
+  .b5 { bottom: 140px; left: 30px; }
+  .b6 { bottom: 124px; right: 32px; }
 
+  /* ── BARS ───────────────────────── */
+  .bars {
+    padding: 0 70px; flex-shrink: 0; margin-bottom: 26px;
+  }
+  .bar-row { margin-bottom: 18px; }
+  .bar-label-row {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 10px;
+  }
+  .bar-label { font-size: 16px; font-weight: 700; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.08em; }
+  .bar-stat  { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 900; color: #FF6B35; }
+  .bar-stat.t{ color: #16C3CC; }
+  .bar-track { width: 100%; height: 22px; background: rgba(255,255,255,0.07); border-radius: 100px; overflow: hidden; margin-bottom: 7px; }
+  .bar-fill  { height: 100%; border-radius: 100px; background: linear-gradient(90deg, #FF4040, #FF6B35); }
+  .bar-fill.t{ background: linear-gradient(90deg, #16C3CC, #0EA8B0); }
+  .bar-desc  { font-size: 16px; font-weight: 500; color: rgba(255,255,255,0.38); }
+
+  /* ── PIVOT ──────────────────────── */
+  .pivot {
+    margin: 0 70px 24px;
+    background: rgba(22,195,204,0.08); border: 1.5px solid rgba(22,195,204,0.22);
+    border-radius: 16px; padding: 22px 28px;
+    display: flex; align-items: center; gap: 16px; flex-shrink: 0;
+  }
   .pivot-icon {
-    width: 56px;
-    height: 56px;
-    background: rgba(22,195,204,0.15);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+    width: 46px; height: 46px; background: rgba(22,195,204,0.14); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
   }
-
   .pivot-text {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 38px;
-    font-weight: 900;
-    color: #16C3CC;
-    text-transform: uppercase;
-    line-height: 1.05;
+    font-size: 32px; font-weight: 900; color: #16C3CC; text-transform: uppercase; line-height: 1.05;
   }
 
-  /* ── AFTER LIST ── */
-  .after-section {
-    padding: 0 72px;
-    flex-shrink: 0;
-    margin-bottom: 44px;
+  /* ── AFTER LIST ─────────────────── */
+  .after { padding: 0 70px; flex-shrink: 0; margin-bottom: 32px; }
+  .after-item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 18px; }
+  .chk {
+    width: 34px; height: 34px; background: rgba(22,195,204,0.13);
+    border: 1.5px solid rgba(22,195,204,0.32); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
   }
+  .after-text { font-size: 20px; font-weight: 600; color: rgba(255,255,255,0.82); line-height: 1.35; }
+  .after-text strong { color: #FFFFFF; }
 
-  .after-item {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 22px;
-  }
-
-  .check-dot {
-    width: 40px;
-    height: 40px;
-    background: rgba(22,195,204,0.15);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    border: 1.5px solid rgba(22,195,204,0.35);
-  }
-
-  .after-text {
-    font-size: 24px;
-    font-weight: 600;
-    color: rgba(255,255,255,0.85);
-    line-height: 1.35;
-  }
-
-  .after-text strong {
-    color: #FFFFFF;
-  }
-
-  /* ── CTA ── */
-  .cta-section {
-    padding: 0 72px 64px;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-
+  /* ── CTA ────────────────────────── */
+  .cta { padding: 0 70px 52px; flex-shrink: 0; }
   .cta-btn {
-    display: inline-block;
-    background: #16C3CC;
-    color: #060E12;
-    font-size: 26px;
-    font-weight: 800;
-    padding: 22px 52px;
-    border-radius: 100px;
-    letter-spacing: 0.04em;
+    display: inline-block; background: #16C3CC; color: #060E12;
+    font-size: 22px; font-weight: 800; padding: 18px 46px;
+    border-radius: 100px; letter-spacing: 0.04em; margin-bottom: 12px;
   }
-
-  .cta-sub {
-    font-size: 21px;
-    font-weight: 500;
-    color: rgba(255,255,255,0.35);
-  }
+  .cta-sub { font-size: 18px; font-weight: 500; color: rgba(255,255,255,0.3); }
 
   .brand-footer {
-    position: absolute;
-    bottom: 28px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 19px;
-    font-weight: 600;
-    color: rgba(255,255,255,0.15);
-    letter-spacing: 0.12em;
-    white-space: nowrap;
+    position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%);
+    font-size: 17px; font-weight: 600; color: rgba(255,255,255,0.13);
+    letter-spacing: 0.12em; white-space: nowrap;
   }
   .brand-footer span { color: #16C3CC; }
 </style>
@@ -311,170 +148,150 @@
 <body>
 <div id="slide">
   <div class="top-bar"></div>
-  <div class="bg-circle-1"></div>
-  <div class="bg-circle-2"></div>
+  <div class="glow-tr"></div>
+  <div class="glow-bl"></div>
 
   <!-- HOOK -->
-  <div class="hook-section">
+  <div class="hook">
     <div class="brand-pill">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
         <circle cx="12" cy="12" r="10" stroke="#16C3CC" stroke-width="2"/>
         <path d="M7 12l3.5 3.5L17 8" stroke="#16C3CC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       SmartGuest IA
     </div>
-    <div class="hook-eyebrow">Dono de hotel ou pousada:</div>
+    <div class="eyebrow">Dono de hotel ou pousada:</div>
     <div class="hook-title">
       seu recep-<br>cionista
       <span class="accent">não atende<br>hóspede.</span>
     </div>
-    <div class="hook-sub">Ele fica o dia inteiro preso<br>na burocracia — e você sabe disso.</div>
+    <div class="hook-sub">Ele passa o dia preso na burocracia.<br>E você sabe disso.</div>
   </div>
 
   <!-- ILLUSTRATION + BUBBLES -->
-  <div class="illus-section">
-    <!-- Floating bubbles -->
+  <div class="illus">
     <div class="bubble red b1">📧 47 mensagens sem resposta</div>
-    <div class="bubble amber b2">⚠️ OTA desatualizada</div>
+    <div class="bubble amb b2">⚠️ OTA desatualizada</div>
     <div class="bubble red b3">🔄 Sincronizando canais...</div>
-    <div class="bubble amber b4">📋 Check-in manual</div>
+    <div class="bubble amb b4">📋 Check-in manual</div>
     <div class="bubble red b5">📞 Telefone tocando</div>
-    <div class="bubble amber b6">🏨 1 overbooking detectado</div>
+    <div class="bubble amb b6">🏨 1 overbooking detectado</div>
 
-    <!-- Person illustration: receptionist at desk, overwhelmed -->
-    <svg width="420" height="480" viewBox="0 0 420 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Desk -->
-      <rect x="60" y="360" width="300" height="18" rx="4" fill="#1A2F3A"/>
-      <rect x="80" y="378" width="14" height="70" rx="3" fill="#162530"/>
-      <rect x="326" y="378" width="14" height="70" rx="3" fill="#162530"/>
+    <!-- Person at desk, stressed — compact SVG -->
+    <svg width="340" height="390" viewBox="0 0 340 390" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Desk surface -->
+      <rect x="30" y="292" width="280" height="15" rx="4" fill="#1A2F3A"/>
+      <rect x="48" y="307" width="12" height="58" rx="3" fill="#162530"/>
+      <rect x="280" y="307" width="12" height="58" rx="3" fill="#162530"/>
 
       <!-- Monitor -->
-      <rect x="150" y="270" width="160" height="100" rx="8" fill="#0F2130"/>
-      <rect x="155" y="275" width="150" height="90" rx="5" fill="#0A1820"/>
-      <!-- Screen content (chaotic lines) -->
-      <rect x="163" y="283" width="80" height="6" rx="2" fill="rgba(255,100,100,0.5)"/>
-      <rect x="163" y="295" width="120" height="6" rx="2" fill="rgba(232,168,80,0.4)"/>
-      <rect x="163" y="307" width="60" height="6" rx="2" fill="rgba(255,100,100,0.4)"/>
-      <rect x="163" y="319" width="100" height="6" rx="2" fill="rgba(232,168,80,0.35)"/>
-      <rect x="163" y="331" width="90" height="6" rx="2" fill="rgba(255,100,100,0.3)"/>
-      <!-- Monitor stand -->
-      <rect x="220" y="370" width="20" height="16" rx="2" fill="#1A2F3A"/>
-      <rect x="205" y="383" width="50" height="6" rx="3" fill="#1A2F3A"/>
+      <rect x="110" y="214" width="136" height="84" rx="7" fill="#0F2130"/>
+      <rect x="115" y="219" width="126" height="74" rx="4" fill="#0A1820"/>
+      <!-- chaotic screen lines -->
+      <rect x="122" y="226" width="68" height="5" rx="2" fill="rgba(255,100,100,0.5)"/>
+      <rect x="122" y="236" width="100" height="5" rx="2" fill="rgba(232,168,80,0.4)"/>
+      <rect x="122" y="246" width="50" height="5" rx="2" fill="rgba(255,100,100,0.4)"/>
+      <rect x="122" y="256" width="84" height="5" rx="2" fill="rgba(232,168,80,0.35)"/>
+      <rect x="122" y="266" width="76" height="5" rx="2" fill="rgba(255,100,100,0.3)"/>
+      <!-- stand -->
+      <rect x="162" y="298" width="18" height="12" rx="2" fill="#1A2F3A"/>
+      <rect x="150" y="308" width="42" height="5" rx="3" fill="#1A2F3A"/>
 
       <!-- Keyboard -->
-      <rect x="145" y="348" width="170" height="20" rx="4" fill="#1A2F3A"/>
-      <rect x="150" y="351" width="10" height="10" rx="2" fill="#0F2130"/>
-      <rect x="165" y="351" width="10" height="10" rx="2" fill="#0F2130"/>
-      <rect x="180" y="351" width="10" height="10" rx="2" fill="#0F2130"/>
-      <rect x="195" y="351" width="10" height="10" rx="2" fill="#0F2130"/>
-      <rect x="210" y="351" width="10" height="10" rx="2" fill="#0F2130"/>
-      <rect x="225" y="351" width="10" height="10" rx="2" fill="#0F2130"/>
-      <rect x="240" y="351" width="10" height="10" rx="2" fill="#0F2130"/>
-      <rect x="255" y="351" width="10" height="10" rx="2" fill="#0F2130"/>
-      <rect x="270" y="351" width="20" height="10" rx="2" fill="#0F2130"/>
-      <rect x="160" y="341" width="140" height="8" rx="2" fill="#1A2F3A"/>
+      <rect x="106" y="280" width="142" height="16" rx="3" fill="#1A2F3A"/>
 
-      <!-- Chair -->
-      <rect x="170" y="420" width="120" height="14" rx="7" fill="#1A2F3A"/>
-      <rect x="202" y="434" width="16" height="40" rx="4" fill="#162530"/>
+      <!-- Chair seat -->
+      <rect x="120" y="340" width="100" height="12" rx="6" fill="#1A2F3A"/>
+      <rect x="162" y="352" width="14" height="35" rx="3" fill="#162530"/>
 
-      <!-- Person body -->
-      <!-- Torso (slightly hunched) -->
-      <path d="M175 360 Q180 300 210 285 Q240 270 265 280 Q285 295 275 360 Z" fill="#2A4A5E"/>
-      <!-- Shirt detail -->
-      <path d="M205 290 L215 310 L225 290" stroke="#16C3CC" stroke-width="2" opacity="0.4"/>
+      <!-- Body (slightly hunched) -->
+      <path d="M128 294 Q133 244 165 231 Q195 218 218 226 Q236 238 228 294 Z" fill="#2A4A5E"/>
 
       <!-- Neck -->
-      <rect x="200" y="270" width="20" height="22" rx="6" fill="#C8956C"/>
+      <rect x="158" y="216" width="17" height="18" rx="5" fill="#C8956C"/>
 
-      <!-- Head (slightly drooping forward) -->
-      <ellipse cx="210" cy="248" rx="42" ry="46" fill="#D4A574"/>
+      <!-- Head -->
+      <ellipse cx="168" cy="198" rx="35" ry="38" fill="#D4A574"/>
 
       <!-- Hair -->
-      <path d="M168 240 Q170 205 210 200 Q250 195 252 240 Q245 210 210 208 Q175 210 168 240 Z" fill="#3D2810"/>
+      <path d="M133 192 Q135 166 168 162 Q201 158 203 192 Q196 170 168 167 Q140 170 133 192Z" fill="#3D2810"/>
 
       <!-- Stressed face -->
-      <!-- Eyes (tired/stressed) -->
-      <ellipse cx="195" cy="248" rx="7" ry="5" fill="#2A1808"/>
-      <ellipse cx="225" cy="248" rx="7" ry="5" fill="#2A1808"/>
-      <!-- Eyebags -->
-      <path d="M188 254 Q195 257 202 254" stroke="rgba(150,100,60,0.6)" stroke-width="2" fill="none"/>
-      <path d="M218 254 Q225 257 232 254" stroke="rgba(150,100,60,0.6)" stroke-width="2" fill="none"/>
-      <!-- Furrowed brows -->
-      <path d="M188 238 Q196 233 202 236" stroke="#3D2810" stroke-width="3" fill="none" stroke-linecap="round"/>
-      <path d="M218 236 Q224 233 232 238" stroke="#3D2810" stroke-width="3" fill="none" stroke-linecap="round"/>
-      <!-- Stressed mouth -->
-      <path d="M200 266 Q210 262 220 266" stroke="#8B5A3A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <ellipse cx="155" cy="199" rx="6" ry="4.5" fill="#2A1808"/>
+      <ellipse cx="181" cy="199" rx="6" ry="4.5" fill="#2A1808"/>
+      <!-- eyebags -->
+      <path d="M149 205 Q155 208 161 205" stroke="rgba(150,100,60,0.55)" stroke-width="1.8" fill="none"/>
+      <path d="M175 205 Q181 208 187 205" stroke="rgba(150,100,60,0.55)" stroke-width="1.8" fill="none"/>
+      <!-- frown brows -->
+      <path d="M148 191 Q155 186 161 189" stroke="#3D2810" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M175 189 Q181 186 188 191" stroke="#3D2810" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <!-- mouth (stressed) -->
+      <path d="M159 214 Q168 210 177 214" stroke="#8B5A3A" stroke-width="2" fill="none" stroke-linecap="round"/>
 
-      <!-- Hand on head (stressed gesture) -->
-      <path d="M252 280 Q275 265 280 248 Q282 238 275 235 Q268 240 260 252 Q258 240 250 238 Q242 244 248 258 Q240 248 232 250 Q228 258 238 264 Q232 258 226 262 Q224 272 236 272 Z" fill="#D4A574"/>
+      <!-- Hand on head -->
+      <path d="M204 226 Q222 214 226 200 Q228 192 222 189 Q215 193 209 204 Q207 194 200 192 Q193 198 198 210 Q191 202 185 204 Q182 211 191 212 Q186 207 181 211 Q179 219 189 219Z" fill="#D4A574"/>
 
-      <!-- Arm reaching keyboard -->
-      <path d="M175 310 Q160 330 165 355" stroke="#2A4A5E" stroke-width="28" stroke-linecap="round" fill="none"/>
-      <path d="M165 355 Q165 365 175 365" stroke="#C8956C" stroke-width="20" stroke-linecap="round" fill="none"/>
+      <!-- Arm to keyboard -->
+      <path d="M128 254 Q116 270 120 288" stroke="#2A4A5E" stroke-width="24" stroke-linecap="round" fill="none"/>
+      <path d="M120 288 Q120 296 128 296" stroke="#C8956C" stroke-width="17" stroke-linecap="round" fill="none"/>
 
-      <!-- Sweat drops (stress indicators) -->
-      <ellipse cx="260" cy="220" rx="5" ry="8" fill="rgba(22,195,204,0.5)" transform="rotate(-15, 260, 220)"/>
-      <ellipse cx="275" cy="235" rx="4" ry="6" fill="rgba(22,195,204,0.35)" transform="rotate(-10, 275, 235)"/>
-      <ellipse cx="255" cy="242" rx="3" ry="5" fill="rgba(22,195,204,0.25)" transform="rotate(-20, 255, 242)"/>
+      <!-- Sweat drops -->
+      <ellipse cx="210" cy="176" rx="4" ry="7" fill="rgba(22,195,204,0.5)" transform="rotate(-15,210,176)"/>
+      <ellipse cx="222" cy="188" rx="3" ry="5" fill="rgba(22,195,204,0.35)" transform="rotate(-10,222,188)"/>
     </svg>
   </div>
 
-  <!-- BAR CHART: Time breakdown -->
-  <div class="bar-section">
-    <div style="margin-bottom: 20px;">
+  <!-- BARS -->
+  <div class="bars">
+    <div class="bar-row">
       <div class="bar-label-row">
         <div class="bar-label">Burocracia</div>
         <div class="bar-stat">70%</div>
       </div>
-      <div class="bar-track">
-        <div class="bar-fill" style="width:70%"></div>
-      </div>
+      <div class="bar-track"><div class="bar-fill" style="width:70%"></div></div>
       <div class="bar-desc">OTA, planilha, check-in manual, mensagens</div>
     </div>
-    <div>
+    <div class="bar-row" style="margin-bottom:0">
       <div class="bar-label-row">
-        <div class="bar-label">Atendimento ao hóspede</div>
-        <div class="bar-stat teal">30%</div>
+        <div class="bar-label">Tempo com o hóspede</div>
+        <div class="bar-stat t">30%</div>
       </div>
-      <div class="bar-track">
-        <div class="bar-fill teal" style="width:30%"></div>
-      </div>
+      <div class="bar-track"><div class="bar-fill t" style="width:30%"></div></div>
       <div class="bar-desc">O motivo pelo qual ele foi contratado.</div>
     </div>
   </div>
 
   <!-- PIVOT -->
-  <div class="pivot-section">
+  <div class="pivot">
     <div class="pivot-icon">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
         <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#16C3CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
     <div class="pivot-text">A IA do SmartGuest<br>assume os 70%.</div>
   </div>
 
-  <!-- AFTER: what changes -->
-  <div class="after-section">
+  <!-- AFTER -->
+  <div class="after">
     <div class="after-item">
-      <div class="check-dot">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <div class="chk">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
           <path d="M5 12l5 5L20 7" stroke="#16C3CC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
       <div class="after-text"><strong>OTAs sincronizadas</strong> em tempo real — automático</div>
     </div>
     <div class="after-item">
-      <div class="check-dot">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <div class="chk">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
           <path d="M5 12l5 5L20 7" stroke="#16C3CC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
       <div class="after-text"><strong>Check-in em 60 segundos.</strong> Sem papel.</div>
     </div>
-    <div class="after-item">
-      <div class="check-dot">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+    <div class="after-item" style="margin-bottom:0">
+      <div class="chk">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
           <path d="M5 12l5 5L20 7" stroke="#16C3CC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
@@ -483,8 +300,8 @@
   </div>
 
   <!-- CTA -->
-  <div class="cta-section">
-    <div class="cta-btn">smartguest.app</div>
+  <div class="cta">
+    <div class="cta-btn">smartguest.app</div><br>
     <div class="cta-sub">Setup em 7 dias · Suporte humano real</div>
   </div>
 

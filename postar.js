@@ -125,14 +125,27 @@ async function hospedar(filePath) {
   throw new Error('Todos os serviços de hospedagem falharam');
 }
 
+// ── Baixar música royalty-free ────────────────────────
+async function baixarMusica(url, destPath) {
+  const res = await axios.get(url, { responseType: 'arraybuffer', timeout: 30000 });
+  fs.writeFileSync(destPath, Buffer.from(res.data));
+}
+
 // ── Converter PNG → MP4 (Reels) ──────────────────────
-function converterParaVideo(pngFile, mp4File) {
+function converterParaVideo(pngFile, mp4File, musicaPath) {
   // Vídeo estático 9s com efeito Ken Burns suave (zoom in lento)
+  const audioInput = musicaPath ? `-i "${musicaPath}"` : '';
+  const audioOut   = musicaPath
+    ? `-c:a aac -b:a 128k -af "volume=0.55,afade=t=in:st=0:d=1,afade=t=out:st=7.5:d=1.5" -shortest`
+    : '-an';
+
   const cmd = [
     'ffmpeg -y',
     `-loop 1 -i "${pngFile}"`,
+    audioInput,
     `-c:v libx264 -t 9`,
     `-vf "scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2,zoompan=z='min(zoom+0.0008,1.04)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=270:s=1080x1920"`,
+    audioOut,
     `-pix_fmt yuv420p -movflags +faststart`,
     `"${mp4File}"`
   ].join(' ');
@@ -288,9 +301,22 @@ async function publicar(containerId) {
       await exportarSlide(browser, htmlPath, post.slide || 'body', pngFile, post.largura, post.altura);
       console.log(`  📸 Screenshot exportado`);
 
-      // 2. Converter PNG → MP4
+      // 2. Baixar música (se especificada)
+      let musicaPath = null;
+      if (post.musica) {
+        try {
+          musicaPath = path.join(OUTPUT, `${post.id}_music.mp3`);
+          await baixarMusica(post.musica, musicaPath);
+          console.log(`  🎵 Música baixada`);
+        } catch (e) {
+          console.warn(`  ⚠️  Música não disponível: ${e.message}`);
+          musicaPath = null;
+        }
+      }
+
+      // 3. Converter PNG → MP4
       console.log(`  🎬 Convertendo para MP4...`);
-      converterParaVideo(pngFile, mp4File);
+      converterParaVideo(pngFile, mp4File, musicaPath);
       console.log(`  🎬 MP4 gerado (${Math.round(fs.statSync(mp4File).size / 1024)}kb)`);
 
       // 3. Hospedar vídeo

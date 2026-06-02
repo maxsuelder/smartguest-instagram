@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Story Noite — SmartGuest</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #060E12; }
+  #story {
+    width: 1080px; height: 1920px;
+    background: #060E12;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    text-align: center; font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .top-bar { position: absolute; top: 0; left: 0; right: 0; height: 6px; background: #16C3CC; }
+
+  /* background glow */
+  .glow {
+    position: absolute; width: 800px; height: 800px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(22,195,204,0.09) 0%, transparent 65%);
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .content { position: relative; z-index: 2; padding: 0 90px; }
+
+  .pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(22,195,204,0.12); border: 1.5px solid rgba(22,195,204,0.3);
+    border-radius: 100px; padding: 10px 22px;
+    font-size: 16px; font-weight: 700; color: #16C3CC;
+    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 52px;
+  }
+
+  .question {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 96px; font-weight: 900; line-height: 0.92;
+    color: #FFFFFF; text-transform: uppercase; letter-spacing: -0.02em;
+    margin-bottom: 40px;
+  }
+  .question .teal { color: #16C3CC; }
+  .question .amber { color: #E8A850; }
+
+  .sub {
+    font-size: 26px; font-weight: 500; color: rgba(255,255,255,0.5);
+    line-height: 1.55; margin-bottom: 60px;
+  }
+
+  /* big stat */
+  .stat-box {
+    display: flex; align-items: center; justify-content: center; gap: 0;
+    margin-bottom: 60px;
+  }
+  .stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 180px; font-weight: 900; line-height: 1;
+    color: #16C3CC; letter-spacing: -0.04em;
+  }
+  .stat-pct {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 80px; font-weight: 900; color: #16C3CC;
+    align-self: flex-start; margin-top: 28px;
+  }
+  .stat-label {
+    font-size: 22px; font-weight: 600; color: rgba(255,255,255,0.55);
+    margin-top: -8px; margin-bottom: 60px;
+  }
+
+  .cta-btn {
+    display: inline-block; background: #16C3CC; color: #060E12;
+    font-size: 26px; font-weight: 800; padding: 22px 60px;
+    border-radius: 100px; letter-spacing: 0.04em; margin-bottom: 16px;
+  }
+  .cta-sub { font-size: 20px; font-weight: 500; color: rgba(255,255,255,0.3); }
+
+  .brand {
+    position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+    font-size: 18px; font-weight: 600; color: rgba(255,255,255,0.14);
+    letter-spacing: 0.12em; white-space: nowrap;
+  }
+  .brand span { color: #16C3CC; }
+</style>
+</head>
+<body>
+<div id="story">
+  <div class="top-bar"></div>
+  <div class="glow"></div>
+
+  <div class="content">
+    <div class="pill">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#16C3CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      SmartGuest IA
+    </div>
+
+    <div class="question">
+      E se os<br><span class="teal">70%</span><br>fossem do<br><span class="amber">hóspede?</span>
+    </div>
+
+    <div class="sub">
+      Hoje seu recepcionista gasta<br>70% do tempo em burocracia.<br><br>
+      Com a IA do SmartGuest,<br>esse tempo volta para<br>quem realmente importa.
+    </div>
+
+    <div class="cta-btn">smartguest.app</div>
+    <div class="cta-sub">Chama no WhatsApp — setup em 7 dias</div>
+  </div>
+
+  <div class="brand">Smart<span>Guest</span></div>
+</div>
+</body>
+</html>

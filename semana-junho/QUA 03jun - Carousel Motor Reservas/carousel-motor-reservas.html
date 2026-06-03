@@ -5,642 +5,429 @@
 <title>Motor de Reservas — SmartGuest</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,900;1,900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: #E8EDEF; font-family: 'Plus Jakarta Sans', sans-serif; }
 
-  .slide { width: 1080px; height: 1080px; overflow: hidden; position: relative; margin-bottom: 20px; }
+  .slide {
+    width: 1080px; height: 1080px;
+    background: #FFFFFF;
+    overflow: hidden; position: relative;
+    margin-bottom: 20px;
+  }
 
-  .bar { position: absolute; top: 0; left: 0; right: 0; height: 6px; background: #16C3CC; z-index: 10; }
-  .brand-tag { position: absolute; bottom: 42px; left: 50%; transform: translateX(-50%); font-size: 18px; font-weight: 600; color: rgba(13,31,45,0.2); letter-spacing: 0.1em; white-space: nowrap; z-index: 10; }
-  .brand-tag span { color: #16C3CC; }
-  .snum { position: absolute; top: 42px; right: 52px; font-family: 'Barlow Condensed', sans-serif; font-size: 21px; font-weight: 700; color: #16C3CC; opacity: 0.38; z-index: 10; letter-spacing: 0.05em; }
+  /* ── shared ── */
+  .bar { position: absolute; top: 0; left: 0; right: 0; height: 7px; background: #16C3CC; z-index: 10; }
+  .brand { position: absolute; bottom: 38px; left: 50%; transform: translateX(-50%); font-size: 22px; font-weight: 700; color: rgba(13,31,45,0.2); letter-spacing: 0.1em; white-space: nowrap; z-index: 10; }
+  .brand b { color: #16C3CC; font-weight: 700; }
+  .snum { position: absolute; top: 40px; right: 52px; font-family: 'Barlow Condensed', sans-serif; font-size: 24px; font-weight: 700; color: #16C3CC; opacity: 0.4; z-index: 10; }
 
-  /* ═══ S1 COVER ═══ */
-  #s1 { background: #0D1F2D; }
-  #s1 .inner { height: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 82px 106px; position: relative; z-index: 2; }
-  #s1 .pill { display: inline-flex; align-items: center; gap: 8px; background: rgba(22,195,204,0.12); border: 1.5px solid rgba(22,195,204,0.28); border-radius: 100px; padding: 9px 20px; font-size: 15px; font-weight: 700; color: #16C3CC; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 30px; width: fit-content; }
-  #s1 h1 { font-family: 'Barlow Condensed', sans-serif; font-size: 92px; font-weight: 900; line-height: 0.9; color: #FFFFFF; text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 28px; }
+  /* ═══════════════ S1 CAPA ═══════════════ */
+  #s1 { background: #FFFFFF; }
+  #s1 .inner {
+    height: 100%; display: flex; flex-direction: column;
+    justify-content: center; padding: 80px 80px 100px;
+  }
+  #s1 .pill {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(22,195,204,0.1); border: 2px solid rgba(22,195,204,0.3);
+    border-radius: 100px; padding: 11px 24px;
+    font-size: 18px; font-weight: 700; color: #16C3CC;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 40px; width: fit-content;
+  }
+  #s1 h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 104px; font-weight: 900; line-height: 0.92;
+    color: #0D1F2D; text-transform: uppercase; letter-spacing: -0.02em;
+    margin-bottom: 32px;
+  }
   #s1 h1 .teal { color: #16C3CC; display: block; }
-  #s1 h1 .red { color: #FF5252; display: block; }
-  #s1 .sub { font-size: 22px; font-weight: 500; color: rgba(255,255,255,0.42); line-height: 1.5; }
-  #s1 .brand-tag { color: rgba(255,255,255,0.14); }
-  #s1 .brand-tag span { color: #16C3CC; }
-  /* illustration top-right */
-  #s1 .illus { position: absolute; top: 60px; right: 60px; z-index: 1; }
+  #s1 h1 .red  { color: #FF4444; display: block; }
+  #s1 .sub { font-size: 28px; font-weight: 600; color: #5A7A8E; line-height: 1.5; }
+  #s1 .sub strong { color: #0D1F2D; }
 
-  /* ═══ WHITE SLIDES 2–7 ═══ */
-  .ws { background: #FFFFFF; }
-  .ws .inner { height: 100%; display: flex; flex-direction: column; padding: 68px 78px 80px; }
-  .eyebrow { font-size: 13px; font-weight: 700; color: #16C3CC; text-transform: uppercase; letter-spacing: 0.13em; margin-bottom: 10px; }
-  .ws-title { font-family: 'Barlow Condensed', sans-serif; font-size: 60px; font-weight: 900; color: #0D1F2D; line-height: 1.0; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 36px; }
-  .ws-title em { color: #16C3CC; font-style: normal; }
-  .ws-title .red { color: #FF5252; font-style: normal; }
+  /* ═══════════════ SLIDES 2–7 ═══════════════ */
+  .inner2 { height: 100%; display: flex; flex-direction: column; padding: 64px 76px 90px; }
+  .ey { font-size: 17px; font-weight: 700; color: #16C3CC; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 12px; }
+  .tit {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 72px; font-weight: 900; color: #0D1F2D;
+    line-height: 0.95; text-transform: uppercase; letter-spacing: -0.01em;
+    margin-bottom: 36px;
+  }
+  .tit em  { color: #16C3CC; font-style: normal; }
+  .tit .rd { color: #FF4444; font-style: normal; }
 
-  /* ═══ S8 CTA ═══ */
-  #s8 { background: #16C3CC; }
-  #s8 .bar { background: rgba(0,0,0,0.12); }
-  #s8 .inner { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px; text-align: center; }
-  #s8 h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 74px; font-weight: 900; color: #0D1F2D; text-transform: uppercase; line-height: 1.0; margin-bottom: 20px; }
-  #s8 .sub { font-size: 24px; font-weight: 600; color: rgba(13,31,45,0.65); margin-bottom: 52px; line-height: 1.5; max-width: 700px; }
-  #s8 .btn { background: #0D1F2D; color: #16C3CC; font-size: 26px; font-weight: 800; padding: 22px 60px; border-radius: 100px; letter-spacing: 0.04em; display: inline-block; margin-bottom: 14px; }
-  #s8 .btn-sub { font-size: 20px; font-weight: 500; color: rgba(13,31,45,0.5); }
-  #s8 .brand-tag { color: rgba(0,0,0,0.18); }
-  #s8 .brand-tag span { color: #FFFFFF; }
+  /* ── S2 two columns ── */
+  .cols { display: flex; gap: 20px; flex: 1; }
+  .col {
+    flex: 1; border-radius: 20px; padding: 32px 28px;
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .col.bk  { background: #F7F9FC; border: 2px solid #D8E4EE; }
+  .col.sg  { background: rgba(22,195,204,0.06); border: 2px solid rgba(22,195,204,0.35); }
+  .col-head { font-family: 'Barlow Condensed', sans-serif; font-size: 44px; font-weight: 900; color: #0D1F2D; line-height: 1; }
+  .col-type { font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+  .col.bk .col-type { color: #8096AA; }
+  .col.sg .col-type { color: #16C3CC; }
+  .col-row { display: flex; align-items: flex-start; gap: 12px; font-size: 22px; font-weight: 600; color: #2C4A5E; line-height: 1.4; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 7px; }
+  .col.bk .dot { background: #8096AA; }
+  .col.sg .dot { background: #16C3CC; }
+  .col-foot { margin-top: auto; padding-top: 18px; border-top: 2px solid; font-size: 20px; font-weight: 700; line-height: 1.3; }
+  .col.bk .col-foot { border-color: #D8E4EE; color: #FF4444; }
+  .col.sg .col-foot { border-color: rgba(22,195,204,0.25); color: #16C3CC; }
 
-  /* ── S2 comparison columns ── */
-  .compare-row { display: flex; gap: 24px; flex: 1; }
-  .col { flex: 1; border-radius: 20px; padding: 32px 28px; display: flex; flex-direction: column; }
-  .col.booking { background: #F7F9FC; border: 2px solid #E0E7EF; }
-  .col.smartguest { background: rgba(22,195,204,0.06); border: 2px solid rgba(22,195,204,0.3); }
-  .col-label { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
-  .col.booking .col-label { color: #8096AA; }
-  .col.smartguest .col-label { color: #16C3CC; }
-  .col-name { font-family: 'Barlow Condensed', sans-serif; font-size: 40px; font-weight: 900; margin-bottom: 20px; line-height: 1; }
-  .col.booking .col-name { color: #0D1F2D; }
-  .col.smartguest .col-name { color: #0D1F2D; }
-  .col-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; font-size: 19px; font-weight: 500; color: #3D5A6E; line-height: 1.4; }
-  .col-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 7px; }
-  .col.booking .col-dot { background: #8096AA; }
-  .col.smartguest .col-dot { background: #16C3CC; }
-  .col-footer { margin-top: auto; padding-top: 16px; border-top: 1px solid; font-size: 17px; font-weight: 700; }
-  .col.booking .col-footer { border-color: #E0E7EF; color: #FF5252; }
-  .col.smartguest .col-footer { border-color: rgba(22,195,204,0.2); color: #16C3CC; }
+  /* ── S3 sources ── */
+  .s3-body { flex: 1; display: flex; gap: 40px; align-items: center; }
+  .chips { display: flex; flex-direction: column; gap: 14px; flex: 1; }
+  .chip {
+    display: flex; align-items: center; gap: 16px;
+    background: #F4F7F8; border-radius: 16px;
+    padding: 18px 22px; font-size: 24px; font-weight: 700; color: #0D1F2D;
+  }
+  .chip-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+  .note {
+    background: rgba(22,195,204,0.08); border-left: 5px solid #16C3CC;
+    border-radius: 0 14px 14px 0; padding: 20px 26px;
+    font-size: 24px; font-weight: 700; color: #0D1F2D; line-height: 1.4;
+    margin-top: 12px;
+  }
+  .note em { color: #16C3CC; font-style: normal; }
 
-  /* ── S3 traffic ── */
-  .traffic-center { flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
-  .traffic-sources { display: flex; flex-direction: column; gap: 16px; }
-  .source-chip { display: flex; align-items: center; gap: 12px; background: #F4F7F8; border-radius: 14px; padding: 14px 20px; font-size: 19px; font-weight: 600; color: #0D1F2D; }
-  .source-chip .icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
-  .source-chip .ic-ig { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-  .source-chip .ic-wa { background: #25D366; }
-  .source-chip .ic-go { background: #4285F4; }
-  .source-chip .ic-ret { background: #E8A850; }
-  .source-chip .ic-ind { background: #16C3CC; }
-  .traffic-right { text-align: center; }
-  .traffic-big { font-family: 'Barlow Condensed', sans-serif; font-size: 46px; font-weight: 900; color: #16C3CC; text-transform: uppercase; line-height: 1; margin-bottom: 8px; }
-  .traffic-sub { font-size: 17px; font-weight: 500; color: #3D5A6E; line-height: 1.4; }
-
-  /* ── S4 journey ── */
-  .journey { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 0; }
-  .step-row { display: flex; align-items: center; gap: 0; }
-  .step { display: flex; flex-direction: column; align-items: center; flex: 1; }
-  .step-icon { width: 72px; height: 72px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 12px; }
-  .step-label { font-size: 17px; font-weight: 700; color: #0D1F2D; text-align: center; line-height: 1.3; }
-  .step-sub { font-size: 14px; font-weight: 500; color: #8096AA; text-align: center; margin-top: 4px; }
-  .arrow-line { flex-shrink: 0; display: flex; align-items: center; margin-bottom: 36px; }
+  /* ── S4 journey steps ── */
+  .steps { flex: 1; display: flex; flex-direction: column; justify-content: space-around; }
+  .step-row { display: flex; align-items: center; gap: 20px; }
+  .step-icon-big { width: 80px; height: 80px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 36px; flex-shrink: 0; }
+  .step-text { font-size: 26px; font-weight: 700; color: #0D1F2D; line-height: 1.3; }
+  .step-sub  { font-size: 20px; font-weight: 500; color: #5A7A8E; }
+  .arrow-down { width: 3px; height: 28px; background: #D0DDE6; border-radius: 2px; margin-left: 38px; }
 
   /* ── S5 checklist ── */
-  .check-list { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 22px; }
-  .check-item { display: flex; align-items: center; gap: 20px; padding: 20px 24px; background: #F4F7F8; border-radius: 16px; }
-  .check-circle { width: 44px; height: 44px; background: #16C3CC; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .check-text { font-size: 22px; font-weight: 600; color: #0D1F2D; line-height: 1.3; }
-  .check-text span { font-weight: 400; color: #3D5A6E; font-size: 18px; display: block; margin-top: 2px; }
+  .checks { flex: 1; display: flex; flex-direction: column; gap: 18px; justify-content: center; }
+  .check { display: flex; align-items: center; gap: 22px; background: #F4F7F8; border-radius: 18px; padding: 24px 28px; }
+  .chk-circle { width: 52px; height: 52px; background: #16C3CC; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .chk-main { font-size: 24px; font-weight: 700; color: #0D1F2D; line-height: 1.3; }
+  .chk-sub  { font-size: 18px; font-weight: 500; color: #5A7A8E; margin-top: 3px; }
 
   /* ── S6 cost ── */
-  .cost-box { background: #FFF5F5; border: 2px solid rgba(255,82,82,0.2); border-radius: 20px; padding: 36px 40px; margin-bottom: 28px; }
-  .cost-calc { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
-  .cost-num { font-family: 'Barlow Condensed', sans-serif; font-size: 38px; font-weight: 900; color: #0D1F2D; }
-  .cost-op { font-family: 'Barlow Condensed', sans-serif; font-size: 32px; font-weight: 700; color: #8096AA; }
-  .cost-result { font-family: 'Barlow Condensed', sans-serif; font-size: 74px; font-weight: 900; color: #FF5252; line-height: 1; }
-  .cost-label { font-size: 20px; font-weight: 500; color: #3D5A6E; }
-  .cost-obs { font-size: 21px; font-weight: 600; color: #0D1F2D; line-height: 1.5; }
-  .cost-obs .red { color: #FF5252; }
+  .cost-card {
+    background: #FFF4F4; border: 2px solid rgba(255,68,68,0.25);
+    border-radius: 20px; padding: 36px 40px; margin-bottom: 28px;
+  }
+  .cost-eq { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
+  .cn { font-family: 'Barlow Condensed', sans-serif; font-size: 44px; font-weight: 900; color: #0D1F2D; }
+  .co { font-family: 'Barlow Condensed', sans-serif; font-size: 38px; font-weight: 700; color: #8096AA; }
+  .cr { font-family: 'Barlow Condensed', sans-serif; font-size: 86px; font-weight: 900; color: #FF4444; line-height: 1; }
+  .cd { font-size: 18px; font-weight: 500; color: #FF4444; margin-top: -8px; }
+  .cost-items { display: flex; flex-direction: column; gap: 16px; }
+  .ci { display: flex; align-items: flex-start; gap: 16px; font-size: 24px; font-weight: 600; color: #0D1F2D; line-height: 1.4; }
+  .ci-icon { font-size: 28px; flex-shrink: 0; }
 
   /* ── S7 two paths ── */
-  .two-paths { flex: 1; display: flex; gap: 24px; }
-  .path { flex: 1; border-radius: 20px; padding: 30px 26px; display: flex; flex-direction: column; }
-  .path.bad { background: #FFF5F5; border: 2px solid rgba(255,82,82,0.2); }
-  .path.good { background: rgba(22,195,204,0.06); border: 2px solid rgba(22,195,204,0.3); }
-  .path-label { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
-  .path.bad .path-label { color: #FF5252; }
+  .paths { display: flex; gap: 20px; flex: 1; }
+  .path { flex: 1; border-radius: 20px; padding: 28px 26px; display: flex; flex-direction: column; gap: 14px; }
+  .path.bad  { background: #FFF4F4; border: 2px solid rgba(255,68,68,0.25); }
+  .path.good { background: rgba(22,195,204,0.06); border: 2px solid rgba(22,195,204,0.35); }
+  .path-label { font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+  .path.bad  .path-label { color: #FF4444; }
   .path.good .path-label { color: #16C3CC; }
-  .path-title { font-family: 'Barlow Condensed', sans-serif; font-size: 30px; font-weight: 900; margin-bottom: 20px; line-height: 1.1; text-transform: uppercase; }
-  .path.bad .path-title { color: #0D1F2D; }
-  .path.good .path-title { color: #0D1F2D; }
-  .path-item { display: flex; align-items: flex-start; gap: 10px; font-size: 18px; font-weight: 500; color: #3D5A6E; line-height: 1.4; margin-bottom: 12px; }
-  .path-item .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 7px; }
-  .path.bad .dot { background: #FF5252; }
-  .path.good .dot { background: #16C3CC; }
-  .path-footer { margin-top: auto; font-size: 18px; font-weight: 700; padding-top: 16px; border-top: 1px solid; line-height: 1.4; }
-  .path.bad .path-footer { border-color: rgba(255,82,82,0.2); color: #FF5252; }
-  .path.good .path-footer { border-color: rgba(22,195,204,0.2); color: #16C3CC; }
+  .path-head { font-family: 'Barlow Condensed', sans-serif; font-size: 36px; font-weight: 900; color: #0D1F2D; text-transform: uppercase; line-height: 1.05; }
+  .path-row { display: flex; align-items: flex-start; gap: 10px; font-size: 20px; font-weight: 600; color: #2C4A5E; line-height: 1.35; }
+  .pdot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; margin-top: 7px; }
+  .path.bad  .pdot { background: #FF4444; }
+  .path.good .pdot { background: #16C3CC; }
+  .path-foot { margin-top: auto; padding-top: 14px; border-top: 2px solid; font-size: 19px; font-weight: 700; line-height: 1.3; }
+  .path.bad  .path-foot { border-color: rgba(255,68,68,0.2); color: #FF4444; }
+  .path.good .path-foot { border-color: rgba(22,195,204,0.2); color: #16C3CC; }
+
+  /* ═══════════════ S8 CTA ═══════════════ */
+  #s8 { background: #0D1F2D; }
+  #s8 .bar { background: #16C3CC; }
+  #s8 .brand { color: rgba(255,255,255,0.18); }
+  #s8 .brand b { color: #16C3CC; }
+  #s8 .inner2 { align-items: center; justify-content: center; text-align: center; }
+  #s8 h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 84px; font-weight: 900; color: #FFFFFF; text-transform: uppercase; line-height: 0.95; margin-bottom: 24px; }
+  #s8 h2 em { color: #16C3CC; font-style: normal; display: block; }
+  #s8 .s8-sub { font-size: 26px; font-weight: 600; color: rgba(255,255,255,0.55); line-height: 1.55; margin-bottom: 52px; max-width: 720px; }
+  #s8 .btn { background: #16C3CC; color: #0D1F2D; font-size: 28px; font-weight: 800; padding: 24px 64px; border-radius: 100px; display: inline-block; margin-bottom: 14px; letter-spacing: 0.04em; }
+  #s8 .btn-sub { font-size: 22px; font-weight: 500; color: rgba(255,255,255,0.35); }
 </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════
-     SLIDE 1 — CAPA
-═══════════════════════════════════════ -->
+<!-- ═══ S1 CAPA — fundo branco ═══ -->
 <div class="slide" id="s1">
   <div class="bar"></div>
   <div class="snum">01 / 08</div>
 
-  <!-- illustration: person looking at two signs -->
-  <div class="illus">
-    <svg width="300" height="320" viewBox="0 0 300 320" fill="none">
-      <!-- sign post -->
-      <rect x="148" y="120" width="8" height="180" rx="4" fill="#1E3A4A"/>
+  <!-- person illustration top right -->
+  <div style="position:absolute;top:52px;right:52px;z-index:1;">
+    <svg width="260" height="300" viewBox="0 0 260 300" fill="none">
+      <!-- post sign -->
+      <rect x="118" y="80" width="8" height="180" rx="4" fill="#D0DDE6"/>
       <!-- booking sign -->
-      <rect x="100" y="80" width="140" height="52" rx="10" fill="#1E3A4A"/>
-      <text x="170" y="113" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="18" font-weight="700" fill="#8096AA">Booking.com</text>
+      <rect x="64" y="52" width="148" height="50" rx="10" fill="#EEF3F7"/>
+      <text x="138" y="82" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="17" font-weight="700" fill="#8096AA">Booking.com</text>
+      <text x="138" y="98" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="12" font-weight="600" fill="#AAB8C2">18% comissão</text>
       <!-- motor sign -->
-      <rect x="60" y="142" width="152" height="52" rx="10" fill="rgba(22,195,204,0.15)" stroke="#16C3CC" stroke-width="1.5"/>
-      <text x="136" y="175" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="14" font-weight="700" fill="#16C3CC">Motor SmartGuest</text>
-      <!-- person body -->
-      <ellipse cx="230" cy="190" rx="32" ry="34" fill="#D4A574"/>
-      <path d="M198 220 Q200 180 230 172 Q260 164 262 180 Q256 220 262 280 L198 280 Z" fill="#2A4A5E"/>
-      <rect x="212" y="206" width="14" height="16" rx="4" fill="#C8956C"/>
-      <!-- hair -->
-      <path d="M198 182 Q200 158 230 154 Q260 150 262 182 Q254 164 230 162 Q206 164 198 182Z" fill="#3D2810"/>
-      <!-- face: puzzled -->
-      <ellipse cx="221" cy="188" rx="5" ry="4" fill="#2A1808"/>
-      <ellipse cx="239" cy="188" rx="5" ry="4" fill="#2A1808"/>
-      <path d="M221 199 Q230 203 239 199" stroke="#8B5A3A" stroke-width="2" fill="none" stroke-linecap="round"/>
-      <path d="M226 178 Q230 176 234 178" stroke="#3D2810" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-      <!-- arm pointing at signs -->
-      <path d="M200 240 Q180 220 152 200" stroke="#2A4A5E" stroke-width="20" stroke-linecap="round" fill="none"/>
-      <path d="M152 200 Q145 196 140 194" stroke="#C8956C" stroke-width="16" stroke-linecap="round" fill="none"/>
-      <!-- question mark -->
-      <text x="244" y="158" font-family="'Barlow Condensed',sans-serif" font-size="36" font-weight="900" fill="rgba(232,168,80,0.7)">?</text>
+      <rect x="44" y="114" width="158" height="50" rx="10" fill="rgba(22,195,204,0.12)" stroke="#16C3CC" stroke-width="2"/>
+      <text x="123" y="143" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="15" font-weight="700" fill="#16C3CC">Motor SmartGuest</text>
+      <text x="123" y="158" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="12" font-weight="600" fill="#16C3CC">zero comissão</text>
+      <!-- person -->
+      <ellipse cx="196" cy="192" rx="30" ry="32" fill="#D4A574"/>
+      <path d="M166 222 Q169 210 196 206 Q223 202 225 212 Q222 240 228 278 L164 278 Z" fill="#2A4A5E"/>
+      <rect x="185" y="208" width="14" height="17" rx="4" fill="#C8956C"/>
+      <path d="M164 222 Q155 236 156 278" stroke="#2A4A5E" stroke-width="20" stroke-linecap="round" fill="none"/>
+      <path d="M226 214 Q236 230 232 278" stroke="#2A4A5E" stroke-width="20" stroke-linecap="round" fill="none"/>
+      <path d="M166 185 Q168 163 196 160 Q224 157 226 185 Q218 170 196 168 Q174 170 166 185Z" fill="#3D2810"/>
+      <ellipse cx="186" cy="190" rx="5.5" ry="4.5" fill="#2A1808"/>
+      <ellipse cx="206" cy="190" rx="5.5" ry="4.5" fill="#2A1808"/>
+      <path d="M188 178 Q196 174 204 178" stroke="#3D2810" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M188 200 Q196 204 204 200" stroke="#8B5A3A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <text x="218" y="168" font-size="26">🤔</text>
     </svg>
   </div>
 
   <div class="inner">
-    <div class="pill">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#16C3CC" stroke-width="2"/><path d="M12 8v4l3 3" stroke="#16C3CC" stroke-width="2" stroke-linecap="round"/></svg>
-      Motor de Reservas
-    </div>
+    <div class="pill">Motor de Reservas</div>
     <h1>
-      Motor de reservas
-      <span class="teal">não traz hóspede.</span>
-      <span class="red">O Booking traz.</span>
+      Motor não<br>traz hóspede.
+      <span class="teal">O Booking</span>
+      <span class="red">traz. E cobra 18%.</span>
     </h1>
-    <div class="sub">E cobra 18% por isso.<br>Entender essa diferença muda tudo.</div>
+    <div class="sub">
+      Entender essa diferença<br><strong>muda tudo no seu negócio.</strong>
+    </div>
   </div>
-
-  <div class="brand-tag">Smart<span>Guest</span></div>
+  <div class="brand">Smart<b>Guest</b></div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     SLIDE 2 — COMPARAÇÃO
-═══════════════════════════════════════ -->
-<div class="slide ws" id="s2">
+<!-- ═══ S2 COMPARAÇÃO ═══ -->
+<div class="slide" id="s2">
   <div class="bar"></div>
   <div class="snum">02 / 08</div>
-  <div class="inner">
-    <div class="eyebrow">A comparação errada</div>
-    <div class="ws-title">São ferramentas<br>completamente diferentes.</div>
-
-    <div class="compare-row">
-      <!-- Booking column -->
-      <div class="col booking">
-        <!-- person going to booking -->
-        <svg width="56" height="64" viewBox="0 0 56 64" style="margin-bottom:12px">
-          <ellipse cx="28" cy="16" rx="12" ry="13" fill="#C8956C"/>
-          <path d="M16 28 Q18 18 28 16 Q38 14 40 18 Q38 36 42 56 L14 56 Z" fill="#8096AA"/>
-          <path d="M14 56 Q10 42 8 36" stroke="#8096AA" stroke-width="8" stroke-linecap="round" fill="none"/>
-          <path d="M8 36 Q6 30 4 28" stroke="#C8956C" stroke-width="6" stroke-linecap="round" fill="none"/>
-          <path d="M14 26 Q22 14 36 10" stroke="#8096AA" stroke-width="7" stroke-linecap="round" fill="none"/>
-          <path d="M36 10 Q42 8 46 8" stroke="#C8956C" stroke-width="5" stroke-linecap="round" fill="none"/>
-        </svg>
-        <div class="col-label">O que é</div>
-        <div class="col-name">Booking<br>.com</div>
-        <div class="col-item"><div class="col-dot"></div>Marketplace com milhões de hóspedes buscando hotéis</div>
-        <div class="col-item"><div class="col-dot"></div>Investe pesado em Google, TV e mídia paga</div>
-        <div class="col-item"><div class="col-dot"></div>Gera o tráfego por você</div>
-        <div class="col-footer">Cobra 15–20% de comissão por reserva</div>
+  <div class="inner2">
+    <div class="ey">A comparação errada</div>
+    <div class="tit">São ferramentas<br>diferentes.</div>
+    <div class="cols">
+      <div class="col bk">
+        <div>
+          <div class="col-type">O que é</div>
+          <div class="col-head">Booking<br>.com</div>
+        </div>
+        <div class="col-row"><div class="dot"></div>Marketplace global que gera tráfego</div>
+        <div class="col-row"><div class="dot"></div>Investe em Google, TV e mídia</div>
+        <div class="col-row"><div class="dot"></div>Traz o hóspede por você</div>
+        <div class="col-foot">Cobra 15–20% de cada reserva</div>
       </div>
-
-      <!-- SmartGuest column -->
-      <div class="col smartguest">
-        <!-- person going to motor -->
-        <svg width="56" height="64" viewBox="0 0 56 64" style="margin-bottom:12px">
-          <ellipse cx="28" cy="16" rx="12" ry="13" fill="#D4A574"/>
-          <path d="M16 28 Q18 18 28 16 Q38 14 40 18 Q38 36 42 56 L14 56 Z" fill="#2A4A5E"/>
-          <path d="M14 56 Q10 42 8 36" stroke="#2A4A5E" stroke-width="8" stroke-linecap="round" fill="none"/>
-          <path d="M8 36 Q6 30 4 28" stroke="#C8956C" stroke-width="6" stroke-linecap="round" fill="none"/>
-          <path d="M42 32 Q48 28 52 24" stroke="#2A4A5E" stroke-width="7" stroke-linecap="round" fill="none"/>
-          <path d="M52 24 Q55 21 56 19" stroke="#C8956C" stroke-width="5" stroke-linecap="round" fill="none"/>
-          <circle cx="52" cy="12" r="8" fill="rgba(22,195,204,0.2)" stroke="#16C3CC" stroke-width="1.5"/>
-          <path d="M49 12l2 2 4-4" stroke="#16C3CC" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-        <div class="col-label">O que é</div>
-        <div class="col-name">Motor<br>SmartGuest</div>
-        <div class="col-item"><div class="col-dot"></div>Canal de venda direto no seu site</div>
-        <div class="col-item"><div class="col-dot"></div>Converte quem já chegou até você</div>
-        <div class="col-item"><div class="col-dot"></div>Você gera o tráfego — e fica com a margem</div>
-        <div class="col-footer">Zero comissão. O hóspede é seu.</div>
+      <div class="col sg">
+        <div>
+          <div class="col-type">O que é</div>
+          <div class="col-head">Motor<br>SmartGuest</div>
+        </div>
+        <div class="col-row"><div class="dot"></div>Canal de venda direto no seu site</div>
+        <div class="col-row"><div class="dot"></div>Converte quem já chegou até você</div>
+        <div class="col-row"><div class="dot"></div>Você gera o tráfego — fica com a margem</div>
+        <div class="col-foot">Zero comissão. O hóspede é seu.</div>
       </div>
     </div>
   </div>
-  <div class="brand-tag">Smart<span>Guest</span></div>
+  <div class="brand">Smart<b>Guest</b></div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     SLIDE 3 — A PERGUNTA CERTA
-═══════════════════════════════════════ -->
-<div class="slide ws" id="s3">
+<!-- ═══ S3 COMO CHEGA ═══ -->
+<div class="slide" id="s3">
   <div class="bar"></div>
   <div class="snum">03 / 08</div>
-  <div class="inner">
-    <div class="eyebrow">A pergunta certa</div>
-    <div class="ws-title">Como o hóspede<br>chega até seu motor?</div>
-
-    <div class="traffic-center">
-      <!-- SVG person with phone -->
-      <svg width="170" height="220" viewBox="0 0 170 220" fill="none" style="flex-shrink:0">
-        <!-- phone -->
-        <rect x="52" y="100" width="66" height="108" rx="10" fill="#0D1F2D"/>
-        <rect x="56" y="105" width="58" height="94" rx="6" fill="#16C3CC" opacity="0.15"/>
-        <rect x="60" y="110" width="50" height="80" rx="4" fill="#1E3A4A"/>
-        <!-- screen: motor smartguest -->
-        <rect x="64" y="115" width="42" height="8" rx="2" fill="rgba(22,195,204,0.6)"/>
-        <rect x="64" y="127" width="30" height="5" rx="2" fill="rgba(255,255,255,0.2)"/>
-        <rect x="64" y="136" width="36" height="5" rx="2" fill="rgba(255,255,255,0.15)"/>
-        <rect x="64" y="150" width="42" height="16" rx="6" fill="#16C3CC"/>
-        <text x="85" y="162" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="7" font-weight="700" fill="#0D1F2D">RESERVAR</text>
-        <!-- person -->
-        <ellipse cx="85" cy="36" rx="26" ry="28" fill="#D4A574"/>
-        <path d="M59 62 Q62 50 85 46 Q108 42 111 52 Q108 78 114 100 L56 100 Z" fill="#2A4A5E"/>
-        <rect x="76" y="50" width="12" height="14" rx="4" fill="#C8956C"/>
-        <path d="M59 62 Q52 75 50 100" stroke="#2A4A5E" stroke-width="18" stroke-linecap="round" fill="none"/>
-        <path d="M111 52 Q124 66 120 100" stroke="#2A4A5E" stroke-width="18" stroke-linecap="round" fill="none"/>
-        <!-- hair -->
-        <path d="M59 30 Q61 14 85 11 Q109 8 111 30 Q104 18 85 16 Q66 18 59 30Z" fill="#3D2810"/>
-        <!-- happy face -->
-        <ellipse cx="77" cy="34" rx="4.5" ry="3.5" fill="#2A1808"/>
-        <ellipse cx="93" cy="34" rx="4.5" ry="3.5" fill="#2A1808"/>
-        <path d="M77 43 Q85 47 93 43" stroke="#8B5A3A" stroke-width="2" fill="none" stroke-linecap="round"/>
-      </svg>
-
-      <!-- traffic sources list -->
-      <div class="traffic-sources">
-        <div class="source-chip">
-          <div class="icon ic-ig">📸</div>
-          Instagram e redes sociais
+  <div class="inner2">
+    <div class="ey">A pergunta certa</div>
+    <div class="tit">Como o hóspede<br>chega até<br>seu <em>motor</em>?</div>
+    <div class="s3-body">
+      <div style="flex:1;display:flex;flex-direction:column;gap:0;">
+        <div class="chips">
+          <div class="chip"><div class="chip-icon" style="background:linear-gradient(135deg,#f09433,#dc2743);">📸</div>Instagram e redes sociais</div>
+          <div class="chip"><div class="chip-icon" style="background:#25D366;">💬</div>WhatsApp e indicações</div>
+          <div class="chip"><div class="chip-icon" style="background:#4285F4;">🔍</div>Google e Google Ads</div>
+          <div class="chip"><div class="chip-icon" style="background:#E8A850;">🔄</div>Hóspede que já ficou</div>
         </div>
-        <div class="source-chip">
-          <div class="icon ic-wa">💬</div>
-          WhatsApp e indicações
-        </div>
-        <div class="source-chip">
-          <div class="icon ic-go">🔍</div>
-          Google e Google Hotel Ads
-        </div>
-        <div class="source-chip">
-          <div class="icon ic-ret">🏨</div>
-          Hóspede que já ficou
-        </div>
-        <div class="source-chip">
-          <div class="icon ic-ind">🔗</div>
-          QR code no balcão
+        <div class="note" style="margin-top:16px;">
+          Motor não gera tráfego.<br><em>Você gera.</em> Motor converte.
         </div>
       </div>
-    </div>
-
-    <div style="background:#F4F7F8; border-left:4px solid #16C3CC; border-radius:0 12px 12px 0; padding:18px 22px; margin-top:20px; font-size:20px; font-weight:600; color:#0D1F2D; line-height:1.5;">
-      Motor não gera tráfego. <strong style="color:#16C3CC;">Você gera.</strong> Motor converte.
+      <!-- person with phone -->
+      <svg width="190" height="260" viewBox="0 0 190 260" fill="none" style="flex-shrink:0">
+        <rect x="52" y="96" width="70" height="122" rx="11" fill="#0D1F2D"/>
+        <rect x="57" y="101" width="60" height="110" rx="6" fill="#1E3A4A"/>
+        <rect x="62" y="107" width="50" height="9" rx="3" fill="rgba(22,195,204,0.6)"/>
+        <rect x="62" y="120" width="38" height="5" rx="2" fill="rgba(255,255,255,0.2)"/>
+        <rect x="62" y="130" width="46" height="5" rx="2" fill="rgba(255,255,255,0.12)"/>
+        <rect x="62" y="145" width="50" height="20" rx="7" fill="#16C3CC"/>
+        <text x="87" y="159" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="8" font-weight="800" fill="#0D1F2D">RESERVAR</text>
+        <ellipse cx="87" cy="32" rx="28" ry="30" fill="#D4A574"/>
+        <path d="M59 60 Q62 48 87 44 Q112 40 114 50 Q112 76 118 96 L56 96 Z" fill="#2A4A5E"/>
+        <rect x="78" y="48" width="13" height="15" rx="4" fill="#C8956C"/>
+        <path d="M59 60 Q50 74 52 96" stroke="#2A4A5E" stroke-width="20" stroke-linecap="round" fill="none"/>
+        <path d="M114 52 Q124 68 120 96" stroke="#2A4A5E" stroke-width="20" stroke-linecap="round" fill="none"/>
+        <path d="M59 25 Q61 8 87 5 Q113 2 115 25 Q107 13 87 11 Q67 13 59 25Z" fill="#3D2810"/>
+        <ellipse cx="78" cy="31" rx="5" ry="4" fill="#2A1808"/>
+        <ellipse cx="96" cy="31" rx="5" ry="4" fill="#2A1808"/>
+        <path d="M77 42 Q87 47 97 42" stroke="#8B5A3A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      </svg>
     </div>
   </div>
-  <div class="brand-tag">Smart<span>Guest</span></div>
+  <div class="brand">Smart<b>Guest</b></div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     SLIDE 4 — A JORNADA DO HÓSPEDE (novo)
-═══════════════════════════════════════ -->
-<div class="slide ws" id="s4">
+<!-- ═══ S4 JORNADA ═══ -->
+<div class="slide" id="s4">
   <div class="bar"></div>
   <div class="snum">04 / 08</div>
-  <div class="inner">
-    <div class="eyebrow">O caminho certo</div>
-    <div class="ws-title">Da descoberta<br>à reserva direta.</div>
-
-    <div class="journey">
-      <!-- Step row -->
-      <div style="display:flex; align-items:flex-start; gap:0; flex:1; justify-content:space-between; padding:0 10px;">
-
-        <!-- Step 1 -->
-        <div style="display:flex;flex-direction:column;align-items:center;width:180px;">
-          <div style="width:80px;height:80px;background:linear-gradient(135deg,#f09433,#dc2743);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:32px;margin-bottom:14px;">📸</div>
-          <!-- person illustration small -->
-          <svg width="52" height="60" viewBox="0 0 52 60" style="margin-bottom:10px">
-            <ellipse cx="26" cy="14" rx="11" ry="12" fill="#D4A574"/>
-            <path d="M15 24 Q17 16 26 14 Q35 12 37 16 Q35 34 38 52 L14 52 Z" fill="#9B59B6"/>
-            <path d="M14 24 Q9 32 8 52" stroke="#9B59B6" stroke-width="7" stroke-linecap="round" fill="none"/>
-            <path d="M38 18 Q44 26 42 52" stroke="#9B59B6" stroke-width="7" stroke-linecap="round" fill="none"/>
-          </svg>
-          <div style="font-size:16px;font-weight:700;color:#0D1F2D;text-align:center;line-height:1.3;">Vê seu post<br>no Instagram</div>
-        </div>
-
-        <!-- Arrow -->
-        <div style="display:flex;align-items:center;padding-top:36px;flex-shrink:0;">
-          <svg width="40" height="24" viewBox="0 0 40 24" fill="none"><path d="M0 12h32M24 4l8 8-8 8" stroke="#16C3CC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
-        <!-- Step 2 -->
-        <div style="display:flex;flex-direction:column;align-items:center;width:180px;">
-          <div style="width:80px;height:80px;background:#EEF6FF;border:2px solid #BFDBFE;border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:32px;margin-bottom:14px;">🌐</div>
-          <svg width="52" height="60" viewBox="0 0 52 60" style="margin-bottom:10px">
-            <ellipse cx="26" cy="14" rx="11" ry="12" fill="#D4A574"/>
-            <path d="M15 24 Q17 16 26 14 Q35 12 37 16 Q35 34 38 52 L14 52 Z" fill="#E67E22"/>
-            <path d="M14 24 Q9 32 8 52" stroke="#E67E22" stroke-width="7" stroke-linecap="round" fill="none"/>
-            <path d="M38 18 Q44 26 42 52" stroke="#E67E22" stroke-width="7" stroke-linecap="round" fill="none"/>
-          </svg>
-          <div style="font-size:16px;font-weight:700;color:#0D1F2D;text-align:center;line-height:1.3;">Acessa<br>seu site</div>
-        </div>
-
-        <!-- Arrow -->
-        <div style="display:flex;align-items:center;padding-top:36px;flex-shrink:0;">
-          <svg width="40" height="24" viewBox="0 0 40 24" fill="none"><path d="M0 12h32M24 4l8 8-8 8" stroke="#16C3CC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
-        <!-- Step 3 -->
-        <div style="display:flex;flex-direction:column;align-items:center;width:180px;">
-          <div style="width:80px;height:80px;background:rgba(22,195,204,0.1);border:2px solid rgba(22,195,204,0.3);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:32px;margin-bottom:14px;">🏨</div>
-          <svg width="52" height="60" viewBox="0 0 52 60" style="margin-bottom:10px">
-            <ellipse cx="26" cy="14" rx="11" ry="12" fill="#D4A574"/>
-            <path d="M15 24 Q17 16 26 14 Q35 12 37 16 Q35 34 38 52 L14 52 Z" fill="#2A4A5E"/>
-            <path d="M14 24 Q9 32 8 52" stroke="#2A4A5E" stroke-width="7" stroke-linecap="round" fill="none"/>
-            <path d="M38 18 Q44 26 42 52" stroke="#2A4A5E" stroke-width="7" stroke-linecap="round" fill="none"/>
-          </svg>
-          <div style="font-size:16px;font-weight:700;color:#0D1F2D;text-align:center;line-height:1.3;">Motor<br>SmartGuest</div>
-        </div>
-
-        <!-- Arrow -->
-        <div style="display:flex;align-items:center;padding-top:36px;flex-shrink:0;">
-          <svg width="40" height="24" viewBox="0 0 40 24" fill="none"><path d="M0 12h32M24 4l8 8-8 8" stroke="#16C3CC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-
-        <!-- Step 4 -->
-        <div style="display:flex;flex-direction:column;align-items:center;width:180px;">
-          <div style="width:80px;height:80px;background:rgba(22,195,204,0.15);border:2px solid #16C3CC;border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:32px;margin-bottom:14px;">✅</div>
-          <svg width="52" height="60" viewBox="0 0 52 60" style="margin-bottom:10px">
-            <ellipse cx="26" cy="14" rx="11" ry="12" fill="#D4A574"/>
-            <path d="M15 24 Q17 16 26 14 Q35 12 37 16 Q35 34 38 52 L14 52 Z" fill="#27AE60"/>
-            <path d="M14 24 Q9 32 8 52" stroke="#27AE60" stroke-width="7" stroke-linecap="round" fill="none"/>
-            <path d="M38 18 Q44 26 42 52" stroke="#27AE60" stroke-width="7" stroke-linecap="round" fill="none"/>
-          </svg>
-          <div style="font-size:16px;font-weight:700;color:#16C3CC;text-align:center;line-height:1.3;">Reserva<br>direta ✓</div>
+  <div class="inner2">
+    <div class="ey">O caminho certo</div>
+    <div class="tit">Da descoberta<br>à reserva direta.</div>
+    <div class="steps">
+      <div class="step-row">
+        <div class="step-icon-big" style="background:linear-gradient(135deg,#f09433,#dc2743);">📸</div>
+        <div>
+          <div class="step-text">Vê seu post no Instagram</div>
+          <div class="step-sub">Conteúdo que atrai e gera interesse</div>
         </div>
       </div>
-
-      <!-- bottom note -->
-      <div style="background:rgba(22,195,204,0.07);border:1.5px solid rgba(22,195,204,0.2);border-radius:14px;padding:18px 24px;margin-top:28px;text-align:center;font-size:19px;font-weight:600;color:#0D1F2D;line-height:1.5;">
-        O motor resolve o <em style="color:#16C3CC;font-style:normal;">passo 3</em>. Os passos 1 e 2 são <strong>sua responsabilidade.</strong>
+      <div class="arrow-down"></div>
+      <div class="step-row">
+        <div class="step-icon-big" style="background:#EEF3F7;">🌐</div>
+        <div>
+          <div class="step-text">Acessa o seu site</div>
+          <div class="step-sub">Busca informações, vê fotos, se interessa</div>
+        </div>
+      </div>
+      <div class="arrow-down"></div>
+      <div class="step-row">
+        <div class="step-icon-big" style="background:rgba(22,195,204,0.1);border:2px solid rgba(22,195,204,0.35);">🏨</div>
+        <div>
+          <div class="step-text">Clica no Motor SmartGuest</div>
+          <div class="step-sub">Processo simples, preço correto, confiança</div>
+        </div>
+      </div>
+      <div class="arrow-down"></div>
+      <div class="step-row">
+        <div class="step-icon-big" style="background:rgba(22,195,204,0.15);border:2px solid #16C3CC;">✅</div>
+        <div>
+          <div class="step-text" style="color:#16C3CC;">Reserva direta confirmada</div>
+          <div class="step-sub">Zero comissão. Hóspede é seu.</div>
+        </div>
+      </div>
+      <div style="background:rgba(22,195,204,0.08);border-left:5px solid #16C3CC;border-radius:0 14px 14px 0;padding:20px 26px;margin-top:8px;font-size:22px;font-weight:700;color:#0D1F2D;line-height:1.4;">
+        O motor resolve o <span style="color:#16C3CC;">passo 3</span>. Os passos 1 e 2 são <strong>sua responsabilidade.</strong>
       </div>
     </div>
   </div>
-  <div class="brand-tag">Smart<span>Guest</span></div>
+  <div class="brand">Smart<b>Guest</b></div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     SLIDE 5 — O QUE UM BOM MOTOR FAZ
-═══════════════════════════════════════ -->
-<div class="slide ws" id="s5">
+<!-- ═══ S5 O QUE CONVERTE ═══ -->
+<div class="slide" id="s5">
   <div class="bar"></div>
   <div class="snum">05 / 08</div>
-  <div class="inner">
-    <div class="eyebrow">Motor de Reservas SmartGuest</div>
-    <div class="ws-title">Quando o hóspede<br>chega — ele <em>converte.</em></div>
-
-    <div style="display:flex;gap:28px;flex:1;align-items:center;">
-      <!-- checklist -->
-      <div style="flex:1;display:flex;flex-direction:column;gap:18px;">
-        <div class="check-item">
-          <div class="check-circle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div class="check-text">Mesmo preço em todos os canais
-            <span>Sem surpresa na hora de fechar</span>
-          </div>
-        </div>
-        <div class="check-item">
-          <div class="check-circle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div class="check-text">Processo em menos de 3 cliques
-            <span>Rápido, simples, sem redirecionar para WhatsApp</span>
-          </div>
-        </div>
-        <div class="check-item">
-          <div class="check-circle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div class="check-text">Confirmação automática na hora
-            <span>Hóspede não fica sem resposta</span>
-          </div>
-        </div>
-        <div class="check-item">
-          <div class="check-circle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div class="check-text">Integrado ao PMS em tempo real
-            <span>Zero overbooking, disponibilidade sempre correta</span>
-          </div>
-        </div>
+  <div class="inner2">
+    <div class="ey">Motor SmartGuest</div>
+    <div class="tit">Quando chega,<br><em>ele converte.</em></div>
+    <div class="checks">
+      <div class="check">
+        <div class="chk-circle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="chk-main">Mesmo preço em todos os canais</div><div class="chk-sub">Sem surpresa na hora de fechar</div></div>
       </div>
-
-      <!-- person illustration with phone -->
-      <svg width="200" height="280" viewBox="0 0 200 280" fill="none" style="flex-shrink:0">
-        <!-- phone -->
-        <rect x="60" y="110" width="80" height="140" rx="12" fill="#0D1F2D"/>
-        <rect x="65" y="116" width="70" height="124" rx="7" fill="#1E3A4A"/>
-        <!-- screen: success -->
-        <rect x="70" y="122" width="60" height="10" rx="3" fill="rgba(22,195,204,0.5)"/>
-        <rect x="70" y="136" width="44" height="6" rx="2" fill="rgba(255,255,255,0.15)"/>
-        <rect x="70" y="146" width="52" height="6" rx="2" fill="rgba(255,255,255,0.1)"/>
-        <rect x="70" y="158" width="60" height="22" rx="8" fill="#16C3CC"/>
-        <text x="100" y="173" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="9" font-weight="800" fill="#0D1F2D">RESERVADO ✓</text>
-        <rect x="70" y="186" width="60" height="6" rx="2" fill="rgba(255,255,255,0.08)"/>
-        <rect x="70" y="196" width="40" height="6" rx="2" fill="rgba(255,255,255,0.06)"/>
-        <!-- person -->
-        <ellipse cx="100" cy="38" rx="32" ry="34" fill="#D4A574"/>
-        <path d="M68 70 Q71 58 100 53 Q129 48 132 60 Q129 92 136 112 L64 112 Z" fill="#2A4A5E"/>
-        <rect x="90" y="56" width="16" height="18" rx="5" fill="#C8956C"/>
-        <path d="M68 70 Q58 84 60 112" stroke="#2A4A5E" stroke-width="22" stroke-linecap="round" fill="none"/>
-        <path d="M132 62 Q146 78 140 112" stroke="#2A4A5E" stroke-width="22" stroke-linecap="round" fill="none"/>
-        <!-- hair -->
-        <path d="M68 32 Q70 12 100 8 Q130 4 132 32 Q124 18 100 15 Q76 18 68 32Z" fill="#3D2810"/>
-        <!-- smile -->
-        <ellipse cx="89" cy="36" rx="5.5" ry="4" fill="#2A1808"/>
-        <ellipse cx="111" cy="36" rx="5.5" ry="4" fill="#2A1808"/>
-        <path d="M88 47 Q100 53 112 47" stroke="#8B5A3A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        <!-- star above head -->
-        <text x="136" y="24" font-size="22">⭐</text>
-      </svg>
+      <div class="check">
+        <div class="chk-circle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="chk-main">Menos de 3 cliques para reservar</div><div class="chk-sub">Rápido, simples, sem desvios</div></div>
+      </div>
+      <div class="check">
+        <div class="chk-circle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="chk-main">Confirmação automática na hora</div><div class="chk-sub">Hóspede não fica sem resposta</div></div>
+      </div>
+      <div class="check">
+        <div class="chk-circle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="chk-main">Integrado ao PMS em tempo real</div><div class="chk-sub">Zero overbooking, disponibilidade sempre certa</div></div>
+      </div>
     </div>
   </div>
-  <div class="brand-tag">Smart<span>Guest</span></div>
+  <div class="brand">Smart<b>Guest</b></div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     SLIDE 6 — O CUSTO DA DEPENDÊNCIA
-═══════════════════════════════════════ -->
-<div class="slide ws" id="s6">
+<!-- ═══ S6 CUSTO ═══ -->
+<div class="slide" id="s6">
   <div class="bar"></div>
   <div class="snum">06 / 08</div>
-  <div class="inner">
-    <div class="eyebrow">O custo que você não vê</div>
-    <div class="ws-title">Depender só do<br>Booking.com <span class="red">sai caro.</span></div>
-
-    <!-- calculation -->
-    <div class="cost-box">
-      <div class="cost-calc">
-        <div style="display:flex;flex-direction:column;align-items:center;">
-          <div class="cost-num">100</div>
-          <div style="font-size:13px;color:#8096AA;font-weight:600;">reservas</div>
-        </div>
-        <div class="cost-op">×</div>
-        <div style="display:flex;flex-direction:column;align-items:center;">
-          <div class="cost-num">R$350</div>
-          <div style="font-size:13px;color:#8096AA;font-weight:600;">diária média</div>
-        </div>
-        <div class="cost-op">×</div>
-        <div style="display:flex;flex-direction:column;align-items:center;">
-          <div class="cost-num">18%</div>
-          <div style="font-size:13px;color:#8096AA;font-weight:600;">comissão</div>
-        </div>
-        <div class="cost-op">=</div>
-        <div style="display:flex;flex-direction:column;align-items:center;">
-          <div class="cost-result">R$6.300</div>
-          <div style="font-size:13px;color:#FF5252;font-weight:700;">todo mês</div>
-        </div>
+  <div class="inner2">
+    <div class="ey">O custo que você não vê</div>
+    <div class="tit">Só no Booking.com,<br><span class="rd">sai caro.</span></div>
+    <div class="cost-card">
+      <div class="cost-eq">
+        <div style="text-align:center"><div class="cn">100</div><div style="font-size:15px;color:#8096AA;font-weight:600;">reservas</div></div>
+        <div class="co">×</div>
+        <div style="text-align:center"><div class="cn">R$350</div><div style="font-size:15px;color:#8096AA;font-weight:600;">diária média</div></div>
+        <div class="co">×</div>
+        <div style="text-align:center"><div class="cn">18%</div><div style="font-size:15px;color:#8096AA;font-weight:600;">comissão</div></div>
+        <div class="co">=</div>
+        <div style="text-align:center"><div class="cr">R$6.300</div><div class="cd">todo mês</div></div>
       </div>
     </div>
-
-    <div style="display:flex;gap:20px;flex:1;align-items:center;">
-      <div style="flex:1;display:flex;flex-direction:column;gap:16px;">
-        <div style="display:flex;align-items:flex-start;gap:14px;">
-          <div style="width:36px;height:36px;background:#FFF5F5;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;">💸</div>
-          <div style="font-size:20px;font-weight:600;color:#0D1F2D;line-height:1.4;"><strong>R$75.600/ano</strong> em comissões — só para um hotel médio</div>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:14px;">
-          <div style="width:36px;height:36px;background:#FFF5F5;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;">👤</div>
-          <div style="font-size:20px;font-weight:600;color:#0D1F2D;line-height:1.4;">O hóspede é do Booking. <span style="color:#FF5252;">Não é seu.</span></div>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:14px;">
-          <div style="width:36px;height:36px;background:#FFF5F5;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;">🔄</div>
-          <div style="font-size:20px;font-weight:600;color:#0D1F2D;line-height:1.4;">Na 2ª visita, ele <span style="color:#FF5252;">volta pelo Booking</span> de novo</div>
-        </div>
-      </div>
-      <!-- person looking at bill -->
-      <svg width="150" height="200" viewBox="0 0 150 200" fill="none" style="flex-shrink:0">
-        <ellipse cx="75" cy="38" rx="26" ry="28" fill="#D4A574"/>
-        <path d="M49 64 Q52 52 75 48 Q98 44 101 54 Q98 78 104 100 L46 100 Z" fill="#8096AA"/>
-        <rect x="64" y="52" width="14" height="16" rx="4" fill="#C8956C"/>
-        <path d="M46 64 Q38 76 38 100" stroke="#8096AA" stroke-width="18" stroke-linecap="round" fill="none"/>
-        <path d="M38 100 Q36 106 34 110" stroke="#C8956C" stroke-width="14" stroke-linecap="round" fill="none"/>
-        <!-- receipt in hand -->
-        <rect x="30" y="105" width="50" height="68" rx="4" fill="#FFFFFF" stroke="#E0E7EF" stroke-width="2"/>
-        <rect x="34" y="112" width="36" height="4" rx="2" fill="#E0E7EF"/>
-        <rect x="34" y="120" width="24" height="4" rx="2" fill="#E0E7EF"/>
-        <rect x="34" y="128" width="36" height="4" rx="2" fill="#FF5252" opacity="0.5"/>
-        <text x="36" y="154" font-family="'Barlow Condensed',sans-serif" font-size="13" font-weight="900" fill="#FF5252">R$6.300</text>
-        <!-- shocked face -->
-        <path d="M66 28 Q72 24 78 28" stroke="#3D2810" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        <ellipse cx="67" cy="38" rx="5" ry="4" fill="#2A1808"/>
-        <ellipse cx="83" cy="38" rx="5" ry="4" fill="#2A1808"/>
-        <circle cx="75" cy="48" r="4" fill="none" stroke="#8B5A3A" stroke-width="2"/>
-        <!-- sweat -->
-        <ellipse cx="98" cy="24" rx="4" ry="6" fill="rgba(22,195,204,0.5)" transform="rotate(-15,98,24)"/>
-      </svg>
+    <div class="cost-items">
+      <div class="ci"><div class="ci-icon">💸</div>R$75.600 por ano indo embora em comissões</div>
+      <div class="ci"><div class="ci-icon">👤</div>O hóspede é do Booking — <strong style="color:#FF4444;">não é seu</strong></div>
+      <div class="ci"><div class="ci-icon">🔄</div>Na 2ª visita, ele volta pelo <strong style="color:#FF4444;">Booking de novo</strong></div>
     </div>
   </div>
-  <div class="brand-tag">Smart<span>Guest</span></div>
+  <div class="brand">Smart<b>Guest</b></div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     SLIDE 7 — NA 2ª RESERVA (novo)
-═══════════════════════════════════════ -->
-<div class="slide ws" id="s7">
+<!-- ═══ S7 2ª RESERVA ═══ -->
+<div class="slide" id="s7">
   <div class="bar"></div>
   <div class="snum">07 / 08</div>
-  <div class="inner">
-    <div class="eyebrow">A diferença que muda o jogo</div>
-    <div class="ws-title">Na 2ª reserva,<br>tudo muda.</div>
-
-    <div class="two-paths">
-      <!-- path bad: via Booking -->
+  <div class="inner2">
+    <div class="ey">A diferença que muda o jogo</div>
+    <div class="tit">Na 2ª reserva,<br>tudo muda.</div>
+    <div class="paths">
       <div class="path bad">
         <div class="path-label">Via Booking.com</div>
-        <div class="path-title">O hóspede<br>voltou. Mas<br>não pra você.</div>
-        <!-- person going back to booking -->
-        <svg width="70" height="90" viewBox="0 0 70 90" style="margin:8px 0 16px">
-          <ellipse cx="35" cy="18" rx="14" ry="15" fill="#C8956C"/>
-          <path d="M21 32 Q24 22 35 20 Q46 18 48 24 Q46 46 50 72 L20 72 Z" fill="#8096AA"/>
-          <path d="M20 32 Q13 44 12 72" stroke="#8096AA" stroke-width="9" stroke-linecap="round" fill="none"/>
-          <path d="M50 26 Q58 38 56 72" stroke="#8096AA" stroke-width="9" stroke-linecap="round" fill="none"/>
-          <path d="M21 14 Q23 4 35 2 Q47 0 49 14 Q43 6 35 5 Q27 6 21 14Z" fill="#3D2810"/>
-          <ellipse cx="29" cy="18" rx="4" ry="3" fill="#2A1808"/>
-          <ellipse cx="41" cy="18" rx="4" ry="3" fill="#2A1808"/>
-          <!-- sad mouth -->
-          <path d="M29 27 Q35 24 41 27" stroke="#8B5A3A" stroke-width="2" fill="none" stroke-linecap="round"/>
-          <!-- money flying away -->
-          <text x="48" y="18" font-size="16">💸</text>
-        </svg>
-        <div class="path-item"><div class="dot"></div>Reservou pelo Booking de novo</div>
-        <div class="path-item"><div class="dot"></div>Você pagou mais 18%</div>
-        <div class="path-item"><div class="dot"></div>Você não tem o contato dele</div>
-        <div class="path-item"><div class="dot"></div>Não pode fazer oferta direta</div>
-        <div class="path-footer">O hóspede continua sendo do Booking.</div>
+        <div class="path-head">Voltou.<br>Mas não<br>pra você.</div>
+        <div class="path-row"><div class="pdot"></div>Reservou pelo Booking de novo</div>
+        <div class="path-row"><div class="pdot"></div>Você pagou mais 18%</div>
+        <div class="path-row"><div class="pdot"></div>Não tem o contato dele</div>
+        <div class="path-row"><div class="pdot"></div>Não pode fazer oferta direta</div>
+        <div class="path-foot">O hóspede continua sendo do Booking.</div>
       </div>
-
-      <!-- path good: via Motor SmartGuest -->
       <div class="path good">
         <div class="path-label">Via Motor SmartGuest</div>
-        <div class="path-title">O hóspede<br>voltou.<br>Direto pra você.</div>
-        <!-- person happy with direct booking -->
-        <svg width="70" height="90" viewBox="0 0 70 90" style="margin:8px 0 16px">
-          <ellipse cx="35" cy="18" rx="14" ry="15" fill="#D4A574"/>
-          <path d="M21 32 Q24 22 35 20 Q46 18 48 24 Q46 46 50 72 L20 72 Z" fill="#2A4A5E"/>
-          <path d="M20 32 Q13 44 12 72" stroke="#2A4A5E" stroke-width="9" stroke-linecap="round" fill="none"/>
-          <path d="M50 26 Q58 38 56 72" stroke="#2A4A5E" stroke-width="9" stroke-linecap="round" fill="none"/>
-          <path d="M21 14 Q23 4 35 2 Q47 0 49 14 Q43 6 35 5 Q27 6 21 14Z" fill="#3D2810"/>
-          <ellipse cx="29" cy="18" rx="4" ry="3" fill="#2A1808"/>
-          <ellipse cx="41" cy="18" rx="4" ry="3" fill="#2A1808"/>
-          <!-- smile -->
-          <path d="M28 27 Q35 32 42 27" stroke="#8B5A3A" stroke-width="2" fill="none" stroke-linecap="round"/>
-          <!-- star -->
-          <text x="48" y="18" font-size="16">⭐</text>
-        </svg>
-        <div class="path-item"><div class="dot"></div>Recebeu oferta direta via WhatsApp</div>
-        <div class="path-item"><div class="dot"></div>Reservou sem comissão — zero %</div>
-        <div class="path-item"><div class="dot"></div>Você tem o histórico dele</div>
-        <div class="path-item"><div class="dot"></div>Pode fidelizar e trazer de volta sempre</div>
-        <div class="path-footer">O hóspede agora é seu. Para sempre.</div>
+        <div class="path-head">Voltou.<br>Direto<br>pra você.</div>
+        <div class="path-row"><div class="pdot"></div>Recebeu oferta direta sua</div>
+        <div class="path-row"><div class="pdot"></div>Reservou com zero comissão</div>
+        <div class="path-row"><div class="pdot"></div>Você tem o histórico dele</div>
+        <div class="path-row"><div class="pdot"></div>Pode fidelizar para sempre</div>
+        <div class="path-foot">O hóspede agora é seu. Para sempre.</div>
       </div>
     </div>
   </div>
-  <div class="brand-tag">Smart<span>Guest</span></div>
+  <div class="brand">Smart<b>Guest</b></div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     SLIDE 8 — CTA
-═══════════════════════════════════════ -->
+<!-- ═══ S8 CTA ═══ -->
 <div class="slide" id="s8">
   <div class="bar"></div>
-  <div class="snum" style="color:rgba(0,0,0,0.25);">08 / 08</div>
-  <div class="inner">
-    <!-- person + hotel illustration -->
-    <svg width="180" height="130" viewBox="0 0 180 130" style="margin-bottom:16px">
-      <!-- hotel building simplified -->
-      <rect x="60" y="40" width="60" height="70" rx="4" fill="#0D1F2D" opacity="0.9"/>
-      <rect x="68" y="48" width="12" height="12" rx="2" fill="rgba(255,255,255,0.3)"/>
-      <rect x="84" y="48" width="12" height="12" rx="2" fill="rgba(255,255,255,0.3)"/>
-      <rect x="100" y="48" width="12" height="12" rx="2" fill="rgba(255,255,255,0.3)"/>
-      <rect x="68" y="65" width="12" height="12" rx="2" fill="rgba(255,255,255,0.3)"/>
-      <rect x="100" y="65" width="12" height="12" rx="2" fill="rgba(255,255,255,0.3)"/>
-      <rect x="82" y="62" width="16" height="48" rx="2" fill="#16C3CC" opacity="0.3"/>
-      <!-- person in front -->
-      <ellipse cx="90" cy="98" rx="10" ry="11" fill="#D4A574"/>
-      <path d="M80 108 Q82 102 90 100 Q98 98 100 102 Q98 116 102 130 L78 130 Z" fill="#2A4A5E"/>
-      <path d="M80 110 Q74 116 72 130" stroke="#2A4A5E" stroke-width="7" stroke-linecap="round" fill="none"/>
-      <path d="M100 104 Q106 112 104 130" stroke="#2A4A5E" stroke-width="7" stroke-linecap="round" fill="none"/>
-      <!-- checkmark badge -->
-      <circle cx="126" cy="62" r="20" fill="#0D1F2D"/>
-      <path d="M117 62l6 6 10-10" stroke="#16C3CC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-
-    <h2>Motor + PMS +<br>automação.</h2>
-    <div class="sub">Um sistema só — que transforma<br>cada hóspede do Booking em<br>hóspede direto na próxima vez.</div>
+  <div class="snum" style="color:rgba(22,195,204,0.4);">08 / 08</div>
+  <div class="inner2">
+    <h2>Motor + PMS +<br>automação.<br><em>Um sistema só.</em></h2>
+    <div class="s8-sub">
+      Transforma cada hóspede do Booking<br>em hóspede direto na próxima vez.
+    </div>
     <div class="btn">smartguest.app</div>
     <div class="btn-sub">Chama no WhatsApp · Setup em 7 dias</div>
   </div>
-  <div class="brand-tag">Smart<span>Guest</span></div>
+  <div class="brand">Smart<b>Guest</b></div>
 </div>
 
 </body>

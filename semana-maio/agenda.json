@@ -341,5 +341,14 @@
     "altura": 1920,
     "slide": "story",
     "legenda": "A IA já está no seu hotel — ou no do concorrente 🤖 smartguest.app #SmartGuest #IAHotelaria #Hotelaria #HotelTech"
+  },
+  {
+    "id": "sex20jun-carousel-selecao",
+    "tipo": "CAROUSEL",
+    "html": "SEX 20jun - Carousel Selecao/carousel-selecao.html",
+    "largura": 1080,
+    "altura": 1080,
+    "slides": ["slide1","slide2","slide3","slide4","slide5","slide6"],
+    "legenda": "A Seleção Brasileira tem GPS em cada jogador, dados em tempo real e IA analisando cada lance.\n\nSeu hotel tem uma planilha do Excel. 📊\n\nA diferença não é investimento. É sistema.\n\nTimes de elite não improvisam — eles têm processos que funcionam antes do problema aparecer.\n\nEnquanto a maioria das pousadas ainda descobre o erro quando o hóspede já reclamou no Booking, quem usa IA já resolveu antes do check-in.\n\n🤖 Com SmartGuest:\n✅ Alertas automáticos antes do problema virar reclamação\n✅ Sua equipe sabe o que fazer, sem depender de você\n✅ Você para de apagar incêndio e começa a liderar\n\nSeu hotel merece jogar na primeira divisão. 🏆\n\n👉 14 dias grátis, sem cartão. Link na bio.\n\n#hotelaria #pousada #gestaohoteleira #selecaobrasileira #copa2026 #inteligenciaartificial #smartguest #sistemadehotel #gestao #recepção #turismo #hospitalidade"
   }
 ]

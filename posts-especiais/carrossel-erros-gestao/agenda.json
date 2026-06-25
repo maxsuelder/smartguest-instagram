@@ -3,7 +3,7 @@
     "id": "jun25-carousel-erros-gestao",
     "data": "2026-06-25T13:00:00",
     "tipo": "CAROUSEL",
-    "html": "posts-especiais/carrossel-erros-gestao/carrossel-erros-gestao.html",
+    "html": "carrossel-erros-gestao.html",
     "largura": 1080,
     "altura": 1080,
     "slides": ["s1","s2","s3","s4","s5","s6","s7","s8"],

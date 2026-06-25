@@ -266,7 +266,7 @@ async function publicar(containerId) {
   // Renovar token antes de publicar
   await renovarToken();
 
-  const semanas = ['semana1', 'semana2', 'semana3', 'semana4', 'semana5', 'semana6', 'semana-ia', 'semana-maio', 'semana-junho', 'posts-especiais/neymar-copa'];
+  const semanas = ['semana1', 'semana2', 'semana3', 'semana4', 'semana5', 'semana6', 'semana-ia', 'semana-maio', 'semana-junho', 'posts-especiais/neymar-copa', 'posts-especiais/carrossel-erros-gestao'];
   let post = null;
   let semanaDir = null;
 

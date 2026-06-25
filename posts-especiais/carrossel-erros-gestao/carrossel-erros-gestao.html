@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:1080px;background:#111;font-family:'Inter',sans-serif;}
+.slide{width:1080px;height:1080px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:72px 80px 64px;margin-bottom:4px;}
+.bar-top{position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,#16C3CC,#0E9DA5,transparent);z-index:10;}
+.bar-left{position:absolute;left:0;top:0;bottom:0;width:8px;background:linear-gradient(180deg,#16C3CC,#0E9DA5 60%,transparent);z-index:10;}
+.brand{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;letter-spacing:4px;color:#16C3CC;text-transform:uppercase;}
+.handle{font-size:12px;font-weight:700;letter-spacing:3px;color:rgba(184,205,211,0.35);text-transform:uppercase;}
+.top-row{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2;}
+.glow{position:absolute;border-radius:50%;pointer-events:none;}
+
+/* CAPA */
+#s1{background:#060E12;}
+#s1 .eyebrow{font-size:13px;font-weight:800;letter-spacing:5px;text-transform:uppercase;color:#16C3CC;margin-bottom:20px;position:relative;z-index:2;}
+#s1 .audience{display:inline-flex;align-items:center;gap:8px;background:rgba(22,195,204,0.1);border:1px solid rgba(22,195,204,0.3);border-radius:30px;padding:8px 20px;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#16C3CC;margin-bottom:28px;position:relative;z-index:2;}
+#s1 h1{font-family:'Barlow Condensed',sans-serif;font-size:100px;font-weight:900;color:#fff;line-height:0.95;text-transform:uppercase;letter-spacing:-1px;margin-bottom:20px;position:relative;z-index:2;}
+#s1 h1 span{color:#16C3CC;}
+#s1 .divider{width:60px;height:5px;background:#16C3CC;border-radius:3px;margin-bottom:24px;position:relative;z-index:2;}
+#s1 .sub{font-size:20px;color:rgba(184,205,211,0.65);line-height:1.65;max-width:680px;position:relative;z-index:2;}
+#s1 .hint{font-size:14px;font-weight:700;letter-spacing:3px;color:rgba(22,195,204,0.5);text-transform:uppercase;position:relative;z-index:2;}
+
+/* SLIDES DE ERRO */
+.s-erro{background:#060E12;}
+.num-ghost{font-family:'Barlow Condensed',sans-serif;font-size:280px;font-weight:900;line-height:1;color:rgba(22,195,204,0.05);position:absolute;bottom:-40px;right:40px;z-index:1;letter-spacing:-8px;}
+.cat-pill{display:inline-block;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:7px 18px;border-radius:30px;border:1px solid;position:relative;z-index:2;}
+.erro-mid{flex:1;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2;}
+.erro-h2{font-family:'Barlow Condensed',sans-serif;font-size:68px;font-weight:900;color:#fff;line-height:1.0;text-transform:uppercase;letter-spacing:.5px;margin-bottom:24px;}
+.erro-desc{font-size:18px;color:rgba(184,205,211,0.65);line-height:1.75;margin-bottom:28px;max-width:820px;}
+.impacto{border-radius:14px;padding:24px 28px;background:rgba(255,255,255,0.03);border-left:4px solid #16C3CC;position:relative;z-index:2;}
+.impacto .i-label{font-size:11px;font-weight:800;letter-spacing:4px;text-transform:uppercase;color:#16C3CC;margin-bottom:8px;}
+.impacto .i-txt{font-size:17px;color:rgba(232,244,245,0.85);line-height:1.6;font-weight:500;}
+.erro-foot{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2;}
+
+/* CTA */
+#s8{background:#060E12;}
+#s8 .eyebrow{font-size:13px;font-weight:800;letter-spacing:5px;text-transform:uppercase;color:#16C3CC;margin-bottom:20px;position:relative;z-index:2;}
+#s8 h2{font-family:'Barlow Condensed',sans-serif;font-size:88px;font-weight:900;color:#fff;line-height:0.95;text-transform:uppercase;margin-bottom:20px;position:relative;z-index:2;}
+#s8 h2 span{color:#16C3CC;}
+#s8 .sub{font-size:18px;color:rgba(184,205,211,0.6);line-height:1.7;margin-bottom:32px;max-width:780px;position:relative;z-index:2;}
+#s8 .chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px;position:relative;z-index:2;}
+#s8 .chip{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:8px 18px;border-radius:30px;background:rgba(22,195,204,0.08);border:1px solid rgba(22,195,204,0.22);color:rgba(22,195,204,0.8);}
+#s8 .cta-box{background:#16C3CC;border-radius:16px;padding:28px 36px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:2;}
+#s8 .url{font-family:'Barlow Condensed',sans-serif;font-size:48px;font-weight:900;letter-spacing:2px;color:#060E12;text-transform:uppercase;}
+#s8 .cta-hint{font-size:15px;color:rgba(6,14,18,0.6);font-weight:600;}
+#s8 .save{font-size:13px;color:rgba(22,195,204,0.4);font-weight:600;letter-spacing:2px;text-transform:uppercase;position:relative;z-index:2;}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — CAPA -->
+<div class="slide" id="s1">
+  <div class="bar-top"></div><div class="bar-left"></div>
+  <div class="glow" style="top:-100px;right:-100px;width:600px;height:600px;background:radial-gradient(ellipse,rgba(22,195,204,0.08),transparent 65%);"></div>
+  <div class="glow" style="bottom:-80px;left:-80px;width:400px;height:400px;background:radial-gradient(ellipse,rgba(22,195,204,0.05),transparent 65%);"></div>
+  <div class="top-row">
+    <span class="brand">smartguest</span>
+    <span class="handle">@smartguest.app</span>
+  </div>
+  <div>
+    <div class="audience">▶ Para donos de pousada</div>
+    <p class="eyebrow">Gestão hoteleira</p>
+    <h1>Os erros que estão<br/><span>custando dinheiro</span><br/>na sua pousada</h1>
+    <div class="divider"></div>
+    <p class="sub">Você trabalha duro, a pousada funciona — mas o lucro não aparece. Esses 6 erros explicam o porquê.</p>
+  </div>
+  <p class="hint">Deslize →</p>
+</div>
+
+<!-- SLIDE 2 — ERRO 01 -->
+<div class="slide s-erro" id="s2">
+  <div class="bar-top"></div><div class="bar-left"></div>
+  <div class="glow" style="top:50%;right:-120px;transform:translateY(-50%);width:500px;height:600px;background:radial-gradient(ellipse,rgba(255,69,69,0.07),transparent 65%);"></div>
+  <div class="num-ghost">01</div>
+  <div class="top-row">
+    <span class="brand" style="font-size:18px;">smartguest</span>
+    <div class="cat-pill" style="border-color:rgba(255,69,69,0.35);color:#FF6B6B;background:rgba(255,69,69,0.08);">Reservas</div>
+  </div>
+  <div class="erro-mid">
+    <h2 class="erro-h2">Reservas em planilha, caderno e WhatsApp ao mesmo tempo</h2>
+    <p class="erro-desc">Quando a informação vive em três lugares ao mesmo tempo, o erro é questão de tempo — não de azar. Overbooking na alta temporada não é má sorte, é consequência de um processo sem centro único.</p>
+    <div class="impacto">
+      <p class="i-label">Impacto real</p>
+      <p class="i-txt">Um overbooking custa reembolso + realocação + avaliação negativa. Três assim e sua nota no Booking afunda para sempre.</p>
+    </div>
+  </div>
+  <div class="erro-foot"><span class="handle">smartguest.app</span></div>
+</div>
+
+<!-- SLIDE 3 — ERRO 02 -->
+<div class="slide s-erro" id="s3">
+  <div class="bar-top"></div><div class="bar-left"></div>
+  <div class="glow" style="top:50%;right:-120px;transform:translateY(-50%);width:500px;height:600px;background:radial-gradient(ellipse,rgba(255,179,71,0.07),transparent 65%);"></div>
+  <div class="num-ghost">02</div>
+  <div class="top-row">
+    <span class="brand" style="font-size:18px;">smartguest</span>
+    <div class="cat-pill" style="border-color:rgba(255,179,71,0.35);color:#FFB347;background:rgba(255,179,71,0.08);">Financeiro</div>
+  </div>
+  <div class="erro-mid">
+    <h2 class="erro-h2">Sem fluxo de caixa, plano de contas nem centro de resultado</h2>
+    <p class="erro-desc">Saber quanto entrou no mês não é controle financeiro — é ilusão. Sem categorizar receitas por centro de resultado, você não sabe onde está ganhando e onde está sangrando.</p>
+    <div class="impacto">
+      <p class="i-label">Impacto real</p>
+      <p class="i-txt">Hotéis sem plano de contas tomam decisão de preço no escuro. Tarifa errada na temporada errada — prejuízo invisível todo mês.</p>
+    </div>
+  </div>
+  <div class="erro-foot"><span class="handle">smartguest.app</span></div>
+</div>
+
+<!-- SLIDE 4 — ERRO 03 -->
+<div class="slide s-erro" id="s4">
+  <div class="bar-top"></div><div class="bar-left"></div>
+  <div class="glow" style="top:50%;right:-120px;transform:translateY(-50%);width:500px;height:600px;background:radial-gradient(ellipse,rgba(22,195,204,0.07),transparent 65%);"></div>
+  <div class="num-ghost">03</div>
+  <div class="top-row">
+    <span class="brand" style="font-size:18px;">smartguest</span>
+    <div class="cat-pill" style="border-color:rgba(22,195,204,0.35);color:#16C3CC;background:rgba(22,195,204,0.08);">Extrato</div>
+  </div>
+  <div class="erro-mid">
+    <h2 class="erro-h2">Extrato bancário como único controle do caixa</h2>
+    <p class="erro-desc">Extrato mostra o que aconteceu, não o que está por vir. Sem extrato de conta interno e fluxo de caixa projetado, você descobre o problema depois que ele já aconteceu.</p>
+    <div class="impacto">
+      <p class="i-label">Impacto real</p>
+      <p class="i-txt">Dívida descoberta no fim do mês, quando já não tem como renegociar, ajustar tarifa ou cortar gasto a tempo.</p>
+    </div>
+  </div>
+  <div class="erro-foot"><span class="handle">smartguest.app</span></div>
+</div>
+
+<!-- SLIDE 5 — ERRO 04 -->
+<div class="slide s-erro" id="s5">
+  <div class="bar-top"></div><div class="bar-left"></div>
+  <div class="glow" style="top:50%;right:-120px;transform:translateY(-50%);width:500px;height:600px;background:radial-gradient(ellipse,rgba(167,139,250,0.07),transparent 65%);"></div>
+  <div class="num-ghost">04</div>
+  <div class="top-row">
+    <span class="brand" style="font-size:18px;">smartguest</span>
+    <div class="cat-pill" style="border-color:rgba(167,139,250,0.35);color:#a78bfa;background:rgba(167,139,250,0.08);">Governança</div>
+  </div>
+  <div class="erro-mid">
+    <h2 class="erro-h2">Governança que existe só na cabeça de uma funcionária</h2>
+    <p class="erro-desc">Quando a camareira que "sabe tudo" falta, o padrão some com ela. Sem checklist digital por UH e registro de status em tempo real, a qualidade vira sorte — não processo.</p>
+    <div class="impacto">
+      <p class="i-label">Impacto real</p>
+      <p class="i-txt">Quarto entregue com problema → reclamação no check-in → review negativo → queda de ranking no Booking.</p>
+    </div>
+  </div>
+  <div class="erro-foot"><span class="handle">smartguest.app</span></div>
+</div>
+
+<!-- SLIDE 6 — ERRO 05 -->
+<div class="slide s-erro" id="s6">
+  <div class="bar-top"></div><div class="bar-left"></div>
+  <div class="glow" style="top:50%;right:-120px;transform:translateY(-50%);width:500px;height:600px;background:radial-gradient(ellipse,rgba(74,222,128,0.07),transparent 65%);"></div>
+  <div class="num-ghost">05</div>
+  <div class="top-row">
+    <span class="brand" style="font-size:18px;">smartguest</span>
+    <div class="cat-pill" style="border-color:rgba(74,222,128,0.3);color:#4ADE80;background:rgba(74,222,128,0.08);">Refeições</div>
+  </div>
+  <div class="erro-mid">
+    <h2 class="erro-h2">Café da manhã sem rastreio por UH</h2>
+    <p class="erro-desc">Quem incluiu no pacote? Quem consumiu avulso? Sem controle de consumo por unidade habitacional, a cozinha vira um buraco no caixa que ninguém consegue medir nem fechar.</p>
+    <div class="impacto">
+      <p class="i-label">Impacto real</p>
+      <p class="i-txt">Receita de refeição que some, desperdício que cresce e custo por UH que ninguém consegue calcular no fechamento.</p>
+    </div>
+  </div>
+  <div class="erro-foot"><span class="handle">smartguest.app</span></div>
+</div>
+
+<!-- SLIDE 7 — ERRO 06 -->
+<div class="slide s-erro" id="s7">
+  <div class="bar-top"></div><div class="bar-left"></div>
+  <div class="glow" style="top:50%;right:-120px;transform:translateY(-50%);width:500px;height:600px;background:radial-gradient(ellipse,rgba(255,107,107,0.07),transparent 65%);"></div>
+  <div class="num-ghost">06</div>
+  <div class="top-row">
+    <span class="brand" style="font-size:18px;">smartguest</span>
+    <div class="cat-pill" style="border-color:rgba(255,107,107,0.3);color:#FF6B6B;background:rgba(255,107,107,0.08);">Hóspede</div>
+  </div>
+  <div class="erro-mid">
+    <h2 class="erro-h2">Zero comunicação com o hóspede antes da chegada</h2>
+    <p class="erro-desc">Horário, estacionamento, Wi-Fi, regras — o hóspede descobre tudo na recepção. A equipe responde as mesmas perguntas 30 vezes por semana enquanto o que importa fica pra depois.</p>
+    <div class="impacto">
+      <p class="i-label">Impacto real</p>
+      <p class="i-txt">Hóspede frustrado na chegada já começa mentalmente a escrever a avaliação ruim. E você nem sabe que perdeu.</p>
+    </div>
+  </div>
+  <div class="erro-foot"><span class="handle">smartguest.app</span></div>
+</div>
+
+<!-- SLIDE 8 — CTA -->
+<div class="slide" id="s8">
+  <div class="bar-top"></div><div class="bar-left"></div>
+  <div class="glow" style="bottom:-120px;left:50%;transform:translateX(-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(22,195,204,0.07),transparent 65%);"></div>
+  <div class="top-row">
+    <span class="brand">smartguest</span>
+    <span class="handle">@smartguest.app</span>
+  </div>
+  <div>
+    <p class="eyebrow">Solução completa</p>
+    <h2>Um sistema.<br/><span>Tudo resolvido.</span></h2>
+    <p class="sub">Reservas, financeiro com plano de contas, centro de resultado, fluxo de caixa, extrato de conta, governança, refeições e comunicação — integrado e simples de usar.</p>
+    <div class="chips">
+      <span class="chip">Mapa de reservas</span>
+      <span class="chip">Fluxo de caixa</span>
+      <span class="chip">Plano de contas</span>
+      <span class="chip">Centro de resultado</span>
+      <span class="chip">Extrato de conta</span>
+      <span class="chip">Governança</span>
+      <span class="chip">Refeições</span>
+      <span class="chip">Comunicação</span>
+    </div>
+    <div class="cta-box">
+      <div>
+        <p class="url">SMARTGUEST.APP</p>
+        <p class="cta-hint">Agende uma demonstração gratuita</p>
+      </div>
+    </div>
+  </div>
+  <p class="save">Salva e manda pra quem precisa ver isso</p>
+</div>
+
+</body>
+</html>

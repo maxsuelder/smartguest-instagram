@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#F7F9FC;font-family:'Inter',sans-serif;}
+.slide{width:1080px;height:1080px;overflow:hidden;position:relative;background:#F7F9FC;margin-bottom:20px;}
+.bar{position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#16C3CC,rgba(22,195,204,.4),transparent);z-index:20;}
+.brand{position:absolute;bottom:48px;left:50%;transform:translateX(-50%);font-size:20px;font-weight:600;color:rgba(30,40,60,.3);letter-spacing:.08em;z-index:5;white-space:nowrap;}
+.brand span{color:#16C3CC;}
+.num{position:absolute;top:44px;right:52px;font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;color:#16C3CC;opacity:.5;z-index:5;}
+
+/* SLIDE 1 — CAPA */
+#slide1{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px;}
+.tag1{display:inline-flex;align-items:center;background:rgba(255,196,0,.12);border:2.5px solid #FFC400;border-radius:14px;padding:14px 36px;margin-bottom:36px;}
+.tag-txt{font-family:'Barlow Condensed',sans-serif;font-size:44px;font-weight:900;letter-spacing:2px;color:#E8A900;text-transform:uppercase;}
+#slide1 h1{font-family:'Barlow Condensed',sans-serif;font-size:88px;font-weight:900;text-transform:uppercase;line-height:.9;color:#0D1F2D;margin-bottom:28px;}
+#slide1 h1 em{color:#16C3CC;font-style:normal;}
+#slide1 .sub{font-size:24px;font-weight:600;color:rgba(30,40,60,.5);line-height:1.5;max-width:760px;}
+
+/* SLIDES CONTEÚDO */
+.c{padding:72px 84px;display:flex;flex-direction:column;justify-content:center;height:100%;}
+.label{font-size:12px;font-weight:800;letter-spacing:5px;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:12px;color:#16C3CC;}
+.label::before{content:'';display:block;width:32px;height:3px;border-radius:2px;background:#16C3CC;}
+
+h2{font-family:'Barlow Condensed',sans-serif;font-size:74px;font-weight:900;text-transform:uppercase;line-height:.95;color:#0D1F2D;margin-bottom:26px;}
+h2 em{color:#16C3CC;font-style:normal;}
+
+.icon-wrap{width:84px;height:84px;background:rgba(22,195,204,.08);border:1.5px solid rgba(22,195,204,.2);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:40px;margin-bottom:26px;}
+
+.sub-line{font-size:27px;font-weight:500;color:rgba(30,40,60,.65);line-height:1.5;margin-bottom:26px;}
+.sub-line strong{color:#0D1F2D;}
+
+.reaction{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1.5px solid rgba(22,195,204,.25);border-radius:100px;padding:14px 26px;box-shadow:0 2px 12px rgba(22,195,204,.08);align-self:flex-start;}
+.reaction .r-txt{font-size:20px;font-weight:700;color:#0D1F2D;}
+
+/* SLIDE FINAL — CTA */
+#slide8{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px;background:#0D1F2D;}
+#slide8 .eyebrow{font-size:12px;font-weight:800;letter-spacing:5px;color:#16C3CC;text-transform:uppercase;margin-bottom:24px;}
+#slide8 h2{font-family:'Barlow Condensed',sans-serif;font-size:76px;font-weight:900;text-transform:uppercase;line-height:.9;color:#fff;margin-bottom:22px;}
+#slide8 h2 em{color:#16C3CC;font-style:normal;}
+#slide8 .sub{font-size:24px;color:rgba(255,255,255,.5);margin-bottom:44px;line-height:1.5;max-width:760px;}
+#slide8 .cta-box{background:rgba(22,195,204,.12);border:1.5px solid rgba(22,195,204,.4);border-radius:20px;padding:28px 76px;margin-bottom:22px;}
+#slide8 .cta-url{font-family:'Barlow Condensed',sans-serif;font-size:64px;font-weight:800;color:#16C3CC;}
+#slide8 .cta-hint{font-size:20px;color:rgba(255,255,255,.3);}
+#slide8 .brand{color:rgba(255,255,255,.25);}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — CAPA -->
+<div class="slide" id="slide1">
+  <div class="bar"></div>
+  <div class="tag1"><div class="tag-txt">Pousada, Hotel e Flat</div></div>
+  <h1><em>6</em> COISAS QUE SÓ QUEM TRABALHA NA RECEPÇÃO ENTENDE</h1>
+  <p class="sub">Marca aquele amigo que também vive isso 👇</p>
+  <div class="brand"><span>smartguest</span>.app</div>
+</div>
+
+<!-- SLIDE 2 — SISTEMA/PLANILHA TRAVA -->
+<div class="slide" id="slide2">
+  <div class="bar"></div>
+  <div class="c">
+    <div class="label">Nº 1</div>
+    <div class="icon-wrap">💻</div>
+    <h2>SEU SISTEMA ATUAL <em>TRAVA.</em><br>A PLANILHA TAMBÉM.</h2>
+    <div class="sub-line">Sempre no dia de maior movimento. Sempre.</div>
+    <div class="reaction"><span class="r-txt">💥 Lei de Murphy</span></div>
+  </div>
+  <div class="brand"><span>smartguest</span>.app</div><div class="num">02/08</div>
+</div>
+
+<!-- SLIDE 3 — O DESCONTO -->
+<div class="slide" id="slide3">
+  <div class="bar"></div>
+  <div class="c">
+    <div class="label">Nº 2</div>
+    <div class="icon-wrap">🙄</div>
+    <h2>O HÓSPEDE PEDE <em>DESCONTO</em> OLHANDO NOS SEUS OLHOS.</h2>
+    <div class="sub-line">Sem vergonha nenhuma. Antes de perguntar se tem vaga, até.</div>
+    <div class="reaction"><span class="r-txt">😩 Clássico</span></div>
+  </div>
+  <div class="brand"><span>smartguest</span>.app</div><div class="num">03/08</div>
+</div>
+
+<!-- SLIDE 4 — A CHAVE SOME -->
+<div class="slide" id="slide4">
+  <div class="bar"></div>
+  <div class="c">
+    <div class="label">Nº 3</div>
+    <div class="icon-wrap">🔑</div>
+    <h2>A CHAVE SOME BEM NA HORA DO <em>CHECK-OUT.</em></h2>
+    <div class="sub-line">E adivinha quem vai revirar o quarto inteiro atrás dela?</div>
+    <div class="reaction"><span class="r-txt">🔍 Sempre você</span></div>
+  </div>
+  <div class="brand"><span>smartguest</span>.app</div><div class="num">04/08</div>
+</div>
+
+<!-- SLIDE 5 — WHATSAPP -->
+<div class="slide" id="slide5">
+  <div class="bar"></div>
+  <div class="c">
+    <div class="label">Nº 4</div>
+    <div class="icon-wrap">📱</div>
+    <h2>O WHATSAPP NÃO PARA. <em>NEM DE MADRUGADA.</em></h2>
+    <div class="sub-line">23h47: <strong>"Oi, chego amanhã cedo, dá pra fazer check-in agora?"</strong></div>
+    <div class="reaction"><span class="r-txt">📵 Bom descanso, né</span></div>
+  </div>
+  <div class="brand"><span>smartguest</span>.app</div><div class="num">05/08</div>
+</div>
+
+<!-- SLIDE 6 — FICHA 3X -->
+<div class="slide" id="slide6">
+  <div class="bar"></div>
+  <div class="c">
+    <div class="label">Nº 5</div>
+    <div class="icon-wrap">📋</div>
+    <h2>"JÁ MANDEI A FICHA <em>3 VEZES."</em></h2>
+    <div class="sub-line">Diz quem nunca mandou. E você vai rolar o WhatsApp inteiro pra provar.</div>
+    <div class="reaction"><span class="r-txt">🕵️ A prova não existe</span></div>
+  </div>
+  <div class="brand"><span>smartguest</span>.app</div><div class="num">06/08</div>
+</div>
+
+<!-- SLIDE 7 — CHECK-IN 2H -->
+<div class="slide" id="slide7">
+  <div class="bar"></div>
+  <div class="c">
+    <div class="label">Nº 6</div>
+    <div class="icon-wrap">🌙</div>
+    <h2>CHECK-IN ÀS 2H. DE QUEM <em>"AVISOU"</em> ÀS 23H59.</h2>
+    <div class="sub-line">Quem dorme, no fim das contas, é sempre a mesma pessoa: você.</div>
+    <div class="reaction"><span class="r-txt">😴 Café da manhã em 5h</span></div>
+  </div>
+  <div class="brand"><span>smartguest</span>.app</div><div class="num">07/08</div>
+</div>
+
+<!-- SLIDE 8 — CTA -->
+<div class="slide" id="slide8">
+  <div class="bar"></div>
+  <div class="eyebrow">Se identificou com 3 ou mais?</div>
+  <h2>O PROBLEMA <em>NÃO É VOCÊ.</em><br>É NÃO TER UM SISTEMA.</h2>
+  <p class="sub">O SmartGuest assume a burocracia da recepção — check-in, ficha, mensagens, disponibilidade — pra você virar gerente, não bombeiro.</p>
+  <div class="cta-box"><div class="cta-url">smartguest.app</div></div>
+  <div class="cta-hint">📩 Chama no direct ou no link da bio</div>
+  <div class="brand"><span>smartguest</span>.app</div><div class="num">08/08</div>
+</div>
+
+</body>
+</html>

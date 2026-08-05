@@ -95,20 +95,7 @@ async function hospedar(filePath) {
     } catch (e) { console.log(`  ⚠️ ImgBB falhou: ${e.message}`); }
   }
 
-  // 2. tmpfiles.org (fallback)
-  try {
-    const form = new FormData();
-    form.append('file', fs.createReadStream(filePath));
-    const res = await axios.post('https://tmpfiles.org/api/v1/upload', form, {
-      headers: form.getHeaders(),
-      maxContentLength: Infinity,
-      maxBodyLength: Infinity
-    });
-    const url = res.data.data.url.replace('tmpfiles.org/', 'tmpfiles.org/dl/');
-    if (url && url.startsWith('http')) return url;
-  } catch (e) { console.log(`  ⚠️ tmpfiles falhou: ${e.message}`); }
-
-  // 3. catbox.moe (último recurso — pode falhar em CI)
+  // 2. catbox.moe (fallback local — tmpfiles.org não é aceito pelo fetcher do Instagram)
   try {
     const form = new FormData();
     form.append('reqtype', 'fileupload');
@@ -121,6 +108,19 @@ async function hospedar(filePath) {
     const url = res.data.trim();
     if (url && url.startsWith('http')) return url;
   } catch (e) { console.log(`  ⚠️ Catbox falhou: ${e.message}`); }
+
+  // 3. tmpfiles.org (último recurso)
+  try {
+    const form = new FormData();
+    form.append('file', fs.createReadStream(filePath));
+    const res = await axios.post('https://tmpfiles.org/api/v1/upload', form, {
+      headers: form.getHeaders(),
+      maxContentLength: Infinity,
+      maxBodyLength: Infinity
+    });
+    const url = res.data.data.url.replace('tmpfiles.org/', 'tmpfiles.org/dl/');
+    if (url && url.startsWith('http')) return url;
+  } catch (e) { console.log(`  ⚠️ tmpfiles falhou: ${e.message}`); }
 
   throw new Error('Todos os serviços de hospedagem falharam');
 }
@@ -266,7 +266,7 @@ async function publicar(containerId) {
   // Renovar token antes de publicar
   await renovarToken();
 
-  const semanas = ['semana1', 'semana2', 'semana3', 'semana4', 'semana5', 'semana6', 'semana-ia', 'semana-maio', 'semana-junho', 'posts-especiais/neymar-copa', 'posts-especiais/carrossel-erros-gestao'];
+  const semanas = ['semana1', 'semana2', 'semana3', 'semana4', 'semana5', 'semana6', 'semana-ia', 'semana-maio', 'semana-junho', 'posts-especiais/neymar-copa', 'posts-especiais/carrossel-erros-gestao', 'posts-especiais/carrossel-recepcao-relatavel'];
   let post = null;
   let semanaDir = null;
 
